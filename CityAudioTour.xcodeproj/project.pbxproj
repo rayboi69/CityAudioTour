@@ -1,0 +1,437 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		08B855081A79F90F006F035F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B855071A79F90F006F035F /* AppDelegate.swift */; };
+		08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08B855091A79F90F006F035F /* CityAudioTour.xcdatamodeld */; };
+		08B8550D1A79F90F006F035F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8550C1A79F90F006F035F /* ViewController.swift */; };
+		08B855101A79F90F006F035F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08B8550E1A79F90F006F035F /* Main.storyboard */; };
+		08B855121A79F90F006F035F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08B855111A79F90F006F035F /* Images.xcassets */; };
+		08B855151A79F90F006F035F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B855131A79F90F006F035F /* LaunchScreen.xib */; };
+		08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B855201A79F90F006F035F /* CityAudioTourTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08B8551B1A79F90F006F035F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08B854FA1A79F90E006F035F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08B855011A79F90F006F035F;
+			remoteInfo = CityAudioTour;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08B855021A79F90F006F035F /* CityAudioTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityAudioTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		08B855061A79F90F006F035F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08B855071A79F90F006F035F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		08B8550A1A79F90F006F035F /* CityAudioTour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityAudioTour.xcdatamodel; sourceTree = "<group>"; };
+		08B8550C1A79F90F006F035F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		08B8550F1A79F90F006F035F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		08B855111A79F90F006F035F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		08B855141A79F90F006F035F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		08B8551A1A79F90F006F035F /* CityAudioTourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityAudioTourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		08B8551F1A79F90F006F035F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08B855201A79F90F006F035F /* CityAudioTourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAudioTourTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		08B854FF1A79F90F006F035F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08B855171A79F90F006F035F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08B854F91A79F90E006F035F = {
+			isa = PBXGroup;
+			children = (
+				08B855041A79F90F006F035F /* CityAudioTour */,
+				08B8551D1A79F90F006F035F /* CityAudioTourTests */,
+				08B855031A79F90F006F035F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		08B855031A79F90F006F035F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				08B855021A79F90F006F035F /* CityAudioTour.app */,
+				08B8551A1A79F90F006F035F /* CityAudioTourTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		08B855041A79F90F006F035F /* CityAudioTour */ = {
+			isa = PBXGroup;
+			children = (
+				08B855071A79F90F006F035F /* AppDelegate.swift */,
+				08B8550C1A79F90F006F035F /* ViewController.swift */,
+				08B8550E1A79F90F006F035F /* Main.storyboard */,
+				08B855111A79F90F006F035F /* Images.xcassets */,
+				08B855131A79F90F006F035F /* LaunchScreen.xib */,
+				08B855091A79F90F006F035F /* CityAudioTour.xcdatamodeld */,
+				08B855051A79F90F006F035F /* Supporting Files */,
+			);
+			path = CityAudioTour;
+			sourceTree = "<group>";
+		};
+		08B855051A79F90F006F035F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				08B855061A79F90F006F035F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		08B8551D1A79F90F006F035F /* CityAudioTourTests */ = {
+			isa = PBXGroup;
+			children = (
+				08B855201A79F90F006F035F /* CityAudioTourTests.swift */,
+				08B8551E1A79F90F006F035F /* Supporting Files */,
+			);
+			path = CityAudioTourTests;
+			sourceTree = "<group>";
+		};
+		08B8551E1A79F90F006F035F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				08B8551F1A79F90F006F035F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		08B855011A79F90F006F035F /* CityAudioTour */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08B855241A79F90F006F035F /* Build configuration list for PBXNativeTarget "CityAudioTour" */;
+			buildPhases = (
+				08B854FE1A79F90F006F035F /* Sources */,
+				08B854FF1A79F90F006F035F /* Frameworks */,
+				08B855001A79F90F006F035F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CityAudioTour;
+			productName = CityAudioTour;
+			productReference = 08B855021A79F90F006F035F /* CityAudioTour.app */;
+			productType = "com.apple.product-type.application";
+		};
+		08B855191A79F90F006F035F /* CityAudioTourTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08B855271A79F90F006F035F /* Build configuration list for PBXNativeTarget "CityAudioTourTests" */;
+			buildPhases = (
+				08B855161A79F90F006F035F /* Sources */,
+				08B855171A79F90F006F035F /* Frameworks */,
+				08B855181A79F90F006F035F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				08B8551C1A79F90F006F035F /* PBXTargetDependency */,
+			);
+			name = CityAudioTourTests;
+			productName = CityAudioTourTests;
+			productReference = 08B8551A1A79F90F006F035F /* CityAudioTourTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08B854FA1A79F90E006F035F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "SE491-591";
+				TargetAttributes = {
+					08B855011A79F90F006F035F = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					08B855191A79F90F006F035F = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 08B855011A79F90F006F035F;
+					};
+				};
+			};
+			buildConfigurationList = 08B854FD1A79F90E006F035F /* Build configuration list for PBXProject "CityAudioTour" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 08B854F91A79F90E006F035F;
+			productRefGroup = 08B855031A79F90F006F035F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				08B855011A79F90F006F035F /* CityAudioTour */,
+				08B855191A79F90F006F035F /* CityAudioTourTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		08B855001A79F90F006F035F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08B855101A79F90F006F035F /* Main.storyboard in Resources */,
+				08B855151A79F90F006F035F /* LaunchScreen.xib in Resources */,
+				08B855121A79F90F006F035F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08B855181A79F90F006F035F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		08B854FE1A79F90F006F035F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08B8550D1A79F90F006F035F /* ViewController.swift in Sources */,
+				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
+				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08B855161A79F90F006F035F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		08B8551C1A79F90F006F035F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 08B855011A79F90F006F035F /* CityAudioTour */;
+			targetProxy = 08B8551B1A79F90F006F035F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		08B8550E1A79F90F006F035F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08B8550F1A79F90F006F035F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		08B855131A79F90F006F035F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08B855141A79F90F006F035F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		08B855221A79F90F006F035F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		08B855231A79F90F006F035F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		08B855251A79F90F006F035F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CityAudioTour/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		08B855261A79F90F006F035F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CityAudioTour/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		08B855281A79F90F006F035F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CityAudioTourTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityAudioTour.app/CityAudioTour";
+			};
+			name = Debug;
+		};
+		08B855291A79F90F006F035F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CityAudioTourTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityAudioTour.app/CityAudioTour";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		08B854FD1A79F90E006F035F /* Build configuration list for PBXProject "CityAudioTour" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08B855221A79F90F006F035F /* Debug */,
+				08B855231A79F90F006F035F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08B855241A79F90F006F035F /* Build configuration list for PBXNativeTarget "CityAudioTour" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08B855251A79F90F006F035F /* Debug */,
+				08B855261A79F90F006F035F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		08B855271A79F90F006F035F /* Build configuration list for PBXNativeTarget "CityAudioTourTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08B855281A79F90F006F035F /* Debug */,
+				08B855291A79F90F006F035F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		08B855091A79F90F006F035F /* CityAudioTour.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				08B8550A1A79F90F006F035F /* CityAudioTour.xcdatamodel */,
+			);
+			currentVersion = 08B8550A1A79F90F006F035F /* CityAudioTour.xcdatamodel */;
+			path = CityAudioTour.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 08B854FA1A79F90E006F035F /* Project object */;
+}
