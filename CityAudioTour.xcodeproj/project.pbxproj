@@ -7,23 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		088F035B1A7F040A00292507 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F035A1A7F040A00292507 /* GoogleMaps.framework */; };
-		088F035E1A7F045300292507 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 088F035D1A7F045300292507 /* GoogleMaps.bundle */; };
+		08277B8B1A8478FC00D97F65 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08277B8A1A8478FC00D97F65 /* MapKit.framework */; };
 		088F03601A7F04B300292507 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F035F1A7F04B300292507 /* AVFoundation.framework */; };
 		088F03621A7F04B900292507 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03611A7F04B900292507 /* CoreData.framework */; };
 		088F03641A7F04C200292507 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03631A7F04C200292507 /* CoreLocation.framework */; };
-		088F03661A7F04D300292507 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03651A7F04D300292507 /* CoreText.framework */; };
-		088F03681A7F04DE00292507 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03671A7F04DE00292507 /* GLKit.framework */; };
-		088F036A1A7F04E300292507 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03691A7F04E300292507 /* ImageIO.framework */; };
-		088F036C1A7F04F800292507 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F036B1A7F04F800292507 /* libc++.dylib */; };
-		088F036E1A7F050A00292507 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F036D1A7F050A00292507 /* libicucore.dylib */; };
-		088F03701A7F051F00292507 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F036F1A7F051F00292507 /* libz.dylib */; };
-		088F03721A7F052800292507 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03711A7F052800292507 /* OpenGLES.framework */; };
-		088F03741A7F052F00292507 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03731A7F052F00292507 /* QuartzCore.framework */; };
-		088F03761A7F053700292507 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03751A7F053700292507 /* SystemConfiguration.framework */; };
 		08B855081A79F90F006F035F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B855071A79F90F006F035F /* AppDelegate.swift */; };
 		08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08B855091A79F90F006F035F /* CityAudioTour.xcdatamodeld */; };
-		08B8550D1A79F90F006F035F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8550C1A79F90F006F035F /* ViewController.swift */; };
+		08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8550C1A79F90F006F035F /* MainMapViewController.swift */; };
 		08B855101A79F90F006F035F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08B8550E1A79F90F006F035F /* Main.storyboard */; };
 		08B855121A79F90F006F035F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08B855111A79F90F006F035F /* Images.xcassets */; };
 		08B855151A79F90F006F035F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B855131A79F90F006F035F /* LaunchScreen.xib */; };
@@ -41,26 +31,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		088F035A1A7F040A00292507 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		088F035D1A7F045300292507 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		08277B8A1A8478FC00D97F65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		088F035F1A7F04B300292507 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		088F03611A7F04B900292507 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		088F03631A7F04C200292507 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		088F03651A7F04D300292507 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		088F03671A7F04DE00292507 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		088F03691A7F04E300292507 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		088F036B1A7F04F800292507 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		088F036D1A7F050A00292507 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		088F036F1A7F051F00292507 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		088F03711A7F052800292507 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		088F03731A7F052F00292507 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		088F03751A7F053700292507 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		088F03771A7F0A9B00292507 /* CityAudioTour-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CityAudioTour-Bridging-Header.h"; sourceTree = "<group>"; };
 		08B855021A79F90F006F035F /* CityAudioTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityAudioTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08B855061A79F90F006F035F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08B855071A79F90F006F035F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08B8550A1A79F90F006F035F /* CityAudioTour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityAudioTour.xcdatamodel; sourceTree = "<group>"; };
-		08B8550C1A79F90F006F035F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		08B8550C1A79F90F006F035F /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		08B8550F1A79F90F006F035F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		08B855111A79F90F006F035F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		08B855141A79F90F006F035F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -74,19 +53,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				088F03761A7F053700292507 /* SystemConfiguration.framework in Frameworks */,
-				088F03741A7F052F00292507 /* QuartzCore.framework in Frameworks */,
-				088F03721A7F052800292507 /* OpenGLES.framework in Frameworks */,
-				088F03701A7F051F00292507 /* libz.dylib in Frameworks */,
-				088F036E1A7F050A00292507 /* libicucore.dylib in Frameworks */,
-				088F036C1A7F04F800292507 /* libc++.dylib in Frameworks */,
-				088F036A1A7F04E300292507 /* ImageIO.framework in Frameworks */,
-				088F03681A7F04DE00292507 /* GLKit.framework in Frameworks */,
-				088F03661A7F04D300292507 /* CoreText.framework in Frameworks */,
+				08277B8B1A8478FC00D97F65 /* MapKit.framework in Frameworks */,
 				088F03641A7F04C200292507 /* CoreLocation.framework in Frameworks */,
 				088F03621A7F04B900292507 /* CoreData.framework in Frameworks */,
 				088F03601A7F04B300292507 /* AVFoundation.framework in Frameworks */,
-				088F035B1A7F040A00292507 /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,35 +70,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		088F035C1A7F045300292507 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				088F035D1A7F045300292507 /* GoogleMaps.bundle */,
-			);
-			name = Resources;
-			path = "../../Downloads/GoogleMaps-iOS-1.9.1/GoogleMaps.framework/Resources";
-			sourceTree = "<group>";
-		};
 		08B854F91A79F90E006F035F = {
 			isa = PBXGroup;
 			children = (
-				088F03751A7F053700292507 /* SystemConfiguration.framework */,
-				088F03731A7F052F00292507 /* QuartzCore.framework */,
-				088F03711A7F052800292507 /* OpenGLES.framework */,
-				088F036F1A7F051F00292507 /* libz.dylib */,
-				088F036D1A7F050A00292507 /* libicucore.dylib */,
-				088F036B1A7F04F800292507 /* libc++.dylib */,
-				088F03691A7F04E300292507 /* ImageIO.framework */,
-				088F03671A7F04DE00292507 /* GLKit.framework */,
-				088F03651A7F04D300292507 /* CoreText.framework */,
+				08277B8A1A8478FC00D97F65 /* MapKit.framework */,
 				088F03631A7F04C200292507 /* CoreLocation.framework */,
 				088F03611A7F04B900292507 /* CoreData.framework */,
 				088F035F1A7F04B300292507 /* AVFoundation.framework */,
 				08B855041A79F90F006F035F /* CityAudioTour */,
 				08B8551D1A79F90F006F035F /* CityAudioTourTests */,
 				08B855031A79F90F006F035F /* Products */,
-				088F035C1A7F045300292507 /* Resources */,
-				088F035A1A7F040A00292507 /* GoogleMaps.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,13 +96,12 @@
 			isa = PBXGroup;
 			children = (
 				08B855071A79F90F006F035F /* AppDelegate.swift */,
-				08B8550C1A79F90F006F035F /* ViewController.swift */,
+				08B8550C1A79F90F006F035F /* MainMapViewController.swift */,
 				08B8550E1A79F90F006F035F /* Main.storyboard */,
 				08B855111A79F90F006F035F /* Images.xcassets */,
 				08B855131A79F90F006F035F /* LaunchScreen.xib */,
 				08B855091A79F90F006F035F /* CityAudioTour.xcdatamodeld */,
 				08B855051A79F90F006F035F /* Supporting Files */,
-				088F03771A7F0A9B00292507 /* CityAudioTour-Bridging-Header.h */,
 			);
 			path = CityAudioTour;
 			sourceTree = "<group>";
@@ -264,7 +214,6 @@
 				08B855101A79F90F006F035F /* Main.storyboard in Resources */,
 				08B855151A79F90F006F035F /* LaunchScreen.xib in Resources */,
 				08B855121A79F90F006F035F /* Images.xcassets in Resources */,
-				088F035E1A7F045300292507 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08B8550D1A79F90F006F035F /* ViewController.swift in Sources */,
+				08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
 			);
@@ -363,7 +312,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -399,7 +348,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
