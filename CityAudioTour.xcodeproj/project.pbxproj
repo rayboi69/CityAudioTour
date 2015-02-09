@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		081F46C81A8879B50072BA16 /* MapViewAttraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081F46C71A8879B50072BA16 /* MapViewAttraction.swift */; };
 		08277B8B1A8478FC00D97F65 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08277B8A1A8478FC00D97F65 /* MapKit.framework */; };
 		088F03601A7F04B300292507 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F035F1A7F04B300292507 /* AVFoundation.framework */; };
 		088F03621A7F04B900292507 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03611A7F04B900292507 /* CoreData.framework */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		081F46C71A8879B50072BA16 /* MapViewAttraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewAttraction.swift; sourceTree = "<group>"; };
 		08277B8A1A8478FC00D97F65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		088F035F1A7F04B300292507 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		088F03611A7F04B900292507 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08277B8C1A8484F800D97F65 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				081F46C71A8879B50072BA16 /* MapViewAttraction.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		08B854F91A79F90E006F035F = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 		08B855041A79F90F006F035F /* CityAudioTour */ = {
 			isa = PBXGroup;
 			children = (
+				08277B8C1A8484F800D97F65 /* Model */,
 				08B855071A79F90F006F035F /* AppDelegate.swift */,
 				08B8550C1A79F90F006F035F /* MainMapViewController.swift */,
 				08B8550E1A79F90F006F035F /* Main.storyboard */,
@@ -231,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				081F46C81A8879B50072BA16 /* MapViewAttraction.swift in Sources */,
 				08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
