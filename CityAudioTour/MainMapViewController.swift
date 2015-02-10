@@ -23,19 +23,19 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
         var attractions: [MapViewAttraction] = []
         
         // START TEST MOCK DATA
-        var WillisTower = MapViewAttraction(name: "Willis Tower", status: "Open", latitude: 41.8788067, longitude: -87.6360050)
+        var WillisTower = MapViewAttraction(id: 1, name: "Willis Tower", status: "Open", latitude: 41.8788067, longitude: -87.6360050)
         attractions.append(WillisTower)
         
-        var ArtMusuem = MapViewAttraction(name: "Art Institute of Chicago", status: "Closed", latitude: 41.8795473, longitude: -87.6237238)
+        var ArtMusuem = MapViewAttraction(id: 2, name: "Art Institute of Chicago", status: "Closed", latitude: 41.8795473, longitude: -87.6237238)
         attractions.append(ArtMusuem)
         
-        var NavyPier = MapViewAttraction(name: "Navy Pier", status: "Open", latitude: 41.8919114, longitude: -87.60945749999996)
+        var NavyPier = MapViewAttraction(id: 3, name: "Navy Pier", status: "Open", latitude: 41.8919114, longitude: -87.60945749999996)
         attractions.append(NavyPier)
         
-        var LincolnParkZoo = MapViewAttraction(name: "Lincoln Park Zoo", status: "Closed", latitude: 41.9175023, longitude: -87.63243940000001)
+        var LincolnParkZoo = MapViewAttraction(id: 4, name: "Lincoln Park Zoo", status: "Closed", latitude: 41.9175023, longitude: -87.63243940000001)
         attractions.append(LincolnParkZoo)
         
-        var SheddAquarium = MapViewAttraction(name: "Shedd Aquarium", status: "Open", latitude: 41.86759505, longitude: -87.6136641706734)
+        var SheddAquarium = MapViewAttraction(id: 5, name: "Shedd Aquarium", status: "Open", latitude: 41.86759505, longitude: -87.6136641706734)
         attractions.append(SheddAquarium)
         // END TEST MOCK DATA
         

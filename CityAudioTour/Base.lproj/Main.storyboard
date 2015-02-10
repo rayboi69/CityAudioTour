@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main Map View Controller-->
@@ -18,23 +19,38 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i75-bJ-4OH">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-6" y="0.0" width="424" height="600"/>
-                                </variation>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Hm9-E8-gb8"/>
                                 </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="i75-bJ-4OH" secondAttribute="bottom" id="1Hc-NF-MNT"/>
+                            <constraint firstItem="i75-bJ-4OH" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="OhF-d5-Snt"/>
+                            <constraint firstItem="i75-bJ-4OH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-22" id="PKl-Ha-Doi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="i75-bJ-4OH" secondAttribute="trailing" constant="-34" id="YJw-0P-L9l"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="i75-bJ-4OH"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="OhF-d5-Snt"/>
+                                <exclude reference="PKl-Ha-Doi"/>
+                                <exclude reference="YJw-0P-L9l"/>
+                                <exclude reference="1Hc-NF-MNT"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="i75-bJ-4OH"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="OhF-d5-Snt"/>
+                                <include reference="PKl-Ha-Doi"/>
+                                <include reference="YJw-0P-L9l"/>
+                                <include reference="1Hc-NF-MNT"/>
                             </mask>
                         </variation>
                     </view>
