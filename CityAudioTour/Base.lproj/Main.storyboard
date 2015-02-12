@@ -84,14 +84,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="WSl-W1-rIa">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WSl-W1-rIa">
                                 <rect key="frame" x="30" y="91" width="544" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="372" id="92i-kY-bLW"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6i-5T-LGh">
@@ -100,6 +107,9 @@
                                 <state key="normal" title="Play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="playAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="yzB-07-E2j"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYo-ka-hfo">
                                 <rect key="frame" x="274" y="538" width="53" height="42"/>
@@ -108,6 +118,9 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="qFh-qW-GUv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -120,6 +133,7 @@
                             <constraint firstItem="WSl-W1-rIa" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" constant="14" id="LXd-D4-Xmt"/>
                             <constraint firstAttribute="centerY" secondItem="MYo-ka-hfo" secondAttribute="centerY" constant="-259" id="MCy-R7-wCj"/>
                             <constraint firstAttribute="centerX" secondItem="w6i-5T-LGh" secondAttribute="centerX" constant="-0.5" id="T8c-pm-Sys"/>
+                            <constraint firstItem="0Bc-b8-bjN" firstAttribute="top" secondItem="2p1-4d-nQM" secondAttribute="bottom" constant="528" id="Wge-KA-rnu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WSl-W1-rIa" secondAttribute="trailing" constant="10" id="cM7-LC-mB2"/>
                             <constraint firstItem="w6i-5T-LGh" firstAttribute="top" secondItem="WSl-W1-rIa" secondAttribute="bottom" constant="19" id="czB-BW-4sP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2p1-4d-nQM" secondAttribute="trailing" constant="10" id="kvw-7F-vZs"/>
@@ -129,10 +143,14 @@
                             <constraint firstItem="WSl-W1-rIa" firstAttribute="top" secondItem="2p1-4d-nQM" secondAttribute="bottom" constant="19" id="sbh-Z6-Zmf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="attractionLabel" destination="2p1-4d-nQM" id="Ykw-2s-QIS"/>
+                        <outlet property="speechContent" destination="WSl-W1-rIa" id="Xqh-91-Iym"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GeV-j8-b5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="606"/>
+            <point key="canvasLocation" x="876" y="651"/>
         </scene>
     </scenes>
 </document>
