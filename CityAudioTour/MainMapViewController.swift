@@ -16,6 +16,11 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        var hello = DBConnector(AttractionID: 1)
+        
+        hello.execute()
+        
         // Create an object MapViewAttraction
         // var a = MapViewAttraction()
         
