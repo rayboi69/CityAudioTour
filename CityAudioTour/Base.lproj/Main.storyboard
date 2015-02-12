@@ -63,5 +63,76 @@
             </objects>
             <point key="canvasLocation" x="-39" y="342"/>
         </scene>
+        <!--Text To Speech View Controller-->
+        <scene sceneID="zCu-B7-71U">
+            <objects>
+                <viewController id="uMr-um-2op" customClass="TextToSpeechViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R57-03-o2j"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Bc-b8-bjN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BSC-7J-tai">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Lable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p1-4d-nQM">
+                                <rect key="frame" x="30" y="28" width="544" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="il9-6t-I9Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="WSl-W1-rIa">
+                                <rect key="frame" x="30" y="91" width="544" height="372"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="372" id="92i-kY-bLW"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6i-5T-LGh">
+                                <rect key="frame" x="277" y="482" width="47" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYo-ka-hfo">
+                                <rect key="frame" x="274" y="538" width="53" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="w6i-5T-LGh" secondAttribute="centerY" constant="-203" id="1M3-fN-KdK"/>
+                            <constraint firstAttribute="centerX" secondItem="MYo-ka-hfo" secondAttribute="centerX" constant="-0.5" id="8pE-TN-zP8"/>
+                            <constraint firstItem="0Bc-b8-bjN" firstAttribute="top" secondItem="w6i-5T-LGh" secondAttribute="bottom" constant="76" id="Dkp-p7-ryZ"/>
+                            <constraint firstItem="0Bc-b8-bjN" firstAttribute="top" secondItem="WSl-W1-rIa" secondAttribute="bottom" constant="137" id="GWy-Q6-siV"/>
+                            <constraint firstItem="MYo-ka-hfo" firstAttribute="top" secondItem="w6i-5T-LGh" secondAttribute="bottom" constant="14" id="Kh5-Fw-mfO"/>
+                            <constraint firstItem="WSl-W1-rIa" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" constant="14" id="LXd-D4-Xmt"/>
+                            <constraint firstAttribute="centerY" secondItem="MYo-ka-hfo" secondAttribute="centerY" constant="-259" id="MCy-R7-wCj"/>
+                            <constraint firstAttribute="centerX" secondItem="w6i-5T-LGh" secondAttribute="centerX" constant="-0.5" id="T8c-pm-Sys"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WSl-W1-rIa" secondAttribute="trailing" constant="10" id="cM7-LC-mB2"/>
+                            <constraint firstItem="w6i-5T-LGh" firstAttribute="top" secondItem="WSl-W1-rIa" secondAttribute="bottom" constant="19" id="czB-BW-4sP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2p1-4d-nQM" secondAttribute="trailing" constant="10" id="kvw-7F-vZs"/>
+                            <constraint firstItem="2p1-4d-nQM" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" constant="14" id="lgD-zQ-kci"/>
+                            <constraint firstItem="2p1-4d-nQM" firstAttribute="top" secondItem="R57-03-o2j" secondAttribute="bottom" constant="8" id="mlx-Rx-sA2"/>
+                            <constraint firstItem="0Bc-b8-bjN" firstAttribute="top" secondItem="MYo-ka-hfo" secondAttribute="bottom" constant="20" id="q6E-cZ-40O"/>
+                            <constraint firstItem="WSl-W1-rIa" firstAttribute="top" secondItem="2p1-4d-nQM" secondAttribute="bottom" constant="19" id="sbh-Z6-Zmf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GeV-j8-b5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="732" y="606"/>
+        </scene>
     </scenes>
 </document>
