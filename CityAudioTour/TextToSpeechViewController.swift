@@ -22,6 +22,7 @@ class TextToSpeechViewController: UIViewController {
     @IBAction func playAudio(sender: UIButton) {
         if !synthersizer.continueSpeaking() {
             utterance = AVSpeechUtterance(string: speechContent.text)
+            utterance.rate = 0.3
             synthersizer.speakUtterance(utterance)
         }
     }
