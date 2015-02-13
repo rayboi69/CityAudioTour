@@ -23,6 +23,13 @@
 		08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B855201A79F90F006F035F /* CityAudioTourTests.swift */; };
 		8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
+		C1737FE11A8D7DE400FC104F /* chicago.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C1737FE01A8D7DE400FC104F /* chicago.jpeg */; };
+		C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE41A8D7E8200FC104F /* DetailViewController.swift */; };
+		C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE61A8D7EB900FC104F /* Attraction.swift */; };
+		C1737FE91A8D7EDC00FC104F /* AttractionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */; };
+		C1737FEB1A8D7EF100FC104F /* JSONFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FEA1A8D7EF100FC104F /* JSONFactory.swift */; };
+		C1737FED1A8D7F0500FC104F /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FEC1A8D7F0500FC104F /* JSONObject.swift */; };
+		C1737FEF1A8D859900FC104F /* Mic.png in Resources */ = {isa = PBXBuildFile; fileRef = C1737FEE1A8D859900FC104F /* Mic.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +63,13 @@
 		08B855201A79F90F006F035F /* CityAudioTourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAudioTourTests.swift; sourceTree = "<group>"; };
 		8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToSpeechViewController.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		C1737FE01A8D7DE400FC104F /* chicago.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chicago.jpeg; sourceTree = "<group>"; };
+		C1737FE41A8D7E8200FC104F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
+		C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionBuilder.swift; sourceTree = "<group>"; };
+		C1737FEA1A8D7EF100FC104F /* JSONFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONFactory.swift; sourceTree = "<group>"; };
+		C1737FEC1A8D7F0500FC104F /* JSONObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONObject.swift; sourceTree = "<group>"; };
+		C1737FEE1A8D859900FC104F /* Mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mic.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +107,7 @@
 			children = (
 				08B8550C1A79F90F006F035F /* MainMapViewController.swift */,
 				8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */,
+				C1737FE41A8D7E8200FC104F /* DetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -145,6 +160,8 @@
 				08277B8C1A8484F800D97F65 /* Models */,
 				08B855071A79F90F006F035F /* AppDelegate.swift */,
 				08B8550E1A79F90F006F035F /* Main.storyboard */,
+				C1737FE01A8D7DE400FC104F /* chicago.jpeg */,
+				C1737FEE1A8D859900FC104F /* Mic.png */,
 				08B855111A79F90F006F035F /* Images.xcassets */,
 				08B855131A79F90F006F035F /* LaunchScreen.xib */,
 				08B855091A79F90F006F035F /* CityAudioTour.xcdatamodeld */,
@@ -157,6 +174,10 @@
 			isa = PBXGroup;
 			children = (
 				08B855061A79F90F006F035F /* Info.plist */,
+				C1737FE61A8D7EB900FC104F /* Attraction.swift */,
+				C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */,
+				C1737FEA1A8D7EF100FC104F /* JSONFactory.swift */,
+				C1737FEC1A8D7F0500FC104F /* JSONObject.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -260,7 +281,9 @@
 			files = (
 				08B855101A79F90F006F035F /* Main.storyboard in Resources */,
 				08B855151A79F90F006F035F /* LaunchScreen.xib in Resources */,
+				C1737FE11A8D7DE400FC104F /* chicago.jpeg in Resources */,
 				08B855121A79F90F006F035F /* Images.xcassets in Resources */,
+				C1737FEF1A8D859900FC104F /* Mic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,9 +301,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1737FE91A8D7EDC00FC104F /* AttractionBuilder.swift in Sources */,
+				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
+				C1737FEB1A8D7EF100FC104F /* JSONFactory.swift in Sources */,
 				083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */,
+				C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */,
 				081F46C81A8879B50072BA16 /* MapViewAttraction.swift in Sources */,
 				08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */,
+				C1737FED1A8D7F0500FC104F /* JSONObject.swift in Sources */,
 				8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
