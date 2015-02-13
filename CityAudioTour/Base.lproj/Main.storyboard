@@ -182,20 +182,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Test Lable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p1-4d-nQM">
-                                <rect key="frame" x="30" y="28" width="544" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="il9-6t-I9Y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WSl-W1-rIa">
-                                <rect key="frame" x="30" y="91" width="544" height="372"/>
+                                <rect key="frame" x="30" y="111" width="544" height="352"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="372" id="92i-kY-bLW"/>
+                                    <constraint firstAttribute="height" constant="352" id="92i-kY-bLW"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -229,6 +220,15 @@
                                     <action selector="playAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="aYY-FM-pBM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Lable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p1-4d-nQM">
+                                <rect key="frame" x="28" y="64" width="544" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="il9-6t-I9Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -240,14 +240,14 @@
                             <constraint firstItem="WSl-W1-rIa" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" constant="14" id="LXd-D4-Xmt"/>
                             <constraint firstAttribute="centerY" secondItem="MYo-ka-hfo" secondAttribute="centerY" constant="-259" id="MCy-R7-wCj"/>
                             <constraint firstAttribute="centerX" secondItem="w6i-5T-LGh" secondAttribute="centerX" constant="-0.5" id="T8c-pm-Sys"/>
-                            <constraint firstItem="0Bc-b8-bjN" firstAttribute="top" secondItem="2p1-4d-nQM" secondAttribute="bottom" constant="528" id="Wge-KA-rnu"/>
+                            <constraint firstItem="0Bc-b8-bjN" firstAttribute="top" secondItem="2p1-4d-nQM" secondAttribute="bottom" constant="497" id="Wge-KA-rnu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WSl-W1-rIa" secondAttribute="trailing" constant="10" id="cM7-LC-mB2"/>
                             <constraint firstItem="w6i-5T-LGh" firstAttribute="top" secondItem="WSl-W1-rIa" secondAttribute="bottom" constant="19" id="czB-BW-4sP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2p1-4d-nQM" secondAttribute="trailing" constant="10" id="kvw-7F-vZs"/>
-                            <constraint firstItem="2p1-4d-nQM" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" constant="14" id="lgD-zQ-kci"/>
-                            <constraint firstItem="2p1-4d-nQM" firstAttribute="top" secondItem="R57-03-o2j" secondAttribute="bottom" constant="8" id="mlx-Rx-sA2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2p1-4d-nQM" secondAttribute="trailing" constant="12" id="kvw-7F-vZs"/>
+                            <constraint firstItem="2p1-4d-nQM" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" constant="12" id="lgD-zQ-kci"/>
+                            <constraint firstItem="2p1-4d-nQM" firstAttribute="top" secondItem="R57-03-o2j" secondAttribute="bottom" id="mlx-Rx-sA2"/>
                             <constraint firstItem="0Bc-b8-bjN" firstAttribute="top" secondItem="MYo-ka-hfo" secondAttribute="bottom" constant="20" id="q6E-cZ-40O"/>
-                            <constraint firstItem="WSl-W1-rIa" firstAttribute="top" secondItem="2p1-4d-nQM" secondAttribute="bottom" constant="19" id="sbh-Z6-Zmf"/>
+                            <constraint firstItem="WSl-W1-rIa" firstAttribute="top" secondItem="2p1-4d-nQM" secondAttribute="bottom" constant="8" id="sbh-Z6-Zmf"/>
                         </constraints>
                     </view>
                     <connections>

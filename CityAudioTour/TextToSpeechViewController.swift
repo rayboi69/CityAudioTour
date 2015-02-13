@@ -40,13 +40,10 @@ class TextToSpeechViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        //synthersizer.speakUtterance(utterance)
-        
-        //Hard code, waittingto connect to server
-        //receiveID = 2
+        synthersizer.speakUtterance(utterance)
         
         //Get content from server
-        //self.retrieveDataFromServer()
+        self.retrieveDataFromServer()
     }
     
     func retrieveDataFromServer() {
@@ -57,11 +54,11 @@ class TextToSpeechViewController: UIViewController {
         if data != nil {
             var content = JSON(data: data!)
             
-            var tit = content[1]["Title"]
-            attractionLabel.attributedText = NSAttributedString(string: "\(tit)")
+            var title = content[1]["Title"]
+            attractionLabel.attributedText = NSAttributedString(string: "\(title)")
             
-            var con = content[1]["Description"]
-            speechContent.attributedText = NSMutableAttributedString(string: "\(con)")
+            var speechText = content[1]["Description"]
+            speechContent.attributedText = NSMutableAttributedString(string: "\(speechText)")
         }
     }
     
