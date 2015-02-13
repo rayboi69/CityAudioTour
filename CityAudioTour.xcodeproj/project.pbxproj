@@ -27,8 +27,6 @@
 		C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE41A8D7E8200FC104F /* DetailViewController.swift */; };
 		C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE61A8D7EB900FC104F /* Attraction.swift */; };
 		C1737FE91A8D7EDC00FC104F /* AttractionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */; };
-		C1737FEB1A8D7EF100FC104F /* JSONFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FEA1A8D7EF100FC104F /* JSONFactory.swift */; };
-		C1737FED1A8D7F0500FC104F /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FEC1A8D7F0500FC104F /* JSONObject.swift */; };
 		C1737FEF1A8D859900FC104F /* Mic.png in Resources */ = {isa = PBXBuildFile; fileRef = C1737FEE1A8D859900FC104F /* Mic.png */; };
 /* End PBXBuildFile section */
 
@@ -67,8 +65,6 @@
 		C1737FE41A8D7E8200FC104F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionBuilder.swift; sourceTree = "<group>"; };
-		C1737FEA1A8D7EF100FC104F /* JSONFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONFactory.swift; sourceTree = "<group>"; };
-		C1737FEC1A8D7F0500FC104F /* JSONObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONObject.swift; sourceTree = "<group>"; };
 		C1737FEE1A8D859900FC104F /* Mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mic.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,8 +172,6 @@
 				08B855061A79F90F006F035F /* Info.plist */,
 				C1737FE61A8D7EB900FC104F /* Attraction.swift */,
 				C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */,
-				C1737FEA1A8D7EF100FC104F /* JSONFactory.swift */,
-				C1737FEC1A8D7F0500FC104F /* JSONObject.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -303,12 +297,10 @@
 			files = (
 				C1737FE91A8D7EDC00FC104F /* AttractionBuilder.swift in Sources */,
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
-				C1737FEB1A8D7EF100FC104F /* JSONFactory.swift in Sources */,
 				083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */,
 				C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */,
 				081F46C81A8879B50072BA16 /* MapViewAttraction.swift in Sources */,
 				08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */,
-				C1737FED1A8D7F0500FC104F /* JSONObject.swift in Sources */,
 				8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,

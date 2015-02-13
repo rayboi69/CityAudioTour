@@ -11,53 +11,33 @@ import Foundation
 
 class AttractionBuilder{
     
-    init(){}
+    let URL:String = "http://cityaudiotourweb.azurewebsites.net/api/attraction/"
     
-    func getAttractionList() -> [Attraction]?{
-        
-        let jsonArray = JSONFactory().getJSONArray()
-        
-        if ( jsonArray != nil ){
-            var attractionList = [Attraction]()
-            
-            //            for jsonObj in jsonArray! {
-            //                let attraction = Attraction()
-            //                var address = jsonObj.getValueForKey("Address")
-            //                var city = jsonObj.getValueForKey("City")
-            //                var state = jsonObj.getValueForKey("StateAbbreviation")
-            //                var zip = jsonObj.getValueForKey("ZipCode")
-            //
-            //                attraction.setAddress(address, city: city, state: state, ZIP: zip)
-            //                attraction.setAttractionName(jsonObj.getValueForKey("Name"))
-            //                attraction.setDetail(jsonObj.getValueForKey("Details"))
-            //                attraction.setContent(jsonObj.getValueForKey("TextContent"))
-            //
-            //                attractionList.append(attraction)
-            //            }
-            
-            return attractionList
-        }else{
-            return nil
-        }
-        
-    }
+    init(){}
     
     func getAttraction(AttractionID:Int) -> Attraction?{
         
-        let jsonObj = JSONFactory().getJSONObject(AttractionID)
+        let serverLink = URL + String(AttractionID)
         
-        if ( jsonObj != nil ) {
+        var serverDNS : NSURL = NSURL(string:serverLink)!
+        var requestMessage : NSURLRequest = NSURLRequest(URL: serverDNS, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 5000)
+        
+        let jsonObject = NSURLConnection.sendSynchronousRequest(requestMessage, returningResponse: nil, error: nil)
+        
+        if ( jsonObject != nil ) {
             let retval = Attraction()
             
-            var address = jsonObj!.getValueForKey("Address")
-            var city = jsonObj!.getValueForKey("City")
-            var state = jsonObj!.getValueForKey("StateAbbreviation")
-            var zip = jsonObj!.getValueForKey("ZipCode")
+            let json = JSON(data:jsonObject!)
+            
+            var address = json["Address"].stringValue
+            var city = json["City"].stringValue
+            var state = json["StateAbbreviation"].stringValue
+            var zip = json["ZipCode"].stringValue
             
             retval.setAddress(address, city: city, state: state, ZIP: zip)
-            retval.setAttractionName(jsonObj!.getValueForKey("Name"))
-            retval.setDetail(jsonObj!.getValueForKey("Details"))
-            retval.setContent(jsonObj!.getValueForKey("TextContent"))
+            retval.setAttractionName(json["Name"].stringValue)
+            retval.setDetail(json["Details"].stringValue)
+            retval.setContent(json["TextContent"].stringValue)
             return retval
         }else{
             return nil

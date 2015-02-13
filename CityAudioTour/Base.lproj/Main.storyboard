@@ -56,15 +56,10 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="xbf-QS-nv5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="sVj-bb-Q3h">
-                            <connections>
-                                <segue destination="XbU-po-C79" kind="show" identifier="detailview" id="apD-hM-iym"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="xbf-QS-nv5"/>
                     <connections>
                         <outlet property="mainMapView" destination="i75-bJ-4OH" id="GPO-WG-yM7"/>
+                        <segue destination="XbU-po-C79" kind="show" identifier="detailview" id="Qrk-yQ-FwB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -91,7 +86,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yck-IX-vF6">
                                 <rect key="frame" x="0.0" y="110" width="600" height="69"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.97780994740000005" green="0.97646244230000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
@@ -140,7 +135,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcL-hT-BSC">
-                                <rect key="frame" x="275" y="542" width="50" height="50"/>
+                                <rect key="frame" x="275" y="500" width="50" height="50"/>
                                 <state key="normal" image="Mic.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -159,9 +154,9 @@
                             <constraint firstItem="uOe-eU-E9w" firstAttribute="leading" secondItem="pXR-Jt-3gw" secondAttribute="leadingMargin" constant="-16" id="Xk8-C0-IcI"/>
                             <constraint firstItem="xlJ-kd-0oa" firstAttribute="leading" secondItem="pXR-Jt-3gw" secondAttribute="leadingMargin" constant="17" id="b7r-rs-mm7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yck-IX-vF6" secondAttribute="trailing" constant="-16" id="fCP-PI-uPe"/>
-                            <constraint firstAttribute="centerX" secondItem="kcL-hT-BSC" secondAttribute="centerX" id="ghb-1I-c3y"/>
+                            <constraint firstAttribute="centerY" secondItem="kcL-hT-BSC" secondAttribute="centerY" constant="-225" id="fTG-D3-aVZ"/>
                             <constraint firstItem="bez-pq-iOz" firstAttribute="leading" secondItem="pXR-Jt-3gw" secondAttribute="leadingMargin" constant="17" id="iSH-QZ-SPg"/>
-                            <constraint firstAttribute="centerY" secondItem="kcL-hT-BSC" secondAttribute="centerY" constant="-267" id="kwS-Xo-1i1"/>
+                            <constraint firstAttribute="centerX" secondItem="kcL-hT-BSC" secondAttribute="centerX" id="lit-Un-aya"/>
                             <constraint firstItem="gmn-3A-Eqh" firstAttribute="leading" secondItem="pXR-Jt-3gw" secondAttribute="leadingMargin" constant="17" id="nFa-gH-Gep"/>
                             <constraint firstItem="fDA-3l-hFm" firstAttribute="trailing" secondItem="pXR-Jt-3gw" secondAttribute="trailingMargin" id="nsn-lK-KlT"/>
                             <constraint firstItem="gmn-3A-Eqh" firstAttribute="top" secondItem="uOe-eU-E9w" secondAttribute="bottom" constant="30" id="qGd-ac-z0u"/>

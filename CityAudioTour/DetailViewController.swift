@@ -18,7 +18,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var AttractionAddress: UILabel!
    
     var receiveID : Int?
-    let AttractionID:Int? = 1
     
     //Set up UI on Detail page.
     private func setUpUI(attraction:Attraction){
@@ -35,7 +34,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         let builder = AttractionBuilder()
-        let attraction = builder.getAttraction(AttractionID!)
+        let attraction = builder.getAttraction(receiveID!)
         
         if(attraction != nil){
             setUpUI(attraction!)
@@ -62,7 +61,7 @@ class DetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if (segue.identifier == "audioPage") {
             var audioViewController:TextToSpeechViewController = segue.destinationViewController as TextToSpeechViewController
-            audioViewController.receiveID = AttractionID
+            audioViewController.receiveID = self.receiveID
         }
     }
     
