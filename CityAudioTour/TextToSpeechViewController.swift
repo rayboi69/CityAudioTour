@@ -15,8 +15,8 @@ class TextToSpeechViewController: UIViewController {
     var synthersizer = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
     
-    @IBOutlet weak var attractionLabel: UILabel!
     
+    @IBOutlet weak var attractionLabel: UILabel!
     @IBOutlet weak var speechContent: UITextView!
     
     @IBAction func playAudio(sender: UIButton) {
@@ -34,17 +34,19 @@ class TextToSpeechViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        synthersizer.speakUtterance(utterance)
+        self.retrieveDataFromServer()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        synthersizer.speakUtterance(utterance)
+        //synthersizer.speakUtterance(utterance)
         
         //Hard code, waittingto connect to server
-        receiveID = 2
+        //receiveID = 2
         
         //Get content from server
-        self.retrieveDataFromServer()
+        //self.retrieveDataFromServer()
     }
     
     func retrieveDataFromServer() {
