@@ -15,20 +15,34 @@ class TextToSpeechViewController: UIViewController {
     var synthersizer = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
     
-    
+    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var attractionLabel: UILabel!
     @IBOutlet weak var speechContent: UITextView!
     
     @IBAction func playAudio(sender: UIButton) {
-        if !synthersizer.continueSpeaking() {
+        
+        if !synthersizer.speaking{
             utterance = AVSpeechUtterance(string: speechContent.text)
             utterance.rate = 0.3
             synthersizer.speakUtterance(utterance)
+            playButton.setTitle("Pause", forState: UIControlState.Normal)
+        } else if !synthersizer.paused{
+            synthersizer.pauseSpeakingAtBoundary(.Immediate)
+            playButton.setTitle("Play", forState: UIControlState.Normal)
+        } else {
+            synthersizer.continueSpeaking()
+            playButton.setTitle("Pause", forState: UIControlState.Normal)
         }
+
     }
     
     @IBAction func stopAudio(sender: UIButton) {
         synthersizer.stopSpeakingAtBoundary(.Immediate)
+        
+        if playButton.titleLabel!.text == "Pause" {
+            playButton.setTitle("Play", forState: UIControlState.Normal)
+        }
+        
     }
 
     override func viewDidLoad() {
@@ -40,10 +54,7 @@ class TextToSpeechViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        synthersizer.speakUtterance(utterance)
-        
-        //Get content from server
-        self.retrieveDataFromServer()
+        // Dispose of any resources that can be recreated.
     }
     
     func retrieveDataFromServer() {
