@@ -10,10 +10,9 @@ import Foundation
 
 struct MapViewAttraction  {
     
-    var id = 0.0;
-    var name = ""
-    var status = ""
-    var latitude = 0.0
-    var longitude = 0.0
+    var AttractionId = 0;
+    var Name = ""
+    var Latitude = 0.0
+    var Longitude = 0.0
     
 }

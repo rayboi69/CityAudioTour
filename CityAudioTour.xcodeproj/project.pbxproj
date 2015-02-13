@@ -10,7 +10,7 @@
 		081F46C81A8879B50072BA16 /* MapViewAttraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081F46C71A8879B50072BA16 /* MapViewAttraction.swift */; };
 		08277B8B1A8478FC00D97F65 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08277B8A1A8478FC00D97F65 /* MapKit.framework */; };
 		083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083AEF451A899117004D6874 /* TestLibraryFile.swift */; };
-		083AEF481A899123004D6874 /* TestServicesFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083AEF471A899123004D6874 /* TestServicesFile.swift */; };
+		083AEF481A899123004D6874 /* CATAzureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083AEF471A899123004D6874 /* CATAzureService.swift */; };
 		088F03601A7F04B300292507 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F035F1A7F04B300292507 /* AVFoundation.framework */; };
 		088F03621A7F04B900292507 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03611A7F04B900292507 /* CoreData.framework */; };
 		088F03641A7F04C200292507 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03631A7F04C200292507 /* CoreLocation.framework */; };
@@ -46,7 +46,7 @@
 		081F46C71A8879B50072BA16 /* MapViewAttraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewAttraction.swift; sourceTree = "<group>"; };
 		08277B8A1A8478FC00D97F65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		083AEF451A899117004D6874 /* TestLibraryFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLibraryFile.swift; sourceTree = "<group>"; };
-		083AEF471A899123004D6874 /* TestServicesFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServicesFile.swift; sourceTree = "<group>"; };
+		083AEF471A899123004D6874 /* CATAzureService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATAzureService.swift; sourceTree = "<group>"; };
 		088F035F1A7F04B300292507 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		088F03611A7F04B900292507 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		088F03631A7F04C200292507 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -115,7 +115,7 @@
 		083AEF431A89900A004D6874 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				083AEF471A899123004D6874 /* TestServicesFile.swift */,
+				083AEF471A899123004D6874 /* CATAzureService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -313,7 +313,7 @@
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
 				8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */,
-				083AEF481A899123004D6874 /* TestServicesFile.swift in Sources */,
+				083AEF481A899123004D6874 /* CATAzureService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

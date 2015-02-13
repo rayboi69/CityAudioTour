@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var WorkingHours: UILabel!
     @IBOutlet weak var AttractionAddress: UILabel!
    
+    var receiveID : Int?
     let AttractionID:Int? = 1
     
     //Set up UI on Detail page.

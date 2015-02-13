@@ -58,7 +58,7 @@
                     <navigationItem key="navigationItem" id="xbf-QS-nv5">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="sVj-bb-Q3h">
                             <connections>
-                                <segue destination="XbU-po-C79" kind="show" id="apD-hM-iym"/>
+                                <segue destination="XbU-po-C79" kind="show" identifier="detailview" id="apD-hM-iym"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -93,12 +93,18 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="chicago.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="uOe-eU-E9w">
                                 <rect key="frame" x="0.0" y="70" width="600" height="149"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="70" width="400" height="149"/>
+                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yck-IX-vF6">
                                 <rect key="frame" x="0.0" y="110" width="600" height="69"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <color key="textColor" red="0.97780994740000005" green="0.97646244230000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="110" width="400" height="69"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlJ-kd-0oa">
                                 <rect key="frame" x="33" y="278" width="184" height="37"/>
@@ -113,6 +119,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="33" y="352" width="351" height="140"/>
+                                </variation>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Open Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsS-zv-ZMj">
                                 <rect key="frame" x="472" y="249" width="83" height="21"/>

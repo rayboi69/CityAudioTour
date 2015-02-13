@@ -13,61 +13,56 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mainMapView: MKMapView!
     
+    var selectedAttractionId : Int?
+    var attractions = [MapViewAttraction]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set current user location
+        var currentlat = 41.88
+        var currentlon = -87.635
         
-        var hello = DBConnector(AttractionID: 1)
-        
-        hello.execute()
-        
-        // Create an object MapViewAttraction
-        // var a = MapViewAttraction()
-        
-        // Creates a list of MapViewAttractions, this list will be retrieved by the web service
-        var attractions: [MapViewAttraction] = []
-        
-        // START TEST MOCK DATA
-        var WillisTower = MapViewAttraction(id: 1, name: "Willis Tower", status: "Open", latitude: 41.8788067, longitude: -87.6360050)
-        attractions.append(WillisTower)
-        
-        var ArtMusuem = MapViewAttraction(id: 2, name: "Art Institute of Chicago", status: "Closed", latitude: 41.8795473, longitude: -87.6237238)
-        attractions.append(ArtMusuem)
-        
-        var NavyPier = MapViewAttraction(id: 3, name: "Navy Pier", status: "Open", latitude: 41.8919114, longitude: -87.60945749999996)
-        attractions.append(NavyPier)
-        
-        var LincolnParkZoo = MapViewAttraction(id: 4, name: "Lincoln Park Zoo", status: "Closed", latitude: 41.9175023, longitude: -87.63243940000001)
-        attractions.append(LincolnParkZoo)
-        
-        var SheddAquarium = MapViewAttraction(id: 5, name: "Shedd Aquarium", status: "Open", latitude: 41.86759505, longitude: -87.6136641706734)
-        attractions.append(SheddAquarium)
-        // END TEST MOCK DATA
-        
-        
-        var currentlat = 41.876189
-        var currentlon = -87.627418
-
         var location = CLLocationCoordinate2D(latitude: currentlat, longitude: currentlon)
-        var span = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
+        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         var region = MKCoordinateRegion(center: location, span: span)
         
         self.mainMapView.setRegion(region, animated: true)
         self.mainMapView.showsUserLocation = true
         
+        
+        // Webservice call to get attractions
+        var service = CATAzureService()
+        attractions = service.GetAttractions()
+        
+
+        /* START TEST MOCK DATA
+
+        var attractions = [MapViewAttraction]()
+
+        var WillisTower = MapViewAttraction(AttractionId: 1, Name: "Willis Tower",Latitude: 41.8788067, Longitude: -87.6360050)
+        attractions.append(WillisTower)
+        
+        var ArtMusuem = MapViewAttraction(AttractionId: 2, Name: "Art Institute of Chicago", Latitude: 41.8795473, Longitude: -87.6237238)
+        attractions.append(ArtMusuem)
+        
+        var NavyPier = MapViewAttraction(AttractionId: 3, Name: "Navy Pier", Latitude: 41.8919114, Longitude: -87.60945749999996)
+        attractions.append(NavyPier)
+        
+        // END TEST MOCK DATA
+        */
+        
         // loop through attractions
-        for mpa in attractions  {
+        for attraction in attractions  {
             
             var pin = MKPointAnnotation()
-            pin.title = mpa.name
-            pin.subtitle = mpa.status
-            pin.coordinate.latitude = mpa.latitude
-            pin.coordinate.longitude = mpa.longitude
+            pin.title = attraction.Name
+            pin.coordinate.latitude = attraction.Latitude
+            pin.coordinate.longitude = attraction.Longitude
             
             // Add Pin to Map
             self.mainMapView.addAnnotation(pin)
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,36 +78,55 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
         }
         
         let reuseId = "pin"
-        
-        var button = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
-        
-        
+
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
         
         if pinView == nil
         {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             
-            if (annotation.subtitle == "Open")
-            {
-                pinView!.canShowCallout = true
-                pinView!.animatesDrop = true
-                pinView!.pinColor = MKPinAnnotationColor.Green
-                pinView!.rightCalloutAccessoryView = button
-            }
-            else if (annotation.subtitle == "Closed")
-            {
-                pinView!.canShowCallout = true
-                pinView!.animatesDrop = true
-                pinView!.pinColor = MKPinAnnotationColor.Red
-                pinView!.rightCalloutAccessoryView = button
-            }
+            pinView!.canShowCallout = true
+            pinView!.animatesDrop = true
+            pinView!.pinColor = MKPinAnnotationColor.Green
+            
+            var calloutButton = UIButton.buttonWithType(.DetailDisclosure) as UIButton
+            pinView!.rightCalloutAccessoryView = calloutButton
         }
         else {
             pinView!.annotation = annotation
         }
         
         return pinView
+    }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        
+        var annotation = view.annotation
+        
+        for attraction in attractions  {
+            
+            if (annotation.title == attraction.Name &&
+                annotation.coordinate.latitude == attraction.Latitude &&
+                annotation.coordinate.longitude == attraction.Longitude)
+            {
+                selectedAttractionId = attraction.AttractionId
+            }
+        }
+        
+        //println(selectedAttractionId)
+        
+        self.performSegueWithIdentifier("detailview", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if (segue.identifier == "detailview") {
+            var detailController:DetailViewController = segue.destinationViewController as DetailViewController
+            detailController.receiveID = selectedAttractionId
+            
+            //println(selectedAttractionId)
+        }
     }
 
 
