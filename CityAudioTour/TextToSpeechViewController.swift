@@ -49,6 +49,7 @@ class TextToSpeechViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         synthersizer.speakUtterance(utterance)
+        playButton.setTitle("Play", forState: UIControlState.Normal)
         self.retrieveDataFromServer()
     }
 
@@ -56,7 +57,11 @@ class TextToSpeechViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    override func viewDidDisappear(animated: Bool) {
+        synthersizer.stopSpeakingAtBoundary(.Immediate)
+    }
+
     func retrieveDataFromServer() {
         let subURL = "http://cityaudiotourweb.azurewebsites.net/api/attraction/"
         let url = NSURL(string: "\(subURL)\(receiveID!)/contents")
