@@ -15,53 +15,48 @@ class TextToSpeechViewController: UIViewController {
     var synthersizer = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
     
-    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var attractionLabel: UILabel!
     @IBOutlet weak var speechContent: UITextView!
-    
+    /*
+    @IBAction func BackToMapView(sender: UIBarButtonItem) {
+        
+    }
+    */
     @IBAction func playAudio(sender: UIButton) {
         
         if !synthersizer.speaking{
             utterance = AVSpeechUtterance(string: speechContent.text)
             utterance.rate = 0.3
             synthersizer.speakUtterance(utterance)
-            playButton.setTitle("Pause", forState: UIControlState.Normal)
-        } else if !synthersizer.paused{
-            synthersizer.pauseSpeakingAtBoundary(.Immediate)
-            playButton.setTitle("Play", forState: UIControlState.Normal)
-        } else {
+        } else if synthersizer.paused{
             synthersizer.continueSpeaking()
-            playButton.setTitle("Pause", forState: UIControlState.Normal)
         }
-
     }
     
     @IBAction func stopAudio(sender: UIButton) {
         synthersizer.stopSpeakingAtBoundary(.Immediate)
-        
-        if playButton.titleLabel!.text == "Pause" {
-            playButton.setTitle("Play", forState: UIControlState.Normal)
-        }
-        
     }
-
+    
+    @IBAction func pauseAudio(sender: AnyObject) {
+        synthersizer.pauseSpeakingAtBoundary(.Immediate)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        synthersizer.speakUtterance(utterance)
-        playButton.setTitle("Play", forState: UIControlState.Normal)
+        //synthersizer.speakUtterance(utterance)
         self.retrieveDataFromServer()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewDidDisappear(animated: Bool) {
         synthersizer.stopSpeakingAtBoundary(.Immediate)
     }
-
+    
     func retrieveDataFromServer() {
         let subURL = "http://cityaudiotourweb.azurewebsites.net/api/attraction/"
         let url = NSURL(string: "\(subURL)\(receiveID!)/contents")
@@ -80,12 +75,12 @@ class TextToSpeechViewController: UIViewController {
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

@@ -187,81 +187,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WSl-W1-rIa">
-                                <rect key="frame" x="30" y="111" width="544" height="389"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIQ-KS-a8X">
+                                <rect key="frame" x="202" y="540" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="389" id="bdc-tz-GDd"/>
+                                    <constraint firstAttribute="height" constant="60" id="4gS-Dy-6o6"/>
+                                    <constraint firstAttribute="width" constant="60" id="Mko-5N-kYK"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYo-ka-hfo">
-                                <rect key="frame" x="277" y="558" width="53" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="IPx-b9-Ss3"/>
-                                    <constraint firstAttribute="width" constant="53" id="tzQ-Oo-ISX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Stop">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="button-round-pause-icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="dd8-Hd-kHd"/>
+                                    <action selector="pauseAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="dTo-v1-Wgo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Lable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p1-4d-nQM">
-                                <rect key="frame" x="28" y="64" width="544" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wut-RY-xIe">
+                                <rect key="frame" x="270" y="540" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="il9-6t-I9Y"/>
+                                    <constraint firstAttribute="width" constant="60" id="JF1-4d-vpO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" image="button-round-play-icon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="BCe-Kf-KN1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNZ-vm-CVS">
+                                <rect key="frame" x="338" y="540" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="EH2-UL-iBx"/>
+                                </constraints>
+                                <state key="normal" image="button-round-stop-icon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="ZAU-Xs-zHa"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Test" translatesAutoresizingMaskIntoConstraints="NO" id="LGy-l8-V3I">
+                                <rect key="frame" x="16" y="114" width="568" height="418"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqW-VX-MeA">
+                                <rect key="frame" x="16" y="86" width="568" height="20"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91k-mX-KNy">
-                                <rect key="frame" x="257" y="508" width="86" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="86" id="7bW-2s-o2c"/>
-                                    <constraint firstAttribute="height" constant="42" id="CYp-Z0-jjy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="Pause"/>
-                                <connections>
-                                    <action selector="playAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="a9q-Qg-r3I"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="2p1-4d-nQM" secondAttribute="trailing" constant="12" id="1dg-kK-CGs"/>
-                            <constraint firstItem="0Bc-b8-bjN" firstAttribute="top" secondItem="WSl-W1-rIa" secondAttribute="bottom" constant="100" id="4Cu-pG-eFC"/>
-                            <constraint firstAttribute="centerX" secondItem="MYo-ka-hfo" secondAttribute="centerX" constant="-3.5" id="566-Ig-oUR"/>
-                            <constraint firstAttribute="centerX" secondItem="91k-mX-KNy" secondAttribute="centerX" id="7Em-UZ-USj"/>
-                            <constraint firstItem="0Bc-b8-bjN" firstAttribute="top" secondItem="91k-mX-KNy" secondAttribute="bottom" constant="50" id="8ZZ-AP-iPh"/>
-                            <constraint firstItem="91k-mX-KNy" firstAttribute="top" secondItem="WSl-W1-rIa" secondAttribute="bottom" constant="8" id="DlP-Av-9Hq"/>
-                            <constraint firstItem="MYo-ka-hfo" firstAttribute="top" secondItem="91k-mX-KNy" secondAttribute="bottom" constant="8" id="G1q-4f-wRn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WSl-W1-rIa" secondAttribute="trailing" constant="10" id="K9J-fg-Fkm"/>
-                            <constraint firstItem="WSl-W1-rIa" firstAttribute="top" secondItem="R57-03-o2j" secondAttribute="bottom" constant="47" id="Pbg-h6-PEN"/>
-                            <constraint firstItem="2p1-4d-nQM" firstAttribute="top" secondItem="R57-03-o2j" secondAttribute="bottom" id="YLE-oi-VsS"/>
-                            <constraint firstItem="WSl-W1-rIa" firstAttribute="top" secondItem="2p1-4d-nQM" secondAttribute="bottom" constant="8" id="uYP-oX-cvM"/>
-                            <constraint firstItem="2p1-4d-nQM" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" constant="12" id="vvE-BQ-u0U"/>
-                            <constraint firstItem="WSl-W1-rIa" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" constant="14" id="wv6-Aw-OZN"/>
+                            <constraint firstItem="LGy-l8-V3I" firstAttribute="top" secondItem="nqW-VX-MeA" secondAttribute="bottom" constant="8" symbolic="YES" id="1bM-jm-QM0"/>
+                            <constraint firstItem="Wut-RY-xIe" firstAttribute="centerX" secondItem="LGy-l8-V3I" secondAttribute="centerX" id="EEi-A6-Tgk"/>
+                            <constraint firstItem="nqW-VX-MeA" firstAttribute="trailing" secondItem="BSC-7J-tai" secondAttribute="trailingMargin" id="EQm-X1-E04"/>
+                            <constraint firstItem="nqW-VX-MeA" firstAttribute="top" secondItem="R57-03-o2j" secondAttribute="bottom" constant="22" id="GvI-e7-HT7"/>
+                            <constraint firstItem="jIQ-KS-a8X" firstAttribute="top" secondItem="Wut-RY-xIe" secondAttribute="top" id="JBI-34-Ijx"/>
+                            <constraint firstItem="nqW-VX-MeA" firstAttribute="leading" secondItem="LGy-l8-V3I" secondAttribute="leading" id="RgB-VI-REz"/>
+                            <constraint firstItem="jIQ-KS-a8X" firstAttribute="top" secondItem="LGy-l8-V3I" secondAttribute="bottom" constant="8" symbolic="YES" id="c7e-vQ-cga"/>
+                            <constraint firstItem="LGy-l8-V3I" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" id="fSs-TB-Gng"/>
+                            <constraint firstItem="Wut-RY-xIe" firstAttribute="leading" secondItem="jIQ-KS-a8X" secondAttribute="trailing" constant="8" symbolic="YES" id="fhk-2I-KhE"/>
+                            <constraint firstItem="Wut-RY-xIe" firstAttribute="bottom" secondItem="0Bc-b8-bjN" secondAttribute="top" id="fzl-BC-9ae"/>
+                            <constraint firstItem="nqW-VX-MeA" firstAttribute="trailing" secondItem="LGy-l8-V3I" secondAttribute="trailing" id="gdR-nH-xTt"/>
+                            <constraint firstItem="jIQ-KS-a8X" firstAttribute="bottom" secondItem="0Bc-b8-bjN" secondAttribute="top" id="iGw-HR-MsG"/>
+                            <constraint firstItem="MNZ-vm-CVS" firstAttribute="bottom" secondItem="0Bc-b8-bjN" secondAttribute="top" id="o3M-yC-moJ"/>
+                            <constraint firstItem="MNZ-vm-CVS" firstAttribute="leading" secondItem="Wut-RY-xIe" secondAttribute="trailing" constant="8" symbolic="YES" id="xzW-lx-rKB"/>
+                            <constraint firstItem="Wut-RY-xIe" firstAttribute="top" secondItem="MNZ-vm-CVS" secondAttribute="top" id="yyy-JN-vMX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="attractionLabel" destination="2p1-4d-nQM" id="uIH-EE-CHh"/>
-                        <outlet property="playButton" destination="91k-mX-KNy" id="mg5-mU-caj"/>
-                        <outlet property="speechContent" destination="WSl-W1-rIa" id="z48-X7-9li"/>
+                        <outlet property="attractionLabel" destination="nqW-VX-MeA" id="Bjf-aX-yTE"/>
+                        <outlet property="speechContent" destination="LGy-l8-V3I" id="VW6-M2-PJS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GeV-j8-b5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,6 +293,9 @@
     </scenes>
     <resources>
         <image name="Mic.png" width="25" height="25"/>
+        <image name="button-round-pause-icon" width="128" height="128"/>
+        <image name="button-round-play-icon" width="128" height="128"/>
+        <image name="button-round-stop-icon" width="128" height="128"/>
         <image name="chicago.jpeg" width="275" height="183"/>
     </resources>
 </document>
