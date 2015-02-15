@@ -134,9 +134,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcL-hT-BSC">
-                                <rect key="frame" x="275" y="500" width="50" height="50"/>
-                                <state key="normal" image="Mic.png">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcL-hT-BSC">
+                                <rect key="frame" x="275" y="487" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6Lt-HH-mRu"/>
+                                    <constraint firstAttribute="width" constant="50" id="jTt-hA-8oN"/>
+                                </constraints>
+                                <state key="normal" image="volume-on-icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -154,7 +158,7 @@
                             <constraint firstItem="uOe-eU-E9w" firstAttribute="leading" secondItem="pXR-Jt-3gw" secondAttribute="leadingMargin" constant="-16" id="Xk8-C0-IcI"/>
                             <constraint firstItem="xlJ-kd-0oa" firstAttribute="leading" secondItem="pXR-Jt-3gw" secondAttribute="leadingMargin" constant="17" id="b7r-rs-mm7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yck-IX-vF6" secondAttribute="trailing" constant="-16" id="fCP-PI-uPe"/>
-                            <constraint firstAttribute="centerY" secondItem="kcL-hT-BSC" secondAttribute="centerY" constant="-225" id="fTG-D3-aVZ"/>
+                            <constraint firstAttribute="centerY" secondItem="kcL-hT-BSC" secondAttribute="centerY" constant="-212" id="fTG-D3-aVZ"/>
                             <constraint firstItem="bez-pq-iOz" firstAttribute="leading" secondItem="pXR-Jt-3gw" secondAttribute="leadingMargin" constant="17" id="iSH-QZ-SPg"/>
                             <constraint firstAttribute="centerX" secondItem="kcL-hT-BSC" secondAttribute="centerX" id="lit-Un-aya"/>
                             <constraint firstItem="gmn-3A-Eqh" firstAttribute="leading" secondItem="pXR-Jt-3gw" secondAttribute="leadingMargin" constant="17" id="nFa-gH-Gep"/>
@@ -299,10 +303,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Mic.png" width="25" height="25"/>
         <image name="button-round-pause-icon" width="128" height="128"/>
         <image name="button-round-play-icon" width="128" height="128"/>
         <image name="button-round-stop-icon" width="128" height="128"/>
         <image name="chicago.jpeg" width="275" height="183"/>
+        <image name="volume-on-icon" width="128" height="128"/>
     </resources>
 </document>
