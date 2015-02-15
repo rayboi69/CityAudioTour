@@ -175,7 +175,7 @@
             </objects>
             <point key="canvasLocation" x="1494" y="342"/>
         </scene>
-        <!--Text To Speech View Controller-->
+        <!--Audio Tour-->
         <scene sceneID="zCu-B7-71U">
             <objects>
                 <viewController id="uMr-um-2op" customClass="TextToSpeechViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
@@ -263,6 +263,13 @@
                             <constraint firstItem="Wut-RY-xIe" firstAttribute="top" secondItem="MNZ-vm-CVS" secondAttribute="top" id="yyy-JN-vMX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Audio Tour" id="Zty-S3-wUC">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="23l-m7-ZGx">
+                            <connections>
+                                <action selector="BackToMapView:" destination="uMr-um-2op" id="uEv-XO-LSi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="attractionLabel" destination="nqW-VX-MeA" id="Bjf-aX-yTE"/>
                         <outlet property="speechContent" destination="LGy-l8-V3I" id="VW6-M2-PJS"/>

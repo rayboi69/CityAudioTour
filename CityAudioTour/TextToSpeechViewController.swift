@@ -17,11 +17,11 @@ class TextToSpeechViewController: UIViewController {
     
     @IBOutlet weak var attractionLabel: UILabel!
     @IBOutlet weak var speechContent: UITextView!
-    /*
+    
     @IBAction func BackToMapView(sender: UIBarButtonItem) {
-        
+        navigationController?.popToRootViewControllerAnimated(true)
     }
-    */
+
     @IBAction func playAudio(sender: UIButton) {
         
         if !synthersizer.speaking{
