@@ -228,7 +228,7 @@
                                     <action selector="stopAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="ZAU-Xs-zHa"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Test" translatesAutoresizingMaskIntoConstraints="NO" id="LGy-l8-V3I">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Test" translatesAutoresizingMaskIntoConstraints="NO" id="LGy-l8-V3I">
                                 <rect key="frame" x="16" y="114" width="568" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
