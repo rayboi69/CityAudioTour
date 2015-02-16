@@ -24,11 +24,9 @@
 		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
-		C1737FE11A8D7DE400FC104F /* chicago.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C1737FE01A8D7DE400FC104F /* chicago.jpeg */; };
 		C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE41A8D7E8200FC104F /* DetailViewController.swift */; };
 		C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE61A8D7EB900FC104F /* Attraction.swift */; };
 		C1737FE91A8D7EDC00FC104F /* AttractionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */; };
-		C1737FEF1A8D859900FC104F /* Mic.png in Resources */ = {isa = PBXBuildFile; fileRef = C1737FEE1A8D859900FC104F /* Mic.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,11 +61,9 @@
 		311B43511A924F8F0051E05E /* AttractionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionImage.swift; sourceTree = "<group>"; };
 		8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToSpeechViewController.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		C1737FE01A8D7DE400FC104F /* chicago.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chicago.jpeg; sourceTree = "<group>"; };
 		C1737FE41A8D7E8200FC104F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionBuilder.swift; sourceTree = "<group>"; };
-		C1737FEE1A8D859900FC104F /* Mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mic.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +155,6 @@
 				08277B8C1A8484F800D97F65 /* Models */,
 				08B855071A79F90F006F035F /* AppDelegate.swift */,
 				08B8550E1A79F90F006F035F /* Main.storyboard */,
-				C1737FE01A8D7DE400FC104F /* chicago.jpeg */,
-				C1737FEE1A8D859900FC104F /* Mic.png */,
 				08B855111A79F90F006F035F /* Images.xcassets */,
 				08B855131A79F90F006F035F /* LaunchScreen.xib */,
 				08B855091A79F90F006F035F /* CityAudioTour.xcdatamodeld */,
@@ -278,9 +272,7 @@
 			files = (
 				08B855101A79F90F006F035F /* Main.storyboard in Resources */,
 				08B855151A79F90F006F035F /* LaunchScreen.xib in Resources */,
-				C1737FE11A8D7DE400FC104F /* chicago.jpeg in Resources */,
 				08B855121A79F90F006F035F /* Images.xcassets in Resources */,
-				C1737FEF1A8D859900FC104F /* Mic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +433,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CityAudioTour/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CityAudioTour/CityAudioTour-Bridging-Header.h";
@@ -460,7 +452,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CityAudioTour/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CityAudioTour/CityAudioTour-Bridging-Header.h";

@@ -43,9 +43,9 @@ class TextToSpeechViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //synthersizer.speakUtterance(utterance)
         self.retrieveDataFromServer()
+        // Set text view to start at the top line
+        speechContent.scrollRangeToVisible(NSMakeRange(0, 0))
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,7 +54,7 @@ class TextToSpeechViewController: UIViewController {
     }
     
     override func viewDidDisappear(animated: Bool) {
-        synthersizer.stopSpeakingAtBoundary(.Immediate)
+        synthersizer.stopSpeakingAtBoundary(.Word)
     }
     
     func retrieveDataFromServer() {
@@ -69,6 +69,9 @@ class TextToSpeechViewController: UIViewController {
             attractionLabel.attributedText = NSAttributedString(string: "\(title)")
             
             var speechText = content[1]["Description"]
+            /* Dummy content for test
+            var speechText = "Stunned, I packed my unworn clothes and fled to O'Hare. With no other seat left on the plane, I found myself seated next to an elderly man -- heavy, sick-looking, asthmatic. Humiliated at the failure of my book tour, I could hardly breathe myself. After about fifteen minutes I asked my seat mate about his work, desperate for a way to escape the silence. Slowly, over dense cumulus clouds, he began to reveal his odyssey. Starting out delivering milk on a horse-drawn wagon, he realized the need to join forces with other drivers to negotiate a fairer living wage. As one of the early Teamsters, he began to work for the union and his interest shifted to helping it grow. I was fascinated, for even though I had spent a short time as a labor negotiator for the AFL-CIO, I didn't know much -- or at least much good-- about the Teamsters.\nAs he told me in detail about his work, decade-by-decade, he grew more animated and I was hooked. But, he confessed, he was retired now and grieving for his wife who had recently died. Gone were their dreams to travel and enjoy this uncharted leisure. Listening intently, I realized that he had a second chance to share a yet untold story of the American labor movement. I took out a pen and my hotel stationery and began to write out a plan for him to do just that, advising him to contact high schools, community colleges and civic groups to hire him as a lecturer.\nStunned, I packed my unworn clothes and fled to O'Hare. With no other seat left on the plane, I found myself seated next to an elderly man -- heavy, sick-looking, asthmatic. Humiliated at the failure of my book tour, I could hardly breathe myself. After about fifteen minutes I asked my seat mate about his work, desperate for a way to escape the silence. Slowly, over dense cumulus clouds, he began to reveal his odyssey. Starting out delivering milk on a horse-drawn wagon, he realized the need to join forces with other drivers to negotiate a fairer living wage. As one of the early Teamsters, he began to work for the union and his interest shifted to helping it grow. I was fascinated, for even though I had spent a short time as a labor negotiator for the AFL-CIO, I didn't know much -- or at least much good-- about the Teamsters.\nAs he told me in detail about his work, decade-by-decade, he grew more animated and I was hooked. But, he confessed, he was retired now and grieving for his wife who had recently died. Gone were their dreams to travel and enjoy this uncharted leisure. Listening intently, I realized that he had a second chance to share a yet untold story of the American labor movement. I took out a pen and my hotel stationery and began to write out a plan for him to do just that, advising him to contact high schools, community colleges and civic groups to hire him as a lecturer."
+            */
             speechContent.attributedText = NSMutableAttributedString(string: "\(speechText)")
         }
     }
