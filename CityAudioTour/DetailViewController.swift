@@ -10,14 +10,16 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    
     @IBOutlet weak var AttractionDetail: UITextView!
-    @IBOutlet weak var AttractionImage: UIImageView!
+    @IBOutlet weak var UIImageAttractionImage: UIImageView!
     @IBOutlet weak var AttractionName: UILabel!
     @IBOutlet weak var WorkingHours: UILabel!
     @IBOutlet weak var AttractionAddress: UILabel!
    
     var receiveID : Int?
+
+    var attractionImages = [AttractionImage]()
+
     
     //Set up UI on Detail page.
     private func setUpUI(attraction:Attraction){
@@ -28,13 +30,28 @@ class DetailViewController: UIViewController {
         AttractionDetail.text = attraction.getDetail()
         //AttractionImage.image = attraction.getAttractionImage()
     }
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var service = CATAzureService()
+        
         let builder = AttractionBuilder()
         let attraction = builder.getAttraction(receiveID!)
+        
+        attractionImages = service.GetAttractionImagebyId(receiveID!);
+        
+        if(attractionImages.count > 0)
+        {
+            var firstImage = attractionImages.first
+            let url = NSURL(string: firstImage!.getURLl())
+            var data = NSData(contentsOfURL: url!)
+            if (data != nil)
+            {
+                UIImageAttractionImage.image = UIImage(data: data!)
+            }
+        }
+        
         
         if(attraction != nil){
             setUpUI(attraction!)

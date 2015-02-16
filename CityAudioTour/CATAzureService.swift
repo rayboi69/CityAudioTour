@@ -3,6 +3,8 @@ import Foundation
 class CATAzureService
 {
     
+    private var apiURL = "http://cityaudiotourweb.azurewebsites.net/api"
+    
     internal func GetAttractions() -> [MapViewAttraction]
     {
         var attractions = [MapViewAttraction]()
@@ -29,4 +31,35 @@ class CATAzureService
         }
         return attractions;
     }
+    
+    
+    internal func GetAttractionImagebyId(attractionId : Int) -> [AttractionImage]
+    {
+        var attractionImages = [AttractionImage]()
+        var finalURL = apiURL + "/attraction/" + String(attractionId) + "/images"
+        let url = NSURL(string:finalURL)
+        var request = NSURLRequest(URL: url!)
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        
+        if data != nil {
+            let content = JSON(data: data!)
+            let attractionsArray = content.arrayValue
+            
+            for attraction in attractionsArray {
+                
+                var attractionImageId = attraction["AttractionID"].intValue
+                var attractionId = attraction["AttractionImageID"].intValue
+                var url = attraction["URL"].stringValue
+                
+                var tempAttraction = AttractionImage()
+                tempAttraction.setAttractionID(attractionId)
+                tempAttraction.setAttractionImageID(attractionImageId)
+                tempAttraction.setURL(url)
+                
+                attractionImages.append(tempAttraction)
+            }
+        }
+        return attractionImages;
+    }
+
 }

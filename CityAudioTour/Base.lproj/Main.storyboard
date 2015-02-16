@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JcD-B3-vKd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JcD-B3-vKd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -170,8 +170,8 @@
                     <connections>
                         <outlet property="AttractionAddress" destination="xlJ-kd-0oa" id="W47-Wl-hT7"/>
                         <outlet property="AttractionDetail" destination="fDA-3l-hFm" id="IPc-p1-nnc"/>
-                        <outlet property="AttractionImage" destination="uOe-eU-E9w" id="20c-5X-YhZ"/>
                         <outlet property="AttractionName" destination="yck-IX-vF6" id="0CC-9s-zvA"/>
+                        <outlet property="UIImageAttractionImage" destination="uOe-eU-E9w" id="41p-qn-GtV"/>
                         <outlet property="WorkingHours" destination="cgs-9W-qPN" id="4ss-Ug-OZJ"/>
                     </connections>
                 </viewController>

@@ -21,6 +21,7 @@
 		08B855121A79F90F006F035F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08B855111A79F90F006F035F /* Images.xcassets */; };
 		08B855151A79F90F006F035F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B855131A79F90F006F035F /* LaunchScreen.xib */; };
 		08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B855201A79F90F006F035F /* CityAudioTourTests.swift */; };
+		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
 		C1737FE11A8D7DE400FC104F /* chicago.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C1737FE01A8D7DE400FC104F /* chicago.jpeg */; };
@@ -59,6 +60,7 @@
 		08B8551A1A79F90F006F035F /* CityAudioTourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityAudioTourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08B8551F1A79F90F006F035F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08B855201A79F90F006F035F /* CityAudioTourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAudioTourTests.swift; sourceTree = "<group>"; };
+		311B43511A924F8F0051E05E /* AttractionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionImage.swift; sourceTree = "<group>"; };
 		8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToSpeechViewController.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C1737FE01A8D7DE400FC104F /* chicago.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chicago.jpeg; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				081F46C71A8879B50072BA16 /* MapViewAttraction.swift */,
+				311B43511A924F8F0051E05E /* AttractionImage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */,
 				C1737FE91A8D7EDC00FC104F /* AttractionBuilder.swift in Sources */,
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
 				083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */,
