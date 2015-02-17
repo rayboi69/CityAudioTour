@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JcD-B3-vKd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JcD-B3-vKd">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -228,45 +229,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIQ-KS-a8X">
-                                <rect key="frame" x="202" y="540" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="4gS-Dy-6o6"/>
-                                    <constraint firstAttribute="width" constant="60" id="Mko-5N-kYK"/>
-                                </constraints>
-                                <state key="normal" image="button-round-pause-icon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pauseAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="dTo-v1-Wgo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wut-RY-xIe">
-                                <rect key="frame" x="270" y="540" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="JF1-4d-vpO"/>
-                                </constraints>
-                                <state key="normal" image="button-round-play-icon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="BCe-Kf-KN1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNZ-vm-CVS">
-                                <rect key="frame" x="338" y="540" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="EH2-UL-iBx"/>
-                                </constraints>
-                                <state key="normal" image="button-round-stop-icon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="stopAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="ZAU-Xs-zHa"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Test" translatesAutoresizingMaskIntoConstraints="NO" id="LGy-l8-V3I">
-                                <rect key="frame" x="16" y="114" width="568" height="418"/>
+                                <rect key="frame" x="16" y="114" width="568" height="371"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -284,6 +248,43 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIQ-KS-a8X">
+                                <rect key="frame" x="202" y="508" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="4gS-Dy-6o6"/>
+                                    <constraint firstAttribute="width" constant="60" id="Mko-5N-kYK"/>
+                                </constraints>
+                                <state key="normal" image="button-round-pause-icon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="dTo-v1-Wgo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wut-RY-xIe">
+                                <rect key="frame" x="270" y="508" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="JF1-4d-vpO"/>
+                                </constraints>
+                                <state key="normal" image="button-round-play-icon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="BCe-Kf-KN1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNZ-vm-CVS">
+                                <rect key="frame" x="338" y="508" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="EH2-UL-iBx"/>
+                                </constraints>
+                                <state key="normal" image="button-round-stop-icon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="ZAU-Xs-zHa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -293,13 +294,13 @@
                             <constraint firstItem="nqW-VX-MeA" firstAttribute="top" secondItem="R57-03-o2j" secondAttribute="bottom" constant="22" id="GvI-e7-HT7"/>
                             <constraint firstItem="jIQ-KS-a8X" firstAttribute="top" secondItem="Wut-RY-xIe" secondAttribute="top" id="JBI-34-Ijx"/>
                             <constraint firstItem="nqW-VX-MeA" firstAttribute="leading" secondItem="LGy-l8-V3I" secondAttribute="leading" id="RgB-VI-REz"/>
-                            <constraint firstItem="jIQ-KS-a8X" firstAttribute="top" secondItem="LGy-l8-V3I" secondAttribute="bottom" constant="8" symbolic="YES" id="c7e-vQ-cga"/>
+                            <constraint firstItem="jIQ-KS-a8X" firstAttribute="top" secondItem="LGy-l8-V3I" secondAttribute="bottom" constant="23" id="c7e-vQ-cga"/>
                             <constraint firstItem="LGy-l8-V3I" firstAttribute="leading" secondItem="BSC-7J-tai" secondAttribute="leadingMargin" id="fSs-TB-Gng"/>
                             <constraint firstItem="Wut-RY-xIe" firstAttribute="leading" secondItem="jIQ-KS-a8X" secondAttribute="trailing" constant="8" symbolic="YES" id="fhk-2I-KhE"/>
-                            <constraint firstItem="Wut-RY-xIe" firstAttribute="bottom" secondItem="0Bc-b8-bjN" secondAttribute="top" id="fzl-BC-9ae"/>
+                            <constraint firstItem="Wut-RY-xIe" firstAttribute="bottom" secondItem="0Bc-b8-bjN" secondAttribute="top" constant="-32" id="fzl-BC-9ae"/>
                             <constraint firstItem="nqW-VX-MeA" firstAttribute="trailing" secondItem="LGy-l8-V3I" secondAttribute="trailing" id="gdR-nH-xTt"/>
-                            <constraint firstItem="jIQ-KS-a8X" firstAttribute="bottom" secondItem="0Bc-b8-bjN" secondAttribute="top" id="iGw-HR-MsG"/>
-                            <constraint firstItem="MNZ-vm-CVS" firstAttribute="bottom" secondItem="0Bc-b8-bjN" secondAttribute="top" id="o3M-yC-moJ"/>
+                            <constraint firstItem="jIQ-KS-a8X" firstAttribute="bottom" secondItem="0Bc-b8-bjN" secondAttribute="top" constant="-32" id="iGw-HR-MsG"/>
+                            <constraint firstItem="MNZ-vm-CVS" firstAttribute="bottom" secondItem="0Bc-b8-bjN" secondAttribute="top" constant="-32" id="o3M-yC-moJ"/>
                             <constraint firstItem="MNZ-vm-CVS" firstAttribute="leading" secondItem="Wut-RY-xIe" secondAttribute="trailing" constant="8" symbolic="YES" id="xzW-lx-rKB"/>
                             <constraint firstItem="Wut-RY-xIe" firstAttribute="top" secondItem="MNZ-vm-CVS" secondAttribute="top" id="yyy-JN-vMX"/>
                         </constraints>
