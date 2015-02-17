@@ -14,7 +14,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mainMapView: MKMapView!
     
     var selectedAttractionId : Int?
-    var attractions = [MapViewAttraction]()
+    var attractions = [Attraction]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
         for attraction in attractions  {
             
             var pin = MKPointAnnotation()
-            pin.title = attraction.Name
+            pin.title = attraction.AttractionName
             pin.coordinate.latitude = attraction.Latitude
             pin.coordinate.longitude = attraction.Longitude
             
@@ -105,11 +105,11 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
         
         for attraction in attractions  {
             
-            if (annotation.title == attraction.Name &&
+            if (annotation.title == attraction.AttractionName &&
                 annotation.coordinate.latitude == attraction.Latitude &&
                 annotation.coordinate.longitude == attraction.Longitude)
             {
-                selectedAttractionId = attraction.AttractionId
+                selectedAttractionId = attraction.AttractionID
             }
         }
         

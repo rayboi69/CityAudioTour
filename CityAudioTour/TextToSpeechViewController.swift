@@ -15,6 +15,8 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
     var synthersizer = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
     
+    var service = CATAzureService()
+    
     @IBOutlet weak var attractionLabel: UILabel!
     @IBOutlet weak var speechContent: UITextView!
     
@@ -59,22 +61,11 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
     }
     
     func retrieveDataFromServer() {
-        let subURL = "http://cityaudiotourweb.azurewebsites.net/api/attraction/"
-        let url = NSURL(string: "\(subURL)\(receiveID!)/contents")
-        var request = NSURLRequest(URL: url!)
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
-        if data != nil {
-            var content = JSON(data: data!)
-            
-            var title = content[1]["Title"]
-            attractionLabel.attributedText = NSAttributedString(string: "\(title)")
-            
-            var speechText = content[1]["Description"]
-            /* Dummy content for test
-            var speechText = "Stunned, I packed my unworn clothes and fled to O'Hare. With no other seat left on the plane, I found myself seated next to an elderly man -- heavy, sick-looking, asthmatic. Humiliated at the failure of my book tour, I could hardly breathe myself. After about fifteen minutes I asked my seat mate about his work, desperate for a way to escape the silence. Slowly, over dense cumulus clouds, he began to reveal his odyssey. Starting out delivering milk on a horse-drawn wagon, he realized the need to join forces with other drivers to negotiate a fairer living wage. As one of the early Teamsters, he began to work for the union and his interest shifted to helping it grow. I was fascinated, for even though I had spent a short time as a labor negotiator for the AFL-CIO, I didn't know much -- or at least much good-- about the Teamsters.\nAs he told me in detail about his work, decade-by-decade, he grew more animated and I was hooked. But, he confessed, he was retired now and grieving for his wife who had recently died. Gone were their dreams to travel and enjoy this uncharted leisure. Listening intently, I realized that he had a second chance to share a yet untold story of the American labor movement. I took out a pen and my hotel stationery and began to write out a plan for him to do just that, advising him to contact high schools, community colleges and civic groups to hire him as a lecturer.\nStunned, I packed my unworn clothes and fled to O'Hare. With no other seat left on the plane, I found myself seated next to an elderly man -- heavy, sick-looking, asthmatic. Humiliated at the failure of my book tour, I could hardly breathe myself. After about fifteen minutes I asked my seat mate about his work, desperate for a way to escape the silence. Slowly, over dense cumulus clouds, he began to reveal his odyssey. Starting out delivering milk on a horse-drawn wagon, he realized the need to join forces with other drivers to negotiate a fairer living wage. As one of the early Teamsters, he began to work for the union and his interest shifted to helping it grow. I was fascinated, for even though I had spent a short time as a labor negotiator for the AFL-CIO, I didn't know much -- or at least much good-- about the Teamsters.\nAs he told me in detail about his work, decade-by-decade, he grew more animated and I was hooked. But, he confessed, he was retired now and grieving for his wife who had recently died. Gone were their dreams to travel and enjoy this uncharted leisure. Listening intently, I realized that he had a second chance to share a yet untold story of the American labor movement. I took out a pen and my hotel stationery and began to write out a plan for him to do just that, advising him to contact high schools, community colleges and civic groups to hire him as a lecturer."
-            */
-            speechContent.attributedText = NSMutableAttributedString(string: "\(speechText)")
-        }
+       
+        var attractionContent = service.GetAttractionContentByID(receiveID!)
+        attractionLabel.attributedText = NSAttributedString(string: attractionContent.Title)
+        speechContent.attributedText = NSAttributedString(string: attractionContent.Description)
+        
     }
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
@@ -93,14 +84,6 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
         speechContent.attributedText = NSAttributedString(string: utterance.speechString)
     }
     
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
+
     
 }

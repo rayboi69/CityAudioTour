@@ -5,12 +5,14 @@ class CATAzureService
     
     private var apiURL = "http://cityaudiotourweb.azurewebsites.net/api"
     
-    internal func GetAttractions() -> [MapViewAttraction]
+    internal func GetAttractions() -> [Attraction]
     {
-        var attractions = [MapViewAttraction]()
+        var attractions = [Attraction]()
 
-        let url = NSURL(string: "http://cityaudiotourweb.azurewebsites.net/api/attraction/")
+        var finalURL = apiURL + "/attraction/"
+        let url = NSURL(string:finalURL)
         var request = NSURLRequest(URL: url!)
+        
         var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
 
         if data != nil {
@@ -24,7 +26,11 @@ class CATAzureService
                     var latitude = attraction["Latitude"].doubleValue
                     var longitude = attraction["Longitude"].doubleValue
                     
-                    var tempAttraction = MapViewAttraction(AttractionId: attractionId, Name: name, Latitude: latitude, Longitude: longitude)
+                    var tempAttraction = Attraction()
+                    tempAttraction.AttractionName = name
+                    tempAttraction.Latitude = latitude
+                    tempAttraction.Longitude = longitude
+                    tempAttraction.AttractionID = attractionId
                     
                     attractions.append(tempAttraction)
                 }
@@ -37,6 +43,7 @@ class CATAzureService
     {
         var attractionImages = [AttractionImage]()
         var finalURL = apiURL + "/attraction/" + String(attractionId) + "/images"
+        
         let url = NSURL(string:finalURL)
         var request = NSURLRequest(URL: url!)
         var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
@@ -61,5 +68,63 @@ class CATAzureService
         }
         return attractionImages;
     }
+    
+    func GetAttraction(AttractionID:Int) -> Attraction?{
+        
+        
+        var finalURL = apiURL + "/attraction/" + String(AttractionID)
+        let url = NSURL(string:finalURL)
+        
+        var requestMessage : NSURLRequest = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 5000)
+        
+        let jsonObject = NSURLConnection.sendSynchronousRequest(requestMessage, returningResponse: nil, error: nil)
+        
+        if ( jsonObject != nil ) {
+            let retval = Attraction()
+            
+            let json = JSON(data:jsonObject!)
+            
+            var address = json["Address"].stringValue
+            var city = json["City"].stringValue
+            var state = json["StateAbbreviation"].stringValue
+            var zip = json["ZipCode"].stringValue
+            
+            retval.setAddress(address, city: city, state: state, ZIP: zip)
+            retval.AttractionName = json["Name"].stringValue
+            retval.Detail = json["Details"].stringValue
+            retval.Content = json["TextContent"].stringValue
+            return retval
+        }else{
+            return nil
+        }
+    }
+    
+    
+    func GetAttractionContentByID(AttractionID:Int) -> AttractionContent{
+
+        let finalURL = apiURL + "/attraction/" + String(AttractionID) + "/contents"
+        let url = NSURL(string:finalURL)
+        
+        var request = NSURLRequest(URL: url!)
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        
+        var attractionContent = AttractionContent()
+
+        
+        if data != nil {
+            var content = JSON(data: data!)
+            
+            var title = content[1]["Title"]
+            attractionContent.Title = title.stringValue
+            
+            var speechText = content[1]["Description"]
+            attractionContent.Description = speechText.stringValue
+        }
+        
+        return attractionContent
+
+        
+    }
+
 
 }

@@ -19,25 +19,23 @@ class DetailViewController: UIViewController {
     var receiveID : Int?
 
     var attractionImages = [AttractionImage]()
+    var service = CATAzureService()
 
     
     //Set up UI on Detail page.
     private func setUpUI(attraction:Attraction){
         /*Right now, my code doesn't handle nil or null value.
         We can figure it out later.*/
-        AttractionName.text = attraction.getAttractionName()
-        AttractionAddress.text = attraction.getAttractionAddress()
-        AttractionDetail.text = attraction.getDetail()
+        AttractionName.text = attraction.AttractionName
+        AttractionAddress.text = attraction.AttractionAddress
+        AttractionDetail.text = attraction.Detail
         //AttractionImage.image = attraction.getAttractionImage()
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var service = CATAzureService()
-        
-        let builder = AttractionBuilder()
-        let attraction = builder.getAttraction(receiveID!)
+        let attraction = service.GetAttraction(receiveID!)
         
         attractionImages = service.GetAttractionImagebyId(receiveID!);
         
