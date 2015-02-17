@@ -26,7 +26,7 @@ class TextToSpeechViewController: UIViewController {
         
         if !synthersizer.speaking{
             utterance = AVSpeechUtterance(string: speechContent.text)
-            utterance.rate = 0.3
+            utterance.rate = 0.1
             synthersizer.speakUtterance(utterance)
         } else if synthersizer.paused{
             synthersizer.continueSpeaking()
