@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class TextToSpeechViewController: UIViewController {
+class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     var receiveID : Int?
     var synthersizer = AVSpeechSynthesizer()
@@ -46,6 +46,7 @@ class TextToSpeechViewController: UIViewController {
         self.retrieveDataFromServer()
         // Set text view to start at the top line
         speechContent.scrollRangeToVisible(NSMakeRange(0, 0))
+        self.synthersizer.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,6 +75,22 @@ class TextToSpeechViewController: UIViewController {
             */
             speechContent.attributedText = NSMutableAttributedString(string: "\(speechText)")
         }
+    }
+    
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
+        speechContent.attributedText = NSAttributedString(string: utterance.speechString)
+    }
+    
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance!) {
+        let s = (utterance.speechString as NSString).substringWithRange(characterRange)
+        println("about to say \(s)")
+        let mutableAttributedString = NSMutableAttributedString(string: utterance.speechString)
+        mutableAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: characterRange)
+        speechContent.attributedText = mutableAttributedString
+    }
+
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didCancelSpeechUtterance utterance: AVSpeechUtterance!) {
+        speechContent.attributedText = NSAttributedString(string: utterance.speechString)
     }
     
     /*
