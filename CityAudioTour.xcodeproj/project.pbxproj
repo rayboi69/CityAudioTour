@@ -24,10 +24,11 @@
 		3191CB581A92D93900939865 /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
 		8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
+		C10F39EC1A9A707F00B9D505 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F39EB1A9A707F00B9D505 /* MenuController.swift */; };
+		C10F39EE1A9A729C00B9D505 /* MenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F39ED1A9A729C00B9D505 /* MenuControl.swift */; };
 		C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE41A8D7E8200FC104F /* DetailViewController.swift */; };
 		C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE61A8D7EB900FC104F /* Attraction.swift */; };
 		C1737FE91A8D7EDC00FC104F /* AttractionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */; };
-		C19418C51A9A59E800C9BDA6 /* MenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19418C41A9A59E800C9BDA6 /* MenuControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,10 +63,11 @@
 		3191CB571A92D93900939865 /* AttractionContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionContent.swift; sourceTree = "<group>"; };
 		8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToSpeechViewController.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		C10F39EB1A9A707F00B9D505 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		C10F39ED1A9A729C00B9D505 /* MenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuControl.swift; sourceTree = "<group>"; };
 		C1737FE41A8D7E8200FC104F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionBuilder.swift; sourceTree = "<group>"; };
-		C19418C41A9A59E800C9BDA6 /* MenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				083AEF471A899123004D6874 /* CATAzureService.swift */,
-				C19418C41A9A59E800C9BDA6 /* MenuControl.swift */,
+				C10F39EB1A9A707F00B9D505 /* MenuController.swift */,
+				C10F39ED1A9A729C00B9D505 /* MenuControl.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -303,10 +306,11 @@
 				08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */,
 				8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
+				C10F39EC1A9A707F00B9D505 /* MenuController.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
 				8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */,
-				C19418C51A9A59E800C9BDA6 /* MenuControl.swift in Sources */,
 				3191CB581A92D93900939865 /* AttractionContent.swift in Sources */,
+				C10F39EE1A9A729C00B9D505 /* MenuControl.swift in Sources */,
 				083AEF481A899123004D6874 /* CATAzureService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
