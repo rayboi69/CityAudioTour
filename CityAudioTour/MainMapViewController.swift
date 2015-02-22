@@ -12,12 +12,30 @@ import MapKit
 class MainMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mainMapView: MKMapView!
+    @IBOutlet weak var MenuView: UIView!
     
+    var menuController:MenuController!
     var selectedAttractionId : Int?
     var attractions = [Attraction]()
     
+    @IBAction func MenuBtn(sender: AnyObject) {
+        menuController.showMenu(true)
+    }
+    
+    //Hide Navigator bar when main screen is appeared.
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    //Show Navigator bar when moving to other views.
+    override func viewDidDisappear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Set up Flyout menu
+        menuController = MenuController(MenuView: MenuView, MainView: self.view)
         
         // set current user location
         var currentlat = 41.88
