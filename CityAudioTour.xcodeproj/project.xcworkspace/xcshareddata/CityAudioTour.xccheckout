@@ -5,15 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>71A82725-0E88-4456-BB71-C99ECF2057CC</string>
+	<string>F90E366D-8B80-4195-BD47-76C75BF931FF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CityAudioTour</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
-		<string>https://github.com/rayboi69/CityAudioTour</string>
-		<key>62152C9D0C8F3AC9EC6EF369F4145DFB39FF39E2</key>
-		<string>https://github.com/peteac119/CAT-Project.git</string>
+		<string>https://github.com/rayboi69/CityAudioTour.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CityAudioTour.xcodeproj</string>
@@ -21,25 +19,15 @@
 	<dict>
 		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
 		<string>../..</string>
-		<key>62152C9D0C8F3AC9EC6EF369F4145DFB39FF39E2</key>
-		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/rayboi69/CityAudioTour</string>
+	<string>https://github.com/rayboi69/CityAudioTour.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
 	<string>4850901FE59F93C8D223BA69E58B762FDED4D0BD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>62152C9D0C8F3AC9EC6EF369F4145DFB39FF39E2</string>
-			<key>IDESourceControlWCCName</key>
-			<string></string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

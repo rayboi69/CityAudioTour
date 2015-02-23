@@ -26,6 +26,10 @@ class Attraction{
     var AttractionImage = UIImage()
     var Latitude = 0.0
     var Longitude = 0.0
+    
+    // temp variables here
+    var FlyingDistance = 0.0
+    var WalkingDistance = 0.0
 
     init(){}
         
