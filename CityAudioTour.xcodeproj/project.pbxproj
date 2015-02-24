@@ -21,6 +21,7 @@
 		08B855151A79F90F006F035F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B855131A79F90F006F035F /* LaunchScreen.xib */; };
 		08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B855201A79F90F006F035F /* CityAudioTourTests.swift */; };
 		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
+		3135BF501A9C3E8E00DD0D46 /* AttractionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */; };
 		3191CB581A92D93900939865 /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
 		8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
@@ -59,6 +60,7 @@
 		08B8551F1A79F90F006F035F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08B855201A79F90F006F035F /* CityAudioTourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAudioTourTests.swift; sourceTree = "<group>"; };
 		311B43511A924F8F0051E05E /* AttractionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionImage.swift; sourceTree = "<group>"; };
+		3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsModel.swift; sourceTree = "<group>"; };
 		3191CB571A92D93900939865 /* AttractionContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionContent.swift; sourceTree = "<group>"; };
 		8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToSpeechViewController.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				C1737FE61A8D7EB900FC104F /* Attraction.swift */,
 				311B43511A924F8F0051E05E /* AttractionImage.swift */,
 				3191CB571A92D93900939865 /* AttractionContent.swift */,
+				3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */,
 				C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */,
 				08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */,
+				3135BF501A9C3E8E00DD0D46 /* AttractionsModel.swift in Sources */,
 				8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
