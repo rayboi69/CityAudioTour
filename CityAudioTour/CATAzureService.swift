@@ -69,62 +69,28 @@ class CATAzureService
         return attractionImages;
     }
     
-    func GetAttraction(AttractionID:Int) -> Attraction?{
-        
+    func GetAttraction(AttractionID:Int, MainThread:NSOperationQueue, handler:(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void){
         
         var finalURL = apiURL + "/attraction/" + String(AttractionID)
         let url = NSURL(string:finalURL)
         
-        var requestMessage : NSURLRequest = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 5000)
+        var requestMessage : NSURLRequest = NSURLRequest(URL: url!)
         
-        let jsonObject = NSURLConnection.sendSynchronousRequest(requestMessage, returningResponse: nil, error: nil)
-        
-        if ( jsonObject != nil ) {
-            let retval = Attraction()
-            
-            let json = JSON(data:jsonObject!)
-            
-            var address = json["Address"].stringValue
-            var city = json["City"].stringValue
-            var state = json["StateAbbreviation"].stringValue
-            var zip = json["ZipCode"].stringValue
-            
-            retval.setAddress(address, city: city, state: state, ZIP: zip)
-            retval.AttractionName = json["Name"].stringValue
-            retval.Detail = json["Details"].stringValue
-            retval.Content = json["TextContent"].stringValue
-            return retval
-        }else{
-            return nil
-        }
+        connectToDB(requestMessage, MainThreadQueue: MainThread, handler)
     }
     
     
-    func GetAttractionContentByID(AttractionID:Int) -> AttractionContent{
+    func GetAttractionContentByID(AttractionID:Int, MainThread:NSOperationQueue, handler:(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void){
 
         let finalURL = apiURL + "/attraction/" + String(AttractionID) + "/contents"
         let url = NSURL(string:finalURL)
         
         var request = NSURLRequest(URL: url!)
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
-        
-        var attractionContent = AttractionContent()
-
-        
-        if data != nil {
-            var content = JSON(data: data!)
-            
-            var title = content[1]["Title"]
-            attractionContent.Title = title.stringValue
-            
-            var speechText = content[1]["Description"]
-            attractionContent.Description = speechText.stringValue
-        }
-        
-        return attractionContent
-
+        connectToDB(request, MainThreadQueue: MainThread, handler)
         
     }
 
-
+    private func connectToDB(request:NSURLRequest,MainThreadQueue:NSOperationQueue,handler:(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void){
+        NSURLConnection.sendAsynchronousRequest(request, queue: MainThreadQueue, completionHandler: handler)
+    }
 }

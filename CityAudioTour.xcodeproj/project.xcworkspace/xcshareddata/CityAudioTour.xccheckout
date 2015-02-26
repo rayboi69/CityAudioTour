@@ -12,6 +12,8 @@
 	<dict>
 		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
 		<string>https://github.com/rayboi69/CityAudioTour.git</string>
+		<key>62152C9D0C8F3AC9EC6EF369F4145DFB39FF39E2</key>
+		<string>https://github.com/peteac119/CAT-Project.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CityAudioTour.xcodeproj</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
 		<string>../..</string>
+		<key>62152C9D0C8F3AC9EC6EF369F4145DFB39FF39E2</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/rayboi69/CityAudioTour.git</string>
@@ -28,6 +32,14 @@
 	<string>4850901FE59F93C8D223BA69E58B762FDED4D0BD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>62152C9D0C8F3AC9EC6EF369F4145DFB39FF39E2</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

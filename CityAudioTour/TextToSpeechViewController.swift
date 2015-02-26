@@ -14,7 +14,6 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
     var receiveID : Int?
     var synthersizer = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
-    
     var service = CATAzureService()
     
     @IBOutlet weak var attractionLabel: UILabel!
@@ -45,7 +44,10 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.retrieveDataFromServer()
+        
+        let handler = retrieveDataFromServer
+        service.GetAttractionContentByID(receiveID!, MainThread: NSOperationQueue.mainQueue(), handler: handler)
+        
         // Set text view to start at the top line
         speechContent.scrollRangeToVisible(NSMakeRange(0, 0))
         self.synthersizer.delegate = self
@@ -60,11 +62,19 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
         synthersizer.stopSpeakingAtBoundary(.Word)
     }
     
-    func retrieveDataFromServer() {
-       
-        var attractionContent = service.GetAttractionContentByID(receiveID!)
-        attractionLabel.attributedText = NSAttributedString(string: attractionContent.Title)
-        speechContent.attributedText = NSAttributedString(string: attractionContent.Description)
+    private func retrieveDataFromServer(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void {
+        if data != nil {
+            var content = JSON(data: data!)
+            var title = content[1]["Title"].stringValue
+            var speechText = content[1]["Description"].stringValue
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.attractionLabel.text = title
+                self.speechContent.text = speechText
+            })
+        }else{
+            //Connection Failed. Do something.
+        }
         
     }
     

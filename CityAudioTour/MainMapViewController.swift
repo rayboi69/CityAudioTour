@@ -22,7 +22,11 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     let locationManager = CLLocationManager()
 
     @IBAction func MenuBtn(sender: AnyObject) {
-        menuController.showMenu(true)
+        if !menuController.isMenuShowing() {
+            menuController.MenuShown()
+        }else{
+            menuController.MenuHidden()
+        }
     }
     
     

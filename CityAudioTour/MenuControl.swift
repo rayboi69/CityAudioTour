@@ -11,10 +11,11 @@ import UIKit
 
 class MenuController: NSObject{
     
-    let menuView:UIView!
-    let mainView:UIView!
-    let width:CGFloat!
-    var animator:UIDynamicAnimator!
+    private let menuView:UIView!
+    private let mainView:UIView!
+    private let width:CGFloat!
+    private var animator:UIDynamicAnimator!
+    private var isShowing = false
     //Need this constructor to create a super class (NSObject).
     override init(){
         super.init()
@@ -45,14 +46,16 @@ class MenuController: NSObject{
     //Call back function for SwipeGestureRecognizer's action.
     func isShow(recognizer:UISwipeGestureRecognizer){
         if recognizer.direction == UISwipeGestureRecognizerDirection.Left{
-            showMenu(false)
+            isShowing = false
+            showMenu(isShowing)
         }else{
-            showMenu(true)
+            isShowing = true
+            showMenu(isShowing)
         }
     }
     
     //Show and hide menu.
-    func showMenu(isShowing:Bool){
+    private func showMenu(isShowing:Bool){
         animator.removeAllBehaviors()
         
         let speed:CGFloat = (isShowing) ? 10 : -10
@@ -67,5 +70,18 @@ class MenuController: NSObject{
         animator.addBehavior(StoppingPoint)
     }
     
+    func isMenuShowing() -> Bool {
+        return isShowing
+    }
+    
+    func MenuShown() {
+        isShowing = true
+        showMenu(isShowing)
+    }
+    
+    func MenuHidden() {
+        isShowing = false
+        showMenu(isShowing)
+    }
 }
 

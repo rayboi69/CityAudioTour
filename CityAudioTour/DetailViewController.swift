@@ -29,13 +29,41 @@ class DetailViewController: UIViewController {
         AttractionName.text = attraction.AttractionName
         AttractionAddress.text = attraction.AttractionAddress
         AttractionDetail.text = attraction.Detail
+        WorkingHours.text = "Mon - Fri\n12:00 - 20:00\nSat-Sun\n 10:00 - 17:00"
         //AttractionImage.image = attraction.getAttractionImage()
     }
+    
+    private func setUpDetail(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void{
         
+        if data != nil{
+            let attraction = Attraction()
+        
+            let json = JSON(data:data!)
+        
+            var address = json["Address"].stringValue
+            var city = json["City"].stringValue
+            var state = json["StateAbbreviation"].stringValue
+            var zip = json["ZipCode"].stringValue
+        
+            attraction.setAddress(address, city: city, state: state, ZIP: zip)
+            attraction.AttractionName = json["Name"].stringValue
+            attraction.Detail = json["Details"].stringValue
+            attraction.Content = json["TextContent"].stringValue
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.setUpUI(attraction)
+            })
+        }else{
+            //Do Something when no connection.
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let attraction = service.GetAttraction(receiveID!)
+        let handler = setUpDetail
+        
+        service.GetAttraction(receiveID!, MainThread: NSOperationQueue.mainQueue(), handler: handler)
         
         attractionImages = service.GetAttractionImagebyId(receiveID!);
         
@@ -49,23 +77,12 @@ class DetailViewController: UIViewController {
                 UIImageAttractionImage.image = UIImage(data: data!)
             }
         }
-        
-        
-        if(attraction != nil){
-            setUpUI(attraction!)
-        }else{
-            //do something if connection is failed.
-        }
-        //AttractionAddress.text = "201 East Randolph Street\nChicago, IL 60602"
-        //AttractionName.text = "Millennium Park"
-        WorkingHours.text = "Mon - Fri\n12:00 - 20:00\nSat-Sun\n 10:00 - 17:00"
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     
     // MARK: - Navigation
