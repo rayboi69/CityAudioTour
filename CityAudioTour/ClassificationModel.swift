@@ -22,4 +22,13 @@ class ClassificationModel {
         return Static.instance!
     }
     
+    var SelectedCategories: [Int]
+    var SelectedTags: [Int]
+    
+    init() {
+        SelectedCategories = []
+        SelectedTags = []
+    }
+    
+    
 }

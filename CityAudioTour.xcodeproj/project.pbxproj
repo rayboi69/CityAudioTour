@@ -24,12 +24,14 @@
 		3135BF501A9C3E8E00DD0D46 /* AttractionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */; };
 		3191CB581A92D93900939865 /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
 		3194A0881AA03CEA00757252 /* ClassificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0871AA03CEA00757252 /* ClassificationModel.swift */; };
+		3194A08A1AA0447000757252 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0891AA0447000757252 /* Route.swift */; };
+		3194A08C1AA0448200757252 /* Categroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08B1AA0448200757252 /* Categroy.swift */; };
+		3194A08E1AA0449100757252 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
 		8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
 		C165E4FE1A9A843300241D05 /* MenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C165E4FD1A9A843300241D05 /* MenuControl.swift */; };
 		C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE41A8D7E8200FC104F /* DetailViewController.swift */; };
 		C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE61A8D7EB900FC104F /* Attraction.swift */; };
-		C1737FE91A8D7EDC00FC104F /* AttractionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,12 +66,14 @@
 		3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsModel.swift; sourceTree = "<group>"; };
 		3191CB571A92D93900939865 /* AttractionContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionContent.swift; sourceTree = "<group>"; };
 		3194A0871AA03CEA00757252 /* ClassificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationModel.swift; sourceTree = "<group>"; };
+		3194A0891AA0447000757252 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		3194A08B1AA0448200757252 /* Categroy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categroy.swift; sourceTree = "<group>"; };
+		3194A08D1AA0449100757252 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToSpeechViewController.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C165E4FD1A9A843300241D05 /* MenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuControl.swift; sourceTree = "<group>"; };
 		C1737FE41A8D7E8200FC104F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
-		C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +101,14 @@
 		08277B8C1A8484F800D97F65 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C1737FE81A8D7EDC00FC104F /* AttractionBuilder.swift */,
 				C1737FE61A8D7EB900FC104F /* Attraction.swift */,
 				311B43511A924F8F0051E05E /* AttractionImage.swift */,
 				3191CB571A92D93900939865 /* AttractionContent.swift */,
 				3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */,
 				3194A0871AA03CEA00757252 /* ClassificationModel.swift */,
+				3194A0891AA0447000757252 /* Route.swift */,
+				3194A08B1AA0448200757252 /* Categroy.swift */,
+				3194A08D1AA0449100757252 /* Tag.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -301,13 +307,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3194A08E1AA0449100757252 /* Tag.swift in Sources */,
 				311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */,
-				C1737FE91A8D7EDC00FC104F /* AttractionBuilder.swift in Sources */,
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
 				083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */,
+				3194A08A1AA0447000757252 /* Route.swift in Sources */,
 				C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */,
 				08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */,
 				3135BF501A9C3E8E00DD0D46 /* AttractionsModel.swift in Sources */,
+				3194A08C1AA0448200757252 /* Categroy.swift in Sources */,
 				8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
