@@ -23,6 +23,7 @@
 		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		3135BF501A9C3E8E00DD0D46 /* AttractionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */; };
 		3191CB581A92D93900939865 /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
+		3194A0881AA03CEA00757252 /* ClassificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0871AA03CEA00757252 /* ClassificationModel.swift */; };
 		8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
 		C165E4FE1A9A843300241D05 /* MenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C165E4FD1A9A843300241D05 /* MenuControl.swift */; };
@@ -62,6 +63,7 @@
 		311B43511A924F8F0051E05E /* AttractionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionImage.swift; sourceTree = "<group>"; };
 		3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsModel.swift; sourceTree = "<group>"; };
 		3191CB571A92D93900939865 /* AttractionContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionContent.swift; sourceTree = "<group>"; };
+		3194A0871AA03CEA00757252 /* ClassificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationModel.swift; sourceTree = "<group>"; };
 		8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToSpeechViewController.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C165E4FD1A9A843300241D05 /* MenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuControl.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				311B43511A924F8F0051E05E /* AttractionImage.swift */,
 				3191CB571A92D93900939865 /* AttractionContent.swift */,
 				3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */,
+				3194A0871AA03CEA00757252 /* ClassificationModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
+				3194A0881AA03CEA00757252 /* ClassificationModel.swift in Sources */,
 				8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */,
 				C165E4FE1A9A843300241D05 /* MenuControl.swift in Sources */,
 				3191CB581A92D93900939865 /* AttractionContent.swift in Sources */,
