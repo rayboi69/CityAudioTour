@@ -69,8 +69,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.mainMapView.showsUserLocation = true
 
         // Webservice call to get attractions
-        var service = CATAzureService()
-        attractions = service.GetAttractions()
+        attractions = AttractionsModel.sharedInstance.LoadAttractionsList()
         
         /* START TEST MOCK DATA */
         //var attractions = [MapViewAttraction]()
