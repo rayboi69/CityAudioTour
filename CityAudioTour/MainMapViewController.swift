@@ -172,23 +172,21 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
     
-    // this function is used for iOS versions lower than 5
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        
+        // this sets the current location to center in the map
+        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        var region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
+        self.mainMapView.setRegion(region, animated: true)
+    }
+    
+    // this function is used for iOS versions lower than 6
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         
-        // this sets the current location to center in the map
-        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        var region = MKCoordinateRegion(center: newLocation.coordinate, span: span)
-        self.mainMapView.setRegion(region, animated: true)
-        self.mainMapView.showsUserLocation = true
     }
 
+    // this function is used for iOS versions greater than 6
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        
-        // this sets the current location to center in the map
-        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        var region = MKCoordinateRegion(center: manager.location.coordinate, span: span)
-        self.mainMapView.setRegion(region, animated: true)
-        self.mainMapView.showsUserLocation = true
         
         // loop through attractions
         for attraction in attractions  {
