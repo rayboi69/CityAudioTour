@@ -23,9 +23,12 @@ class Attraction{
     var Detail = ""
     var Content = ""
     var AttractionID = 0
+    var CategoryID = 0
     var AttractionImage = UIImage()
     var Latitude = 0.0
     var Longitude = 0.0
+    var isHiden = false
+    var TagIDs: [Int] = []
     
     // temp variables here
     var FlyingDistance = 0.0
