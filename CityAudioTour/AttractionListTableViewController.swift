@@ -11,6 +11,7 @@ import UIKit
 class AttractionListTableViewController: UITableViewController {
 
     var attractions: [Attraction]?
+    var sectionTitle = "Attraction List"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,10 @@ class AttractionListTableViewController: UITableViewController {
         var title = attractions![indexPath.row].AttractionName
         cell.textLabel?.text = title
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitle
     }
     
     override func didReceiveMemoryWarning() {
