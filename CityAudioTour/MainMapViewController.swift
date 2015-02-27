@@ -179,6 +179,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         var region = MKCoordinateRegion(center: newLocation.coordinate, span: span)
         self.mainMapView.setRegion(region, animated: true)
+        self.mainMapView.showsUserLocation = true
     }
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -187,6 +188,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         var region = MKCoordinateRegion(center: manager.location.coordinate, span: span)
         self.mainMapView.setRegion(region, animated: true)
+        self.mainMapView.showsUserLocation = true
         
         // loop through attractions
         for attraction in attractions  {
