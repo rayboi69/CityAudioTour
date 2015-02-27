@@ -48,27 +48,33 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         // set up LocationManager
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
+        
+        // this if statement is required because the statement requestWhenInUseAuthorization will fail 
+        // on iOS versions lower than 8.0
+        if (self.locationManager.respondsToSelector(Selector("requestWhenInUseAuthorization"))) {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        
         self.locationManager.startUpdatingLocation()
         
-        // set current user location to downtown Chicago, this can also be set in Debug
-        var currentlat = 41.88
-        var currentlon = -87.635
+        // set current user location to 1 E. Jackson Chicago, IL this can also be set in Debug
+        /*var currentlat = 41.877860
+        var currentlon = -87.627262
         
         var location = CLLocationCoordinate2D(latitude: currentlat, longitude: currentlon)
         var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         var region = MKCoordinateRegion(center: location, span: span)
         
-        self.mainMapView.setRegion(region, animated: true)
+        self.mainMapView.setRegion(region, animated: true)*/
         self.mainMapView.showsUserLocation = true
 
         // Webservice call to get attractions
         var service = CATAzureService()
-        //attractions = service.GetAttractions()
+        attractions = service.GetAttractions()
         
         /* START TEST MOCK DATA */
         //var attractions = [MapViewAttraction]()
-        var WillisTower = Attraction()
+        /*var WillisTower = Attraction()
         WillisTower.AttractionID = 1
         WillisTower.AttractionName = "Willis Tower"
         WillisTower.Latitude = 41.8788067
@@ -87,7 +93,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         NavyPier.AttractionName = "Navy Pier"
         NavyPier.Latitude = 41.8919114
         NavyPier.Longitude = -87.60945749999996
-        attractions.append(NavyPier)
+        attractions.append(NavyPier)*/
         // END TEST MOCK DATA
 
         
@@ -138,6 +144,8 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         return pinView
     }
     
+    
+    
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         
         var annotation = view.annotation
@@ -163,18 +171,24 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             detailController.receiveID = selectedAttractionId
         }
     }
+    
+    // this function is used for iOS versions lower than 5
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        
+        // this sets the current location to center in the map
+        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        var region = MKCoordinateRegion(center: newLocation.coordinate, span: span)
+        self.mainMapView.setRegion(region, animated: true)
+    }
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
-        
-        /*var location = CLLocationCoordinate2D(latitude: manager.location.coordinate.latitude, longitude: manager.location.coordinate.longitude)
-        var span = MKCoordinateSpan(latitudeDelta: 0.0005, longitudeDelta: 0.0005)
-        var region = MKCoordinateRegion(center: location, span: span)
-        
-        self.mainMapView.setRegion(region, animated: true)*/
+        // this sets the current location to center in the map
+        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        var region = MKCoordinateRegion(center: manager.location.coordinate, span: span)
+        self.mainMapView.setRegion(region, animated: true)
         
         // loop through attractions
-        
         for attraction in attractions  {
             
             // get flying distance
