@@ -92,7 +92,7 @@ class DetailViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if (segue.identifier == "audioPage") {
-            var audioViewController:TextToSpeechViewController = segue.destinationViewController as TextToSpeechViewController
+            var audioViewController:AudioTourViewController = segue.destinationViewController as AudioTourViewController
             audioViewController.receiveID = self.receiveID
         }
     }

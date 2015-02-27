@@ -1,15 +1,15 @@
 //
-//  TextToSpeechViewController.swift
+//  AudioTourViewController.swift
 //  CityAudioTour
 //
-//  Created by Red_iMac on 2/12/15.
+//  Created by Red_iMac on 2/27/15.
 //  Copyright (c) 2015 SE491-591. All rights reserved.
 //
 
 import UIKit
 import AVFoundation
 
-class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate {
+class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     var receiveID : Int?
     var synthersizer = AVSpeechSynthesizer()
@@ -22,9 +22,12 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
     @IBAction func BackToMapView(sender: UIBarButtonItem) {
         navigationController?.popToRootViewControllerAnimated(true)
     }
-
+    
+    @IBAction func pauseAudio(sender: AnyObject) {
+        synthersizer.pauseSpeakingAtBoundary(.Immediate)
+    }
+    
     @IBAction func playAudio(sender: UIButton) {
-        
         if !synthersizer.speaking{
             utterance = AVSpeechUtterance(string: speechContent.text)
             utterance.rate = 0.1
@@ -38,30 +41,16 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
         synthersizer.stopSpeakingAtBoundary(.Immediate)
     }
     
-    @IBAction func pauseAudio(sender: AnyObject) {
-        synthersizer.pauseSpeakingAtBoundary(.Immediate)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let handler = retrieveDataFromServer
         service.GetAttractionContentByID(receiveID!, MainThread: NSOperationQueue.mainQueue(), handler: handler)
-        
-        // Set text view to start at the top line
-        speechContent.scrollRangeToVisible(NSMakeRange(0, 0))
         self.synthersizer.delegate = self
+        
+        //speechContent.scrollRangeToVisible(NSMakeRange(0, 0))     // Set text view to start at the top line
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        synthersizer.stopSpeakingAtBoundary(.Word)
-    }
-    
+
     private func retrieveDataFromServer(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void {
         if data != nil {
             var content = JSON(data: data!)
@@ -70,12 +59,21 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.attractionLabel.text = title
-                self.speechContent.text = speechText
+                self.speechContent.attributedText = NSMutableAttributedString(string: speechText)
             })
         }else{
             //Connection Failed. Do something.
         }
         
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        synthersizer.stopSpeakingAtBoundary(.Word)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
@@ -84,16 +82,13 @@ class TextToSpeechViewController: UIViewController, AVSpeechSynthesizerDelegate 
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance!) {
         let s = (utterance.speechString as NSString).substringWithRange(characterRange)
-        println("about to say \(s)")
         let mutableAttributedString = NSMutableAttributedString(string: utterance.speechString)
         mutableAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: characterRange)
         speechContent.attributedText = mutableAttributedString
     }
-
+    
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didCancelSpeechUtterance utterance: AVSpeechUtterance!) {
         speechContent.attributedText = NSAttributedString(string: utterance.speechString)
     }
-    
-
     
 }

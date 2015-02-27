@@ -182,18 +182,11 @@
         <!--Audio Tour-->
         <scene sceneID="zCu-B7-71U">
             <objects>
-                <viewController id="uMr-um-2op" customClass="TextToSpeechViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uMr-um-2op" customClass="AudioTourViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BSC-7J-tai">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Test" id="LGy-l8-V3I">
-                                <rect key="frame" x="16" y="114" width="288" height="339"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jIQ-KS-a8X">
                                 <rect key="frame" x="62" y="476" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -201,7 +194,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pauseAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="dTo-v1-Wgo"/>
+                                    <action selector="pauseAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="RNw-9o-GhJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wut-RY-xIe">
@@ -211,7 +204,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="BCe-Kf-KN1"/>
+                                    <action selector="playAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="Jtm-ew-BOj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MNZ-vm-CVS">
@@ -221,7 +214,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="ZAU-Xs-zHa"/>
+                                    <action selector="stopAudio:" destination="uMr-um-2op" eventType="touchUpInside" id="hm6-re-DHG"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nqW-VX-MeA">
@@ -238,19 +231,33 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" id="LGy-l8-V3I">
+                                <rect key="frame" x="16" y="114" width="288" height="339"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Test">
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Audio Tour" id="Zty-S3-wUC">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="23l-m7-ZGx">
                             <connections>
-                                <action selector="BackToMapView:" destination="uMr-um-2op" id="uEv-XO-LSi"/>
+                                <action selector="BackToMapView:" destination="uMr-um-2op" id="KQ8-sm-Sgc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="attractionLabel" destination="nqW-VX-MeA" id="Bjf-aX-yTE"/>
-                        <outlet property="speechContent" destination="LGy-l8-V3I" id="VW6-M2-PJS"/>
+                        <outlet property="attractionLabel" destination="nqW-VX-MeA" id="vU8-fr-0ya"/>
+                        <outlet property="speechContent" destination="LGy-l8-V3I" id="Bh3-wh-jUv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GeV-j8-b5D" userLabel="First Responder" sceneMemberID="firstResponder"/>

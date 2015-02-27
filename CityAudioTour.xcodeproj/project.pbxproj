@@ -27,7 +27,7 @@
 		3194A08A1AA0447000757252 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0891AA0447000757252 /* Route.swift */; };
 		3194A08C1AA0448200757252 /* Categroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08B1AA0448200757252 /* Categroy.swift */; };
 		3194A08E1AA0449100757252 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
-		8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */; };
+		8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
 		C165E4FE1A9A843300241D05 /* MenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C165E4FD1A9A843300241D05 /* MenuControl.swift */; };
 		C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE41A8D7E8200FC104F /* DetailViewController.swift */; };
@@ -69,7 +69,7 @@
 		3194A0891AA0447000757252 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3194A08B1AA0448200757252 /* Categroy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categroy.swift; sourceTree = "<group>"; };
 		3194A08D1AA0449100757252 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToSpeechViewController.swift; sourceTree = "<group>"; };
+		8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTourViewController.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C165E4FD1A9A843300241D05 /* MenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuControl.swift; sourceTree = "<group>"; };
 		C1737FE41A8D7E8200FC104F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -117,8 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				08B8550C1A79F90F006F035F /* MainMapViewController.swift */,
-				8BBE8F231A8D4058001861DE /* TextToSpeechViewController.swift */,
 				C1737FE41A8D7E8200FC104F /* DetailViewController.swift */,
+				8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -310,6 +310,7 @@
 				3194A08E1AA0449100757252 /* Tag.swift in Sources */,
 				311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */,
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
+				8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */,
 				083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */,
 				3194A08A1AA0447000757252 /* Route.swift in Sources */,
 				C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */,
@@ -320,7 +321,6 @@
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
 				3194A0881AA03CEA00757252 /* ClassificationModel.swift in Sources */,
-				8BBE8F241A8D4058001861DE /* TextToSpeechViewController.swift in Sources */,
 				C165E4FE1A9A843300241D05 /* MenuControl.swift in Sources */,
 				3191CB581A92D93900939865 /* AttractionContent.swift in Sources */,
 				083AEF481A899123004D6874 /* CATAzureService.swift in Sources */,
@@ -458,7 +458,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CityAudioTour/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CityAudioTour/CityAudioTour-Bridging-Header.h";
@@ -478,7 +478,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CityAudioTour/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CityAudioTour/CityAudioTour-Bridging-Header.h";
