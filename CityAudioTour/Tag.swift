@@ -15,4 +15,8 @@ class Tag{
     
     init(){}
     
+    init(id: Int, name: String) {
+        TagID = id
+        Name = name
+    }
 }

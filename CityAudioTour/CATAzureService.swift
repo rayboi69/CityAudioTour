@@ -18,7 +18,7 @@ class CATAzureService
         if data != nil {
             let content = JSON(data: data!)
             let attractionsArray = content.arrayValue
-            
+            println(content)
                 for attraction in attractionsArray {
                     
                     var attractionId = attraction["AttractionID"].intValue
@@ -38,6 +38,57 @@ class CATAzureService
         return attractions;
     }
     
+    internal func GetCategoryList() -> [Category] {
+        let finalURL = apiURL + "/category"
+        let url = NSURL(string:finalURL)
+        var request = NSURLRequest(URL: url!)
+        
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+
+        var categories = [Category]()
+        
+        if data != nil {
+            let content = JSON(data: data!)
+            let categoryArray = content.arrayValue
+            
+            for category in categoryArray {
+                var id = category["CategoryID"].intValue
+                var name = category["Name"].stringValue
+                
+                var tempCategory = Category()
+                tempCategory.CategoryID = id
+                tempCategory.Name = name
+                
+                categories.append(tempCategory)
+            }
+        }
+        return categories
+    }
+    
+    internal func GetTagList() -> [Tag] {
+        let finalURL = apiURL + "/tag"
+        let url = NSURL(string:finalURL)
+        var request = NSURLRequest(URL: url!)
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        
+        var tags = [Tag]()
+        if data != nil {
+            let content = JSON(data: data!)
+            let tagArray = content.arrayValue
+            
+            for tag in tagArray {
+                var id = tag["TagID"].intValue
+                var name = tag["Name"].stringValue
+                
+                var temptag = Tag()
+                temptag.TagID = id
+                temptag.Name = name
+                
+                tags.append(temptag)
+            }
+        }
+        return tags
+    }
     
     internal func GetAttractionImagebyId(attractionId : Int) -> [AttractionImage]
     {

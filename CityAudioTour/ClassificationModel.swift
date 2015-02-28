@@ -22,14 +22,28 @@ class ClassificationModel {
         return Static.instance!
     }
     
-    var SelectedCategories: [Int]
-    var SelectedTags: [Int]
+    let server: CATAzureService?
+
+    var selectedCategories: NSMutableSet?
+    var selectedTags: NSMutableSet?
+    
+    var categoryList: [Category]?
+    var tagList: [Tag]?
     
     init() {
         //TODO - Populate with real ids from the filtering screen
-        SelectedCategories = [1,2,5]
-        SelectedTags = [1,3,4,5,6,10,15]
+        server = CATAzureService()
+        categoryList = [Category]()
+        tagList = [Tag]()
+        
+        self.LoadCategoryAndTagFromServer()
+        selectedCategories?.setByAddingObjectsFromArray(categoryList!)
+        selectedTags?.setByAddingObjectsFromArray(tagList!)
+        
     }
     
-    
+    func LoadCategoryAndTagFromServer() {
+        categoryList = self.server?.GetCategoryList()
+        tagList = self.server?.GetTagList()
+    }
 }

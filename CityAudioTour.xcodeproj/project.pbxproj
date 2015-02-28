@@ -29,6 +29,7 @@
 		3194A08E1AA0449100757252 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
 		8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
 		8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */; };
+		8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
 		C165E4FE1A9A843300241D05 /* MenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C165E4FD1A9A843300241D05 /* MenuControl.swift */; };
 		C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE41A8D7E8200FC104F /* DetailViewController.swift */; };
@@ -72,6 +73,7 @@
 		3194A08D1AA0449100757252 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTourViewController.swift; sourceTree = "<group>"; };
 		8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionListTableViewController.swift; sourceTree = "<group>"; };
+		8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C165E4FD1A9A843300241D05 /* MenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuControl.swift; sourceTree = "<group>"; };
 		C1737FE41A8D7E8200FC104F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				C1737FE41A8D7E8200FC104F /* DetailViewController.swift */,
 				8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */,
 				8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */,
+				8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				3135BF501A9C3E8E00DD0D46 /* AttractionsModel.swift in Sources */,
 				3194A08C1AA0448200757252 /* Categroy.swift in Sources */,
 				8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */,
+				8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,

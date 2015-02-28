@@ -15,5 +15,9 @@ class Category{
     
     init(){}
     
+    init(id: Int, name: String) {
+        CategoryID = id
+        Name = name
+    }
     
 }
