@@ -18,7 +18,7 @@ class CATAzureService
         if data != nil {
             let content = JSON(data: data!)
             let attractionsArray = content.arrayValue
-            println(content)
+            
                 for attraction in attractionsArray {
                     
                     var attractionId = attraction["AttractionID"].intValue
