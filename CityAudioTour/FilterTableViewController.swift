@@ -12,36 +12,14 @@ class FilterTableViewController: UITableViewController {
 
     var categories: [Category]?
     var tags: [Tag]?
+    var dataTable: [[Int:Bool]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*//get data from server
         categories = ClassificationModel.sharedInstance.categoryList
         tags = ClassificationModel.sharedInstance.tagList
-        */
-        
-        self.getFakeData()  //fake data
-    }
 
-    func getFakeData() {
-        categories = [Category]()
-        categories?.append(Category(id: 1, name: "Category: 1"))
-        categories?.append(Category(id: 2, name: "Category: 2"))
-        categories?.append(Category(id: 3, name: "Category: 3"))
-        categories?.append(Category(id: 4, name: "Category: 4"))
-        
-        tags = [Tag]()
-        tags?.append(Tag(id: 1, name: "Tag: 1"))
-        tags?.append(Tag(id: 2, name: "Tag: 2"))
-        tags?.append(Tag(id: 3, name: "Tag: 3"))
-        tags?.append(Tag(id: 4, name: "Tag: 4"))
-        tags?.append(Tag(id: 5, name: "Tag: 5"))
-        tags?.append(Tag(id: 6, name: "Tag: 6"))
-        tags?.append(Tag(id: 7, name: "Tag: 7"))
-        tags?.append(Tag(id: 8, name: "Tag: 8"))
-        tags?.append(Tag(id: 9, name: "Tag: 9"))
-        tags?.append(Tag(id: 10, name: "Tag: 10"))
     }
     
     func update() {
@@ -73,6 +51,13 @@ class FilterTableViewController: UITableViewController {
         // Configure the cell...
         if indexPath.section == 0 {
             cell.textLabel?.text = categories![indexPath.row].Name
+            let catID = categories![indexPath.row].CategoryID
+            //var
+            if ClassificationModel.sharedInstance.selectedCategories.containsObject(catID){
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            }
         } else {
             cell.textLabel?.text = tags![indexPath.row].Name
         }
@@ -88,7 +73,9 @@ class FilterTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
+        if indexPath.section == 0 {
+            
+        }
     }
     
     /*
