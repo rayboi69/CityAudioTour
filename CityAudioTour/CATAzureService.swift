@@ -69,6 +69,7 @@ class CATAzureService
         let finalURL = apiURL + "/tag"
         let url = NSURL(string:finalURL)
         var request = NSURLRequest(URL: url!)
+        
         var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
         
         var tags = [Tag]()
@@ -89,6 +90,36 @@ class CATAzureService
         }
         return tags
     }
+    
+    internal func GetRoutes() -> [Route] {
+        let finalURL = apiURL + "/route"
+        let url = NSURL(string: finalURL)
+        var request = NSURLRequest(URL: url!)
+        
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        
+        var routes = [Route]()
+        if data != nil {
+            let content = JSON(data: data!)
+            let routeArray = content.arrayValue
+            
+            for route in routeArray {
+                var id = route["RouteID"].intValue
+                var name = route["Name"].stringValue
+                var catID = route["CategoryID"].intValue
+                
+                var tempRoute = Route()
+                tempRoute.RouteID = id
+                tempRoute.Name = name
+                tempRoute.CategoryID = catID
+                tempRoute.AttractionIDs = [] //waiting for server to implement
+                
+                routes.append(tempRoute)
+            }
+        }
+        return routes
+    }
+    
     
     internal func GetAttractionImagebyId(attractionId : Int) -> [AttractionImage]
     {

@@ -43,9 +43,9 @@ class AttractionsModel {
 
     
     //
-    // Params: selectedCat:[] and selectedTag:[Int]- Should come from the ClassifiedModel
+    // Params: selectedCat: NSSet and selectedTag: NSSet - Should come from the ClassifiedModel
     //
-    func FilterAttraction(selectedCat : [Int], selectedTag:[Int]) {
+    func FilterAttraction(selectedCat: NSSet, selectedTag: NSSet) {
         println("...");
     }
 }
