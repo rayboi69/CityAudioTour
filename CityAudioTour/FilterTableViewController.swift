@@ -93,7 +93,6 @@ class FilterTableViewController: UITableViewController {
             }
         }
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-        println(tagSet)
     }
  
     /*
