@@ -23,15 +23,15 @@ class ClassificationModel {
     }
     
     let server: CATAzureService?
-
-    var selectedCategories: NSMutableSet
-    var selectedTags: NSMutableSet
     
     var categoryList: [Category]?
     var tagList: [Tag]?
     
+    
+    var selectedCategories: NSMutableSet
+    var selectedTags: NSMutableSet
+    
     init() {
-        //TODO - Populate with real ids from the filtering screen
         server = CATAzureService()
         categoryList = [Category]()
         tagList = [Tag]()
@@ -53,7 +53,6 @@ class ClassificationModel {
         categoryList = self.server?.GetCategoryList()
         tagList = self.server?.GetTagList()
         */
-        
         //Useing fake data
         self.getFakeData()
     }

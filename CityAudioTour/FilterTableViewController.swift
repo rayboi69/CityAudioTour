@@ -12,17 +12,17 @@ class FilterTableViewController: UITableViewController {
 
     var categories: [Category]?
     var tags: [Tag]?
-    var dataTable: [[Int:Bool]] = []
+    var catSet: NSMutableSet!
+    var tagSet: NSMutableSet!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         categories = ClassificationModel.sharedInstance.categoryList
         tags = ClassificationModel.sharedInstance.tagList
-
-    }
-    
-    func update() {
+        catSet = ClassificationModel.sharedInstance.selectedCategories
+        tagSet = ClassificationModel.sharedInstance.selectedTags
         
     }
     
@@ -47,19 +47,23 @@ class FilterTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FilterCell", forIndexPath: indexPath) as UITableViewCell
-
         // Configure the cell...
         if indexPath.section == 0 {
             cell.textLabel?.text = categories![indexPath.row].Name
             let catID = categories![indexPath.row].CategoryID
-            //var
-            if ClassificationModel.sharedInstance.selectedCategories.containsObject(catID){
+            if catSet.containsObject(catID){
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             } else {
                 cell.accessoryType = UITableViewCellAccessoryType.None
             }
         } else {
             cell.textLabel?.text = tags![indexPath.row].Name
+            let tagID = tags![indexPath.row].TagID
+            if tagSet.containsObject(tagID){
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            }
         }
         return cell
     }
@@ -74,8 +78,22 @@ class FilterTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
-            
+            let catID = categories![indexPath.row].CategoryID
+            if catSet.containsObject(catID) {
+                catSet.removeObject(catID)
+            } else {
+                catSet.addObject(catID)
+            }
+        } else {
+            let tagID = tags![indexPath.row].TagID
+            if tagSet.containsObject(tagID) {
+                tagSet.removeObject(tagID)
+            } else {
+                tagSet.addObject(tagID)
+            }
         }
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        println(tagSet)
     }
     
     /*
