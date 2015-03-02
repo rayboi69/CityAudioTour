@@ -25,12 +25,17 @@ class CATAzureService
                     var name = attraction["Name"].stringValue
                     var latitude = attraction["Latitude"].doubleValue
                     var longitude = attraction["Longitude"].doubleValue
+                    var categoryId = attraction["CategoryID"].intValue
                     
                     var tempAttraction = Attraction()
                     tempAttraction.AttractionName = name
                     tempAttraction.Latitude = latitude
                     tempAttraction.Longitude = longitude
                     tempAttraction.AttractionID = attractionId
+                    tempAttraction.CategoryID = categoryId
+                    //TODO - replace with real Tags IDS
+                    tempAttraction.TagIDs = [1, 2, 3, 4, 5, 6]
+                    tempAttraction.isHiden = false;
                     
                     attractions.append(tempAttraction)
                 }

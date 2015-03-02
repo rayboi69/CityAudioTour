@@ -93,6 +93,8 @@ class FilterTableViewController: UITableViewController {
             }
         }
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        AttractionsModel.sharedInstance.FilterAttraction(catSet, selectedTag: tagSet)
+        
     }
  
     /*

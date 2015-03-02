@@ -46,6 +46,24 @@ class AttractionsModel {
     // Params: selectedCat: NSSet and selectedTag: NSSet - Should come from the ClassifiedModel
     //
     func FilterAttraction(selectedCat: NSSet, selectedTag: NSSet) {
-        println("...");
+        println("***** Filtering *****");
+        for attraction in attractionsList!
+        {
+            attraction.isHiden = true
+            
+            if(selectedCat.containsObject(attraction.CategoryID))
+            {
+                attraction.isHiden = false
+            }
+            
+            for tag in attraction.TagIDs
+            {
+                if(selectedTag.containsObject(tag))
+                {
+                    attraction.isHiden = false;
+                    break
+                }
+            }
+        }
     }
 }
