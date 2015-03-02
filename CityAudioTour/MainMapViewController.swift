@@ -29,7 +29,6 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
     
-    
     //Hide Navigator bar when main screen is appeared.
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -56,45 +55,10 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
         
         self.locationManager.startUpdatingLocation()
-        
-        // set current user location to 1 E. Jackson Chicago, IL this can also be set in Debug
-        /*var currentlat = 41.877860
-        var currentlon = -87.627262
-        
-        var location = CLLocationCoordinate2D(latitude: currentlat, longitude: currentlon)
-        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        var region = MKCoordinateRegion(center: location, span: span)
-        
-        self.mainMapView.setRegion(region, animated: true)*/
         self.mainMapView.showsUserLocation = true
 
         // Webservice call to get attractions
         attractions = AttractionsModel.sharedInstance.LoadAttractionsList()
-        
-        /* START TEST MOCK DATA */
-        //var attractions = [MapViewAttraction]()
-        /*var WillisTower = Attraction()
-        WillisTower.AttractionID = 1
-        WillisTower.AttractionName = "Willis Tower"
-        WillisTower.Latitude = 41.8788067
-        WillisTower.Longitude = -87.6360050
-        attractions.append(WillisTower)
-        
-        var ArtMusuem = Attraction()
-        ArtMusuem.AttractionID = 2
-        ArtMusuem.AttractionName = "Art Institute of Chicago"
-        ArtMusuem.Latitude = 41.8795473
-        ArtMusuem.Longitude = -87.6237238
-        attractions.append(ArtMusuem)
-        
-        var NavyPier = Attraction()
-        NavyPier.AttractionID = 3
-        NavyPier.AttractionName = "Navy Pier"
-        NavyPier.Latitude = 41.8919114
-        NavyPier.Longitude = -87.60945749999996
-        attractions.append(NavyPier)*/
-        // END TEST MOCK DATA
-
         
         // loop through attractions
         for attraction in attractions  {
@@ -143,8 +107,6 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         return pinView
     }
     
-    
-    
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         
         var annotation = view.annotation
@@ -173,6 +135,10 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         
+        // remove existing route lines or overlays when this method starts
+        var overlays = mainMapView.overlays
+        mainMapView.removeOverlays(overlays)
+        
         // this sets the current location to center in the map
         var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         var region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
@@ -187,6 +153,11 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     // this function is used for iOS versions greater than 6
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
+        // this displayRoute will depend on the AttractionModels class, if the route list is populated
+        var displayRoute = true
+        
+        if (displayRoute)
+        {
         // loop through attractions
         for attraction in attractions  {
             
@@ -243,47 +214,8 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             counter = counter + 1
             
         }
+        }
         
-        
-        /*
-        for attraction in attractions  {
-            
-            // get flying distance
-            let startinglocation = manager.location;
-            let endingLocation = CLLocation(latitude: attraction.Latitude, longitude: attraction.Longitude)
-            let distance = startinglocation.distanceFromLocation(endingLocation)
-            
-            attraction.FlyingDistance = distance
-            
-            // get walking distance
-            let req = MKDirectionsRequest()
-            
-            let startingCoordinate = manager.location.coordinate
-            let startingPlaceMark = MKPlacemark(coordinate: startingCoordinate, addressDictionary: nil)
-            let startingMapItem = MKMapItem(placemark: startingPlaceMark)
-            
-            let endingCoordinate = CLLocationCoordinate2D(latitude: attraction.Latitude, longitude: attraction.Longitude)
-            let endingPlaceMark = MKPlacemark(coordinate: endingCoordinate, addressDictionary: nil)
-            let endingMapItem = MKMapItem(placemark: endingPlaceMark)
-            
-            req.setSource(startingMapItem)
-            req.transportType = MKDirectionsTransportType.Walking
-            req.requestsAlternateRoutes = false
-            req.setDestination(endingMapItem)
-            
-            let dir = MKDirections(request:req)
-            dir.calculateDirectionsWithCompletionHandler() {
-                (response:MKDirectionsResponse!, error:NSError!) in
-                if response == nil {
-                    println(error)
-                    return
-                }
-                let route = response.routes[0] as MKRoute
-                let poly = route.polyline
-                self.mainMapView.addOverlay(poly)
-                attraction.WalkingDistance = route.distance
-            }
-        }*/
     }
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
