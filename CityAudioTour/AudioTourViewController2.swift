@@ -9,11 +9,12 @@
 import UIKit
 import AVFoundation
 
-class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
+class AudioTourViewController2: UIViewController, AVSpeechSynthesizerDelegate {
     
     var receiveID : Int?
+    var synthersizer = AVSpeechSynthesizer()
+    var utterance = AVSpeechUtterance(string: "")
     var service = CATAzureService()
-    var speaker = TextToSpeech()
     
     @IBOutlet weak var attractionLabel: UILabel!
     @IBOutlet weak var speechContent: UITextView!
@@ -23,18 +24,33 @@ class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
     }
     
     @IBAction func pauseAudio(sender: AnyObject) {
-        speaker.pause()
+        synthersizer.pauseSpeakingAtBoundary(.Immediate)
     }
     
     @IBAction func playAudio(sender: UIButton) {
-        self.speaker.synthersizer.delegate = self
-        speaker.play(speechContent.text)
+        if !synthersizer.speaking{
+            utterance = AVSpeechUtterance(string: speechContent.text)
+            utterance.rate = 0.1
+            synthersizer.speakUtterance(utterance)
+        } else if synthersizer.paused{
+            synthersizer.continueSpeaking()
+        }
     }
     
     @IBAction func stopAudio(sender: UIButton) {
-        speaker.stop()
+        synthersizer.stopSpeakingAtBoundary(.Immediate)
     }
-  
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let handler = retrieveDataFromServer
+        service.GetAttractionContentByID(receiveID!, MainThread: NSOperationQueue.mainQueue(), handler: handler)
+        self.synthersizer.delegate = self
+        
+        //speechContent.scrollRangeToVisible(NSMakeRange(0, 0))     // Set text view to start at the top line
+    }
+    
     private func retrieveDataFromServer(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void {
         if data != nil {
             var content = JSON(data: data!)
@@ -51,17 +67,8 @@ class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let handler = retrieveDataFromServer
-        service.GetAttractionContentByID(receiveID!, MainThread: NSOperationQueue.mainQueue(), handler: handler)
-
-        //speechContent.scrollRangeToVisible(NSMakeRange(0, 0))     // Set text view to start at the top line
-    }
-
     override func viewDidDisappear(animated: Bool) {
-        speaker.stop()
+        synthersizer.stopSpeakingAtBoundary(.Word)
     }
     
     override func didReceiveMemoryWarning() {

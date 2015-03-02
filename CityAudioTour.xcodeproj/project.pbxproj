@@ -27,6 +27,8 @@
 		3194A08A1AA0447000757252 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0891AA0447000757252 /* Route.swift */; };
 		3194A08C1AA0448200757252 /* Categroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08B1AA0448200757252 /* Categroy.swift */; };
 		3194A08E1AA0449100757252 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
+		8B22D7EC1AA3E123000CD7B8 /* TextToSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B22D7EB1AA3E123000CD7B8 /* TextToSpeech.swift */; };
+		8B22D7EE1AA3E668000CD7B8 /* AudioTourViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B22D7ED1AA3E668000CD7B8 /* AudioTourViewController2.swift */; };
 		8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
 		8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */; };
 		8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */; };
@@ -72,6 +74,8 @@
 		3194A0891AA0447000757252 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3194A08B1AA0448200757252 /* Categroy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categroy.swift; sourceTree = "<group>"; };
 		3194A08D1AA0449100757252 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		8B22D7EB1AA3E123000CD7B8 /* TextToSpeech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToSpeech.swift; sourceTree = "<group>"; };
+		8B22D7ED1AA3E668000CD7B8 /* AudioTourViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTourViewController2.swift; sourceTree = "<group>"; };
 		8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTourViewController.swift; sourceTree = "<group>"; };
 		8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionListTableViewController.swift; sourceTree = "<group>"; };
 		8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				3194A0891AA0447000757252 /* Route.swift */,
 				3194A08B1AA0448200757252 /* Categroy.swift */,
 				3194A08D1AA0449100757252 /* Tag.swift */,
+				8B22D7EB1AA3E123000CD7B8 /* TextToSpeech.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 				8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */,
 				8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */,
 				8B523B231AA3B0FC002F6010 /* RouteListTableViewController.swift */,
+				8B22D7ED1AA3E668000CD7B8 /* AudioTourViewController2.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -320,6 +326,8 @@
 				311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */,
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
 				8B523B241AA3B0FC002F6010 /* RouteListTableViewController.swift in Sources */,
+				8B22D7EE1AA3E668000CD7B8 /* AudioTourViewController2.swift in Sources */,
+				8B22D7EC1AA3E123000CD7B8 /* TextToSpeech.swift in Sources */,
 				8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */,
 				083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */,
 				3194A08A1AA0447000757252 /* Route.swift in Sources */,
