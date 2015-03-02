@@ -25,20 +25,32 @@ class AttractionListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return attractions!.count
+        var count = 0
+        for attraction in attractions! {
+            if !attraction.isHiden {
+                count++
+            }
+        }
+        return count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AttractionCell", forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
-        var title = attractions![indexPath.row].AttractionName
-        cell.textLabel?.text = title
+        let attraction = attractions![indexPath.row]
+        if !attraction.isHiden {
+            cell.textLabel?.text = attraction.AttractionName
+        }
         return cell
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitle
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
