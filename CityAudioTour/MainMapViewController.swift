@@ -26,7 +26,8 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     private var selectedAttractionId : Int?
     private var attractions = [Attraction]()
     //Refer to attraction list selected by users after filtering.
-    var selectedAttraction:[Attraction]!
+    var selectedAttraction:[Attraction] = [Attraction]()
+    var isRouteSelected:Bool = false;
     
     //Current Location button that update user's current location.
     @IBAction func buttonCurrentLocation(sender: AnyObject) {
@@ -46,16 +47,21 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     //Hide Navigator bar when main screen is appeared.
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        //If selectedAttraction is not empty, that means user select some route or filter it.
+        if !selectedAttraction.isEmpty{
+            createPinPoint()
+        }
     }
     //Show Navigator bar when moving to other views.
     override func viewDidDisappear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        menuController.MenuHidden()
     }
     
     //Starting method when view is completely loaded.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         startUpSetting()
     }
     
@@ -95,8 +101,16 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     //Create all annotations on the map.
     private func createPinPoint(){
-        // Webservice call to get attractions
-        attractions = AttractionsModel.sharedInstance.attractionsList!
+        //Clear all old annotation
+        let oldAnnotationList = mainMapView.annotations
+        mainMapView.removeAnnotations(oldAnnotationList)
+        
+        if !selectedAttraction.isEmpty{
+            attractions = selectedAttraction
+        }else{
+            // Webservice call to get attractions
+            attractions = AttractionsModel.sharedInstance.attractionsList!
+        }
         
         // loop through attractions
         for attraction in attractions  {
@@ -120,9 +134,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         var oldOverlays = mainMapView.overlays
         mainMapView.removeOverlays(oldOverlays)
         
-        var displayRoute = true
-        
-        if displayRoute{
+        if isRouteSelected{
             // loop through attractions
             for attraction in attractions  {
                 // get flying distance
@@ -182,6 +194,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 })
                 counter = counter + 1
             }
+            isRouteSelected = false
         }
     }
 
