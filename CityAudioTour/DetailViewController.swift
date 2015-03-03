@@ -18,8 +18,8 @@ class DetailViewController: UIViewController {
    
     var receiveID : Int?
 
-    var attractionImages = [AttractionImage]()
-    var service = CATAzureService()
+    private var attractionImages = [AttractionImage]()
+    private var service = CATAzureService()
 
     
     //Set up UI on Detail page.

@@ -11,8 +11,11 @@ import UIKit
 
 class MenuController: NSObject{
     
+    //Interacting UI Elements
     private let menuView:UIView!
     private let mainView:UIView!
+    
+    //All variables for this class
     private let width:CGFloat!
     private var animator:UIDynamicAnimator!
     private var isShowing = false
@@ -70,6 +73,7 @@ class MenuController: NSObject{
         animator.addBehavior(StoppingPoint)
     }
     
+    //Three below functions will help menu button work properly.
     func isMenuShowing() -> Bool {
         return isShowing
     }

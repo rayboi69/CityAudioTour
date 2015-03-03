@@ -11,12 +11,13 @@ import AVFoundation
 
 class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
-    var receiveID : Int?
-    var service = CATAzureService()
-    var speaker = TextToSpeech()
-    
     @IBOutlet weak var attractionLabel: UILabel!
     @IBOutlet weak var speechContent: UITextView!
+    
+    private var service = CATAzureService()
+    private var speaker = TextToSpeech()
+    var receiveID : Int?
+    
     
     @IBAction func BackToMapView(sender: UIBarButtonItem) {
         navigationController?.popToRootViewControllerAnimated(true)

@@ -12,23 +12,27 @@ import CoreLocation
 
 class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    //Interacting UI Elements
     @IBOutlet weak var mainMapView: MKMapView!
     @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
-    private var currentLocation:CLLocation!
-    var menuController:MenuController!
-    var selectedAttractionId : Int?
-    var attractions = [Attraction]()
-    var firstTime = true
+    //All variables for this class
+    private let searchBarController:SearchBarDelegate = SearchBarDelegate()
+    private let requestLocation:MKDirectionsRequest = MKDirectionsRequest()
+    private let locationManager = CLLocationManager()
+    private var mapController:MapDelegate!
+    private var menuController:MenuController!
+    private var selectedAttractionId : Int?
+    private var attractions = [Attraction]()
     
-    let locationManager = CLLocationManager()
-    
+    //Current Location button that update user's current location.
     @IBAction func buttonCurrentLocation(sender: AnyObject) {
+        mapController.buttonIsPressed()
         locationManager.startUpdatingLocation()
-        let camera:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 1000, 1000)
-        mainMapView.setRegion(camera, animated: true)
-        
     }
+    
+    //Menu button can hide or show a hidden menu.
     @IBAction func MenuBtn(sender: AnyObject) {
         if !menuController.isMenuShowing() {
             menuController.MenuShown()
@@ -46,30 +50,51 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    //Starting method when view is completely loaded.
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startUpSetting()
+    }
+    
+    //Send a warning if OS destroys this app for regaining memory.
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //Setting up everything in this view.
+    private func startUpSetting(){
         //Set up Flyout menu
         menuController = MenuController(MenuView: menuView, MainView: self.view)
         
-        // set up LocationManager
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //Set up searchBar delegate
+        searchBar.delegate = searchBarController
+        //Set up map view delegate
+        mapController = MapDelegate(mapView: self)
+        mainMapView.delegate = mapController
+        
+        //Set up location manager delegate
+        locationManager.delegate = mapController
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         // this if statement is required because the statement requestWhenInUseAuthorization will fail
         // on iOS versions lower than 8.0
-        if (self.locationManager.respondsToSelector(Selector("requestWhenInUseAuthorization"))) {
-            self.locationManager.requestWhenInUseAuthorization()
+        if (locationManager.respondsToSelector(Selector("requestWhenInUseAuthorization"))) {
+            locationManager.requestWhenInUseAuthorization()
         }
         
-        self.locationManager.startUpdatingLocation()
-        self.mainMapView.showsUserLocation = true
-        
-        
-        
+        //Start getting user's current location when application's started.
+        locationManager.startUpdatingLocation()
+        mainMapView.showsUserLocation = true
+        //Create all pin points on the map based on attraction list.
+        createPinPoint()
+    }
+    
+    //Create all annotations on the map.
+    private func createPinPoint(){
         // Webservice call to get attractions
         attractions = AttractionsModel.sharedInstance.attractionsList!
-        
         
         // loop through attractions
         for attraction in attractions  {
@@ -83,43 +108,83 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 self.mainMapView.addAnnotation(pin)
             }
         }
+        //Start creating route based on attraction list.
+        createRoute()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    //Creating route in the map based on attraction list.
+    private func createRoute(){
+        // remove existing route lines or overlays when this method starts
+        var oldOverlays = mainMapView.overlays
+        mainMapView.removeOverlays(oldOverlays)
         
-        if annotation is MKUserLocation {
-            //return nil so map view draws "blue dot" for standard user location
-            return nil
-        }
+        var displayRoute = true
         
-        let reuseId = "pin"
+        if displayRoute{
+            // loop through attractions
+            for attraction in attractions  {
+                // get flying distance
+                let startinglocation = locationManager.location
+                let endingLocation = CLLocation(latitude: attraction.Latitude, longitude: attraction.Longitude)
+                let distance = startinglocation.distanceFromLocation(endingLocation)
         
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+                attraction.FlyingDistance = distance
+            }
         
-        if pinView == nil
-        {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            attractions.sort({ $0.FlyingDistance < $1.FlyingDistance })
+        
+            var counter = 0
+            var prevMapItem = MKMapItem?()
             
-            pinView!.canShowCallout = true
-            pinView!.animatesDrop = true
-            pinView!.pinColor = MKPinAnnotationColor.Green
-            
-            var calloutButton = UIButton.buttonWithType(.DetailDisclosure) as UIButton
-            pinView!.rightCalloutAccessoryView = calloutButton
-        }
-        else {
-            pinView!.annotation = annotation
-        }
+            for attraction in attractions  {
         
-        return pinView
+                // get walking distance
+        
+                let startingCoordinate = locationManager.location.coordinate
+                let startingPlaceMark = MKPlacemark(coordinate: startingCoordinate, addressDictionary: nil)
+                let startingMapItem = MKMapItem(placemark: startingPlaceMark)
+        
+                let endingCoordinate = CLLocationCoordinate2D(latitude: attraction.Latitude, longitude: attraction.Longitude)
+                let endingPlaceMark = MKPlacemark(coordinate: endingCoordinate, addressDictionary: nil)
+                let endingMapItem = MKMapItem(placemark: endingPlaceMark)
+        
+                if (counter != 0) {
+                    requestLocation.setSource(prevMapItem)
+                }else {
+                    requestLocation.setSource(startingMapItem)
+                }
+        
+                requestLocation.transportType = MKDirectionsTransportType.Walking
+                requestLocation.requestsAlternateRoutes = false
+                requestLocation.setDestination(endingMapItem)
+        
+                prevMapItem = endingMapItem
+        
+                // Call Directions API
+                let direction:MKDirections = MKDirections(request:requestLocation)
+                direction.calculateDirectionsWithCompletionHandler({
+                    (response:MKDirectionsResponse!, error:NSError!) -> Void in
+                        if response == nil {
+                            println(error)
+                            return
+                        }
+                
+                        let routeList = response.routes as [MKRoute]
+                
+                        for route in routeList{
+                            for step in route.steps as [MKRouteStep]{
+                                self.mainMapView.addOverlay(step.polyline)
+                            }
+                            attraction.WalkingDistance = route.distance
+                        }
+                })
+                counter = counter + 1
+            }
+        }
     }
-    
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+
+    //When the button in call out window is pressed, it will go to detail page.
+    func gotoDetailPage(view:MKAnnotationView!){
         
         var annotation = view.annotation
         
@@ -144,117 +209,5 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             detailController.receiveID = selectedAttractionId
         }
     }
-    
-    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-        
-        // remove existing route lines or overlays when this method starts
-        var overlays = mainMapView.overlays
-        
-        
-        mainMapView.removeOverlays(overlays)
-        
-        // this sets the current location to center in the map
-        //        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        //        var region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
-        //        self.mainMapView.setRegion(region, animated: true)
-    }
-    
-    // this function is used for iOS versions lower than 6
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        
-    }
-    
-    // this function is used for iOS versions greater than 6
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        
-        // this displayRoute will depend on the AttractionModels class, if the route list is populated
-        var displayRoute = true
-        
-        if (locations != nil ){
-            if(firstTime){
-                currentLocation = locations[0] as CLLocation
-                
-                let camera:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 1000, 1000)
-                mainMapView.setRegion(camera, animated: true)
-                firstTime = false
-            }else{
-                currentLocation = locations[0] as CLLocation
-                
-            }
-        }else{
-            //Can't get data with some reason.
-        }
-        if (displayRoute)
-        {
-            // loop through attractions
-            for attraction in attractions  {
-                
-                // get flying distance
-                let startinglocation = manager.location;
-                let endingLocation = CLLocation(latitude: attraction.Latitude, longitude: attraction.Longitude)
-                let distance = startinglocation.distanceFromLocation(endingLocation)
-                
-                attraction.FlyingDistance = distance
-            }
-            
-            attractions.sort({ $0.FlyingDistance < $1.FlyingDistance })
-            
-            var counter = 0
-            var prevMapItem = MKMapItem?()
-            for attraction in attractions  {
-                
-                // get walking distance
-                let req = MKDirectionsRequest()
-                
-                let startingCoordinate = manager.location.coordinate
-                let startingPlaceMark = MKPlacemark(coordinate: startingCoordinate, addressDictionary: nil)
-                let startingMapItem = MKMapItem(placemark: startingPlaceMark)
-                
-                let endingCoordinate = CLLocationCoordinate2D(latitude: attraction.Latitude, longitude: attraction.Longitude)
-                let endingPlaceMark = MKPlacemark(coordinate: endingCoordinate, addressDictionary: nil)
-                let endingMapItem = MKMapItem(placemark: endingPlaceMark)
-                
-                if (counter != 0) {
-                    req.setSource(prevMapItem) }
-                else {
-                    req.setSource(startingMapItem) }
-                
-                req.transportType = MKDirectionsTransportType.Walking
-                req.requestsAlternateRoutes = false
-                req.setDestination(endingMapItem)
-                
-                prevMapItem = endingMapItem
-                
-                // Call Directions API
-                let dir = MKDirections(request:req)
-                dir.calculateDirectionsWithCompletionHandler() {
-                    (response:MKDirectionsResponse!, error:NSError!) in
-                    if response == nil {
-                        println(error)
-                        return
-                    }
-                    let route = response.routes[0] as MKRoute
-                    let poly = route.polyline
-                    self.mainMapView.addOverlay(poly)
-                    attraction.WalkingDistance = route.distance
-                }
-                
-                counter = counter + 1
-                
-            }
-        }
-        
-    }
-    
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        var v : MKPolylineRenderer! = nil
-        if let overlay = overlay as? MKPolyline {
-            v = MKPolylineRenderer(polyline:overlay)
-            v.strokeColor = UIColor.blueColor().colorWithAlphaComponent(0.8)
-            v.lineWidth = 2
-        }
-        return v
-    }
-    
 }
 
