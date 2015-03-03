@@ -167,7 +167,11 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="reply" id="nUQ-zf-uR0"/>
+                                    <barButtonItem systemItem="reply" id="nUQ-zf-uR0">
+                                        <connections>
+                                            <action selector="buttonCurrentLocation:" destination="vXZ-lx-hvc" id="AON-Kx-Wox"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" id="Wjc-bD-JdK">

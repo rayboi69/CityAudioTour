@@ -15,12 +15,20 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var mainMapView: MKMapView!
     @IBOutlet weak var menuView: UIView!
     
+    private var currentLocation:CLLocation!
     var menuController:MenuController!
     var selectedAttractionId : Int?
     var attractions = [Attraction]()
+    var firstTime = true
     
     let locationManager = CLLocationManager()
-
+    
+    @IBAction func buttonCurrentLocation(sender: AnyObject) {
+        locationManager.startUpdatingLocation()
+        let camera:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 1000, 1000)
+        mainMapView.setRegion(camera, animated: true)
+        
+    }
     @IBAction func MenuBtn(sender: AnyObject) {
         if !menuController.isMenuShowing() {
             menuController.MenuShown()
@@ -48,7 +56,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        // this if statement is required because the statement requestWhenInUseAuthorization will fail 
+        // this if statement is required because the statement requestWhenInUseAuthorization will fail
         // on iOS versions lower than 8.0
         if (self.locationManager.respondsToSelector(Selector("requestWhenInUseAuthorization"))) {
             self.locationManager.requestWhenInUseAuthorization()
@@ -56,23 +64,27 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
         self.locationManager.startUpdatingLocation()
         self.mainMapView.showsUserLocation = true
-
+        
+        
+        
         // Webservice call to get attractions
-        attractions = AttractionsModel.sharedInstance.LoadAttractionsList()
+        attractions = AttractionsModel.sharedInstance.attractionsList!
+        
         
         // loop through attractions
         for attraction in attractions  {
-            
-            var pin = MKPointAnnotation()
-            pin.title = attraction.AttractionName
-            pin.coordinate.latitude = attraction.Latitude
-            pin.coordinate.longitude = attraction.Longitude
-            
-            // Add Pin to Map
-            self.mainMapView.addAnnotation(pin)
+            if !attraction.isHiden {
+                var pin = MKPointAnnotation()
+                pin.title = attraction.AttractionName
+                pin.coordinate.latitude = attraction.Latitude
+                pin.coordinate.longitude = attraction.Longitude
+                
+                // Add Pin to Map
+                self.mainMapView.addAnnotation(pin)
+            }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,7 +98,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
         
         let reuseId = "pin"
-
+        
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
         
         if pinView == nil
@@ -137,83 +149,99 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
         // remove existing route lines or overlays when this method starts
         var overlays = mainMapView.overlays
+        
+        
         mainMapView.removeOverlays(overlays)
         
         // this sets the current location to center in the map
-        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        var region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
-        self.mainMapView.setRegion(region, animated: true)
+        //        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        //        var region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
+        //        self.mainMapView.setRegion(region, animated: true)
     }
     
     // this function is used for iOS versions lower than 6
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         
     }
-
+    
     // this function is used for iOS versions greater than 6
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
         // this displayRoute will depend on the AttractionModels class, if the route list is populated
         var displayRoute = true
         
+        if (locations != nil ){
+            if(firstTime){
+                currentLocation = locations[0] as CLLocation
+                
+                let camera:MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 1000, 1000)
+                mainMapView.setRegion(camera, animated: true)
+                firstTime = false
+            }else{
+                currentLocation = locations[0] as CLLocation
+                
+            }
+        }else{
+            //Can't get data with some reason.
+        }
         if (displayRoute)
         {
-        // loop through attractions
-        for attraction in attractions  {
-            
-            // get flying distance
-            let startinglocation = manager.location;
-            let endingLocation = CLLocation(latitude: attraction.Latitude, longitude: attraction.Longitude)
-            let distance = startinglocation.distanceFromLocation(endingLocation)
-            
-            attraction.FlyingDistance = distance
-        }
-        
-        attractions.sort({ $0.FlyingDistance < $1.FlyingDistance })
-        
-        var counter = 0
-        var prevMapItem = MKMapItem?()
-        for attraction in attractions  {
-            
-            // get walking distance
-            let req = MKDirectionsRequest()
-            
-            let startingCoordinate = manager.location.coordinate
-            let startingPlaceMark = MKPlacemark(coordinate: startingCoordinate, addressDictionary: nil)
-            let startingMapItem = MKMapItem(placemark: startingPlaceMark)
-            
-            let endingCoordinate = CLLocationCoordinate2D(latitude: attraction.Latitude, longitude: attraction.Longitude)
-            let endingPlaceMark = MKPlacemark(coordinate: endingCoordinate, addressDictionary: nil)
-            let endingMapItem = MKMapItem(placemark: endingPlaceMark)
-            
-            if (counter != 0) {
-                req.setSource(prevMapItem) }
-            else {
-                req.setSource(startingMapItem) }
-            
-            req.transportType = MKDirectionsTransportType.Walking
-            req.requestsAlternateRoutes = false
-            req.setDestination(endingMapItem)
-            
-            prevMapItem = endingMapItem
-            
-            // Call Directions API
-            let dir = MKDirections(request:req)
-            dir.calculateDirectionsWithCompletionHandler() {
-                (response:MKDirectionsResponse!, error:NSError!) in
-                if response == nil {
-                    println(error)
-                    return
-                }
-                let route = response.routes[0] as MKRoute
-                let poly = route.polyline
-                self.mainMapView.addOverlay(poly)
-                attraction.WalkingDistance = route.distance
+            // loop through attractions
+            for attraction in attractions  {
+                
+                // get flying distance
+                let startinglocation = manager.location;
+                let endingLocation = CLLocation(latitude: attraction.Latitude, longitude: attraction.Longitude)
+                let distance = startinglocation.distanceFromLocation(endingLocation)
+                
+                attraction.FlyingDistance = distance
             }
             
-            counter = counter + 1
+            attractions.sort({ $0.FlyingDistance < $1.FlyingDistance })
             
-        }
+            var counter = 0
+            var prevMapItem = MKMapItem?()
+            for attraction in attractions  {
+                
+                // get walking distance
+                let req = MKDirectionsRequest()
+                
+                let startingCoordinate = manager.location.coordinate
+                let startingPlaceMark = MKPlacemark(coordinate: startingCoordinate, addressDictionary: nil)
+                let startingMapItem = MKMapItem(placemark: startingPlaceMark)
+                
+                let endingCoordinate = CLLocationCoordinate2D(latitude: attraction.Latitude, longitude: attraction.Longitude)
+                let endingPlaceMark = MKPlacemark(coordinate: endingCoordinate, addressDictionary: nil)
+                let endingMapItem = MKMapItem(placemark: endingPlaceMark)
+                
+                if (counter != 0) {
+                    req.setSource(prevMapItem) }
+                else {
+                    req.setSource(startingMapItem) }
+                
+                req.transportType = MKDirectionsTransportType.Walking
+                req.requestsAlternateRoutes = false
+                req.setDestination(endingMapItem)
+                
+                prevMapItem = endingMapItem
+                
+                // Call Directions API
+                let dir = MKDirections(request:req)
+                dir.calculateDirectionsWithCompletionHandler() {
+                    (response:MKDirectionsResponse!, error:NSError!) in
+                    if response == nil {
+                        println(error)
+                        return
+                    }
+                    let route = response.routes[0] as MKRoute
+                    let poly = route.polyline
+                    self.mainMapView.addOverlay(poly)
+                    attraction.WalkingDistance = route.distance
+                }
+                
+                counter = counter + 1
+                
+            }
         }
         
     }
@@ -227,6 +255,6 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
         return v
     }
-
+    
 }
 

@@ -31,6 +31,7 @@ class AttractionsModel {
     init() {
         attractionsList = [Attraction]()
         service = CATAzureService()
+        LoadAttractionsList()
     }
     
     //
