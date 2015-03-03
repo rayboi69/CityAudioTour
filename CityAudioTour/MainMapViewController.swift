@@ -25,6 +25,8 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     private var menuController:MenuController!
     private var selectedAttractionId : Int?
     private var attractions = [Attraction]()
+    //Refer to attraction list selected by users after filtering.
+    var selectedAttraction:[Attraction]!
     
     //Current Location button that update user's current location.
     @IBAction func buttonCurrentLocation(sender: AnyObject) {
