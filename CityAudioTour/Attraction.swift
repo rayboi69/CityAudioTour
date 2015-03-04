@@ -29,6 +29,7 @@ class Attraction{
     var Longitude = 0.0
     var isHiden = false
     var TagIDs: [Int] = []
+    var ImagesURLs = [String]()
     
     // temp variables here
     var FlyingDistance = 0.0

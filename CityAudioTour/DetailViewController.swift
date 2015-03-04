@@ -18,7 +18,6 @@ class DetailViewController: UIViewController {
    
     var receiveID : Int?
 
-    private var attractionImages = [AttractionImage]()
     private var service = CATAzureService()
 
     
@@ -30,7 +29,19 @@ class DetailViewController: UIViewController {
         AttractionAddress.text = attraction.AttractionAddress
         AttractionDetail.text = attraction.Detail
         WorkingHours.text = "Mon - Fri\n12:00 - 20:00\nSat-Sun\n 10:00 - 17:00"
-        //AttractionImage.image = attraction.getAttractionImage()
+        
+        if(attraction.ImagesURLs.count > 0)
+        {
+            var firstImageURL = attraction.ImagesURLs.first
+            let url = NSURL(string: firstImageURL!)
+            var data = NSData(contentsOfURL: url!)
+            if (data != nil)
+            {
+                UIImageAttractionImage.image = UIImage(data: data!)
+            }
+        }
+
+        
     }
     
     private func setUpDetail(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void{
@@ -44,11 +55,22 @@ class DetailViewController: UIViewController {
             var city = json["City"].stringValue
             var state = json["StateAbbreviation"].stringValue
             var zip = json["ZipCode"].stringValue
+            var attractionImages = json["AttractionImages"].arrayValue
+            
+            var images = [String]()
+
+            for imageItem in attractionImages {
+                
+                var url = imageItem["URL"].stringValue
+                images.append(url)
+            }
         
             attraction.setAddress(address, city: city, state: state, ZIP: zip)
             attraction.AttractionName = json["Name"].stringValue
             attraction.Detail = json["Details"].stringValue
             attraction.Content = json["TextContent"].stringValue
+            attraction.ImagesURLs = images
+            
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.setUpUI(attraction)
@@ -65,19 +87,7 @@ class DetailViewController: UIViewController {
         
         service.GetAttraction(receiveID!, MainThread: NSOperationQueue.mainQueue(), handler: handler)
         
-        attractionImages = service.GetAttractionImagebyId(receiveID!);
-        
-        if(attractionImages.count > 0)
-        {
-            var firstImage = attractionImages.first
-            let url = NSURL(string: firstImage!.getURLl())
-            var data = NSData(contentsOfURL: url!)
-            if (data != nil)
-            {
-                UIImageAttractionImage.image = UIImage(data: data!)
-            }
         }
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
