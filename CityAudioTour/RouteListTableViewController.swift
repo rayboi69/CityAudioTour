@@ -15,13 +15,16 @@ class RouteListTableViewController: UITableViewController {
     var routes: [Route]!
     
     func prepareSelectRoute(row: Int) -> [Attraction] {
-        // TODO: implement this method
+        // TODO: need to finish implement this method
         //println(routes[row].AttractionIDs)
+        
+        //fake data
         var attractions = AttractionsModel.sharedInstance.attractionsList!
         var selectRoute = [Attraction]()
         selectRoute.append(attractions[1])
         selectRoute.append(attractions[2])
         selectRoute.append(attractions[3])
+        
         return selectRoute
     }
     
