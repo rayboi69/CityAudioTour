@@ -26,6 +26,7 @@ class CATAzureService
                     var latitude = attraction["Latitude"].doubleValue
                     var longitude = attraction["Longitude"].doubleValue
                     var categoryId = attraction["CategoryID"].intValue
+                    var tagIds = attraction["TagIDs"].arrayValue
                     
                     var tempAttraction = Attraction()
                     tempAttraction.AttractionName = name
@@ -33,9 +34,9 @@ class CATAzureService
                     tempAttraction.Longitude = longitude
                     tempAttraction.AttractionID = attractionId
                     tempAttraction.CategoryID = categoryId
-                    //TODO - replace with real Tags IDS
-                    tempAttraction.TagIDs = [1, 2, 3, 4, 5, 6]
-                    tempAttraction.isHiden = false;
+                    if let tagsIDArray = attraction["TagIDs"].arrayObject as? [Int] {
+                        tempAttraction.TagIDs = tagsIDArray
+                    }
                     
                     attractions.append(tempAttraction)
                 }
