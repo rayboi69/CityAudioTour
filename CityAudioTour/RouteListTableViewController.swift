@@ -70,6 +70,7 @@ class RouteListTableViewController: UITableViewController {
                     if let indexPath = self.tableView.indexPathForSelectedRow() {
                         let mapScene = segue.destinationViewController as MainMapViewController
                         mapScene.selectedAttraction = self.prepareSelectRoute(indexPath.row)
+                        mapScene.isRouteSelected = true
                     }
                 default: break
             }
