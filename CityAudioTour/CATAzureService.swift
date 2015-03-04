@@ -109,14 +109,12 @@ class CATAzureService
             let routeArray = content.arrayValue
             
             for route in routeArray {
-                var id = route["RouteID"].intValue
-                var name = route["Name"].stringValue
-                //var attractionIDArray = route["AttractionIDs"].array
-                
                 var tempRoute = Route()
-                tempRoute.RouteID = id
-                tempRoute.Name = name
-                tempRoute.AttractionIDs = [1,2,3,4] //fake data
+                tempRoute.RouteID = route["RouteID"].intValue
+                tempRoute.Name = route["Name"].stringValue
+                if let attractionIDArray = route["AttractionIDs"].arrayObject as? [Int] {
+                    tempRoute.AttractionIDs = attractionIDArray
+                }
                 
                 routes.append(tempRoute)
             }

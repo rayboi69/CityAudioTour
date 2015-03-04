@@ -10,21 +10,24 @@ import UIKit
 
 class RouteListTableViewController: UITableViewController {
 
+    var sectionTitle = "Route List"
     var server = CATAzureService()
     var routes: [Route]!
-    var selectRoute: [Attraction]!
+    
+    func prepareSelectRoute(row: Int) -> [Attraction] {
+        // TODO: implement this method
+        //println(routes[row].AttractionIDs)
+        var attractions = AttractionsModel.sharedInstance.attractionsList!
+        var selectRoute = [Attraction]()
+        selectRoute.append(attractions[1])
+        selectRoute.append(attractions[2])
+        selectRoute.append(attractions[3])
+        return selectRoute
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         routes = server.GetRoutes()
-        selectRoute = [Attraction]()
-        
-        //test with fake data
-        var a = AttractionsModel.sharedInstance.attractionsList!
-        selectRoute.append(a[1])
-        selectRoute.append(a[2])
-        selectRoute.append(a[3])
-        selectRoute.append(a[4])
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,11 +47,14 @@ class RouteListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as UITableViewCell
-
         // Configure the cell...
         let route = routes![indexPath.row]
         cell.textLabel?.text = route.Name
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitle
     }
 
     // MARK: - Navigation
@@ -60,7 +66,7 @@ class RouteListTableViewController: UITableViewController {
                 case "SentRouteToMapView":
                     if let indexPath = self.tableView.indexPathForSelectedRow() {
                         let mapScene = segue.destinationViewController as MainMapViewController
-                        mapScene.selectedAttraction = selectRoute
+                        mapScene.selectedAttraction = self.prepareSelectRoute(indexPath.row)
                     }
                 default: break
             }
