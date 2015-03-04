@@ -165,7 +165,6 @@ class CATAzureService
         connectToDB(requestMessage, MainThreadQueue: MainThread, handler)
     }
     
-    
     func GetAttractionContentByID(AttractionID:Int, MainThread:NSOperationQueue, handler:(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void){
 
         let finalURL = apiURL + "/attraction/" + String(AttractionID) + "/contents"
