@@ -12,7 +12,6 @@ class Route{
     
     var RouteID = 0
     var Name = ""
-    var CategoryID = 0
     var AttractionIDs: [Int] = []
     
     init(){}

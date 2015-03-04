@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RouteCell" editingAccessoryType="detailButton" textLabel="YH3-vU-Ywe" style="IBUITableViewCellStyleDefault" id="Mrm-IM-6VO">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="RouteCell" editingAccessoryType="detailButton" textLabel="YH3-vU-Ywe" style="IBUITableViewCellStyleDefault" id="Mrm-IM-6VO">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mrm-IM-6VO" id="o3j-uU-YOx">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -27,6 +27,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="push" identifier="SentRouteToMapView" id="eO9-uG-Wx7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -35,16 +38,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="6ft-Kh-IHN">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="QXT-gY-1i9">
-                            <connections>
-                                <segue destination="Uwq-Ng-0k1" kind="push" id="Scy-QZ-xL6"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="QXT-gY-1i9"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW1-bv-q1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="-1123"/>
+            <point key="canvasLocation" x="906" y="-1214"/>
         </scene>
         <!--Attraction List Table View Controller-->
         <scene sceneID="SJK-zJ-Lpg">
@@ -220,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="412" y="323"/>
+            <point key="canvasLocation" x="298" y="323"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="hjB-lb-agV">
@@ -401,7 +400,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5r4-jk-5JU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20.800000000000001" y="323.75999999999999"/>
+            <point key="canvasLocation" x="-279" y="323"/>
         </scene>
     </scenes>
     <resources>
@@ -417,7 +416,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Scy-QZ-xL6"/>
+        <segue reference="eO9-uG-Wx7"/>
         <segue reference="Qrk-yQ-FwB"/>
     </inferredMetricsTieBreakers>
 </document>

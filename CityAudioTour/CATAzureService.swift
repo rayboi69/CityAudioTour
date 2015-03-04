@@ -111,13 +111,12 @@ class CATAzureService
             for route in routeArray {
                 var id = route["RouteID"].intValue
                 var name = route["Name"].stringValue
-                var catID = route["CategoryID"].intValue
+                //var attractionIDArray = route["AttractionIDs"].array
                 
                 var tempRoute = Route()
                 tempRoute.RouteID = id
                 tempRoute.Name = name
-                tempRoute.CategoryID = catID
-                tempRoute.AttractionIDs = [] //waiting for server to implement
+                tempRoute.AttractionIDs = [1,2,3,4] //fake data
                 
                 routes.append(tempRoute)
             }
