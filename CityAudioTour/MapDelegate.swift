@@ -37,6 +37,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
                 mapView.mainMapView.setRegion(camera, animated: true)
                 firstTime = false
                 isCurrentBtnPressed = false
+                manager.stopUpdatingLocation()
             }
         }else{
             //Can't get data with some reason.
