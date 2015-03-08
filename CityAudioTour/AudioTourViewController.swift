@@ -15,7 +15,8 @@ class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
     @IBOutlet weak var speechContent: UITextView!
     
     private var service = CATAzureService()
-    private var speaker = TextToSpeech()
+    private var synthersizer = AVSpeechSynthesizer()
+    private var utterance = AVSpeechUtterance(string: "")
     var receiveID : Int?
     
     
@@ -24,16 +25,22 @@ class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
     }
     
     @IBAction func pauseAudio(sender: AnyObject) {
-        speaker.pause()
+        synthersizer.pauseSpeakingAtBoundary(.Immediate)
     }
     
     @IBAction func playAudio(sender: UIButton) {
-        self.speaker.synthersizer.delegate = self
-        speaker.play(speechContent.text)
+        if !synthersizer.speaking{
+            utterance = AVSpeechUtterance(string: speechContent.text)
+            utterance.rate = 0.1
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            synthersizer.speakUtterance(utterance)
+        } else if synthersizer.paused{
+            synthersizer.continueSpeaking()
+        }
     }
     
     @IBAction func stopAudio(sender: UIButton) {
-        speaker.stop()
+        synthersizer.stopSpeakingAtBoundary(.Immediate)
     }
   
     private func retrieveDataFromServer(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void {
@@ -54,15 +61,15 @@ class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.synthersizer.delegate = self
         let handler = retrieveDataFromServer
         service.GetAttractionContentByID(receiveID!, MainThread: NSOperationQueue.mainQueue(), handler: handler)
 
         //speechContent.scrollRangeToVisible(NSMakeRange(0, 0))     // Set text view to start at the top line
     }
 
-    override func viewDidDisappear(animated: Bool) {
-        speaker.stop()
+    override func viewWillDisappear(animated: Bool) {
+        synthersizer.stopSpeakingAtBoundary(.Word)
     }
     
     override func didReceiveMemoryWarning() {

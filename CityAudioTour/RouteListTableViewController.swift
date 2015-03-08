@@ -13,17 +13,23 @@ class RouteListTableViewController: UITableViewController {
     var sectionTitle = "Route List"
     var server = CATAzureService()
     var routes: [Route]!
+    var attractionList = AttractionsModel.sharedInstance.attractionsList!
+    var selectRoute = [Attraction]()
     
     func prepareSelectRoute(row: Int) -> [Attraction] {
         // TODO: need to finish implement this method
         //println(routes[row].AttractionIDs)
         
         //fake data
-        var attractions = AttractionsModel.sharedInstance.attractionsList!
-        var selectRoute = [Attraction]()
-        selectRoute.append(attractions[1])
-        selectRoute.append(attractions[2])
-        selectRoute.append(attractions[3])
+        selectRoute.append(attractionList[1])
+        selectRoute.append(attractionList[2])
+        selectRoute.append(attractionList[3])
+        
+        let listOfID = routes[row].AttractionIDs
+        let bobs = filter(attractionList) {
+            $0.AttractionID == listOfID[0]
+        }
+        
         
         return selectRoute
     }

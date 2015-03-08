@@ -27,10 +27,12 @@ class AttractionsModel {
     
     var service: CATAzureService?
     var attractionsList: [Attraction]?
+    var selectAttractions: [Attraction]
     
     init() {
         attractionsList = [Attraction]()
         service = CATAzureService()
+        selectAttractions = []
         LoadAttractionsList()
     }
     

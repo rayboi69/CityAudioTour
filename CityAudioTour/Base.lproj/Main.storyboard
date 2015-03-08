@@ -27,9 +27,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" identifier="SentRouteToMapView" id="eO9-uG-Wx7"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -43,7 +40,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW1-bv-q1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="-1214"/>
+            <point key="canvasLocation" x="906" y="-1129"/>
         </scene>
         <!--Attraction List Table View Controller-->
         <scene sceneID="SJK-zJ-Lpg">
@@ -416,7 +413,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eO9-uG-Wx7"/>
         <segue reference="Qrk-yQ-FwB"/>
     </inferredMetricsTieBreakers>
 </document>
