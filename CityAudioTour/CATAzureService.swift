@@ -1,11 +1,12 @@
 import Foundation
 
-class CATAzureService
+public class CATAzureService
 {
+    public init(){}
     
     private var apiURL = "http://cityaudiotourweb.azurewebsites.net/api"
     
-    internal func GetAttractions() -> [Attraction]
+    public func GetAttractions() -> [Attraction]
     {
         var attractions = [Attraction]()
 
