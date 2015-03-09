@@ -14,24 +14,18 @@ class RouteListTableViewController: UITableViewController {
     var server = CATAzureService()
     var routes: [Route]!
     var attractionList = AttractionsModel.sharedInstance.attractionsList!
-    var selectRoute = [Attraction]()
+    var attractionsInSelectRoute = [Attraction]()
     
     func prepareSelectRoute(row: Int) -> [Attraction] {
-        // TODO: need to finish implement this method
         //println(routes[row].AttractionIDs)
-        
-        //fake data
-        selectRoute.append(attractionList[1])
-        selectRoute.append(attractionList[2])
-        selectRoute.append(attractionList[3])
-        
         let listOfID = routes[row].AttractionIDs
-        let bobs = filter(attractionList) {
-            $0.AttractionID == listOfID[0]
+        for id in listOfID {
+            let attraction = attractionList.filter({
+                $0.AttractionID == id
+            })
+            attractionsInSelectRoute += attraction
         }
-        
-        
-        return selectRoute
+        return attractionsInSelectRoute
     }
     
     override func viewDidLoad() {
@@ -66,6 +60,11 @@ class RouteListTableViewController: UITableViewController {
         return sectionTitle
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        AttractionsModel.sharedInstance.selectAttractions = prepareSelectRoute(indexPath.row)
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
