@@ -51,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AttractionCell" textLabel="97v-ew-v1v" style="IBUITableViewCellStyleDefault" id="G0e-Fw-yqI">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="AttractionCell" textLabel="97v-ew-v1v" style="IBUITableViewCellStyleDefault" id="G0e-Fw-yqI">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G0e-Fw-yqI" id="Cge-vp-3bB">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -65,7 +65,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="XbU-po-C79" kind="push" identifier="ListToDetail" id="yuQ-MS-a0k"/>
+                                    <segue destination="XbU-po-C79" kind="push" identifier="ListToDetail" trigger="accessoryAction" id="qPR-03-KoJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -413,6 +413,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Qrk-yQ-FwB"/>
+        <segue reference="qPR-03-KoJ"/>
     </inferredMetricsTieBreakers>
 </document>
