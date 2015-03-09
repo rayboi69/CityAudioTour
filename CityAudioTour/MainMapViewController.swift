@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MainMapViewController: UIViewController,IMapController{
     
     //Interacting UI Elements
     @IBOutlet weak var mainMapView: MKMapView!
@@ -25,13 +25,13 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     private var menuController:MenuController!
     private var selectedAttractionId : Int?
     private var attractions = [Attraction]()
+    private var isRouteSelected:Bool = false;
     //Refer to attraction list selected by users after filtering.
-    var selectedAttraction:[Attraction] = [Attraction]()
-    var isRouteSelected:Bool = false;
+    private var selectedAttraction:[Attraction] = [Attraction]()
+    
     
     //Current Location button that update user's current location.
     @IBAction func buttonCurrentLocation(sender: AnyObject) {
-        mapController.buttonIsPressed()
         locationManager.startUpdatingLocation()
     }
     
@@ -50,7 +50,8 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         //If selectedAttraction is not empty, that means user select some route or filter it.
         selectedAttraction = AttractionsModel.sharedInstance.selectAttractions
         if !selectedAttraction.isEmpty{
-            createPinPoint()
+            mapController.wantPinPoint()
+            locationManager.startUpdatingLocation()
         }
     }
     //Show Navigator bar when moving to other views.
@@ -94,14 +95,13 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
         
         //Start getting user's current location when application's started.
-        locationManager.startUpdatingLocation()
         mainMapView.showsUserLocation = true
-        //Create all pin points on the map based on attraction list.
-        createPinPoint()
+        locationManager.startUpdatingLocation()
+        
     }
     
     //Create all annotations on the map.
-    private func createPinPoint(){
+    func createPinPoint(){
         //Clear all old annotation
         let oldAnnotationList = mainMapView.annotations
         mainMapView.removeAnnotations(oldAnnotationList)
@@ -139,7 +139,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             // loop through attractions
             for attraction in attractions  {
                 // get flying distance
-                let startinglocation = locationManager.location
+                let startinglocation = mapController.getCurrentLocation()
                 let endingLocation = CLLocation(latitude: attraction.Latitude, longitude: attraction.Longitude)
                 let distance = startinglocation.distanceFromLocation(endingLocation)
         
@@ -155,7 +155,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
                 // get walking distance
         
-                let startingCoordinate = locationManager.location.coordinate
+                let startingCoordinate = mapController.getCurrentLocation().coordinate
                 let startingPlaceMark = MKPlacemark(coordinate: startingCoordinate, addressDictionary: nil)
                 let startingMapItem = MKMapItem(placemark: startingPlaceMark)
         
@@ -217,12 +217,19 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.performSegueWithIdentifier("detailview", sender: self)
     }
     
+    func drawRoute(){
+        isRouteSelected = true;
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if (segue.identifier == "detailview") {
             var detailController:DetailViewController = segue.destinationViewController as DetailViewController
             detailController.receiveID = selectedAttractionId
+        }else if(segue.identifier == "RoutePage"){
+            var routeController:RouteListTableViewController = segue.destinationViewController as RouteListTableViewController
+            routeController.setController(self)
         }
     }
 }

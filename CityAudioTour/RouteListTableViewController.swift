@@ -15,6 +15,11 @@ class RouteListTableViewController: UITableViewController {
     var routes: [Route]!
     var attractionList = AttractionsModel.sharedInstance.attractionsList!
     var attractionsInSelectRoute = [Attraction]()
+    private var setRoute:IMapController?
+    
+    func setController(controller:IMapController){
+        setRoute = controller;
+    }
     
     func prepareSelectRoute(row: Int) -> [Attraction] {
         //println(routes[row].AttractionIDs)
@@ -62,24 +67,25 @@ class RouteListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         AttractionsModel.sharedInstance.selectAttractions = prepareSelectRoute(indexPath.row)
+        setRoute?.drawRoute()
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-                case "SentRouteToMapView":
-                    if let indexPath = self.tableView.indexPathForSelectedRow() {
-                        let mapScene = segue.destinationViewController as MainMapViewController
-                        mapScene.selectedAttraction = self.prepareSelectRoute(indexPath.row)
-                        mapScene.isRouteSelected = true
-                    }
-                default: break
-            }
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if let identifier = segue.identifier {
+//            switch identifier {
+//                case "SentRouteToMapView":
+//                    if let indexPath = self.tableView.indexPathForSelectedRow() {
+//                        let mapScene = segue.destinationViewController as MainMapViewController
+//                        mapScene.selectedAttraction = self.prepareSelectRoute(indexPath.row)
+//                        mapScene.isRouteSelected = true
+//                    }
+//                default: break
+//            }
+//        }
+//    }
 
 }
