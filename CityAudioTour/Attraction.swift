@@ -16,7 +16,7 @@
 
 import UIKit
 
-class Attraction{
+public class Attraction{
     
     var AttractionName = ""
     var AttractionAddress = ""

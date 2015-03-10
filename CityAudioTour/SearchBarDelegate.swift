@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class SearchBarDelegate:NSObject,UISearchBarDelegate{
     //Need this constructor to create a super class (NSObject).

@@ -15,9 +15,10 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     private let latitudeMeter:CLLocationDistance = 1500
     private let longitudeMeter:CLLocationDistance = 1500
     private let mapView:MainMapViewController!
+    private var currentLocation:CLLocation?
     private var camera:MKCoordinateRegion!
     private var firstTime = true
-    private var isCurrentBtnPressed = false
+    private var needAttraction = true
     
     //Need this constructor to create a super class (NSObject).
     override init(){
@@ -31,14 +32,17 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     //Get current Location when locationManager.startUpdatingLocation() is called.
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if (locations != nil){
-            if (firstTime || isCurrentBtnPressed){
-                let currentLocation = locations[0] as CLLocation
-                camera = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, latitudeMeter, longitudeMeter)
-                mapView.mainMapView.setRegion(camera, animated: true)
-                firstTime = false
-                isCurrentBtnPressed = false
-                manager.stopUpdatingLocation()
+            currentLocation = locations[0] as? CLLocation
+            camera = MKCoordinateRegionMakeWithDistance(currentLocation!.coordinate, latitudeMeter, longitudeMeter)
+            mapView.mainMapView.setRegion(camera, animated: true)
+            manager.stopUpdatingLocation()
+            
+            if needAttraction{
+                mapView.createPinPoint()
+                needAttraction = false
             }
+
+            
         }else{
             //Can't get data with some reason.
         }
@@ -90,9 +94,11 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
         return renderer
     }
     
-    //Just extra function to make currrentLocation button works.
-    func buttonIsPressed(){
-        isCurrentBtnPressed = true
+    func wantPinPoint(){
+        needAttraction = true
     }
     
+    func getCurrentLocation() -> CLLocation{
+        return currentLocation!;
+    }
 }

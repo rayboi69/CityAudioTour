@@ -13,6 +13,7 @@
 		088F03601A7F04B300292507 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F035F1A7F04B300292507 /* AVFoundation.framework */; };
 		088F03621A7F04B900292507 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03611A7F04B900292507 /* CoreData.framework */; };
 		088F03641A7F04C200292507 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03631A7F04C200292507 /* CoreLocation.framework */; };
+		089A59911AAD6257008F82A6 /* CATAzureServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A59901AAD6257008F82A6 /* CATAzureServiceTests.swift */; };
 		08B855081A79F90F006F035F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B855071A79F90F006F035F /* AppDelegate.swift */; };
 		08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08B855091A79F90F006F035F /* CityAudioTour.xcdatamodeld */; };
 		08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8550C1A79F90F006F035F /* MainMapViewController.swift */; };
@@ -37,6 +38,7 @@
 		C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE61A8D7EB900FC104F /* Attraction.swift */; };
 		C1852C6B1AA561320078B29E /* SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1852C6A1AA561320078B29E /* SearchBarDelegate.swift */; };
 		C1852C6D1AA561470078B29E /* MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1852C6C1AA561470078B29E /* MapDelegate.swift */; };
+		C1C6B7021AAE295A00DB7615 /* IMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C6B7011AAE295A00DB7615 /* IMapController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		088F035F1A7F04B300292507 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		088F03611A7F04B900292507 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		088F03631A7F04C200292507 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		089A59901AAD6257008F82A6 /* CATAzureServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATAzureServiceTests.swift; sourceTree = "<group>"; };
+		089A59921AAD63B9008F82A6 /* CityAudioTour-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CityAudioTour-Bridging-Header.h"; path = "CityAudioTour/CityAudioTour-Bridging-Header.h"; sourceTree = "<group>"; };
 		08B855021A79F90F006F035F /* CityAudioTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityAudioTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08B855061A79F90F006F035F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08B855071A79F90F006F035F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		C1852C6A1AA561320078B29E /* SearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
 		C1852C6C1AA561470078B29E /* MapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
+		C1C6B7011AAE295A00DB7615 /* IMapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +162,7 @@
 		08B854F91A79F90E006F035F = {
 			isa = PBXGroup;
 			children = (
+				089A59921AAD63B9008F82A6 /* CityAudioTour-Bridging-Header.h */,
 				08277B8A1A8478FC00D97F65 /* MapKit.framework */,
 				088F03631A7F04C200292507 /* CoreLocation.framework */,
 				088F03611A7F04B900292507 /* CoreData.framework */,
@@ -206,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				08B855201A79F90F006F035F /* CityAudioTourTests.swift */,
+				089A59901AAD6257008F82A6 /* CATAzureServiceTests.swift */,
 				08B8551E1A79F90F006F035F /* Supporting Files */,
 			);
 			path = CityAudioTourTests;
@@ -224,6 +231,7 @@
 			children = (
 				C1852C6A1AA561320078B29E /* SearchBarDelegate.swift */,
 				C1852C6C1AA561470078B29E /* MapDelegate.swift */,
+				C1C6B7011AAE295A00DB7615 /* IMapController.swift */,
 			);
 			name = DelegateClass;
 			sourceTree = "<group>";
@@ -352,6 +360,7 @@
 				C1852C6D1AA561470078B29E /* MapDelegate.swift in Sources */,
 				3191CB581A92D93900939865 /* AttractionContent.swift in Sources */,
 				083AEF481A899123004D6874 /* CATAzureService.swift in Sources */,
+				C1C6B7021AAE295A00DB7615 /* IMapController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089A59911AAD6257008F82A6 /* CATAzureServiceTests.swift in Sources */,
 				08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
