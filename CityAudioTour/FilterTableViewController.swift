@@ -97,6 +97,7 @@ class FilterTableViewController: UITableViewController {
     
     override func viewWillDisappear(animated: Bool) {
         AttractionsModel.sharedInstance.FilterAttraction(catSet, selectedTag: tagSet)
+        //TODO - Remove this example code after migrating to the new filtering system.
         AttractionsModel.sharedInstance.FilterAttractions(catSet, selectedTag: tagSet, isRoute: false)
         var tmp = AttractionsModel.sharedInstance.filteredAttractions
     }
