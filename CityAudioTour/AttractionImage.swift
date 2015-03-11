@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class AttractionImage{
     private var AttractionImageID:Int = 0
     private var AttractionID:Int = 0
