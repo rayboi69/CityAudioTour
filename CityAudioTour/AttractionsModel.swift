@@ -25,14 +25,15 @@ class AttractionsModel {
         return Static.instance!
     }
     
-    var service: CATAzureService?
-    var attractionsList: [Attraction]?
-    var selectAttractions: [Attraction]
+    private var _service: CATAzureService?
+    private var _attractionsList: [Attraction]?
+    private var _selectAttractions: [Attraction]?
+    
     
     init() {
-        attractionsList = [Attraction]()
-        service = CATAzureService()
-        selectAttractions = []
+        _attractionsList = [Attraction]()
+        _service = CATAzureService()
+        _selectAttractions = []
         LoadAttractionsList()
     }
     
@@ -40,8 +41,8 @@ class AttractionsModel {
     // Initializes the attractionsList with the data from the server
     //
     func LoadAttractionsList() -> [Attraction]{
-        attractionsList = self.service?.GetAttractions()
-        return self.attractionsList!
+        _attractionsList = _service?.GetAttractions()
+        return _attractionsList!
     }
 
     
@@ -49,8 +50,7 @@ class AttractionsModel {
     // Params: selectedCat: NSSet and selectedTag: NSSet - Should come from the ClassifiedModel
     //
     func FilterAttraction(selectedCat: NSSet, selectedTag: NSSet) {
-        println("***** Filtering *****");
-        for attraction in attractionsList!
+        for attraction in _attractionsList!
         {
             attraction.isHiden = true
             
@@ -69,4 +69,23 @@ class AttractionsModel {
             }
         }
     }
+    
+    //Lazy Getters
+    var attractionsList: [Attraction] {
+        get {
+            return _attractionsList!
+        }
+    }
+    
+    
+    var selectAttractions: [Attraction] {
+        get {
+            return _selectAttractions!
+        }
+        set {
+            _selectAttractions = newValue
+        }
+    }
+    
+
 }

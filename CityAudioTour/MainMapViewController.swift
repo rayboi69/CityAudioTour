@@ -110,7 +110,7 @@ class MainMapViewController: UIViewController,IMapController{
             attractions = selectedAttraction
         }else{
             // Webservice call to get attractions
-            attractions = AttractionsModel.sharedInstance.attractionsList!
+            attractions = AttractionsModel.sharedInstance.attractionsList
         }
         
         // loop through attractions

@@ -13,7 +13,7 @@ class RouteListTableViewController: UITableViewController {
     var sectionTitle = "Route List"
     var server = CATAzureService()
     var routes: [Route]!
-    var attractionList = AttractionsModel.sharedInstance.attractionsList!
+    var attractionList = AttractionsModel.sharedInstance.attractionsList
     var attractionsInSelectRoute = [Attraction]()
     private var setRoute:IMapController?
     
