@@ -244,7 +244,11 @@ class MainMapViewController: UIViewController,IMapController{
             let longitudeMeter = (maxLongitude - minLongitude) / 800
             let Span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latitudeMeter, longitudeDelta: longitudeMeter)
             
-            let cameraCenter:MKCoordinateRegion = MKCoordinateRegionMake(mapController.getCurrentLocation().coordinate,Span)
+            let centerLat = (maxLatitude + minLatitude) - 0.02
+            let centerLong = (maxLongitude + minLongitude) + 0.02
+            let center:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong)
+            
+            let cameraCenter:MKCoordinateRegion = MKCoordinateRegionMake(center,Span)
             return cameraCenter
     }
 
