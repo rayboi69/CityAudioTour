@@ -32,6 +32,7 @@ class MainMapViewController: UIViewController,IMapController{
     
     //Current Location button that update user's current location.
     @IBAction func buttonCurrentLocation(sender: AnyObject) {
+        mapController.currentBtnisClicked()
         locationManager.startUpdatingLocation()
     }
     
@@ -113,6 +114,11 @@ class MainMapViewController: UIViewController,IMapController{
             attractions = AttractionsModel.sharedInstance.attractionsList
         }
         
+        var maxLatitude:CLLocationDegrees = 0
+        var minLatitude:CLLocationDegrees = 0
+        var maxLongitude:CLLocationDegrees = 0
+        var minLongitude:CLLocationDegrees = 0
+        
         // loop through attractions
         for attraction in attractions  {
             if !attraction.isHiden {
@@ -121,10 +127,42 @@ class MainMapViewController: UIViewController,IMapController{
                 pin.coordinate.latitude = attraction.Latitude
                 pin.coordinate.longitude = attraction.Longitude
                 
+                if pin.coordinate.latitude > maxLatitude {
+                    maxLatitude = pin.coordinate.latitude
+                }
+                if pin.coordinate.latitude < minLatitude {
+                    minLatitude = pin.coordinate.latitude
+                }
+                if pin.coordinate.longitude > maxLongitude {
+                    maxLongitude = pin.coordinate.longitude
+                }
+                if pin.coordinate.longitude < minLongitude {
+                    minLongitude = pin.coordinate.longitude
+                }
                 // Add Pin to Map
                 self.mainMapView.addAnnotation(pin)
             }
         }
+        
+        let currentLocation = mapController.getCurrentLocation()
+        
+        if currentLocation.coordinate.latitude > maxLatitude {
+            maxLatitude = currentLocation.coordinate.latitude
+        }
+        if currentLocation.coordinate.latitude < minLatitude {
+            minLatitude = currentLocation.coordinate.latitude
+        }
+        if currentLocation.coordinate.longitude > maxLongitude {
+            maxLongitude = currentLocation.coordinate.longitude
+        }
+        if currentLocation.coordinate.longitude < minLongitude {
+            minLongitude = currentLocation.coordinate.longitude
+        }
+        
+        
+        var camera = calculateCenter(maxLatitude, minLatitude: minLatitude, maxLongitude: maxLongitude, minLongitude: minLongitude)
+        mainMapView.setRegion(camera, animated: true)
+        
         //Start creating route based on attraction list.
         createRoute()
     }
@@ -197,6 +235,17 @@ class MainMapViewController: UIViewController,IMapController{
             }
             isRouteSelected = false
         }
+    }
+    
+    private func calculateCenter(maxLatitude:CLLocationDegrees,minLatitude:CLLocationDegrees,
+        maxLongitude:CLLocationDegrees, minLongitude:CLLocationDegrees) -> MKCoordinateRegion{
+            
+            let latitudeMeter = (maxLatitude - minLatitude) / 800
+            let longitudeMeter = (maxLongitude - minLongitude) / 800
+            let Span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latitudeMeter, longitudeDelta: longitudeMeter)
+            
+            let cameraCenter:MKCoordinateRegion = MKCoordinateRegionMake(mapController.getCurrentLocation().coordinate,Span)
+            return cameraCenter
     }
 
     //When the button in call out window is pressed, it will go to detail page.

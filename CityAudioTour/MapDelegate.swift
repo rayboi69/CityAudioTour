@@ -17,7 +17,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     private let mapView:MainMapViewController!
     private var currentLocation:CLLocation?
     private var camera:MKCoordinateRegion!
-    private var firstTime = true
+    private var isFindingCurrent = false
     private var needAttraction = true
     
     //Need this constructor to create a super class (NSObject).
@@ -33,15 +33,18 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if (locations != nil){
             currentLocation = locations[0] as? CLLocation
-            camera = MKCoordinateRegionMakeWithDistance(currentLocation!.coordinate, latitudeMeter, longitudeMeter)
-            mapView.mainMapView.setRegion(camera, animated: true)
+            if isFindingCurrent {
+                camera = MKCoordinateRegionMakeWithDistance(currentLocation!.coordinate, latitudeMeter, longitudeMeter)
+                mapView.mainMapView.setRegion(camera, animated: true)
+                isFindingCurrent = false
+            }
             manager.stopUpdatingLocation()
             
             if needAttraction{
                 mapView.createPinPoint()
                 needAttraction = false
             }
-
+            
             
         }else{
             //Can't get data with some reason.
@@ -96,6 +99,10 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     
     func wantPinPoint(){
         needAttraction = true
+    }
+    
+    func currentBtnisClicked(){
+        isFindingCurrent = true
     }
     
     func getCurrentLocation() -> CLLocation{
