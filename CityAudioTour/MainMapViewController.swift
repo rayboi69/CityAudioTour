@@ -48,7 +48,7 @@ class MainMapViewController: UIViewController,IMapController{
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         //If selectedAttraction is not empty, that means user select some route or filter it.
-        selectedAttraction = AttractionsModel.sharedInstance.selectAttractions
+        selectedAttraction = AttractionsModel.sharedInstance.routeAttractions
         if !selectedAttraction.isEmpty{
             mapController.wantPinPoint()
             locationManager.startUpdatingLocation()

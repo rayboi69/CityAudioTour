@@ -66,7 +66,7 @@ class RouteListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        AttractionsModel.sharedInstance.selectAttractions = prepareSelectRoute(indexPath.row)
+        AttractionsModel.sharedInstance.routeAttractions = prepareSelectRoute(indexPath.row)
         setRoute?.drawRoute()
         navigationController?.popToRootViewControllerAnimated(true)
     }

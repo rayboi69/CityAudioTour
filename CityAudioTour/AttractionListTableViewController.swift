@@ -59,7 +59,7 @@ class AttractionListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let attraction = attractions![indexPath.row]
-        AttractionsModel.sharedInstance.selectAttractions = [attraction]
+        AttractionsModel.sharedInstance.routeAttractions = [attraction]
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
