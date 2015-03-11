@@ -22,7 +22,7 @@ class RouteListTableViewController: UITableViewController {
     }
     
     func prepareSelectRoute(row: Int) -> [Attraction] {
-        //println(routes[row].AttractionIDs)
+        attractionsInSelectRoute = []
         let listOfID = routes[row].AttractionIDs
         for id in listOfID {
             let attraction = attractionList.filter({

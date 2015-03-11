@@ -34,9 +34,7 @@
                             <outlet property="delegate" destination="2Ov-7H-m1O" id="yTS-Dc-hst"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6ft-Kh-IHN">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="QXT-gY-1i9"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="6ft-Kh-IHN"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW1-bv-q1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
