@@ -48,12 +48,12 @@ class MainMapViewController: UIViewController,IMapController{
     //Hide Navigator bar when main screen is appeared.
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        //If selectedAttraction is not empty, that means user select some route or filter it.
-        selectedAttraction = AttractionsModel.sharedInstance.routeAttractions
-        if !selectedAttraction.isEmpty{
+        //TODO - Validate if its showing attractions or routes
+        //selectedAttraction = AttractionsModel.sharedInstance.routeAttractions
+        //if !selectedAttraction.isEmpty{
             mapController.wantPinPoint()
             locationManager.startUpdatingLocation()
-        }
+        //}
     }
     //Show Navigator bar when moving to other views.
     override func viewDidDisappear(animated: Bool) {
@@ -121,7 +121,6 @@ class MainMapViewController: UIViewController,IMapController{
         
         // loop through attractions
         for attraction in attractions  {
-            if !attraction.isHiden {
                 var pin = MKPointAnnotation()
                 pin.title = attraction.AttractionName
                 pin.coordinate.latitude = attraction.Latitude
@@ -141,7 +140,6 @@ class MainMapViewController: UIViewController,IMapController{
                 }
                 // Add Pin to Map
                 self.mainMapView.addAnnotation(pin)
-            }
         }
         
         let currentLocation = mapController.getCurrentLocation()
@@ -282,7 +280,8 @@ class MainMapViewController: UIViewController,IMapController{
             detailController.receiveID = selectedAttractionId
         }else if(segue.identifier == "RoutePage"){
             var routeController:RouteListTableViewController = segue.destinationViewController as RouteListTableViewController
-            routeController.setController(self)
+            //TODO - Integrate with new filtering system
+            //routeController.setController(self)
         }
     }
 }

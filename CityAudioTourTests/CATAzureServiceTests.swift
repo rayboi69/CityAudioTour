@@ -51,7 +51,6 @@ class CATAzureServiceTests: XCTestCase {
             XCTAssertEqual(result[index].Detail, "", "No Attraction Detail yet")
             XCTAssertEqual(expectation[index].Content, "", "No Attraction Content yet")
             XCTAssertEqual(result[index].Content, "", "No Attraction Content yet")
-            XCTAssertEqual(expectation[index].isHiden, result[index].isHiden, "Attraction is shown")
             index++
         }
     }

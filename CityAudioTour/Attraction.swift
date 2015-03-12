@@ -27,7 +27,6 @@ public class Attraction{
     var AttractionImage = UIImage()
     var Latitude = 0.0
     var Longitude = 0.0
-    var isHiden = false
     var TagIDs: [Int] = []
     var ImagesURLs = [String]()
     

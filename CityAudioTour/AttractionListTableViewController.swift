@@ -10,37 +10,29 @@ import UIKit
 
 class AttractionListTableViewController: UITableViewController {
 
-    var attractions: [Attraction]! = AttractionsModel.sharedInstance.attractionsList
+    //var attractions: [Attraction]! = AttractionsModel.sharedInstance.attractionsList
     var sectionTitle = "Attraction List"
+    private var _attractionsModel = AttractionsModel.sharedInstance
+    private var _attractions = [Attraction]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = 0
-        for attraction in attractions! {
-            if !attraction.isHiden {
-                count++
-            }
-        }
-        return count
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+            return _attractions.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AttractionCell", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-        let attraction = attractions![indexPath.row]
-        if !attraction.isHiden {
-            cell.textLabel?.text = attraction.AttractionName
-        }
+        let attraction = _attractions[indexPath.row]
+        cell.textLabel?.text = attraction.AttractionName
+        
         return cell
     }
     
@@ -49,6 +41,7 @@ class AttractionListTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        _attractions = _attractionsModel.attractionsList
         tableView.reloadData()
     }
     
@@ -58,20 +51,20 @@ class AttractionListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let attraction = attractions![indexPath.row]
-        AttractionsModel.sharedInstance.routeAttractions = [attraction]
-        navigationController?.popToRootViewControllerAnimated(true)
+        //TODO - Implement with new filtering system
+        //let attraction = attractions![indexPath.row]
+        //AttractionsModel.sharedInstance.routeAttractions = [attraction]
+        //navigationController?.popToRootViewControllerAnimated(true)
     }
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ListToDetail" {
             let cell = sender as UITableViewCell
             if let indexPath = tableView.indexPathForCell(cell) {
                 let detailScene = segue.destinationViewController as DetailViewController
-                detailScene.receiveID = attractions![indexPath.row].AttractionID
+                detailScene.receiveID = _attractions[indexPath.row].AttractionID
             }
         }
     }

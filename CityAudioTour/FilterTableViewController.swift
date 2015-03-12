@@ -96,7 +96,7 @@ class FilterTableViewController: UITableViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        AttractionsModel.sharedInstance.FilterAttraction(catSet, selectedTag: tagSet)
+        AttractionsModel.sharedInstance.FilterAttractions(catSet, selectedTag: tagSet)
     }
  
     /*

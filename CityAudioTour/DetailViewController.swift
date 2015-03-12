@@ -45,7 +45,6 @@ class DetailViewController: UIViewController {
     }
     
     private func setUpDetail(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void{
-        
         if data != nil{
             let attraction = Attraction()
         

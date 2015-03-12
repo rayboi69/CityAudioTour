@@ -29,7 +29,6 @@ class AttractionsModel {
     
     private var _service: CATAzureService?
     private var _attractionsList: [Attraction]?
-    private var _routeAttractions: [Attraction]?
     
     //
     //Petes idea implementation
@@ -41,7 +40,6 @@ class AttractionsModel {
     {
         _attractionsList = [Attraction]()
         _service = CATAzureService()
-        _routeAttractions = []
         LoadAttractionsList()
     }
     
@@ -53,68 +51,29 @@ class AttractionsModel {
         _attractionsList = _service?.GetAttractions()
         return _attractionsList!
     }
-
     
     //
-    // Params: selectedCat: NSSet and selectedTag: NSSet - Should come from the ClassifiedModel
     //
-    func FilterAttraction(selectedCat: NSSet, selectedTag: NSSet)
+    //
+    func GetAttractionBy(id:Int) -> Attraction
     {
-        _selectAttractionsIndexes = []
-        var index = 0
-        for attraction in _attractionsList!
-        {
-            attraction.isHiden = true
-            var isSelected = false
-            
-            if(selectedCat.containsObject(attraction.CategoryID))
-            {
-                attraction.isHiden = false
-                isSelected = true
-            }
-            
-            for tag in attraction.TagIDs
-            {
-                if(selectedTag.containsObject(tag))
-                {
-                    attraction.isHiden = false;
-                    isSelected = true
-                    break
-                }
-            }
-            
-            if isSelected
-            {
-                _selectAttractionsIndexes?.append(index)
-            }
-            
-            index = index + 1
-        }
+        let attractionResult = _attractionsList?.filter({ m in
+                m.AttractionID == id
+        })
+        return attractionResult!.first as AnyObject as Attraction
     }
     
     //
     // New Filtering System
     //
-    func FilterAttractions(selectedCat: NSSet, selectedTag: NSSet, isRoute: Bool)
+    func FilterAttractions(selectedCat: NSSet, selectedTag: NSSet)
     {
         _selectAttractionsIndexes = []
         var index = 0
-        var attractionsToFIlter = [Attraction]()
         
-        if isRoute
-        {
-            attractionsToFIlter = _routeAttractions!
-        }
-        else
-        {
-            attractionsToFIlter = _attractionsList!
-            routeAttractions = []
-        }
-        
-        for attraction in attractionsToFIlter
+        for attraction in _attractionsList!
         {
             var isSelected = false
-            
             if(selectedCat.containsObject(attraction.CategoryID))
             {
                 isSelected = true
@@ -136,55 +95,23 @@ class AttractionsModel {
             
             index = index + 1
         }
-        
-        _attractionsList = []
     }
-
     
     
     //
     //Lazy Getters
     //
-    var attractionsList: [Attraction]
-    {
-        get {
-            return _attractionsList!
-        }
-    }
-    
-    
-    var routeAttractions: [Attraction]
-    {
-        get {
-            return _routeAttractions!
-        }
-        set {
-            _routeAttractions = newValue
-        }
-    }
-    
-    var filteredAttractionsList : [Attraction]
+    var attractionsList : [Attraction]
     {
         get{
             var filteredAttractions = [Attraction]()
-            var attractionsToFIlter = [Attraction]()
-            
-            //Applies the filtering depending on routes or regular attractions
-            if routeAttractions.count > 0
-            {
-                attractionsToFIlter = _routeAttractions!
-            }
-            else
-            {
-                attractionsToFIlter = _attractionsList!
-            }
             //Validates if the user did some filtering
             if _selectAttractionsIndexes?.count > 0
             {
                 for var index = 0; index < _selectAttractionsIndexes?.count; ++index
                 {
                     var selectedIndex = _selectAttractionsIndexes?[index]
-                    var attraction = attractionsToFIlter[selectedIndex!]
+                    var attraction = _attractionsList![selectedIndex!]
                     filteredAttractions.append(attraction)
                 }
                 
@@ -192,7 +119,7 @@ class AttractionsModel {
             }
             else
             {
-                return attractionsToFIlter
+                return _attractionsList!
             }
         }
 

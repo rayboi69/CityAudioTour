@@ -23,6 +23,7 @@
 		08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B855201A79F90F006F035F /* CityAudioTourTests.swift */; };
 		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		3135BF501A9C3E8E00DD0D46 /* AttractionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */; };
+		3178C96A1AB125B600F26461 /* RoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178C9691AB125B600F26461 /* RoutesModel.swift */; };
 		3191CB581A92D93900939865 /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
 		3194A0881AA03CEA00757252 /* ClassificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0871AA03CEA00757252 /* ClassificationModel.swift */; };
 		3194A08A1AA0447000757252 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0891AA0447000757252 /* Route.swift */; };
@@ -81,6 +82,7 @@
 		08B855201A79F90F006F035F /* CityAudioTourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAudioTourTests.swift; sourceTree = "<group>"; };
 		311B43511A924F8F0051E05E /* AttractionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionImage.swift; sourceTree = "<group>"; };
 		3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsModel.swift; sourceTree = "<group>"; };
+		3178C9691AB125B600F26461 /* RoutesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesModel.swift; sourceTree = "<group>"; };
 		3191CB571A92D93900939865 /* AttractionContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionContent.swift; sourceTree = "<group>"; };
 		3194A0871AA03CEA00757252 /* ClassificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationModel.swift; sourceTree = "<group>"; };
 		3194A0891AA0447000757252 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -124,14 +126,9 @@
 		08277B8C1A8484F800D97F65 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C1737FE61A8D7EB900FC104F /* Attraction.swift */,
-				311B43511A924F8F0051E05E /* AttractionImage.swift */,
-				3191CB571A92D93900939865 /* AttractionContent.swift */,
 				3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */,
 				3194A0871AA03CEA00757252 /* ClassificationModel.swift */,
-				3194A0891AA0447000757252 /* Route.swift */,
-				3194A08B1AA0448200757252 /* Categroy.swift */,
-				3194A08D1AA0449100757252 /* Tag.swift */,
+				3178C9691AB125B600F26461 /* RoutesModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -193,6 +190,7 @@
 		08B855041A79F90F006F035F /* CityAudioTour */ = {
 			isa = PBXGroup;
 			children = (
+				3178C9681AB1257B00F26461 /* Entities */,
 				C1852C691AA560EE0078B29E /* DelegateClass */,
 				083AEF441A899012004D6874 /* Libraries */,
 				083AEF431A89900A004D6874 /* Services */,
@@ -232,6 +230,19 @@
 				08B8551F1A79F90F006F035F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3178C9681AB1257B00F26461 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				3191CB571A92D93900939865 /* AttractionContent.swift */,
+				311B43511A924F8F0051E05E /* AttractionImage.swift */,
+				C1737FE61A8D7EB900FC104F /* Attraction.swift */,
+				3194A0891AA0447000757252 /* Route.swift */,
+				3194A08B1AA0448200757252 /* Categroy.swift */,
+				3194A08D1AA0449100757252 /* Tag.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		C1852C691AA560EE0078B29E /* DelegateClass */ = {
@@ -361,6 +372,7 @@
 				8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */,
 				8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
+				3178C96A1AB125B600F26461 /* RoutesModel.swift in Sources */,
 				8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
 				3194A0881AA03CEA00757252 /* ClassificationModel.swift in Sources */,
