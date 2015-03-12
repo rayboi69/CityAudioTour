@@ -117,6 +117,12 @@ public class CATAzureService
                 if let attractionIDArray = route["AttractionIDs"].arrayObject as? [Int] {
                     tempRoute.AttractionIDs = attractionIDArray
                 }
+                if let tagsIDArray = route["Tags"].arrayObject as? [Int] {
+                    tempRoute.TagsIDs = tagsIDArray
+                }
+                if let categoriesIDArray = route["Categories"].arrayObject as? [Int] {
+                    tempRoute.TagsIDs = categoriesIDArray
+                }
                 
                 routes.append(tempRoute)
             }

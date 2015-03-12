@@ -113,12 +113,10 @@ class AttractionsModel {
         
         for attraction in attractionsToFIlter
         {
-            attraction.isHiden = true
             var isSelected = false
             
             if(selectedCat.containsObject(attraction.CategoryID))
             {
-                attraction.isHiden = false
                 isSelected = true
             }
             
@@ -126,7 +124,6 @@ class AttractionsModel {
             {
                 if(selectedTag.containsObject(tag))
                 {
-                    attraction.isHiden = false;
                     isSelected = true
                     break
                 }
@@ -139,6 +136,8 @@ class AttractionsModel {
             
             index = index + 1
         }
+        
+        _attractionsList = []
     }
 
     
@@ -164,12 +163,13 @@ class AttractionsModel {
         }
     }
     
-    var filteredAttractions : [Attraction]
+    var filteredAttractionsList : [Attraction]
     {
         get{
             var filteredAttractions = [Attraction]()
             var attractionsToFIlter = [Attraction]()
             
+            //Applies the filtering depending on routes or regular attractions
             if routeAttractions.count > 0
             {
                 attractionsToFIlter = _routeAttractions!
@@ -178,14 +178,24 @@ class AttractionsModel {
             {
                 attractionsToFIlter = _attractionsList!
             }
-            
-            for var index = 0; index < _selectAttractionsIndexes?.count; ++index {
-                var selectedIndex = _selectAttractionsIndexes?[index]
-                var attraction = attractionsToFIlter[selectedIndex!]
-                filteredAttractions.append(attraction)
+            //Validates if the user did some filtering
+            if _selectAttractionsIndexes?.count > 0
+            {
+                for var index = 0; index < _selectAttractionsIndexes?.count; ++index
+                {
+                    var selectedIndex = _selectAttractionsIndexes?[index]
+                    var attraction = attractionsToFIlter[selectedIndex!]
+                    filteredAttractions.append(attraction)
+                }
+                
+                return filteredAttractions
             }
-            return filteredAttractions
+            else
+            {
+                return attractionsToFIlter
+            }
         }
+
     }
     
 

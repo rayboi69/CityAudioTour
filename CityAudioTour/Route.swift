@@ -13,6 +13,8 @@ class Route{
     var RouteID = 0
     var Name = ""
     var AttractionIDs: [Int] = []
+    var TagsIDs: [Int] = []
+    var CategoriesIDs: [Int] = []
     
     init(){}
     
