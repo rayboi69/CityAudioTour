@@ -38,6 +38,14 @@
 		C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE61A8D7EB900FC104F /* Attraction.swift */; };
 		C1852C6B1AA561320078B29E /* SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1852C6A1AA561320078B29E /* SearchBarDelegate.swift */; };
 		C1852C6D1AA561470078B29E /* MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1852C6C1AA561470078B29E /* MapDelegate.swift */; };
+		C19F133A1AB0B2CB008542E6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
+		C19F133B1AB0B2D0008542E6 /* CATAzureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083AEF471A899123004D6874 /* CATAzureService.swift */; };
+		C19F133C1AB0B2D4008542E6 /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE61A8D7EB900FC104F /* Attraction.swift */; };
+		C19F133D1AB0B2D8008542E6 /* AttractionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsModel.swift */; };
+		C19F133E1AB0B2DB008542E6 /* Categroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08B1AA0448200757252 /* Categroy.swift */; };
+		C19F133F1AB0B2DD008542E6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0891AA0447000757252 /* Route.swift */; };
+		C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
+		C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		C1C6B7021AAE295A00DB7615 /* IMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C6B7011AAE295A00DB7615 /* IMapController.swift */; };
 /* End PBXBuildFile section */
 
@@ -368,8 +376,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C19F133B1AB0B2D0008542E6 /* CATAzureService.swift in Sources */,
+				C19F133A1AB0B2CB008542E6 /* SwiftyJSON.swift in Sources */,
+				C19F133D1AB0B2D8008542E6 /* AttractionsModel.swift in Sources */,
+				C19F133C1AB0B2D4008542E6 /* Attraction.swift in Sources */,
+				C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */,
 				089A59911AAD6257008F82A6 /* CATAzureServiceTests.swift in Sources */,
+				C19F133F1AB0B2DD008542E6 /* Route.swift in Sources */,
+				C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */,
 				08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */,
+				C19F133E1AB0B2DB008542E6 /* Categroy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
