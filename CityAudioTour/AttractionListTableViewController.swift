@@ -32,7 +32,6 @@ class AttractionListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("AttractionCell", forIndexPath: indexPath) as UITableViewCell
         let attraction = _attractions[indexPath.row]
         cell.textLabel?.text = attraction.AttractionName
-        
         return cell
     }
     
