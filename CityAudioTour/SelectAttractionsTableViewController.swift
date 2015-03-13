@@ -10,11 +10,17 @@ import UIKit
 
 class SelectAttractionsTableViewController: UITableViewController {
 
-    var routeTitle = ""
+    var routeTitle = "Attractions In Route: FAKE"
     var attractions = [Attraction]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Fake test data
+        for i in 1...6 {
+            attractions.append(AttractionsModel.sharedInstance.attractionsList[i])
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,12 +90,10 @@ class SelectAttractionsTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let cell = sender as UITableViewCell
-
         if let identifier = segue.identifier {
             switch identifier {
             case "SelectAttractionToDetail":
+                let cell = sender as UITableViewCell
                 if let indexPath = tableView.indexPathForCell(cell) {
                     let detailScene = segue.destinationViewController as DetailViewController
                     detailScene.receiveID = attractions[indexPath.row].AttractionID

@@ -59,10 +59,8 @@ class AttractionListTableViewController: UITableViewController {
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let cell = sender as UITableViewCell
-
         if segue.identifier == "ListToDetail" {
+            let cell = sender as UITableViewCell
             if let indexPath = tableView.indexPathForCell(cell) {
                 let detailScene = segue.destinationViewController as DetailViewController
                 detailScene.receiveID = _attractions[indexPath.row].AttractionID

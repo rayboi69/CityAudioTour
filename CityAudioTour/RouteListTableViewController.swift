@@ -12,7 +12,6 @@ class RouteListTableViewController: UITableViewController {
 
     var sectionTitle = "Route List"
     private var routesModel = RoutesModel.sharedInstance
-    private var attractionsModel = AttractionsModel.sharedInstance
     private var routes = [Route]()
     
     override func viewDidLoad() {
@@ -48,6 +47,8 @@ class RouteListTableViewController: UITableViewController {
         return sectionTitle
     }
     
+   
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         routesModel.selectedRoute = routes[indexPath.row]
         navigationController?.popToRootViewControllerAnimated(true)
@@ -57,19 +58,13 @@ class RouteListTableViewController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let cell = sender as UITableViewCell
-
         if let identifier = segue.identifier {
             switch identifier {
             case "RouteToSelectAttractionsInRoute":
+                let cell = sender as UITableViewCell
                 if let indexPath = tableView.indexPathForCell(cell) {
                     let selectAttractionsScene = segue.destinationViewController as SelectAttractionsTableViewController
-                    routesModel.selectedRoute = routes[indexPath.row]
-                    var attractionIDs = routesModel.selectedRoute?.AttractionIDs
-                    
-                    selectAttractionsScene.attractions = attractionsModel.GetAttractionsConcreteObjects(attractionIDs!)
-                    selectAttractionsScene.routeTitle = routes[indexPath.row].Name
+                    //TODO - sent info to SelectAttractionsTableViewController
                     
                 }
             default: break
