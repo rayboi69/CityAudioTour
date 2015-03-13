@@ -11,15 +11,15 @@ import UIKit
 class RouteListTableViewController: UITableViewController {
 
     var sectionTitle = "Route List"
-    var _routesModel = RoutesModel.sharedInstance
-    var _routes = [Route]()
+    private var routesModel = RoutesModel.sharedInstance
+    private var routes = [Route]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidAppear(animated: Bool) {
-        _routes = _routesModel.routesList!
+        routes = routesModel.routesList!
         tableView.reloadData()
     }
 
@@ -33,12 +33,12 @@ class RouteListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _routes.count
+        return routes.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as UITableViewCell
-        let route = _routes[indexPath.row]
+        let route = routes[indexPath.row]
         cell.textLabel?.text = route.Name
         return cell
     }
@@ -46,9 +46,11 @@ class RouteListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitle
     }
+    
+   
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        _routesModel.selectedRoute = _routes[indexPath.row]
+        routesModel.selectedRoute = routes[indexPath.row]
         navigationController?.popToRootViewControllerAnimated(true)
     }
     

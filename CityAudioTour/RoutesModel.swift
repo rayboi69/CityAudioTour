@@ -52,6 +52,7 @@ class RoutesModel {
     func FilterRoutes(selectedCat: NSSet, selectedTag: NSSet)
     {
         _selectRoutesIndexes = []
+        _selectedRoute = nil
         var index = 0
         
         for route in _routesList!
@@ -94,7 +95,7 @@ class RoutesModel {
     {
         get{
             var filteredRoutes = [Route]()
-            if _selectRoutesIndexes?.count > 0
+            if let r = _selectRoutesIndexes
             {
                 for var index = 0; index < _selectRoutesIndexes?.count; ++index
                 {

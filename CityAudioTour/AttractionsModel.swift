@@ -121,7 +121,7 @@ class AttractionsModel {
         get{
             var filteredAttractions = [Attraction]()
             //Validates if the user did some filtering
-            if _selectAttractionsIndexes?.count > 0
+            if let s = _selectAttractionsIndexes
             {
                 for var index = 0; index < _selectAttractionsIndexes?.count; ++index
                 {
@@ -129,8 +129,8 @@ class AttractionsModel {
                     var attraction = _attractionsList![selectedIndex!]
                     filteredAttractions.append(attraction)
                 }
-                
                 return filteredAttractions
+                
             }
             else
             {
