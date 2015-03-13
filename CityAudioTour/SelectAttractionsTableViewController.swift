@@ -10,18 +10,11 @@ import UIKit
 
 class SelectAttractionsTableViewController: UITableViewController {
 
-    var routeTitle = "Attractions In Route: FAKE"
+    var routeTitle = ""
     var attractions = [Attraction]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Fake test data
-        for i in 1...6 {
-            attractions.append(AttractionsModel.sharedInstance.attractionsList[i])
-        }
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

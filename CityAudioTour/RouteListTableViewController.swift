@@ -12,6 +12,7 @@ class RouteListTableViewController: UITableViewController {
 
     var sectionTitle = "Route List"
     private var routesModel = RoutesModel.sharedInstance
+    private var attractionsModel = AttractionsModel.sharedInstance
     private var routes = [Route]()
     
     override func viewDidLoad() {
@@ -64,7 +65,11 @@ class RouteListTableViewController: UITableViewController {
                 let cell = sender as UITableViewCell
                 if let indexPath = tableView.indexPathForCell(cell) {
                     let selectAttractionsScene = segue.destinationViewController as SelectAttractionsTableViewController
-                    //TODO - sent info to SelectAttractionsTableViewController
+                    routesModel.selectedRoute = routes[indexPath.row]
+                    var attractionIDs = routesModel.selectedRoute?.AttractionIDs
+                    
+                    selectAttractionsScene.attractions = attractionsModel.GetAttractionsConcreteObjects(attractionIDs!)
+                    selectAttractionsScene.routeTitle = routes[indexPath.row].Name
                     
                 }
             default: break
