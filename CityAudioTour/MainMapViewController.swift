@@ -26,8 +26,10 @@ class MainMapViewController: UIViewController,IMapController{
     private var selectedAttractionId : Int?
     private var attractions = [Attraction]()
     private var isRouteSelected:Bool = false;
-    //Refer to attraction list selected by users after filtering.
-    private var selectedAttraction:[Attraction] = [Attraction]()
+    
+    //Models
+    private var routesModel = RoutesModel.sharedInstance
+    private var attractionsModel = AttractionsModel.sharedInstance
     
     
     //Current Location button that update user's current location.
@@ -48,16 +50,14 @@ class MainMapViewController: UIViewController,IMapController{
     //Hide Navigator bar when main screen is appeared.
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        //TODO - Validate if its showing attractions or routes
-        //selectedAttraction = AttractionsModel.sharedInstance.routeAttractions
-        //if !selectedAttraction.isEmpty{
-            mapController.wantPinPoint()
-            locationManager.startUpdatingLocation()
-        //}
+        mapController.wantPinPoint()
+        locationManager.startUpdatingLocation()
     }
+    
     //Show Navigator bar when moving to other views.
     override func viewDidDisappear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        routesModel.selectedRoute = nil
         menuController.MenuHidden()
     }
     
@@ -107,11 +107,12 @@ class MainMapViewController: UIViewController,IMapController{
         let oldAnnotationList = mainMapView.annotations
         mainMapView.removeAnnotations(oldAnnotationList)
         
-        if !selectedAttraction.isEmpty{
-            attractions = selectedAttraction
+        if let r = routesModel.selectedRoute{
+            var attractionIDs = routesModel.selectedRoute?.AttractionIDs
+            attractions = self.attractionsModel.GetAttractionsConcreteObjects(attractionIDs!)
         }else{
             // Webservice call to get attractions
-            attractions = AttractionsModel.sharedInstance.attractionsList
+            attractions = attractionsModel.attractionsList
         }
         
         var maxLatitude:CLLocationDegrees = 0

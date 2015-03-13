@@ -19,7 +19,7 @@ class RouteListTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        _routes = _routesModel.routesList
+        _routes = _routesModel.routesList!
         tableView.reloadData()
     }
 
@@ -48,10 +48,8 @@ class RouteListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //TODO - Implement with new filtering system
-        //AttractionsModel.sharedInstance.routeAttractions = prepareSelectRoute(indexPath.row)
-        //setRoute?.drawRoute()
-        //navigationController?.popToRootViewControllerAnimated(true)
+        _routesModel.selectedRoute = _routes[indexPath.row]
+        navigationController?.popToRootViewControllerAnimated(true)
     }
 
 }

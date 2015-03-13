@@ -55,12 +55,12 @@ class AttractionsModel {
     //
     //
     //
-    func GetAttractionBy(id:Int) -> Attraction
+    func GetAttractionBy(id:Int) -> Attraction?
     {
         let attractionResult = _attractionsList?.filter({ m in
                 m.AttractionID == id
         })
-        return attractionResult!.first as AnyObject as Attraction
+        return attractionResult!.first as Attraction!
     }
     
     //
@@ -95,6 +95,21 @@ class AttractionsModel {
             
             index = index + 1
         }
+    }
+    
+    //
+    // Implement method to Get Attractions
+    //
+    func GetAttractionsConcreteObjects(attractionsIDs:[Int]) -> [Attraction]
+    {
+        var attractions = [Attraction]()
+        
+        for var index = 0; index < attractionsIDs.count; ++index {
+            var attractionResult : Attraction = self.GetAttractionBy(attractionsIDs[index])!
+            attractions.append(attractionResult)
+        }
+        
+        return attractions
     }
     
     

@@ -25,6 +25,7 @@ class RoutesModel {
     private var _service: CATAzureService?
     private var _routesList: [Route]?
     private var _selectRoutesIndexes: [Int]?
+    private var _selectedRoute : Route?
 
     
     init() {
@@ -32,28 +33,22 @@ class RoutesModel {
         self.LoadRoutesList()
     }
     
-    //
-    // Initializes the _routesList with the data from the server
-    //
+    
     func LoadRoutesList()
     {
         _routesList = _service?.GetRoutes()
     }
     
-    //
-    //
-    //
-    func GetRouteBy(id:Int) -> Route
+    
+    func GetRouteBy(id:Int) -> Route?
     {
         let routesResult = _routesList?.filter({ m in
             m.RouteID == id
         })
-        return routesResult!.first as AnyObject as Route
+        return routesResult!.first as Route!
     }
     
-    //
-    // New Filtering System
-    //
+    
     func FilterRoutes(selectedCat: NSSet, selectedTag: NSSet)
     {
         _selectRoutesIndexes = []
@@ -90,21 +85,46 @@ class RoutesModel {
             index = index + 1
         }
     }
-
-    //
-    // TODO - Implement method to Get Attractions By Route ID
-    //
     
     
     //
     //Lazy Getters
     //
-    var routesList: [Route]
+    var routesList : [Route]?
+    {
+        get{
+            var filteredRoutes = [Route]()
+            if _selectRoutesIndexes?.count > 0
+            {
+                for var index = 0; index < _selectRoutesIndexes?.count; ++index
+                {
+                    var selectedIndex = _selectRoutesIndexes?[index]
+                    var route = _routesList![selectedIndex!]
+                    filteredRoutes.append(route)
+                }
+                
+                return filteredRoutes
+            }
+            else
+            {
+                return _routesList!
+            }
+        }
+        
+    }
+    
+    var selectedRoute : Route?
+    {
+        get{
+            return _selectedRoute
+        }
+        set
         {
-        get {
-            return _routesList!
+            _selectedRoute = newValue?
         }
     }
+
+
     
     
 }
