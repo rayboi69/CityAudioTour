@@ -51,7 +51,46 @@ class RoutesModel {
         return routesResult!.first as AnyObject as Route
     }
     
-    
+    //
+    // New Filtering System
+    //
+    func FilterRoutes(selectedCat: NSSet, selectedTag: NSSet)
+    {
+        _selectRoutesIndexes = []
+        var index = 0
+        
+        for route in _routesList!
+        {
+            var isSelected = false
+            
+            for catItem in route.CategoriesIDs
+            {
+                if(selectedCat.containsObject(catItem))
+                {
+                    isSelected = true
+                    break
+                }
+                
+            }
+            
+            for tag in route.TagsIDs
+            {
+                if(selectedTag.containsObject(tag))
+                {
+                    isSelected = true
+                    break
+                }
+            }
+            
+            if isSelected
+            {
+                _selectRoutesIndexes?.append(index)
+            }
+            
+            index = index + 1
+        }
+    }
+
     //
     // TODO - Implement method to Get Attractions By Route ID
     //
