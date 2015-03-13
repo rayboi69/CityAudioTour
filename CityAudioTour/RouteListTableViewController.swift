@@ -51,5 +51,22 @@ class RouteListTableViewController: UITableViewController {
         _routesModel.selectedRoute = _routes[indexPath.row]
         navigationController?.popToRootViewControllerAnimated(true)
     }
-
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "RouteToSelectAttractionsInRoute":
+                let cell = sender as UITableViewCell
+                if let indexPath = tableView.indexPathForCell(cell) {
+                    let selectAttractionsScene = segue.destinationViewController as SelectAttractionsTableViewController
+                    //TODO - sent info to SelectAttractionsTableViewController
+                    
+                }
+            default: break
+            }
+        }
+    }
 }
