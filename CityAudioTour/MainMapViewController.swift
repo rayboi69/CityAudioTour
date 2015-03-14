@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MainMapViewController: UIViewController,IMapController{
+class MainMapViewController: UIViewController{
     
     //Interacting UI Elements
     @IBOutlet weak var mainMapView: MKMapView!
@@ -110,6 +110,7 @@ class MainMapViewController: UIViewController,IMapController{
         if let r = routesModel.selectedRoute{
             var attractionIDs = routesModel.selectedRoute?.AttractionIDs
             attractions = self.attractionsModel.GetAttractionsConcreteObjects(attractionIDs!)
+            isRouteSelected = true
         }else{
             // Webservice call to get attractions
             attractions = attractionsModel.attractionsList
@@ -269,10 +270,6 @@ class MainMapViewController: UIViewController,IMapController{
         self.performSegueWithIdentifier("detailview", sender: self)
     }
     
-    func drawRoute(){
-        isRouteSelected = true;
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -281,8 +278,6 @@ class MainMapViewController: UIViewController,IMapController{
             detailController.receiveID = selectedAttractionId
         }else if(segue.identifier == "RoutePage"){
             var routeController:RouteListTableViewController = segue.destinationViewController as RouteListTableViewController
-            //TODO - Integrate with new filtering system
-            //routeController.setController(self)
         }
     }
 }

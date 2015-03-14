@@ -48,7 +48,6 @@
 		C19F133F1AB0B2DD008542E6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0891AA0447000757252 /* Route.swift */; };
 		C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
 		C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
-		C1C6B7021AAE295A00DB7615 /* IMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C6B7011AAE295A00DB7615 /* IMapController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +99,6 @@
 		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		C1852C6A1AA561320078B29E /* SearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
 		C1852C6C1AA561470078B29E /* MapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
-		C1C6B7011AAE295A00DB7615 /* IMapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,7 +251,6 @@
 			children = (
 				C1852C6A1AA561320078B29E /* SearchBarDelegate.swift */,
 				C1852C6C1AA561470078B29E /* MapDelegate.swift */,
-				C1C6B7011AAE295A00DB7615 /* IMapController.swift */,
 			);
 			name = DelegateClass;
 			sourceTree = "<group>";
@@ -384,7 +381,6 @@
 				C1852C6D1AA561470078B29E /* MapDelegate.swift in Sources */,
 				3191CB581A92D93900939865 /* AttractionContent.swift in Sources */,
 				083AEF481A899123004D6874 /* CATAzureService.swift in Sources */,
-				C1C6B7021AAE295A00DB7615 /* IMapController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
