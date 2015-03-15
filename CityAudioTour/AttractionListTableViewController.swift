@@ -10,16 +10,29 @@ import UIKit
 
 class AttractionListTableViewController: UITableViewController {
 
-    //var attractions: [Attraction]! = AttractionsModel.sharedInstance.attractionsList
     var sectionTitle = "Attraction List"
+    private var _routesModel = RoutesModel.sharedInstance
     private var _attractionsModel = AttractionsModel.sharedInstance
     private var _attractions = [Attraction]()
     
+    // MARK: - View Controller Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        _attractions = _attractionsModel.attractionsList
+        tableView.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     // MARK: - Table view data source
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -39,25 +52,18 @@ class AttractionListTableViewController: UITableViewController {
         return sectionTitle
     }
     
-    override func viewDidAppear(animated: Bool) {
-        _attractions = _attractionsModel.attractionsList
-        tableView.reloadData()
-    }
+    // MARK: - Navigation
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var attraction = _attractions[indexPath.row]
+        var route = Route()
+        route.AttractionIDs = [attraction.AttractionID]
+        route.CategoriesIDs = [attraction.CategoryID]
+        route.TagsIDs = attraction.TagIDs
+        _routesModel.selectedRoute = route
+        navigationController?.popToRootViewControllerAnimated(true)
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //TODO - Implement with new filtering system
-        //let attraction = attractions![indexPath.row]
-        //AttractionsModel.sharedInstance.routeAttractions = [attraction]
-        //navigationController?.popToRootViewControllerAnimated(true)
-    }
-    
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ListToDetail" {
             let cell = sender as UITableViewCell

@@ -15,6 +15,8 @@ class RouteListTableViewController: UITableViewController {
     private var attractionsModel = AttractionsModel.sharedInstance
     private var routes = [Route]()
     
+    // MARK: - View Controller Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,6 +31,7 @@ class RouteListTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -48,29 +51,27 @@ class RouteListTableViewController: UITableViewController {
         return sectionTitle
     }
     
-   
-
+    // MARK: - Navigation
+  
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         routesModel.selectedRoute = routes[indexPath.row]
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
             case "RouteToSelectAttractionsInRoute":
                 let cell = sender as UITableViewCell
                 if let indexPath = tableView.indexPathForCell(cell) {
+                    
                     let selectAttractionsScene = segue.destinationViewController as SelectAttractionsTableViewController
-                    routesModel.selectedRoute = routes[indexPath.row]
-                    var attractionIDs = routesModel.selectedRoute?.AttractionIDs
+                    let selectRoute = routes[indexPath.row]
+                    let attractions = attractionsModel.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
                     
-                    selectAttractionsScene.attractions = attractionsModel.GetAttractionsConcreteObjects(attractionIDs!)
-                    selectAttractionsScene.routeTitle = routes[indexPath.row].Name
-                    
+                    routesModel.selectedRoute = selectRoute
+                    selectAttractionsScene.attractions = attractions
+                    selectAttractionsScene.routeTitle = selectRoute.Name
                 }
             default: break
             }

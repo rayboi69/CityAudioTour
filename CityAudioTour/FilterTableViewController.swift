@@ -15,6 +15,7 @@ class FilterTableViewController: UITableViewController {
     var catSet: NSMutableSet!
     var tagSet: NSMutableSet!
     
+    // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,11 @@ class FilterTableViewController: UITableViewController {
         catSet = ClassificationModel.sharedInstance.selectedCategories
         tagSet = ClassificationModel.sharedInstance.selectedTags
         
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        AttractionsModel.sharedInstance.FilterAttractions(catSet, selectedTag: tagSet)
+        RoutesModel.sharedInstance.FilterRoutes(catSet, selectedTag: tagSet)
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,11 +99,6 @@ class FilterTableViewController: UITableViewController {
             }
         }
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        AttractionsModel.sharedInstance.FilterAttractions(catSet, selectedTag: tagSet)
-        RoutesModel.sharedInstance.FilterRoutes(catSet, selectedTag: tagSet)
     }
 
 }

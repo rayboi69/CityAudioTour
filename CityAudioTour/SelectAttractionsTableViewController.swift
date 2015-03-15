@@ -13,6 +13,8 @@ class SelectAttractionsTableViewController: UITableViewController {
     var routeTitle = ""
     var attractions = [Attraction]()
     
+    // MARK: - View Controller Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
