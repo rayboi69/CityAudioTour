@@ -34,7 +34,7 @@ class RoutesModel {
     }
     
     
-    func LoadRoutesList()
+    private func LoadRoutesList()
     {
         _routesList = _service?.GetRoutes()
     }

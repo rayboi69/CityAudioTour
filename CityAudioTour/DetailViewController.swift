@@ -17,6 +17,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var AttractionAddress: UILabel!
    
     var receiveID : Int?
+    //For testing purpose
+    //var handler = {(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void in}
 
     private var service = CATAzureService()
 
@@ -82,6 +84,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Comment the below value out if we don't make unit test.
         let handler = setUpDetail
         
         service.GetAttraction(receiveID!, MainThread: NSOperationQueue.mainQueue(), handler: handler)

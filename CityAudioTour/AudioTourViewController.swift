@@ -15,6 +15,8 @@ class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
     private var synthersizer = AVSpeechSynthesizer()
     private var utterance = AVSpeechUtterance(string: "")
     var receiveID : Int?
+    //For testing purpose
+    //var handler = {(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void in}
     
     @IBOutlet weak var attractionLabel: UILabel!
     @IBOutlet weak var speechContent: UITextView!
@@ -40,6 +42,8 @@ class AudioTourViewController: UIViewController, AVSpeechSynthesizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.synthersizer.delegate = self
+        
+        //Comment the below value out if we don't make unit test.
         let handler = retrieveDataFromServer
         service.GetAttractionContentByID(receiveID!, MainThread: NSOperationQueue.mainQueue(), handler: handler)
         

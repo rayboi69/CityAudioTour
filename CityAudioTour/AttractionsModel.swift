@@ -46,7 +46,7 @@ class AttractionsModel {
     //
     // Initializes the attractionsList with the data from the server
     //
-    func LoadAttractionsList() -> [Attraction]
+    private func LoadAttractionsList() -> [Attraction]
     {
         _attractionsList = _service?.GetAttractions()
         return _attractionsList!

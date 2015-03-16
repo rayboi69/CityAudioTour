@@ -29,10 +29,11 @@ class CATAzureServiceTests: XCTestCase {
         var expectation:[Attraction] = service.GetAttractions()
         var result:[Attraction] = service.GetAttractions()
         
-//        XCTAssertNotNil(expectation, "Success getting data from server")
-//        XCTAssertNotNil(result, "Success getting data from server")
-        
         var index:Int = 0
+        
+        if expectation.isEmpty || result.isEmpty {
+            XCTFail("Can't get data with some reason")
+        }
         
         while (index < expectation.count){
             XCTAssertEqual(expectation[index].AttractionID, result[index].AttractionID, "Same Attraction ID")
@@ -59,8 +60,9 @@ class CATAzureServiceTests: XCTestCase {
         var expectation:[Category] = service.GetCategoryList()
         var result:[Category] = service.GetCategoryList()
         
-//        XCTAssertNotNil(expectation, "Success getting data from server")
-//        XCTAssertNotNil(result, "Success getting data from server")
+        if expectation.isEmpty || result.isEmpty {
+            XCTFail("Can't get data with some reason")
+        }
         
         var index:Int = 0
         
@@ -71,51 +73,69 @@ class CATAzureServiceTests: XCTestCase {
         }
     }
     
-//    func testGetTagList(){
-//        var expectation:[Tag] = service.GetTagList()
-//        var result:[Tag] = service.GetTagList()
-//        
-//        XCTAssertNotNil(expectation, "Success getting data from server")
-//        XCTAssertNotNil(result, "Success getting data from server")
-//        
-//        var index:Int = 0
-//        
-//        while (index < expectation.count){
-//            XCTAssertEqual(expectation[index].TagID, result[index].TagID, "Same Tag ID")
-//            XCTAssertEqual(expectation[index].Name, result[index].Name, "Same Tag Name")
-//            index++
-//        }
-//    }
+    func testGetTagList(){
+        var expectation:[Tag] = service.GetTagList()
+        var result:[Tag] = service.GetTagList()
+        
+        if expectation.isEmpty || result.isEmpty {
+            XCTFail("Can't get data with some reason")
+        }
+        
+        var index:Int = 0
+        
+        while (index < expectation.count){
+            XCTAssertEqual(expectation[index].TagID, result[index].TagID, "Same Tag ID")
+            XCTAssertEqual(expectation[index].Name, result[index].Name, "Same Tag Name")
+            index++
+        }
+    }
     
-//    func testGetRoutes(){
-//        var expectation:[Route] = service.GetRoutes()
-//        var result:[Route] = service.GetRoutes()
-//        
-////        XCTAssertNotNil(expectation, "Success getting data from server")
-////        XCTAssertNotNil(result, "Success getting data from server")
-//        
-//        var index:Int = 0
-//        
-//        while (index < expectation.count){
-//            XCTAssertEqual(expectation[index].RouteID, result[index].RouteID, "Same Route ID")
-//            XCTAssertEqual(expectation[index].Name, result[index].Name, "Same Route Name")
-//            
-//            var attractIDIndex = 0
-//            
-//            while (attractIDIndex < expectation[index].AttractionIDs.count){
-//                XCTAssertEqual(expectation[index].AttractionIDs[attractIDIndex], result[index].AttractionIDs[attractIDIndex], "Same Route Name")
-//            }
-//            index++
-//        }
-//    }
+    func testGetRoutes(){
+        var expectation:[Route] = service.GetRoutes()
+        var result:[Route] = service.GetRoutes()
+    
+        if expectation.isEmpty || result.isEmpty {
+            XCTFail("Can't get data with some reason")
+        }
+    
+        var index:Int = 0
+    
+        while (index < expectation.count){
+            XCTAssertEqual(expectation[index].RouteID, result[index].RouteID, "Same Route ID")
+            XCTAssertEqual(expectation[index].Name, result[index].Name, "Same Route Name")
+    
+            var attractIDIndex = 0
+    
+            while (attractIDIndex < expectation[index].AttractionIDs.count){
+                XCTAssertEqual(expectation[index].AttractionIDs[attractIDIndex], result[index].AttractionIDs[attractIDIndex], "Same AttractionIDs")
+                attractIDIndex++
+            }
+
+            attractIDIndex = 0
+            
+            while (attractIDIndex < expectation[index].TagsIDs.count){
+                XCTAssertEqual(expectation[index].TagsIDs[attractIDIndex], result[index].TagsIDs[attractIDIndex], "Same TagsIDs")
+                attractIDIndex++
+            }
+            
+            attractIDIndex = 0
+            
+            while (attractIDIndex < expectation[index].CategoriesIDs.count){
+                XCTAssertEqual(expectation[index].CategoriesIDs[attractIDIndex], result[index].CategoriesIDs[attractIDIndex], "Same CategoriesIDs")
+                attractIDIndex++
+            }
+            index++
+        }
+    }
     
     func testGetAttraction(){
         
         var expectation:[Attraction] = service.GetAttractions()
         var result:[Attraction] = service.GetAttractions()
         
-//        XCTAssertNotNil(expectation, "Success getting data from server")
-//        XCTAssertNotNil(result, "Success getting data from server")
+        if expectation.isEmpty || result.isEmpty {
+            XCTFail("Can't get data with some reason")
+        }
         
         
         for attractID in expectation{
@@ -128,12 +148,14 @@ class CATAzureServiceTests: XCTestCase {
                     var city = json["City"].stringValue
                     var state = json["StateAbbreviation"].stringValue
                     var zip = json["ZipCode"].stringValue
-
+                    
                     attractID.setAddress(address, city: city, state: state, ZIP: zip)
                     attractID.AttractionName = json["Name"].stringValue
                     attractID.Detail = json["Details"].stringValue
                     attractID.Content = json["TextContent"].stringValue
                     expect.fulfill()
+                }else{
+                    XCTFail("Can't get data with some reason")
                 }
             })
             waitForExpectationsWithTimeout(5, handler: nil)
@@ -155,6 +177,8 @@ class CATAzureServiceTests: XCTestCase {
                     attractID.Detail = json["Details"].stringValue
                     attractID.Content = json["TextContent"].stringValue
                     expect.fulfill()
+                }else{
+                    XCTFail("Can't get data with some reason")
                 }
             })
             waitForExpectationsWithTimeout(5, handler: nil)
@@ -176,7 +200,9 @@ class CATAzureServiceTests: XCTestCase {
     func testGetAttractionContentByID(){
         var attractList:[Attraction] = service.GetAttractions()
         
-//        XCTAssertNotNil(attractList, "Success getting data from server")
+        if attractList.isEmpty {
+            XCTFail("Can't get data with some reason")
+        }
         
         class content{
             var content:String = ""
@@ -200,6 +226,8 @@ class CATAzureServiceTests: XCTestCase {
                     expectation.append(content)
                     
                     expect.fulfill()
+                }else{
+                    XCTFail("Can't get data with some reason")
                 }
             })
             waitForExpectationsWithTimeout(5, handler: nil)
@@ -219,6 +247,8 @@ class CATAzureServiceTests: XCTestCase {
                     result.append(content)
                     
                     expect.fulfill()
+                }else{
+                    XCTFail("Can't get data with some reason")
                 }
             })
             waitForExpectationsWithTimeout(5, handler: nil)
