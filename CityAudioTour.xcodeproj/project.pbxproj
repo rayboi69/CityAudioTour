@@ -56,6 +56,8 @@
 		C19F133F1AB0B2DD008542E6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0891AA0447000757252 /* Route.swift */; };
 		C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
 		C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
+		E2BAB765F648AAAB8DBEB25B /* libPods-CityAudioTourTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DC89A4B198BA23B27CEDC0 /* libPods-CityAudioTourTests.a */; };
+		EBDF33724755DF3E803394A4 /* libPods-CityAudioTour.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD808A19A771EB1ADE41A00D /* libPods-CityAudioTour.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01DC89A4B198BA23B27CEDC0 /* libPods-CityAudioTourTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityAudioTourTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08277B8A1A8478FC00D97F65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		083AEF451A899117004D6874 /* TestLibraryFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLibraryFile.swift; sourceTree = "<group>"; };
 		083AEF471A899123004D6874 /* CATAzureService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATAzureService.swift; sourceTree = "<group>"; };
@@ -96,6 +99,10 @@
 		3194A0891AA0447000757252 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3194A08B1AA0448200757252 /* Categroy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categroy.swift; sourceTree = "<group>"; };
 		3194A08D1AA0449100757252 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		49AD066B918E4A266BCEF247 /* Pods-CityAudioTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTour/Pods-CityAudioTour.debug.xcconfig"; sourceTree = "<group>"; };
+		595927FF2E4794B91CCAB2CD /* Pods-CityAudioTourTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTourTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTourTests/Pods-CityAudioTourTests.release.xcconfig"; sourceTree = "<group>"; };
+		6EC86282E4352359A8D83951 /* Pods-CityAudioTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTour.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTour/Pods-CityAudioTour.release.xcconfig"; sourceTree = "<group>"; };
+		885ADE63438A5B83E72C48D0 /* Pods-CityAudioTourTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTourTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTourTests/Pods-CityAudioTourTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTourViewController.swift; sourceTree = "<group>"; };
 		8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionListTableViewController.swift; sourceTree = "<group>"; };
 		8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +118,7 @@
 		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		C1852C6A1AA561320078B29E /* SearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
 		C1852C6C1AA561470078B29E /* MapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
+		FD808A19A771EB1ADE41A00D /* libPods-CityAudioTour.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityAudioTour.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 				088F03641A7F04C200292507 /* CoreLocation.framework in Frameworks */,
 				088F03621A7F04B900292507 /* CoreData.framework in Frameworks */,
 				088F03601A7F04B300292507 /* AVFoundation.framework in Frameworks */,
+				EBDF33724755DF3E803394A4 /* libPods-CityAudioTour.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2BAB765F648AAAB8DBEB25B /* libPods-CityAudioTourTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +198,8 @@
 				08B855041A79F90F006F035F /* CityAudioTour */,
 				08B8551D1A79F90F006F035F /* CityAudioTourTests */,
 				08B855031A79F90F006F035F /* Products */,
+				4CE0684CFE4C9B70E3A41BE9 /* Pods */,
+				22CA8B061C636D74C9E14B77 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -249,6 +261,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		22CA8B061C636D74C9E14B77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD808A19A771EB1ADE41A00D /* libPods-CityAudioTour.a */,
+				01DC89A4B198BA23B27CEDC0 /* libPods-CityAudioTourTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3178C9681AB1257B00F26461 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +281,17 @@
 				3194A08D1AA0449100757252 /* Tag.swift */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		4CE0684CFE4C9B70E3A41BE9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				49AD066B918E4A266BCEF247 /* Pods-CityAudioTour.debug.xcconfig */,
+				6EC86282E4352359A8D83951 /* Pods-CityAudioTour.release.xcconfig */,
+				885ADE63438A5B83E72C48D0 /* Pods-CityAudioTourTests.debug.xcconfig */,
+				595927FF2E4794B91CCAB2CD /* Pods-CityAudioTourTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		C1852C691AA560EE0078B29E /* DelegateClass */ = {
@@ -278,9 +310,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 08B855241A79F90F006F035F /* Build configuration list for PBXNativeTarget "CityAudioTour" */;
 			buildPhases = (
+				F96B2D12A117A54D5DA8306B /* Check Pods Manifest.lock */,
 				08B854FE1A79F90F006F035F /* Sources */,
 				08B854FF1A79F90F006F035F /* Frameworks */,
 				08B855001A79F90F006F035F /* Resources */,
+				BD943CD8DB3427C3D1584C97 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,9 +329,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 08B855271A79F90F006F035F /* Build configuration list for PBXNativeTarget "CityAudioTourTests" */;
 			buildPhases = (
+				0EA5FBB93C4DD18BBF3C66B2 /* Check Pods Manifest.lock */,
 				08B855161A79F90F006F035F /* Sources */,
 				08B855171A79F90F006F035F /* Frameworks */,
 				08B855181A79F90F006F035F /* Resources */,
+				EFB5DE098E55F74711680F0D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -367,6 +403,69 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EA5FBB93C4DD18BBF3C66B2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BD943CD8DB3427C3D1584C97 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CityAudioTour/Pods-CityAudioTour-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFB5DE098E55F74711680F0D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CityAudioTourTests/Pods-CityAudioTourTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F96B2D12A117A54D5DA8306B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		08B854FE1A79F90F006F035F /* Sources */ = {
@@ -538,6 +637,7 @@
 		};
 		08B855251A79F90F006F035F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49AD066B918E4A266BCEF247 /* Pods-CityAudioTour.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -558,6 +658,7 @@
 		};
 		08B855261A79F90F006F035F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EC86282E4352359A8D83951 /* Pods-CityAudioTour.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -577,6 +678,7 @@
 		};
 		08B855281A79F90F006F035F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 885ADE63438A5B83E72C48D0 /* Pods-CityAudioTourTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -599,6 +701,7 @@
 		};
 		08B855291A79F90F006F035F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 595927FF2E4794B91CCAB2CD /* Pods-CityAudioTourTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";

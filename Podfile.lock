@@ -1,0 +1,18 @@
+PODS:
+  - MBProgressHUD (0.9.1)
+  - OCMock (3.1.2)
+  - OHHTTPStubs (3.1.11):
+    - OHHTTPStubs/Core (= 3.1.11)
+  - OHHTTPStubs/Core (3.1.11)
+
+DEPENDENCIES:
+  - MBProgressHUD (~> 0.8)
+  - OCMock
+  - OHHTTPStubs
+
+SPEC CHECKSUMS:
+  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
+  OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
+  OHHTTPStubs: e6ecc3fd4fa11b2cfb5f4823421bddc95a82913d
+
+COCOAPODS: 0.36.0
