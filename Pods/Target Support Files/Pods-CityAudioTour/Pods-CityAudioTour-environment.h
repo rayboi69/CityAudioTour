@@ -6,6 +6,12 @@
 // project.
 
 
+// Google-Maps-iOS-SDK
+#define COCOAPODS_POD_AVAILABLE_Google_Maps_iOS_SDK
+#define COCOAPODS_VERSION_MAJOR_Google_Maps_iOS_SDK 1
+#define COCOAPODS_VERSION_MINOR_Google_Maps_iOS_SDK 9
+#define COCOAPODS_VERSION_PATCH_Google_Maps_iOS_SDK 2
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0

@@ -6,6 +6,7 @@ xcodeproj 'CityAudioTour.xcodeproj'
 target :CityAudioTour do
   xcodeproj 'CityAudioTour.xcodeproj'
   pod 'MBProgressHUD', '~> 0.8'
+  pod 'Google-Maps-iOS-SDK'
 end
 
 target :CityAudioTourTests do
