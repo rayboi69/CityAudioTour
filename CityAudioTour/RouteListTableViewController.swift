@@ -11,8 +11,8 @@ import UIKit
 class RouteListTableViewController: UITableViewController {
 
     var sectionTitle = "Route List"
-    private var routesModel = RoutesModel.sharedInstance
-    private var attractionsModel = AttractionsModel.sharedInstance
+    private var routesManager = RoutesManager.sharedInstance
+    private var attractionsModel = AttractionsManager.sharedInstance
     private var routes = [Route]()
     
     // MARK: - View Controller Lifecycle
@@ -22,7 +22,7 @@ class RouteListTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        routes = routesModel.routesList!
+        routes = routesManager.routesList!
         tableView.reloadData()
     }
 
@@ -54,7 +54,7 @@ class RouteListTableViewController: UITableViewController {
     // MARK: - Navigation
   
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        routesModel.selectedRoute = routes[indexPath.row]
+        routesManager.selectedRoute = routes[indexPath.row]
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -69,7 +69,7 @@ class RouteListTableViewController: UITableViewController {
                     let selectRoute = routes[indexPath.row]
                     let attractions = attractionsModel.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
                     
-                    routesModel.selectedRoute = selectRoute
+                    routesManager.selectedRoute = selectRoute
                     selectAttractionsScene.attractions = attractions
                     selectAttractionsScene.routeTitle = selectRoute.Name
                 }

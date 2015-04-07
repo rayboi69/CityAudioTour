@@ -1,5 +1,5 @@
 //
-//  AttractionsModel.swift
+//  AttractionsManager.swift
 //  CityAudioTour
 //
 //  Created by Juan Garcia on 2/23/15.
@@ -7,21 +7,21 @@
 //
 
 import Foundation
-class AttractionsModel {
+class AttractionsManager {
     
     //
     //Singleton Pattern
     //
-    class var sharedInstance: AttractionsModel
+    class var sharedInstance: AttractionsManager
     {
         
         struct Static {
-            static var instance: AttractionsModel?
+            static var instance: AttractionsManager?
             static var token: dispatch_once_t = 0
         }
         
         dispatch_once(&Static.token) {
-            Static.instance = AttractionsModel()
+            Static.instance = AttractionsManager()
         }
         
         return Static.instance!

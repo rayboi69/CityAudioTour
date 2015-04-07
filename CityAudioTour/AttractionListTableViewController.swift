@@ -11,8 +11,8 @@ import UIKit
 class AttractionListTableViewController: UITableViewController {
 
     var sectionTitle = "Attraction List"
-    private var _routesModel = RoutesModel.sharedInstance
-    private var _attractionsModel = AttractionsModel.sharedInstance
+    private var _routesManager = RoutesManager.sharedInstance
+    private var _attractionsManager = AttractionsManager.sharedInstance
     private var _attractions = [Attraction]()
     
     // MARK: - View Controller Lifecycle
@@ -22,7 +22,7 @@ class AttractionListTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        _attractions = _attractionsModel.attractionsList
+        _attractions = _attractionsManager.attractionsList
         tableView.reloadData()
     }
     
@@ -60,7 +60,7 @@ class AttractionListTableViewController: UITableViewController {
         route.AttractionIDs = [attraction.AttractionID]
         route.CategoriesIDs = [attraction.CategoryID]
         route.TagsIDs = attraction.TagIDs
-        _routesModel.selectedRoute = route
+        _routesManager.selectedRoute = route
         navigationController?.popToRootViewControllerAnimated(true)
     }
 

@@ -1,5 +1,5 @@
 //
-//  RoutesModel.swift
+//  RoutesManager.swift
 //  CityAudioTour.
 //
 //  Created by Juan Garcia on 2/26/15.
@@ -7,16 +7,16 @@
 //
 
 import Foundation
-class RoutesModel {
+class RoutesManager {
     
-    class var sharedInstance: RoutesModel {
+    class var sharedInstance: RoutesManager {
         struct Static {
-            static var instance: RoutesModel?
+            static var instance: RoutesManager?
             static var token: dispatch_once_t = 0
         }
         
         dispatch_once(&Static.token) {
-            Static.instance = RoutesModel()
+            Static.instance = RoutesManager()
         }
         
         return Static.instance!

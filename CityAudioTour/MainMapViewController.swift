@@ -28,8 +28,8 @@ class MainMapViewController: UIViewController{
     private var isRouteSelected:Bool = false;
     
     //Models
-    private var routesModel = RoutesModel.sharedInstance
-    private var attractionsModel = AttractionsModel.sharedInstance
+    private var routesManager = RoutesManager.sharedInstance
+    private var attractionsModel = AttractionsManager.sharedInstance
     
     
     //Current Location button that update user's current location.
@@ -57,7 +57,7 @@ class MainMapViewController: UIViewController{
     //Show Navigator bar when moving to other views.
     override func viewDidDisappear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        routesModel.selectedRoute = nil
+        routesManager.selectedRoute = nil
         menuController.MenuHidden()
     }
     
@@ -107,8 +107,8 @@ class MainMapViewController: UIViewController{
         let oldAnnotationList = mainMapView.annotations
         mainMapView.removeAnnotations(oldAnnotationList)
         
-        if let r = routesModel.selectedRoute{
-            var attractionIDs = routesModel.selectedRoute?.AttractionIDs
+        if let r = routesManager.selectedRoute{
+            var attractionIDs = routesManager.selectedRoute?.AttractionIDs
             attractions = self.attractionsModel.GetAttractionsConcreteObjects(attractionIDs!)
             isRouteSelected = true
         }else{

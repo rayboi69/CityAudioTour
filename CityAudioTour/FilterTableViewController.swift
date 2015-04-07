@@ -20,16 +20,16 @@ class FilterTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categories = ClassificationModel.sharedInstance.categoryList
-        tags = ClassificationModel.sharedInstance.tagList
-        catSet = ClassificationModel.sharedInstance.selectedCategories
-        tagSet = ClassificationModel.sharedInstance.selectedTags
+        categories = ClassificationManager.sharedInstance.categoryList
+        tags = ClassificationManager.sharedInstance.tagList
+        catSet = ClassificationManager.sharedInstance.selectedCategories
+        tagSet = ClassificationManager.sharedInstance.selectedTags
         
     }
     
     override func viewWillDisappear(animated: Bool) {
-        AttractionsModel.sharedInstance.FilterAttractions(catSet, selectedTag: tagSet)
-        RoutesModel.sharedInstance.FilterRoutes(catSet, selectedTag: tagSet)
+        AttractionsManager.sharedInstance.FilterAttractions(catSet, selectedTag: tagSet)
+        RoutesManager.sharedInstance.FilterRoutes(catSet, selectedTag: tagSet)
     }
     
     override func didReceiveMemoryWarning() {

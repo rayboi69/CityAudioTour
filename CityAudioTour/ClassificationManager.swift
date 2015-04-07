@@ -1,5 +1,5 @@
 //
-//  ClassificationModel.swift
+//  ClassificationManager.swift
 //  CityAudioTour
 //
 //  Created by Juan Garcia on 2/26/15.
@@ -7,16 +7,16 @@
 //
 
 import Foundation
-class ClassificationModel {
+class ClassificationManager {
     
-    class var sharedInstance: ClassificationModel {
+    class var sharedInstance: ClassificationManager {
         struct Static {
-            static var instance: ClassificationModel?
+            static var instance: ClassificationManager?
             static var token: dispatch_once_t = 0
         }
         
         dispatch_once(&Static.token) {
-            Static.instance = ClassificationModel()
+            Static.instance = ClassificationManager()
         }
         
         return Static.instance!
