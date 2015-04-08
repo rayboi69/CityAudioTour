@@ -34,7 +34,7 @@
 		8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */; };
 		8B2CB3E11AB255E400E07AB9 /* SelectAttractionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */; };
 		8B523B241AA3B0FC002F6010 /* RouteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B523B231AA3B0FC002F6010 /* RouteListTableViewController.swift */; };
-		8B8E7A7D1ACF595100531218 /* SelectAttractionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E7A7C1ACF595100531218 /* SelectAttractionsModel.swift */; };
+		8B8E7A7D1ACF595100531218 /* SelectAttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
 		C1412AC31AB755B900E9844D /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412AC21AB755B900E9844D /* ContentViewTests.swift */; };
 		C1412AC51AB755DE00E9844D /* DetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412AC41AB755DE00E9844D /* DetailViewTests.swift */; };
@@ -109,7 +109,7 @@
 		8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAttractionsTableViewController.swift; sourceTree = "<group>"; };
 		8B523B231AA3B0FC002F6010 /* RouteListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteListTableViewController.swift; sourceTree = "<group>"; };
-		8B8E7A7C1ACF595100531218 /* SelectAttractionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAttractionsModel.swift; sourceTree = "<group>"; };
+		8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAttractionsManager.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C1412AC21AB755B900E9844D /* ContentViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		C1412AC41AB755DE00E9844D /* DetailViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewTests.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 				3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */,
 				3194A0871AA03CEA00757252 /* ClassificationManager.swift */,
 				3178C9691AB125B600F26461 /* RoutesManager.swift */,
-				8B8E7A7C1ACF595100531218 /* SelectAttractionsModel.swift */,
+				8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -492,7 +492,7 @@
 				8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */,
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				3178C96A1AB125B600F26461 /* RoutesManager.swift in Sources */,
-				8B8E7A7D1ACF595100531218 /* SelectAttractionsModel.swift in Sources */,
+				8B8E7A7D1ACF595100531218 /* SelectAttractionsManager.swift in Sources */,
 				8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
 				3194A0881AA03CEA00757252 /* ClassificationManager.swift in Sources */,
