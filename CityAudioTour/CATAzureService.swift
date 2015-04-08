@@ -4,21 +4,26 @@ public class CATAzureService
 {
     public init(){}
     
-    private var apiURL = "http://cityaudiotourweb.azurewebsites.net/api"
+    private let apiURL = "http://cityaudiotourweb.azurewebsites.net/api"
+    private var response:NSURLResponse?
+    private var error:NSError?
+   // private let
     
     public func GetAttractions() -> [Attraction]
     {
         var attractions = [Attraction]()
 
-        var finalURL = apiURL + "/attraction/"
+        let finalURL = apiURL + "/attraction/"
         let url = NSURL(string:finalURL)
-        var request = NSURLRequest(URL: url!)
+        let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
 
         if data != nil {
-            let content = JSON(data: data!)
-            let attractionsArray = content.arrayValue
+            var HTTPResponse = response as NSHTTPURLResponse
+            if HTTPResponse.statusCode == 200 {
+                let content = JSON(data: data!)
+                let attractionsArray = content.arrayValue
             
                 for attraction in attractionsArray {
                     
@@ -41,32 +46,43 @@ public class CATAzureService
                     
                     attractions.append(tempAttraction)
                 }
+            }else {
+                //do something here. (Add more error code here)
+            }
         }
+
         return attractions;
     }
     
     internal func GetCategoryList() -> [Category] {
         let finalURL = apiURL + "/category"
         let url = NSURL(string:finalURL)
-        var request = NSURLRequest(URL: url!)
+        let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+
         
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
 
         var categories = [Category]()
         
         if data != nil {
-            let content = JSON(data: data!)
-            let categoryArray = content.arrayValue
+            var HTTPResponse = response as NSHTTPURLResponse
+            if HTTPResponse.statusCode == 200 {
+                
+                let content = JSON(data: data!)
+                let categoryArray = content.arrayValue
             
-            for category in categoryArray {
-                var id = category["CategoryID"].intValue
-                var name = category["Name"].stringValue
+                for category in categoryArray {
+                    var id = category["CategoryID"].intValue
+                    var name = category["Name"].stringValue
+                    
+                    var tempCategory = Category()
+                    tempCategory.CategoryID = id
+                    tempCategory.Name = name
                 
-                var tempCategory = Category()
-                tempCategory.CategoryID = id
-                tempCategory.Name = name
-                
-                categories.append(tempCategory)
+                    categories.append(tempCategory)
+                }
+            }else{
+                //do something here. (Add more error code here)
             }
         }
         return categories
@@ -75,24 +91,30 @@ public class CATAzureService
     internal func GetTagList() -> [Tag] {
         let finalURL = apiURL + "/tag"
         let url = NSURL(string:finalURL)
-        var request = NSURLRequest(URL: url!)
+        let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
         
         var tags = [Tag]()
+
         if data != nil {
-            let content = JSON(data: data!)
-            let tagArray = content.arrayValue
+            var HTTPResponse = response as NSHTTPURLResponse
+            if HTTPResponse.statusCode == 200 {
+                let content = JSON(data: data!)
+                let tagArray = content.arrayValue
             
-            for tag in tagArray {
-                var id = tag["TagID"].intValue
-                var name = tag["Name"].stringValue
+                for tag in tagArray {
+                    var id = tag["TagID"].intValue
+                    var name = tag["Name"].stringValue
                 
-                var temptag = Tag()
-                temptag.TagID = id
-                temptag.Name = name
+                    var temptag = Tag()
+                    temptag.TagID = id
+                    temptag.Name = name
                 
-                tags.append(temptag)
+                    tags.append(temptag)
+                }
+            }else{
+                //do something here. (Add more error code here)
             }
         }
         return tags
@@ -101,30 +123,36 @@ public class CATAzureService
     internal func GetRoutes() -> [Route] {
         let finalURL = apiURL + "/route"
         let url = NSURL(string: finalURL)
-        var request = NSURLRequest(URL: url!)
+        let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
         
         var routes = [Route]()
+        
         if data != nil {
-            let content = JSON(data: data!)
-            let routeArray = content.arrayValue
+            var HTTPResponse = response as NSHTTPURLResponse
+            if HTTPResponse.statusCode == 200 {
+                let content = JSON(data: data!)
+                let routeArray = content.arrayValue
             
-            for route in routeArray {
-                var tempRoute = Route()
-                tempRoute.RouteID = route["RouteID"].intValue
-                tempRoute.Name = route["Name"].stringValue
-                if let attractionIDArray = route["AttractionIDs"].arrayObject as? [Int] {
-                    tempRoute.AttractionIDs = attractionIDArray
-                }
-                if let tagsIDArray = route["Tags"].arrayObject as? [Int] {
-                    tempRoute.TagsIDs = tagsIDArray
-                }
-                if let categoriesIDArray = route["Categories"].arrayObject as? [Int] {
-                    tempRoute.TagsIDs = categoriesIDArray
-                }
+                for route in routeArray {
+                    var tempRoute = Route()
+                    tempRoute.RouteID = route["RouteID"].intValue
+                    tempRoute.Name = route["Name"].stringValue
+                    if let attractionIDArray = route["AttractionIDs"].arrayObject as? [Int] {
+                        tempRoute.AttractionIDs = attractionIDArray
+                    }
+                    if let tagsIDArray = route["Tags"].arrayObject as? [Int] {
+                        tempRoute.TagsIDs = tagsIDArray
+                    }
+                    if let categoriesIDArray = route["Categories"].arrayObject as? [Int] {
+                        tempRoute.TagsIDs = categoriesIDArray
+                    }
                 
-                routes.append(tempRoute)
+                    routes.append(tempRoute)
+                }
+            }else{
+                //do something here. (Add more error code here)
             }
         }
         return routes
@@ -137,25 +165,31 @@ public class CATAzureService
         var finalURL = apiURL + "/attraction/" + String(attractionId) + "/images"
         
         let url = NSURL(string:finalURL)
-        var request = NSURLRequest(URL: url!)
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
         
         if data != nil {
-            let content = JSON(data: data!)
-            let attractionsArray = content.arrayValue
+            var HTTPResponse = response as NSHTTPURLResponse
+            if HTTPResponse.statusCode == 200 {
+                let content = JSON(data: data!)
+                let attractionsArray = content.arrayValue
             
-            for attraction in attractionsArray {
+                for attraction in attractionsArray {
                 
-                var attractionImageId = attraction["AttractionID"].intValue
-                var attractionId = attraction["AttractionImageID"].intValue
-                var url = attraction["URL"].stringValue
+                    var attractionImageId = attraction["AttractionID"].intValue
+                    var attractionId = attraction["AttractionImageID"].intValue
+                    var url = attraction["URL"].stringValue
                 
-                var tempAttraction = AttractionImage()
-                tempAttraction.setAttractionID(attractionId)
-                tempAttraction.setAttractionImageID(attractionImageId)
-                tempAttraction.setURL(url)
+                    var tempAttraction = AttractionImage()
+                    tempAttraction.setAttractionID(attractionId)
+                    tempAttraction.setAttractionImageID(attractionImageId)
+                    tempAttraction.setURL(url)
                 
-                attractionImages.append(tempAttraction)
+                    attractionImages.append(tempAttraction)
+                }
+            }else{
+                //do something here. (Add more error code here)
             }
         }
         return attractionImages;

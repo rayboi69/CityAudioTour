@@ -23,8 +23,8 @@ class AttractionsModelTests: XCTestCase {
     }
 
     func testInitilizeValues(){
-        var expected = AttractionsModel.sharedInstance.attractionsList
-        var result = AttractionsModel.sharedInstance.attractionsList
+        var expected = AttractionsManager.sharedInstance.attractionsList
+        var result = AttractionsManager.sharedInstance.attractionsList
         
         if expected.isEmpty || result.isEmpty {
             XCTFail("Can't get data with some reason.")
@@ -55,8 +55,8 @@ class AttractionsModelTests: XCTestCase {
     }
     
     func testGetAttractionBy(){
-        var expected = AttractionsModel.sharedInstance.attractionsList
-        var result = AttractionsModel.sharedInstance.attractionsList
+        var expected = AttractionsManager.sharedInstance.attractionsList
+        var result = AttractionsManager.sharedInstance.attractionsList
         
         if expected.isEmpty || result.isEmpty {
             XCTFail("Can't get data with some reason.")
@@ -66,8 +66,8 @@ class AttractionsModelTests: XCTestCase {
         
         while (index < expected.count){
             
-            var expectAttract = AttractionsModel.sharedInstance.GetAttractionBy(expected[index].AttractionID)
-            var resultAttract = AttractionsModel.sharedInstance.GetAttractionBy(result[index].AttractionID)
+            var expectAttract = AttractionsManager.sharedInstance.GetAttractionBy(expected[index].AttractionID)
+            var resultAttract = AttractionsManager.sharedInstance.GetAttractionBy(result[index].AttractionID)
             
             if (expectAttract == nil || resultAttract == nil) {
                 XCTFail("Can't get data with some reason.")
@@ -97,7 +97,7 @@ class AttractionsModelTests: XCTestCase {
     }
 
     func testGetAttractionsConcreteObjects(){
-        var attractList = AttractionsModel.sharedInstance.attractionsList
+        var attractList = AttractionsManager.sharedInstance.attractionsList
         
         if attractList.isEmpty{
             XCTFail("Can't get data with some reason.")
@@ -109,8 +109,8 @@ class AttractionsModelTests: XCTestCase {
             attractID.append(attract.AttractionID)
         }
         
-        var expected = AttractionsModel.sharedInstance.GetAttractionsConcreteObjects(attractID)
-        var result = AttractionsModel.sharedInstance.GetAttractionsConcreteObjects(attractID)
+        var expected = AttractionsManager.sharedInstance.GetAttractionsConcreteObjects(attractID)
+        var result = AttractionsManager.sharedInstance.GetAttractionsConcreteObjects(attractID)
         
         if expected.isEmpty || result.isEmpty{
             XCTFail("Can't get data with some reason.")

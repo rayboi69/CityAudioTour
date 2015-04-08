@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		08277B8B1A8478FC00D97F65 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08277B8A1A8478FC00D97F65 /* MapKit.framework */; };
-		083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083AEF451A899117004D6874 /* TestLibraryFile.swift */; };
 		083AEF481A899123004D6874 /* CATAzureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083AEF471A899123004D6874 /* CATAzureService.swift */; };
 		088F03601A7F04B300292507 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F035F1A7F04B300292507 /* AVFoundation.framework */; };
 		088F03621A7F04B900292507 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088F03611A7F04B900292507 /* CoreData.framework */; };
@@ -40,10 +39,12 @@
 		C1412AC51AB755DE00E9844D /* DetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412AC41AB755DE00E9844D /* DetailViewTests.swift */; };
 		C1412AC61AB7571500E9844D /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
 		C1412AC71AB7571800E9844D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE41A8D7E8200FC104F /* DetailViewController.swift */; };
-		C1412AC91AB7588C00E9844D /* AttractionsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412AC81AB7588C00E9844D /* AttractionsModelTests.swift */; };
+		C1412AC91AB7588C00E9844D /* AttractionsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412AC81AB7588C00E9844D /* AttractionsManagerTests.swift */; };
 		C1412ACA1AB7595D00E9844D /* ClassificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0871AA03CEA00757252 /* ClassificationManager.swift */; };
 		C1412ACB1AB7595E00E9844D /* RoutesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178C9691AB125B600F26461 /* RoutesManager.swift */; };
-		C1412ACD1AB765D000E9844D /* RoutesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412ACC1AB765D000E9844D /* RoutesModelTests.swift */; };
+		C1412ACD1AB765D000E9844D /* RoutesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412ACC1AB765D000E9844D /* RoutesManagerTests.swift */; };
+		C14F3E341AD5D6770042435C /* CameraControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F3E331AD5D6770042435C /* CameraControl.swift */; };
+		C14F3E361AD5D8B30042435C /* ClassificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14F3E351AD5D8B30042435C /* ClassificationManagerTests.swift */; };
 		C165E4FE1A9A843300241D05 /* MenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C165E4FD1A9A843300241D05 /* MenuControl.swift */; };
 		C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE41A8D7E8200FC104F /* DetailViewController.swift */; };
 		C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1737FE61A8D7EB900FC104F /* Attraction.swift */; };
@@ -74,7 +75,6 @@
 /* Begin PBXFileReference section */
 		01DC89A4B198BA23B27CEDC0 /* libPods-CityAudioTourTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityAudioTourTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08277B8A1A8478FC00D97F65 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		083AEF451A899117004D6874 /* TestLibraryFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLibraryFile.swift; sourceTree = "<group>"; };
 		083AEF471A899123004D6874 /* CATAzureService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATAzureService.swift; sourceTree = "<group>"; };
 		088F035F1A7F04B300292507 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		088F03611A7F04B900292507 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -113,8 +113,10 @@
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C1412AC21AB755B900E9844D /* ContentViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		C1412AC41AB755DE00E9844D /* DetailViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewTests.swift; sourceTree = "<group>"; };
-		C1412AC81AB7588C00E9844D /* AttractionsModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsModelTests.swift; sourceTree = "<group>"; };
-		C1412ACC1AB765D000E9844D /* RoutesModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesModelTests.swift; sourceTree = "<group>"; };
+		C1412AC81AB7588C00E9844D /* AttractionsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsManagerTests.swift; sourceTree = "<group>"; };
+		C1412ACC1AB765D000E9844D /* RoutesManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesManagerTests.swift; sourceTree = "<group>"; };
+		C14F3E331AD5D6770042435C /* CameraControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControl.swift; sourceTree = "<group>"; };
+		C14F3E351AD5D8B30042435C /* ClassificationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationManagerTests.swift; sourceTree = "<group>"; };
 		C165E4FD1A9A843300241D05 /* MenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuControl.swift; sourceTree = "<group>"; };
 		C1737FE41A8D7E8200FC104F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				C165E4FD1A9A843300241D05 /* MenuControl.swift */,
 				083AEF471A899123004D6874 /* CATAzureService.swift */,
+				C14F3E331AD5D6770042435C /* CameraControl.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -184,7 +187,6 @@
 		083AEF441A899012004D6874 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				083AEF451A899117004D6874 /* TestLibraryFile.swift */,
 				8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */,
 			);
 			name = Libraries;
@@ -245,8 +247,9 @@
 		08B8551D1A79F90F006F035F /* CityAudioTourTests */ = {
 			isa = PBXGroup;
 			children = (
-				C1412ACC1AB765D000E9844D /* RoutesModelTests.swift */,
-				C1412AC81AB7588C00E9844D /* AttractionsModelTests.swift */,
+				C14F3E351AD5D8B30042435C /* ClassificationManagerTests.swift */,
+				C1412ACC1AB765D000E9844D /* RoutesManagerTests.swift */,
+				C1412AC81AB7588C00E9844D /* AttractionsManagerTests.swift */,
 				C1412AC41AB755DE00E9844D /* DetailViewTests.swift */,
 				C1412AC21AB755B900E9844D /* ContentViewTests.swift */,
 				08B855201A79F90F006F035F /* CityAudioTourTests.swift */,
@@ -481,10 +484,10 @@
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
 				8B523B241AA3B0FC002F6010 /* RouteListTableViewController.swift in Sources */,
 				8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */,
-				083AEF461A899117004D6874 /* TestLibraryFile.swift in Sources */,
 				3194A08A1AA0447000757252 /* Route.swift in Sources */,
 				C1852C6B1AA561320078B29E /* SearchBarDelegate.swift in Sources */,
 				C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */,
+				C14F3E341AD5D6770042435C /* CameraControl.swift in Sources */,
 				08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */,
 				3135BF501A9C3E8E00DD0D46 /* AttractionsManager.swift in Sources */,
 				3194A08C1AA0448200757252 /* Categroy.swift in Sources */,
@@ -516,15 +519,16 @@
 				C19F133C1AB0B2D4008542E6 /* Attraction.swift in Sources */,
 				C1412AC51AB755DE00E9844D /* DetailViewTests.swift in Sources */,
 				C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */,
+				C14F3E361AD5D8B30042435C /* ClassificationManagerTests.swift in Sources */,
 				089A59911AAD6257008F82A6 /* CATAzureServiceTests.swift in Sources */,
 				C19F133F1AB0B2DD008542E6 /* Route.swift in Sources */,
-				C1412ACD1AB765D000E9844D /* RoutesModelTests.swift in Sources */,
+				C1412ACD1AB765D000E9844D /* RoutesManagerTests.swift in Sources */,
 				C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */,
 				C1412ACB1AB7595E00E9844D /* RoutesManager.swift in Sources */,
 				08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */,
 				C19F133E1AB0B2DB008542E6 /* Categroy.swift in Sources */,
 				C1412AC71AB7571800E9844D /* DetailViewController.swift in Sources */,
-				C1412AC91AB7588C00E9844D /* AttractionsModelTests.swift in Sources */,
+				C1412AC91AB7588C00E9844D /* AttractionsManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

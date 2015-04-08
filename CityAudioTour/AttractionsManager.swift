@@ -29,6 +29,7 @@ class AttractionsManager {
     
     private var _service: CATAzureService?
     private var _attractionsList: [Attraction]?
+    private var _isAttractionsListChanged:Bool = false
     
     //
     //Petes idea implementation
@@ -138,6 +139,17 @@ class AttractionsManager {
             }
         }
 
+    }
+    
+    var isAttractionsListChanged : Bool
+        {
+        get{
+            return _isAttractionsListChanged
+        }
+        set{
+            _isAttractionsListChanged = newValue
+        }
+        
     }
     
 

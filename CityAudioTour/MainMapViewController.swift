@@ -16,17 +16,16 @@ class MainMapViewController: UIViewController{
     @IBOutlet weak var mainMapView: MKMapView!
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var autoComplete: UITableView!
     
     //All variables for this class
-    private let searchBarController:SearchBarDelegate = SearchBarDelegate()
     private let requestLocation:MKDirectionsRequest = MKDirectionsRequest()
     private let locationManager = CLLocationManager()
     private var mapController:MapDelegate!
     private var menuController:MenuController!
+    private var searchBarController:SearchBarDelegate!
     private var selectedAttractionId : Int?
-    private var attractions = [Attraction]()
-    private var isRouteSelected:Bool = false;
-    
+    private var isConnected:Bool = true
     //Models
     private var routesManager = RoutesManager.sharedInstance
     private var attractionsModel = AttractionsManager.sharedInstance
@@ -47,10 +46,32 @@ class MainMapViewController: UIViewController{
         }
     }
     
+    //Satellite button
+    @IBAction func SatelliteBtn(sender: AnyObject) {
+        if mainMapView.mapType != MKMapType.Satellite {
+            mainMapView.mapType = MKMapType.Satellite
+        }
+    }
+    //Standard button
+    @IBAction func StandardBtn(sender: AnyObject) {
+        if mainMapView.mapType != MKMapType.Standard {
+            mainMapView.mapType = MKMapType.Standard
+        }
+    }
+    //Temporary method
+    @IBAction func ShowAll(sender: AnyObject) {
+        routesManager.selectedRoute = nil
+        attractionsModel.isAttractionsListChanged = false
+        mapController.wantPinPoint()
+        locationManager.startUpdatingLocation()
+    }
     //Hide Navigator bar when main screen is appeared.
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        mapController.wantPinPoint()
+        if routesManager.selectedRoute != nil || attractionsModel.isAttractionsListChanged {
+            mapController.wantPinPoint()
+            attractionsModel.isAttractionsListChanged = false
+        }
         locationManager.startUpdatingLocation()
     }
     
@@ -76,14 +97,23 @@ class MainMapViewController: UIViewController{
     
     //Setting up everything in this view.
     private func startUpSetting(){
+        
         //Set up Flyout menu
         menuController = MenuController(MenuView: menuView, MainView: self.view)
         
-        //Set up searchBar delegate
-        searchBar.delegate = searchBarController
         //Set up map view delegate
         mapController = MapDelegate(mapView: self)
         mainMapView.delegate = mapController
+        mainMapView.showsUserLocation = true
+        
+        //Set up searchBar delegate
+        searchBarController = SearchBarDelegate(mapView: self,mapController: mapController)
+        searchBar.delegate = searchBarController
+        
+        //Set up tableView Delegate
+        autoComplete.delegate = searchBarController
+        autoComplete.dataSource = searchBarController
+        autoComplete.hidden = true
         
         //Set up location manager delegate
         locationManager.delegate = mapController
@@ -95,169 +125,24 @@ class MainMapViewController: UIViewController{
             locationManager.requestWhenInUseAuthorization()
         }
         
+        //In case no internet connection. 
+        
+//        if attractionsModel.attractionsList.isEmpty{
+//            showMessage()
+//            return
+//        }
+        
         //Start getting user's current location when application's started.
-        mainMapView.showsUserLocation = true
         locationManager.startUpdatingLocation()
         
     }
     
-    //Create all annotations on the map.
-    func createPinPoint(){
-        //Clear all old annotation
-        let oldAnnotationList = mainMapView.annotations
-        mainMapView.removeAnnotations(oldAnnotationList)
-        
-        if let r = routesManager.selectedRoute{
-            var attractionIDs = routesManager.selectedRoute?.AttractionIDs
-            attractions = self.attractionsModel.GetAttractionsConcreteObjects(attractionIDs!)
-            isRouteSelected = true
-        }else{
-            // Webservice call to get attractions
-            attractions = attractionsModel.attractionsList
-        }
-        
-        var maxLatitude:CLLocationDegrees = 0
-        var minLatitude:CLLocationDegrees = 0
-        var maxLongitude:CLLocationDegrees = 0
-        var minLongitude:CLLocationDegrees = 0
-        
-        // loop through attractions
-        for attraction in attractions  {
-                var pin = MKPointAnnotation()
-                pin.title = attraction.AttractionName
-                pin.coordinate.latitude = attraction.Latitude
-                pin.coordinate.longitude = attraction.Longitude
-                
-                if pin.coordinate.latitude > maxLatitude {
-                    maxLatitude = pin.coordinate.latitude
-                }
-                if pin.coordinate.latitude < minLatitude {
-                    minLatitude = pin.coordinate.latitude
-                }
-                if pin.coordinate.longitude > maxLongitude {
-                    maxLongitude = pin.coordinate.longitude
-                }
-                if pin.coordinate.longitude < minLongitude {
-                    minLongitude = pin.coordinate.longitude
-                }
-                // Add Pin to Map
-                self.mainMapView.addAnnotation(pin)
-        }
-        
-        let currentLocation = mapController.getCurrentLocation()
-        
-        if currentLocation.coordinate.latitude > maxLatitude {
-            maxLatitude = currentLocation.coordinate.latitude
-        }
-        if currentLocation.coordinate.latitude < minLatitude {
-            minLatitude = currentLocation.coordinate.latitude
-        }
-        if currentLocation.coordinate.longitude > maxLongitude {
-            maxLongitude = currentLocation.coordinate.longitude
-        }
-        if currentLocation.coordinate.longitude < minLongitude {
-            minLongitude = currentLocation.coordinate.longitude
-        }
-        
-        
-        var camera = calculateCenter(maxLatitude, minLatitude: minLatitude, maxLongitude: maxLongitude, minLongitude: minLongitude)
-        mainMapView.setRegion(camera, animated: true)
-        
-        //Start creating route based on attraction list.
-        createRoute()
-    }
-    
-    //Creating route in the map based on attraction list.
-    private func createRoute(){
-        // remove existing route lines or overlays when this method starts
-        var oldOverlays = mainMapView.overlays
-        mainMapView.removeOverlays(oldOverlays)
-        
-        if isRouteSelected{
-            // loop through attractions
-            for attraction in attractions  {
-                // get flying distance
-                let startinglocation = mapController.getCurrentLocation()
-                let endingLocation = CLLocation(latitude: attraction.Latitude, longitude: attraction.Longitude)
-                let distance = startinglocation.distanceFromLocation(endingLocation)
-        
-                attraction.FlyingDistance = distance
-            }
-        
-            attractions.sort({ $0.FlyingDistance < $1.FlyingDistance })
-        
-            var counter = 0
-            var prevMapItem = MKMapItem?()
-            
-            for attraction in attractions  {
-        
-                // get walking distance
-        
-                let startingCoordinate = mapController.getCurrentLocation().coordinate
-                let startingPlaceMark = MKPlacemark(coordinate: startingCoordinate, addressDictionary: nil)
-                let startingMapItem = MKMapItem(placemark: startingPlaceMark)
-        
-                let endingCoordinate = CLLocationCoordinate2D(latitude: attraction.Latitude, longitude: attraction.Longitude)
-                let endingPlaceMark = MKPlacemark(coordinate: endingCoordinate, addressDictionary: nil)
-                let endingMapItem = MKMapItem(placemark: endingPlaceMark)
-        
-                if (counter != 0) {
-                    requestLocation.setSource(prevMapItem)
-                }else {
-                    requestLocation.setSource(startingMapItem)
-                }
-        
-                requestLocation.transportType = MKDirectionsTransportType.Walking
-                requestLocation.requestsAlternateRoutes = false
-                requestLocation.setDestination(endingMapItem)
-        
-                prevMapItem = endingMapItem
-        
-                // Call Directions API
-                let direction:MKDirections = MKDirections(request:requestLocation)
-                direction.calculateDirectionsWithCompletionHandler({
-                    (response:MKDirectionsResponse!, error:NSError!) -> Void in
-                        if response == nil {
-                            println(error)
-                            return
-                        }
-                
-                        let routeList = response.routes as [MKRoute]
-                
-                        for route in routeList{
-                            for step in route.steps as [MKRouteStep]{
-                                self.mainMapView.addOverlay(step.polyline)
-                            }
-                            attraction.WalkingDistance = route.distance
-                        }
-                })
-                counter = counter + 1
-            }
-            isRouteSelected = false
-        }
-    }
-    
-    private func calculateCenter(maxLatitude:CLLocationDegrees,minLatitude:CLLocationDegrees,
-        maxLongitude:CLLocationDegrees, minLongitude:CLLocationDegrees) -> MKCoordinateRegion{
-            
-            let latitudeMeter = (maxLatitude - minLatitude) / 800
-            let longitudeMeter = (maxLongitude - minLongitude) / 800
-            let Span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latitudeMeter, longitudeDelta: longitudeMeter)
-            
-            let centerLat = (maxLatitude + minLatitude) - 0.02
-            let centerLong = (maxLongitude + minLongitude) + 0.02
-            let center:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong)
-            
-            let cameraCenter:MKCoordinateRegion = MKCoordinateRegionMake(center,Span)
-            return cameraCenter
-    }
-
     //When the button in call out window is pressed, it will go to detail page.
     func gotoDetailPage(view:MKAnnotationView!){
         
         var annotation = view.annotation
         
-        for attraction in attractions  {
+        for attraction in attractionsModel.attractionsList  {
             
             if (annotation.title == attraction.AttractionName &&
                 annotation.coordinate.latitude == attraction.Latitude &&
@@ -269,6 +154,22 @@ class MainMapViewController: UIViewController{
         
         self.performSegueWithIdentifier("detailview", sender: self)
     }
+    
+    //Handle error later. In case no internet connection
+    
+//    private func showMessage(){
+//        if objc_getClass("UIAlertController") != nil {
+//            var alert = UIAlertController(title: "No Internet Connection", message: "Please Check Internet Connection!", preferredStyle: UIAlertControllerStyle.Alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//            self.presentViewController(alert, animated: true, completion: nil)
+//        }else{
+//            var alert = UIAlertView(title: "No Internet Connection", message: "Please Check Internet Connection!", delegate: nil, cancelButtonTitle: "OK")
+//            alert.alertViewStyle = UIAlertViewStyle.Default
+//            alert.show()
+//        }
+//
+//        isConnected = false
+//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
