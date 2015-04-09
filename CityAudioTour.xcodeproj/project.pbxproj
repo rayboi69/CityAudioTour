@@ -35,6 +35,7 @@
 		8B523B241AA3B0FC002F6010 /* RouteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B523B231AA3B0FC002F6010 /* RouteListTableViewController.swift */; };
 		8B8E7A7D1ACF595100531218 /* SelectAttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */; };
 		8BBE8F281A8D6476001861DE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */; };
+		C109F48F1AD61875005C0852 /* DetailPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C109F48E1AD61875005C0852 /* DetailPopUp.swift */; };
 		C1412AC31AB755B900E9844D /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412AC21AB755B900E9844D /* ContentViewTests.swift */; };
 		C1412AC51AB755DE00E9844D /* DetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412AC41AB755DE00E9844D /* DetailViewTests.swift */; };
 		C1412AC61AB7571500E9844D /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
@@ -58,6 +59,7 @@
 		C19F133F1AB0B2DD008542E6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0891AA0447000757252 /* Route.swift */; };
 		C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
 		C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
+		C1DF54081AD6C98100FA9BA8 /* RouteStepPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF54071AD6C98000FA9BA8 /* RouteStepPage.swift */; };
 		E2BAB765F648AAAB8DBEB25B /* libPods-CityAudioTourTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DC89A4B198BA23B27CEDC0 /* libPods-CityAudioTourTests.a */; };
 		EBDF33724755DF3E803394A4 /* libPods-CityAudioTour.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD808A19A771EB1ADE41A00D /* libPods-CityAudioTour.a */; };
 /* End PBXBuildFile section */
@@ -111,6 +113,7 @@
 		8B523B231AA3B0FC002F6010 /* RouteListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteListTableViewController.swift; sourceTree = "<group>"; };
 		8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAttractionsManager.swift; sourceTree = "<group>"; };
 		8BBE8F271A8D6476001861DE /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		C109F48E1AD61875005C0852 /* DetailPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPopUp.swift; sourceTree = "<group>"; };
 		C1412AC21AB755B900E9844D /* ContentViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		C1412AC41AB755DE00E9844D /* DetailViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewTests.swift; sourceTree = "<group>"; };
 		C1412AC81AB7588C00E9844D /* AttractionsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsManagerTests.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 		C1737FE61A8D7EB900FC104F /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		C1852C6A1AA561320078B29E /* SearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
 		C1852C6C1AA561470078B29E /* MapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
+		C1DF54071AD6C98000FA9BA8 /* RouteStepPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStepPage.swift; sourceTree = "<group>"; };
 		FD808A19A771EB1ADE41A00D /* libPods-CityAudioTour.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityAudioTour.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +174,7 @@
 				8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */,
 				8B523B231AA3B0FC002F6010 /* RouteListTableViewController.swift */,
 				8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */,
+				C1DF54071AD6C98000FA9BA8 /* RouteStepPage.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				C165E4FD1A9A843300241D05 /* MenuControl.swift */,
 				083AEF471A899123004D6874 /* CATAzureService.swift */,
 				C14F3E331AD5D6770042435C /* CameraControl.swift */,
+				C109F48E1AD61875005C0852 /* DetailPopUp.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -487,6 +493,7 @@
 				3194A08A1AA0447000757252 /* Route.swift in Sources */,
 				C1852C6B1AA561320078B29E /* SearchBarDelegate.swift in Sources */,
 				C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */,
+				C109F48F1AD61875005C0852 /* DetailPopUp.swift in Sources */,
 				C14F3E341AD5D6770042435C /* CameraControl.swift in Sources */,
 				08B8550D1A79F90F006F035F /* MainMapViewController.swift in Sources */,
 				3135BF501A9C3E8E00DD0D46 /* AttractionsManager.swift in Sources */,
@@ -496,6 +503,7 @@
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				3178C96A1AB125B600F26461 /* RoutesManager.swift in Sources */,
 				8B8E7A7D1ACF595100531218 /* SelectAttractionsManager.swift in Sources */,
+				C1DF54081AD6C98100FA9BA8 /* RouteStepPage.swift in Sources */,
 				8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
 				3194A0881AA03CEA00757252 /* ClassificationManager.swift in Sources */,

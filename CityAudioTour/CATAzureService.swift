@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 public class CATAzureService
 {
@@ -218,4 +219,5 @@ public class CATAzureService
     private func connectToDB(request:NSURLRequest,MainThreadQueue:NSOperationQueue,handler:(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void){
         NSURLConnection.sendAsynchronousRequest(request, queue: MainThreadQueue, completionHandler: handler)
     }
+    
 }

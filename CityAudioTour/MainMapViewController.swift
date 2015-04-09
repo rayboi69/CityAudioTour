@@ -10,27 +10,37 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MainMapViewController: UIViewController{
+class MainMapViewController: UIViewController,UIAlertViewDelegate{
     
     //Interacting UI Elements
     @IBOutlet weak var mainMapView: MKMapView!
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var autoComplete: UITableView!
+    @IBOutlet weak var detailBox: UILabel!
+    @IBOutlet weak var hoursBox: UILabel!
+    @IBOutlet weak var addressBox: UILabel!
+    @IBOutlet weak var titleBtn: UIButton!
+    //Element in Detail PopUp View
+    @IBOutlet weak var DetailPopUpView: UIView!
+    
     
     //All variables for this class
     private let requestLocation:MKDirectionsRequest = MKDirectionsRequest()
     private let locationManager = CLLocationManager()
+    private var detailPopController:DetailPopUp!
     private var mapController:MapDelegate!
     private var menuController:MenuController!
     private var searchBarController:SearchBarDelegate!
     private var selectedAttractionId : Int?
-    private var isConnected:Bool = true
+   
     //Models
     private var routesManager = RoutesManager.sharedInstance
     private var attractionsModel = AttractionsManager.sharedInstance
-    
-    
+    //Source and Destination coodinates for route steps.
+    private var source:CLLocationCoordinate2D!
+    private var destination:CLLocationCoordinate2D!
+
     //Current Location button that update user's current location.
     @IBAction func buttonCurrentLocation(sender: AnyObject) {
         mapController.currentBtnisClicked()
@@ -41,6 +51,7 @@ class MainMapViewController: UIViewController{
     @IBAction func MenuBtn(sender: AnyObject) {
         if !menuController.isMenuShowing() {
             menuController.MenuShown()
+            detailPopController.hideDetailPopUp()
         }else{
             menuController.MenuHidden()
         }
@@ -58,13 +69,41 @@ class MainMapViewController: UIViewController{
             mainMapView.mapType = MKMapType.Standard
         }
     }
-    //Temporary method
+    //Refresh map screen to show all current attractions on the map.
     @IBAction func ShowAll(sender: AnyObject) {
         routesManager.selectedRoute = nil
         attractionsModel.isAttractionsListChanged = false
         mapController.wantPinPoint()
         locationManager.startUpdatingLocation()
     }
+    
+    //Play an audio for this attraction.
+    @IBAction func PlayBtn(sender: AnyObject) {
+        //How are we gonna do with this button
+    }
+    
+    //Start turn by turn system.
+    //For Rey Raso, implement youe logic here
+    @IBAction func NavigatorBtn(sender: AnyObject) {
+        //Implement your Logic here.
+    }
+    
+    //Add the attraction to custom route
+    @IBAction func AddCustomRouteBtn(sender: AnyObject) {
+        let attractionName:String? = titleBtn.titleLabel?.text
+        if objc_getClass("UIAlertController") != nil {
+            var alert = UIAlertController(title: "Add " + attractionName!, message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: addCustomHandler))
+            alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }else{
+            var alert = UIAlertView(title: "Add " + attractionName!, message: "Are you sure?", delegate: self, cancelButtonTitle: "Yes", otherButtonTitles: "No")
+            alert.alertViewStyle = UIAlertViewStyle.Default
+            alert.show()
+        }
+
+    }
+    
     //Hide Navigator bar when main screen is appeared.
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -98,11 +137,14 @@ class MainMapViewController: UIViewController{
     //Setting up everything in this view.
     private func startUpSetting(){
         
+        //Set up detail pop up view
+        detailPopController = DetailPopUp(popUpView: DetailPopUpView,mainView: self.view)
+        
         //Set up Flyout menu
-        menuController = MenuController(MenuView: menuView, MainView: self.view)
+        menuController = MenuController(MenuView: menuView, MainView: self.view, PopUp: detailPopController)
         
         //Set up map view delegate
-        mapController = MapDelegate(mapView: self)
+        mapController = MapDelegate(mapView: self,detailPopUpController: detailPopController)
         mainMapView.delegate = mapController
         mainMapView.showsUserLocation = true
         
@@ -137,49 +179,66 @@ class MainMapViewController: UIViewController{
         
     }
     
-    //When the button in call out window is pressed, it will go to detail page.
-    func gotoDetailPage(view:MKAnnotationView!){
+    //For Red, implement the adding custom route logic here. (For IOS 8)
+    private func addCustomHandler(alert:UIAlertAction!) -> Void{
+        println("IOS 8 called")
+    }
+    
+    //For Red, implement the adding custom route logic here. (For IOS 7)
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        var title = alertView.buttonTitleAtIndex(buttonIndex)
         
-        var annotation = view.annotation
-        
-        for attraction in attractionsModel.attractionsList  {
-            
-            if (annotation.title == attraction.AttractionName &&
-                annotation.coordinate.latitude == attraction.Latitude &&
-                annotation.coordinate.longitude == attraction.Longitude)
-            {
-                selectedAttractionId = attraction.AttractionID
-            }
+        if (title ==  "Yes"){
+            println("IOS 7 called")
+            //implement the adding custom route logic here.
         }
+    }
+    
+    //When the button in call out window is pressed, it will go to detail page.
+    func gotoDetailPage(ID:Int){
+        
+        selectedAttractionId = ID
         
         self.performSegueWithIdentifier("detailview", sender: self)
     }
     
-    //Handle error later. In case no internet connection
+    func setSelectedID(ID:Int){
+        selectedAttractionId = ID
+    }
     
-//    private func showMessage(){
-//        if objc_getClass("UIAlertController") != nil {
-//            var alert = UIAlertController(title: "No Internet Connection", message: "Please Check Internet Connection!", preferredStyle: UIAlertControllerStyle.Alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//            self.presentViewController(alert, animated: true, completion: nil)
-//        }else{
-//            var alert = UIAlertView(title: "No Internet Connection", message: "Please Check Internet Connection!", delegate: nil, cancelButtonTitle: "OK")
-//            alert.alertViewStyle = UIAlertViewStyle.Default
-//            alert.show()
-//        }
-//
-//        isConnected = false
-//    }
+    func setPeerToPeerRoute(source:CLLocationCoordinate2D,destination:CLLocationCoordinate2D){
+        self.source = source
+        self.destination = destination
+    }
+    
+    //show alert box if some error occurs
+    func showMessage(title:String,message:String){
+        if objc_getClass("UIAlertController") != nil {
+            var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }else{
+            var alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
+            alert.alertViewStyle = UIAlertViewStyle.Default
+            alert.show()
+        }
+
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if (segue.identifier == "detailview") {
+        if (segue.identifier == "detailview" || segue.identifier == "PopupDetail") {
             var detailController:DetailViewController = segue.destinationViewController as DetailViewController
             detailController.receiveID = selectedAttractionId
-        }else if(segue.identifier == "RoutePage"){
-            var routeController:RouteListTableViewController = segue.destinationViewController as RouteListTableViewController
+        }else if (segue.identifier == "RouteStepView"){
+            var routeStepView:RouteStepPage = segue.destinationViewController as RouteStepPage
+            routeStepView.source = source
+            routeStepView.destination = destination
+            routeStepView.attractionName = titleBtn.currentTitle
         }
     }
 }
+
+
 

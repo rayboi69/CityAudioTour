@@ -17,17 +17,20 @@ class MenuController: NSObject{
     
     //All variables for this class
     private let width:CGFloat!
+    private let detailPopController:DetailPopUp!
     private var animator:UIDynamicAnimator!
     private var isShowing = false
+    
     //Need this constructor to create a super class (NSObject).
     override init(){
         super.init()
     }
     //Constructor for subclass
-    init(MenuView:UIView, MainView:UIView){
+    init(MenuView:UIView, MainView:UIView, PopUp:DetailPopUp){
         super.init()
         menuView = MenuView
         mainView = MainView
+        detailPopController = PopUp
         width = menuView.frame.width
         self.setupMenu()
     }
@@ -51,8 +54,9 @@ class MenuController: NSObject{
         if recognizer.direction == UISwipeGestureRecognizerDirection.Left{
             isShowing = false
             showMenu(isShowing)
-        }else{
+        }else if recognizer.direction == UISwipeGestureRecognizerDirection.Right{
             isShowing = true
+            detailPopController.hideDetailPopUp()
             showMenu(isShowing)
         }
     }

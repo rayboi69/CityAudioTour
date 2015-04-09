@@ -13,8 +13,10 @@ import MapKit
 class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     //All variables for this class
     private let requestLocation:MKDirectionsRequest = MKDirectionsRequest()
+    private let service:CATAzureService = CATAzureService()
     private let latitudeMeter:CLLocationDistance = 1500
     private let longitudeMeter:CLLocationDistance = 1500
+    private let detailPopUpController:DetailPopUp!
     private let mapView:MainMapViewController!
     private let cameraController:CameraControl!
     private var currentLocation:CLLocation?
@@ -33,8 +35,9 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
         super.init()
     }
     //Constructor for this class.
-    init(mapView:MainMapViewController){
+    init(mapView:MainMapViewController,detailPopUpController:DetailPopUp){
         self.mapView = mapView
+        self.detailPopUpController = detailPopUpController
         cameraController = CameraControl()
     }
     
@@ -91,7 +94,8 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     
     //When the button in annotation is pressed, this method will be called to handle it.
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        self.mapView.gotoDetailPage(view)
+        var temp = view.annotation as holder
+        self.mapView.gotoDetailPage(temp.ID)
     }
     
     //When we add overlay or polyline in the map, this method will be called to draw a polyline
@@ -104,6 +108,50 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
             renderer.lineWidth = 2
         }
         return renderer
+    }
+    
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+        let annotation = view.annotation as holder
+        
+        self.mapView.setSelectedID(annotation.ID)
+        self.mapView.setPeerToPeerRoute(currentLocation!.coordinate, destination: annotation.coordinate)
+        
+        service.GetAttraction(annotation.ID, MainThread: NSOperationQueue.mainQueue(), handler: setUpDetailPopUpView)
+        
+        detailPopUpController.showDetailPopUp()
+    }
+    
+    private func setUpDetailPopUpView(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void{
+        if data != nil{
+            var HTTPReply:NSHTTPURLResponse = response as NSHTTPURLResponse
+            
+            if HTTPReply.statusCode == 200 {
+                let attraction = Attraction()
+                
+                let json = JSON(data:data!)
+                
+                var address = json["Address"].stringValue
+                var city = json["City"].stringValue
+                var state = json["StateAbbreviation"].stringValue
+                var zip = json["ZipCode"].stringValue
+                
+                attraction.setAddress(address, city: city, state: state, ZIP: zip)
+                attraction.AttractionName = json["Name"].stringValue
+                attraction.Detail = json["Details"].stringValue
+                attraction.Content = json["TextContent"].stringValue
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.mapView.titleBtn.setTitle(attraction.AttractionName, forState: UIControlState.Normal)
+                    self.mapView.addressBox.text = attraction.AttractionAddress
+                    self.mapView.detailBox.text = attraction.Detail
+                })
+            }else{
+                //Status code is not 200. Something wrong.
+            }
+            
+        }else{
+            //Connection lost show alert box.
+        }
     }
     
     //Create all annotations on the map.
@@ -123,7 +171,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
         
         // loop through attractions
         for attraction in attractions!  {
-            var pin = MKPointAnnotation()
+            var pin = holder(attraction: attraction)
             pin.title = attraction.AttractionName
             
             pin.coordinate.latitude = attraction.Latitude
@@ -187,7 +235,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
                     requestLocation.setSource(startingMapItem)
                 }
                 
-                requestLocation.transportType = MKDirectionsTransportType.Walking
+                requestLocation.transportType = MKDirectionsTransportType.Automobile
                 requestLocation.requestsAlternateRoutes = false
                 requestLocation.setDestination(endingMapItem)
                 
@@ -268,4 +316,12 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
         isFindingCurrent = true
     }
     
+}
+
+class holder: MKPointAnnotation{
+    private let ID:Int!
+    
+    init(attraction:Attraction){
+        ID = attraction.AttractionID
+    }
 }
