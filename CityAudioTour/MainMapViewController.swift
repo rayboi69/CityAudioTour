@@ -182,6 +182,9 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
     //For Red, implement the adding custom route logic here. (For IOS 8)
     private func addCustomHandler(alert:UIAlertAction!) -> Void{
         println("IOS 8 called")
+        println("ADD: \(selectedAttractionId)") //Test
+        var myRoute = SelectAttractionsManager.sharedInstance
+        myRoute.addAttraction(selectedAttractionId!)
     }
     
     //For Red, implement the adding custom route logic here. (For IOS 7)
@@ -191,6 +194,9 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
         if (title ==  "Yes"){
             println("IOS 7 called")
             //implement the adding custom route logic here.
+            println("ADD: \(selectedAttractionId)") //Test
+            var myRoute = SelectAttractionsManager.sharedInstance
+            myRoute.addAttraction(selectedAttractionId!)
         }
     }
     

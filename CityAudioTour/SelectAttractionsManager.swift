@@ -22,8 +22,24 @@ class SelectAttractionsManager {
         return Static.instance!
     }
     
-    var attractions: [Attraction] = []
+    private var attractions: [Int] = []
     
+    func addAttraction(ID: Int) {
+        println("Receive: \(ID)") //Test
+        if !contains(attractions, ID) {
+            attractions.append(ID)
+            println("Add in to array: \(ID)") //Test
+        }
+        println("Array: \(attractions)") // Test
+    }
+    
+    func removeAttractionAt(index: Int) {
+        if !attractions.isEmpty && 0 <= index && index < attractions.count {
+            attractions.removeAtIndex(index)
+        }
+    }
+    
+    /*
     var myRoute: Route? {
         get {
             var ids = [Int()]
@@ -45,4 +61,5 @@ class SelectAttractionsManager {
             return route
         }
     }
+    */
 }
