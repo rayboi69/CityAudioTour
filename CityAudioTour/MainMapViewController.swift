@@ -83,9 +83,25 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
     }
     
     //Start turn by turn system.
-    //For Rey Raso, implement youe logic here
+    //For Rey Raso, implement your logic here
     @IBAction func NavigatorBtn(sender: AnyObject) {
-        //Implement your Logic here.
+        
+        let attractionName:String? = titleBtn.titleLabel?.text
+        
+        // set destination
+        var destinationPlacemark:MKPlacemark = MKPlacemark(coordinate: destination, addressDictionary:nil)
+        
+        var destinationMapItem:MKMapItem = MKMapItem(placemark: destinationPlacemark)
+        destinationMapItem.name = attractionName
+        
+        // set source as currentLocation
+        var currentLocationMapItem:MKMapItem = MKMapItem.mapItemForCurrentLocation()
+        
+        // set launchOptions
+        let launchOptions:NSDictionary = NSDictionary(object: MKLaunchOptionsDirectionsModeWalking, forKey: MKLaunchOptionsDirectionsModeKey)
+        
+        // open Maps
+        MKMapItem.openMapsWithItems([currentLocationMapItem, destinationMapItem], launchOptions: launchOptions)
     }
     
     //Add the attraction to custom route
