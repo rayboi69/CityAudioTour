@@ -15,12 +15,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var AttractionName: UILabel!
     @IBOutlet weak var WorkingHours: UILabel!
     @IBOutlet weak var AttractionAddress: UILabel!
-    
-    @IBAction func addToMyRoute(sender: UIButton) {
-        println("ADD: \(receiveID!)") //Test
-        var myRoute = SelectAttractionsManager.sharedInstance
-        myRoute.addAttraction(receiveID!)
-    }
    
     var receiveID : Int?
     //For testing purpose

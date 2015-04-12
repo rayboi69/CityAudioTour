@@ -182,9 +182,6 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
     //For Red, implement the adding custom route logic here. (For IOS 8)
     private func addCustomHandler(alert:UIAlertAction!) -> Void{
         println("IOS 8 called")
-        println("ADD: \(selectedAttractionId)") //Test
-        var myRoute = SelectAttractionsManager.sharedInstance
-        myRoute.addAttraction(selectedAttractionId!)
     }
     
     //For Red, implement the adding custom route logic here. (For IOS 7)
@@ -194,9 +191,6 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
         if (title ==  "Yes"){
             println("IOS 7 called")
             //implement the adding custom route logic here.
-            println("ADD: \(selectedAttractionId)") //Test
-            var myRoute = SelectAttractionsManager.sharedInstance
-            myRoute.addAttraction(selectedAttractionId!)
         }
     }
     
@@ -234,8 +228,6 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        /* Old version
         if (segue.identifier == "detailview" || segue.identifier == "PopupDetail") {
             var detailController:DetailViewController = segue.destinationViewController as DetailViewController
             detailController.receiveID = selectedAttractionId
@@ -244,24 +236,6 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
             routeStepView.source = source
             routeStepView.destination = destination
             routeStepView.attractionName = titleBtn.currentTitle
-        }
-        */
-        
-        if let identifier = segue.identifier {
-            switch identifier {
-            case "detailview", "PopupDetail":
-                let detailScene = segue.destinationViewController as DetailViewController
-                detailScene.receiveID = selectedAttractionId
-            case "RouteStepView":
-                let routeStepScene = segue.destinationViewController as RouteStepPage
-                routeStepScene.source = source
-                routeStepScene.destination = destination
-                routeStepScene.attractionName = titleBtn.currentTitle
-            case "MenuToMyRoute":
-                let selectAttractionScene = segue.destinationViewController as SelectAttractionsTableViewController
-                selectAttractionScene.route = SelectAttractionsManager.sharedInstance.myRoute!
-            default: break
-            }
         }
     }
 }
