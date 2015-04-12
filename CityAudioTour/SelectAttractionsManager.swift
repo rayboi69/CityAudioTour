@@ -22,26 +22,38 @@ class SelectAttractionsManager {
         return Static.instance!
     }
     
-    var attractions: [Attraction] = []
+    private var attractionManager = AttractionsManager.sharedInstance
+    private var attractions = [Int]()
+    private var categorys = NSMutableSet()
+    private var tags = NSMutableSet()
+    
+    func getCategoryAndTagFromAttraction(ID: Int) -> (Int, [Int]) {
+        
+        return (0, [])
+    }
+    
+    
+    func addAttraction(ID: Int) {
+        println("Receive: \(ID)") //Test
+        if !contains(attractions, ID) {
+            attractions.append(ID)
+            println("Add in to array: \(ID)") //Test
+        }
+        println("Array: \(attractions)") // Test
+    }
+    
+    func removeAttractionAt(index: Int) {
+        if !attractions.isEmpty && 0 <= index && index < attractions.count {
+            attractions.removeAtIndex(index)
+        }
+    }
     
     var myRoute: Route? {
         get {
-            var ids = [Int()]
-            var tags = NSMutableSet()
-            var cats = NSMutableSet()
-            
-            for attraction in attractions {
-                ids.append(attraction.AttractionID)
-                tags.addObject(attraction.TagIDs)
-                cats.addObject(attraction.CategoryID)
-            }
-            
             var route = Route()
             route.Name = "My Route"
-            route.AttractionIDs = ids
-            route.TagsIDs = tags.allObjects as [Int]
-            route.CategoriesIDs = cats.allObjects as [Int]
-            
+            route.AttractionIDs = attractions
+
             return route
         }
     }

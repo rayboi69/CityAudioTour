@@ -70,8 +70,7 @@ class RouteListTableViewController: UITableViewController {
                     let attractions = attractionsModel.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
                     
                     routesManager.selectedRoute = selectRoute
-                    selectAttractionsScene.attractions = attractions
-                    selectAttractionsScene.routeTitle = selectRoute.Name
+                    selectAttractionsScene.route = selectRoute
                 }
             default: break
             }
