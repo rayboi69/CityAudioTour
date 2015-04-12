@@ -71,6 +71,7 @@ class RouteListTableViewController: UITableViewController {
                     
                     routesManager.selectedRoute = selectRoute
                     selectAttractionsScene.route = selectRoute
+                    selectAttractionsScene.editable = false
                 }
             default: break
             }

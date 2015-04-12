@@ -43,7 +43,7 @@ class SelectAttractionsManager {
     }
     
     func removeAttractionAt(index: Int) {
-        if !attractions.isEmpty && 0 <= index && index < attractions.count {
+        if !attractions.isEmpty && index < attractions.count {
             attractions.removeAtIndex(index)
         }
     }

@@ -276,6 +276,7 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
             case "MenuToMyRoute":
                 let selectAttractionScene = segue.destinationViewController as SelectAttractionsTableViewController
                 selectAttractionScene.route = SelectAttractionsManager.sharedInstance.myRoute!
+                selectAttractionScene.editable = true
             default: break
             }
         }
