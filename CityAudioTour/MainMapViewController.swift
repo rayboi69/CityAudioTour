@@ -275,8 +275,7 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
                 routeStepScene.attractionName = titleBtn.currentTitle
             case "MenuToMyRoute":
                 let selectAttractionScene = segue.destinationViewController as SelectAttractionsTableViewController
-                selectAttractionScene.routeTitle = "My Route"
-                //selectAttractionScene.attractions =
+                selectAttractionScene.route = SelectAttractionsManager.sharedInstance.myRoute!
             default: break
             }
         }

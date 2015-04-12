@@ -10,8 +10,9 @@ import UIKit
 
 class SelectAttractionsTableViewController: UITableViewController {
 
-    var routeTitle = ""
-    var attractions = [Attraction]()
+    var route = Route()
+    private var attractionsManager = AttractionsManager.sharedInstance
+    private var routeManager = RoutesManager.sharedInstance
     
     // MARK: - View Controller Lifecycle
     
@@ -30,18 +31,18 @@ class SelectAttractionsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return attractions.count
+        return route.AttractionIDs.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SelectAttractionCell", forIndexPath: indexPath) as UITableViewCell
-        let attraction = attractions[indexPath.row]
-        cell.textLabel?.text = attraction.AttractionName
+        let attraction = attractionsManager.GetAttractionBy(route.AttractionIDs[indexPath.row])
+        cell.textLabel?.text = attraction?.AttractionName
         return cell
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return routeTitle
+        return route.Name
     }
 
     /*
@@ -82,6 +83,7 @@ class SelectAttractionsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     @IBAction func showAttractionsOnMap(sender: UIBarButtonItem) {
+        routeManager.selectedRoute = route
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -92,7 +94,7 @@ class SelectAttractionsTableViewController: UITableViewController {
                 let cell = sender as UITableViewCell
                 if let indexPath = tableView.indexPathForCell(cell) {
                     let detailScene = segue.destinationViewController as DetailViewController
-                    detailScene.receiveID = attractions[indexPath.row].AttractionID
+                    detailScene.receiveID = route.AttractionIDs[indexPath.row]
                 }
             default: break
             }
