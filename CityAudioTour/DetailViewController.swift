@@ -17,7 +17,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var AttractionAddress: UILabel!
     
     @IBAction func addToMyRoute(sender: UIButton) {
-        println("ADD: \(receiveID!)") //Test
         var myRoute = SelectAttractionsManager.sharedInstance
         myRoute.addAttraction(receiveID!)
     }

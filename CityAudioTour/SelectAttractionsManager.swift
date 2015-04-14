@@ -22,7 +22,7 @@ class SelectAttractionsManager {
         return Static.instance!
     }
     
-    private var attractionManager = AttractionsManager.sharedInstance
+    private var _attractionManager = AttractionsManager.sharedInstance
     private var attractions = [Int]()
     private var categorys = NSMutableSet()
     private var tags = NSMutableSet()
@@ -34,17 +34,26 @@ class SelectAttractionsManager {
     
     
     func addAttraction(ID: Int) {
-        println("Receive: \(ID)") //Test
         if !contains(attractions, ID) {
             attractions.append(ID)
-            println("Add in to array: \(ID)") //Test
         }
-        println("Array: \(attractions)") // Test
     }
     
     func removeAttractionAt(index: Int) {
         if !attractions.isEmpty && index < attractions.count {
             attractions.removeAtIndex(index)
+        }
+    }
+    
+    func moveItem(fromIndex: Int, toIndex: Int) {
+        var itemToMove = attractions[fromIndex]
+        attractions.removeAtIndex(fromIndex)
+        attractions.insert(itemToMove, atIndex: toIndex)
+    }
+    
+    var allAttractions: [Int] {
+        get {
+            return attractions
         }
     }
     

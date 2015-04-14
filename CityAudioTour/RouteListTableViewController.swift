@@ -11,8 +11,8 @@ import UIKit
 class RouteListTableViewController: UITableViewController {
 
     var sectionTitle = "Route List"
-    private var routesManager = RoutesManager.sharedInstance
-    private var attractionsModel = AttractionsManager.sharedInstance
+    private var _routesManager = RoutesManager.sharedInstance
+    private var _attractionsModel = AttractionsManager.sharedInstance
     private var routes = [Route]()
     
     // MARK: - View Controller Lifecycle
@@ -22,7 +22,7 @@ class RouteListTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        routes = routesManager.routesList!
+        routes = _routesManager.routesList!
         tableView.reloadData()
     }
 
@@ -54,7 +54,7 @@ class RouteListTableViewController: UITableViewController {
     // MARK: - Navigation
   
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        routesManager.selectedRoute = routes[indexPath.row]
+        _routesManager.selectedRoute = routes[indexPath.row]
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -67,11 +67,10 @@ class RouteListTableViewController: UITableViewController {
                     
                     let selectAttractionsScene = segue.destinationViewController as SelectAttractionsTableViewController
                     let selectRoute = routes[indexPath.row]
-                    let attractions = attractionsModel.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
+                    let attractions = _attractionsModel.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
                     
-                    routesManager.selectedRoute = selectRoute
-                    selectAttractionsScene.route = selectRoute
-                    selectAttractionsScene.editable = false
+                    _routesManager.selectedRoute = selectRoute
+                    selectAttractionsScene.identify = selectRoute.Name
                 }
             default: break
             }

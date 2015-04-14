@@ -197,8 +197,6 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
     
     //For Red, implement the adding custom route logic here. (For IOS 8)
     private func addCustomHandler(alert:UIAlertAction!) -> Void{
-        println("IOS 8 called")
-        println("ADD: \(selectedAttractionId)") //Test
         var myRoute = SelectAttractionsManager.sharedInstance
         myRoute.addAttraction(selectedAttractionId!)
     }
@@ -208,9 +206,7 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
         var title = alertView.buttonTitleAtIndex(buttonIndex)
         
         if (title ==  "Yes"){
-            println("IOS 7 called")
             //implement the adding custom route logic here.
-            println("ADD: \(selectedAttractionId)") //Test
             var myRoute = SelectAttractionsManager.sharedInstance
             myRoute.addAttraction(selectedAttractionId!)
         }
@@ -251,18 +247,6 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        /* Old version
-        if (segue.identifier == "detailview" || segue.identifier == "PopupDetail") {
-            var detailController:DetailViewController = segue.destinationViewController as DetailViewController
-            detailController.receiveID = selectedAttractionId
-        }else if (segue.identifier == "RouteStepView"){
-            var routeStepView:RouteStepPage = segue.destinationViewController as RouteStepPage
-            routeStepView.source = source
-            routeStepView.destination = destination
-            routeStepView.attractionName = titleBtn.currentTitle
-        }
-        */
-        
         if let identifier = segue.identifier {
             switch identifier {
             case "detailview", "PopupDetail":
@@ -275,8 +259,7 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
                 routeStepScene.attractionName = titleBtn.currentTitle
             case "MenuToMyRoute":
                 let selectAttractionScene = segue.destinationViewController as SelectAttractionsTableViewController
-                selectAttractionScene.route = SelectAttractionsManager.sharedInstance.myRoute!
-                selectAttractionScene.editable = true
+                selectAttractionScene.identify = "My Route"
             default: break
             }
         }
