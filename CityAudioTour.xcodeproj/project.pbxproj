@@ -20,6 +20,8 @@
 		08B855121A79F90F006F035F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08B855111A79F90F006F035F /* Images.xcassets */; };
 		08B855151A79F90F006F035F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B855131A79F90F006F035F /* LaunchScreen.xib */; };
 		08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B855201A79F90F006F035F /* CityAudioTourTests.swift */; };
+		3119D7651ADEE30F0006A5F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7631ADEE30F0006A5F5 /* LoginViewController.swift */; };
+		3119D7661ADEE30F0006A5F5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7641ADEE30F0006A5F5 /* SignUpViewController.swift */; };
 		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		3135BF501A9C3E8E00DD0D46 /* AttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */; };
 		3178C96A1AB125B600F26461 /* RoutesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178C9691AB125B600F26461 /* RoutesManager.swift */; };
@@ -91,6 +93,8 @@
 		08B8551A1A79F90F006F035F /* CityAudioTourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityAudioTourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08B8551F1A79F90F006F035F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08B855201A79F90F006F035F /* CityAudioTourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAudioTourTests.swift; sourceTree = "<group>"; };
+		3119D7631ADEE30F0006A5F5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3119D7641ADEE30F0006A5F5 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		311B43511A924F8F0051E05E /* AttractionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionImage.swift; sourceTree = "<group>"; };
 		3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsManager.swift; sourceTree = "<group>"; };
 		3178C9691AB125B600F26461 /* RoutesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesManager.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 		083AEF421A898FF2004D6874 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3119D7631ADEE30F0006A5F5 /* LoginViewController.swift */,
+				3119D7641ADEE30F0006A5F5 /* SignUpViewController.swift */,
 				08B8550C1A79F90F006F035F /* MainMapViewController.swift */,
 				C1737FE41A8D7E8200FC104F /* DetailViewController.swift */,
 				8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */,
@@ -528,6 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3119D7651ADEE30F0006A5F5 /* LoginViewController.swift in Sources */,
 				3194A08E1AA0449100757252 /* Tag.swift in Sources */,
 				311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */,
 				8B2CB3E11AB255E400E07AB9 /* SelectAttractionsTableViewController.swift in Sources */,
@@ -549,6 +556,7 @@
 				C1DF54081AD6C98100FA9BA8 /* RouteStepPage.swift in Sources */,
 				8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
+				3119D7661ADEE30F0006A5F5 /* SignUpViewController.swift in Sources */,
 				3194A0881AA03CEA00757252 /* ClassificationManager.swift in Sources */,
 				C165E4FE1A9A843300241D05 /* MenuControl.swift in Sources */,
 				C1852C6D1AA561470078B29E /* MapDelegate.swift in Sources */,
