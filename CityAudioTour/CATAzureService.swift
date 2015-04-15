@@ -1,5 +1,7 @@
 import Foundation
 import UIKit
+import SwiftyJSON
+
 
 public class CATAzureService
 {
