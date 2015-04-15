@@ -23,6 +23,7 @@
 		3119D7651ADEE30F0006A5F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7631ADEE30F0006A5F5 /* LoginViewController.swift */; };
 		3119D7661ADEE30F0006A5F5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7641ADEE30F0006A5F5 /* SignUpViewController.swift */; };
 		3119D7681ADEE9C30006A5F5 /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7671ADEE9C30006A5F5 /* ValuesViewController.swift */; };
+		3119D76A1ADEEB0D0006A5F5 /* AutheticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */; };
 		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		3135BF501A9C3E8E00DD0D46 /* AttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */; };
 		3178C96A1AB125B600F26461 /* RoutesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178C9691AB125B600F26461 /* RoutesManager.swift */; };
@@ -31,6 +32,11 @@
 		3194A08A1AA0447000757252 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0891AA0447000757252 /* Route.swift */; };
 		3194A08C1AA0448200757252 /* Categroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08B1AA0448200757252 /* Categroy.swift */; };
 		3194A08E1AA0449100757252 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
+		31BEC7431ADF11FD0024691C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BEC7421ADF11FD0024691C /* User.swift */; };
+		31BEC7441ADF25930024691C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BEC7421ADF11FD0024691C /* User.swift */; };
+		31BEC7451ADF259F0024691C /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
+		31BEC7461ADF25F40024691C /* AutheticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */; };
+		31BEC7471ADF25FB0024691C /* SelectAttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */; };
 		34F1D3EF674967127641DCED /* Pods_CityAudioTourTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8DDDB6BC9677E4C7044109 /* Pods_CityAudioTourTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
 		8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */; };
@@ -97,6 +103,7 @@
 		3119D7631ADEE30F0006A5F5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3119D7641ADEE30F0006A5F5 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3119D7671ADEE9C30006A5F5 /* ValuesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesViewController.swift; sourceTree = "<group>"; };
+		3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutheticationManager.swift; sourceTree = "<group>"; };
 		311B43511A924F8F0051E05E /* AttractionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionImage.swift; sourceTree = "<group>"; };
 		3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsManager.swift; sourceTree = "<group>"; };
 		3178C9691AB125B600F26461 /* RoutesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesManager.swift; sourceTree = "<group>"; };
@@ -105,6 +112,7 @@
 		3194A0891AA0447000757252 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3194A08B1AA0448200757252 /* Categroy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categroy.swift; sourceTree = "<group>"; };
 		3194A08D1AA0449100757252 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		31BEC7421ADF11FD0024691C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		49AD066B918E4A266BCEF247 /* Pods-CityAudioTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTour/Pods-CityAudioTour.debug.xcconfig"; sourceTree = "<group>"; };
 		595927FF2E4794B91CCAB2CD /* Pods-CityAudioTourTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTourTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTourTests/Pods-CityAudioTourTests.release.xcconfig"; sourceTree = "<group>"; };
 		6EC86282E4352359A8D83951 /* Pods-CityAudioTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTour.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTour/Pods-CityAudioTour.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +167,7 @@
 		08277B8C1A8484F800D97F65 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */,
 				3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */,
 				3194A0871AA03CEA00757252 /* ClassificationManager.swift */,
 				3178C9691AB125B600F26461 /* RoutesManager.swift */,
@@ -312,6 +321,7 @@
 				3194A0891AA0447000757252 /* Route.swift */,
 				3194A08B1AA0448200757252 /* Categroy.swift */,
 				3194A08D1AA0449100757252 /* Tag.swift */,
+				31BEC7421ADF11FD0024691C /* User.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -541,6 +551,7 @@
 				3194A08E1AA0449100757252 /* Tag.swift in Sources */,
 				311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */,
 				8B2CB3E11AB255E400E07AB9 /* SelectAttractionsTableViewController.swift in Sources */,
+				31BEC7431ADF11FD0024691C /* User.swift in Sources */,
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
 				8B523B241AA3B0FC002F6010 /* RouteListTableViewController.swift in Sources */,
 				8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */,
@@ -557,6 +568,7 @@
 				08B855081A79F90F006F035F /* AppDelegate.swift in Sources */,
 				3178C96A1AB125B600F26461 /* RoutesManager.swift in Sources */,
 				8B8E7A7D1ACF595100531218 /* SelectAttractionsManager.swift in Sources */,
+				3119D76A1ADEEB0D0006A5F5 /* AutheticationManager.swift in Sources */,
 				C1DF54081AD6C98100FA9BA8 /* RouteStepPage.swift in Sources */,
 				8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
@@ -577,6 +589,7 @@
 				C1412ACA1AB7595D00E9844D /* ClassificationManager.swift in Sources */,
 				C1412AC31AB755B900E9844D /* ContentViewTests.swift in Sources */,
 				C19F133D1AB0B2D8008542E6 /* AttractionsManager.swift in Sources */,
+				31BEC7471ADF25FB0024691C /* SelectAttractionsManager.swift in Sources */,
 				C1412AC61AB7571500E9844D /* AudioTourViewController.swift in Sources */,
 				C19F133C1AB0B2D4008542E6 /* Attraction.swift in Sources */,
 				C1412AC51AB755DE00E9844D /* DetailViewTests.swift in Sources */,
@@ -590,7 +603,10 @@
 				08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */,
 				C19F133E1AB0B2DB008542E6 /* Categroy.swift in Sources */,
 				C1412AC71AB7571800E9844D /* DetailViewController.swift in Sources */,
+				31BEC7461ADF25F40024691C /* AutheticationManager.swift in Sources */,
 				C1412AC91AB7588C00E9844D /* AttractionsManagerTests.swift in Sources */,
+				31BEC7451ADF259F0024691C /* AttractionContent.swift in Sources */,
+				31BEC7441ADF25930024691C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

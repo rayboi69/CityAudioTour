@@ -15,4 +15,5 @@ target :CityAudioTourTests do
   xcodeproj 'CityAudioTour.xcodeproj'
   pod 'OCMock'
   pod 'OHHTTPStubs'
+  pod 'SwiftyJSON'
 end

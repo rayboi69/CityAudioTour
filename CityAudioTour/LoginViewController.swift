@@ -15,7 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginUIButton: UIButton!
     @IBOutlet weak var signUpUIButton: UIButton!
     
-    
+    private var authenticationManager = AuthenticationManager.sharedInstance
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +29,17 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func loginBtnPressed(sender: AnyObject) {
+        if (userNameUITextField.text == "" || passwordUITextField.text == "")
+        {
+            let alert = UIAlertView()
+            alert.title = "Alert"
+            alert.message = "Please insert email and password."
+            alert.addButtonWithTitle("Understod")
+            alert.show()
+        }
+        
     }
-    */
+    
 
 }

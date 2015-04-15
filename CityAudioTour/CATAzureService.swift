@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
-
 public class CATAzureService
 {
     public init(){}
@@ -220,6 +219,52 @@ public class CATAzureService
 
     private func connectToDB(request:NSURLRequest,MainThreadQueue:NSOperationQueue,handler:(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void){
         NSURLConnection.sendAsynchronousRequest(request, queue: MainThreadQueue, completionHandler: handler)
+    }
+    
+    //Authentication Services
+    func AuthenticateUser(email: String, password:String, completion: ((succeeded: Bool, msg: String, result: User) -> Void)!){
+        let finalURL = apiURL + "/Token";
+        var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
+        var session = NSURLSession.sharedSession()
+        
+        request.HTTPMethod = "POST"
+        
+        var params = ["username":email, "password":password, "grant_type":"password"] as Dictionary<String, String>
+        var err: NSError?
+        
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            println("Response: \(response)")
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            println("Body: \(strData)")
+            var err: NSError?
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
+            
+            if(err != nil) {
+                println(err!.localizedDescription)
+                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error could not parse JSON: '\(jsonStr)'")
+            }
+            else {
+                if let parseJSON = json {
+                    var success = parseJSON["success"] as? Int
+                    println("Succes: \(success)")
+                    //Calling the handler
+                    var userTmp = User();
+                    completion(succeeded: true, msg: "Succes", result: userTmp)
+                }
+                else {
+                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    println("Error could not parse JSON: \(jsonStr)")
+                }
+            }
+        })
+        
+        task.resume()
     }
     
 }
