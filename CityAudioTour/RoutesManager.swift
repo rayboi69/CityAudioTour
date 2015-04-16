@@ -121,7 +121,7 @@ class RoutesManager {
         }
         set
         {
-            _selectedRoute = newValue?
+            _selectedRoute = newValue
         }
     }
 

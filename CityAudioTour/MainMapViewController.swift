@@ -101,7 +101,7 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
         let launchOptions:NSDictionary = NSDictionary(object: MKLaunchOptionsDirectionsModeWalking, forKey: MKLaunchOptionsDirectionsModeKey)
         
         // open Maps
-        MKMapItem.openMapsWithItems([currentLocationMapItem, destinationMapItem], launchOptions: launchOptions)
+        MKMapItem.openMapsWithItems([currentLocationMapItem, destinationMapItem], launchOptions: launchOptions as [NSObject : AnyObject])
     }
     
     //Add the attraction to custom route
@@ -250,15 +250,15 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
         if let identifier = segue.identifier {
             switch identifier {
             case "detailview", "PopupDetail":
-                let detailScene = segue.destinationViewController as DetailViewController
+                let detailScene = segue.destinationViewController as! DetailViewController
                 detailScene.receiveID = selectedAttractionId
             case "RouteStepView":
-                let routeStepScene = segue.destinationViewController as RouteStepPage
+                let routeStepScene = segue.destinationViewController as! RouteStepPage
                 routeStepScene.source = source
                 routeStepScene.destination = destination
                 routeStepScene.attractionName = titleBtn.currentTitle
             case "MenuToMyRoute":
-                let selectAttractionScene = segue.destinationViewController as SelectAttractionsTableViewController
+                let selectAttractionScene = segue.destinationViewController as! SelectAttractionsTableViewController
                 selectAttractionScene.identify = "My Route"
             default: break
             }

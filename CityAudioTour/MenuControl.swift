@@ -12,19 +12,15 @@ import UIKit
 class MenuController: NSObject{
     
     //Interacting UI Elements
-    private let menuView:UIView!
-    private let mainView:UIView!
+    private var menuView:UIView!
+    private var mainView:UIView!
     
     //All variables for this class
-    private let width:CGFloat!
-    private let detailPopController:DetailPopUp!
+    private var width:CGFloat!
+    private var detailPopController:DetailPopUp!
     private var animator:UIDynamicAnimator!
     private var isShowing = false
     
-    //Need this constructor to create a super class (NSObject).
-    override init(){
-        super.init()
-    }
     //Constructor for subclass
     init(MenuView:UIView, MainView:UIView, PopUp:DetailPopUp){
         super.init()

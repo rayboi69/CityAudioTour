@@ -41,7 +41,7 @@ class RouteListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
         let route = routes[indexPath.row]
         cell.textLabel?.text = route.Name
         return cell
@@ -62,10 +62,10 @@ class RouteListTableViewController: UITableViewController {
         if let identifier = segue.identifier {
             switch identifier {
             case "RouteToSelectAttractionsInRoute":
-                let cell = sender as UITableViewCell
+                let cell = sender as! UITableViewCell
                 if let indexPath = tableView.indexPathForCell(cell) {
                     
-                    let selectAttractionsScene = segue.destinationViewController as SelectAttractionsTableViewController
+                    let selectAttractionsScene = segue.destinationViewController as! SelectAttractionsTableViewController
                     let selectRoute = routes[indexPath.row]
                     let attractions = _attractionsModel.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
                     

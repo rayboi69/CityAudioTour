@@ -16,10 +16,6 @@ class SearchBarDelegate:NSObject,UISearchBarDelegate,UITableViewDelegate,UITable
     private let list:[Attraction] = AttractionsManager.sharedInstance.attractionsList
     private var filtered:[Attraction] = []
     
-    override init(){
-        super.init()
-    }
-    
     init(mapView:MainMapViewController,mapController:MapDelegate){
         self.mapView = mapView
         self.mapController = mapController
@@ -87,7 +83,7 @@ class SearchBarDelegate:NSObject,UISearchBarDelegate,UITableViewDelegate,UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
         
         if !filtered.isEmpty {
             cell.textLabel?.text = filtered[indexPath.row].AttractionName

@@ -53,11 +53,11 @@ class SelectAttractionsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("TitleCell", forIndexPath: indexPath) as UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("TitleCell", forIndexPath: indexPath) as! UITableViewCell
             
             cell.textLabel?.text = identify
         } else {
-            cell = tableView.dequeueReusableCellWithIdentifier("SelectAttractionCell", forIndexPath: indexPath) as UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("SelectAttractionCell", forIndexPath: indexPath) as! UITableViewCell
             let attraction = _attractionsManager.GetAttractionBy(attractions[indexPath.row])
             cell.textLabel?.text = attraction?.AttractionName
         }
@@ -126,9 +126,9 @@ class SelectAttractionsTableViewController: UITableViewController {
         if let identifier = segue.identifier {
             switch identifier {
             case "SelectAttractionToDetail":
-                let cell = sender as UITableViewCell
+                let cell = sender as! UITableViewCell
                 if let indexPath = tableView.indexPathForCell(cell) {
-                    let detailScene = segue.destinationViewController as DetailViewController
+                    let detailScene = segue.destinationViewController as! DetailViewController
                     detailScene.receiveID = attractions[indexPath.row]
                 }
             default: break

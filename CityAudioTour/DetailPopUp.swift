@@ -11,8 +11,8 @@ import UIKit
 class DetailPopUp: NSObject {
     
     //Interacting UI Elements
-    private let popUpView:UIView!
-    private let mainView:UIView!
+    private var popUpView:UIView!
+    private var mainView:UIView!
     private var animator:UIDynamicAnimator!
     //All variables for this class
     private var isShowing:Bool = false
@@ -20,9 +20,6 @@ class DetailPopUp: NSObject {
     private var hideBoundary:CGFloat!
     
     //Need this constructor to create a super class (NSObject).
-    override init(){
-        super.init()
-    }
     
     init(popUpView:UIView,mainView:UIView){
         super.init()

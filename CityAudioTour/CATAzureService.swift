@@ -22,7 +22,7 @@ public class CATAzureService
         var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
 
         if data != nil {
-            var HTTPResponse = response as NSHTTPURLResponse
+            var HTTPResponse = response as! NSHTTPURLResponse
             if HTTPResponse.statusCode == 200 {
                 let content = JSON(data: data!)
                 let attractionsArray = content.arrayValue
@@ -67,7 +67,7 @@ public class CATAzureService
         var categories = [Category]()
         
         if data != nil {
-            var HTTPResponse = response as NSHTTPURLResponse
+            var HTTPResponse = response as! NSHTTPURLResponse
             if HTTPResponse.statusCode == 200 {
                 
                 let content = JSON(data: data!)
@@ -100,7 +100,7 @@ public class CATAzureService
         var tags = [Tag]()
 
         if data != nil {
-            var HTTPResponse = response as NSHTTPURLResponse
+            var HTTPResponse = response as! NSHTTPURLResponse
             if HTTPResponse.statusCode == 200 {
                 let content = JSON(data: data!)
                 let tagArray = content.arrayValue
@@ -132,7 +132,7 @@ public class CATAzureService
         var routes = [Route]()
         
         if data != nil {
-            var HTTPResponse = response as NSHTTPURLResponse
+            var HTTPResponse = response as! NSHTTPURLResponse
             if HTTPResponse.statusCode == 200 {
                 let content = JSON(data: data!)
                 let routeArray = content.arrayValue
@@ -172,7 +172,7 @@ public class CATAzureService
         var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
         
         if data != nil {
-            var HTTPResponse = response as NSHTTPURLResponse
+            var HTTPResponse = response as! NSHTTPURLResponse
             if HTTPResponse.statusCode == 200 {
                 let content = JSON(data: data!)
                 let attractionsArray = content.arrayValue
@@ -204,7 +204,7 @@ public class CATAzureService
         
         var requestMessage : NSURLRequest = NSURLRequest(URL: url!)
         
-        connectToDB(requestMessage, MainThreadQueue: MainThread, handler)
+        connectToDB(requestMessage, MainThreadQueue: MainThread, handler: handler)
     }
     
     func GetAttractionContentByID(AttractionID:Int, MainThread:NSOperationQueue, handler:(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void){
@@ -213,7 +213,7 @@ public class CATAzureService
         let url = NSURL(string:finalURL)
         
         var request = NSURLRequest(URL: url!)
-        connectToDB(request, MainThreadQueue: MainThread, handler)
+        connectToDB(request, MainThreadQueue: MainThread, handler: handler)
         
     }
 

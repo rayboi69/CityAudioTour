@@ -38,7 +38,7 @@ class RouteStepPage: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Route", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Route", forIndexPath: indexPath) as! UITableViewCell
         
         cell.textLabel?.text = steps[indexPath.row]
         cell.textLabel?.numberOfLines = 3
@@ -70,10 +70,10 @@ class RouteStepPage: UITableViewController {
             if response == nil {
                 self.alertMessage()
             }else{
-                let routeList = response.routes as [MKRoute]
+                let routeList = response.routes as! [MKRoute]
                 
                 for route in routeList {
-                    for step in route.steps as [MKRouteStep]{
+                    for step in route.steps as! [MKRouteStep]{
                         self.steps.append(step.instructions)
                     }
                 }

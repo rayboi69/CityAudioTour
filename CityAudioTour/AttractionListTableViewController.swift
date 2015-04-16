@@ -43,7 +43,7 @@ class AttractionListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AttractionCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("AttractionCell", forIndexPath: indexPath) as! UITableViewCell
         let attraction = attractions[indexPath.row]
         cell.textLabel?.text = attraction.AttractionName
         return cell
@@ -88,9 +88,9 @@ class AttractionListTableViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ListToDetail" {
-            let cell = sender as UITableViewCell
+            let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPathForCell(cell) {
-                let detailScene = segue.destinationViewController as DetailViewController
+                let detailScene = segue.destinationViewController as! DetailViewController
                 detailScene.receiveID = attractions[indexPath.row].AttractionID
             }
         }

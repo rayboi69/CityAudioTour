@@ -31,10 +31,6 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     private var routesManager = RoutesManager.sharedInstance
     private var attractionsModel = AttractionsManager.sharedInstance
     
-    //Need this constructor to create a super class (NSObject).
-    override init(){
-        super.init()
-    }
     //Constructor for this class.
     init(mapView:MainMapViewController,detailPopUpController:DetailPopUp){
         self.mapView = mapView
@@ -83,7 +79,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
             pinView!.animatesDrop = true
             pinView!.pinColor = MKPinAnnotationColor.Green
             
-            var calloutButton = UIButton.buttonWithType(.DetailDisclosure) as UIButton
+            var calloutButton = UIButton.buttonWithType(.DetailDisclosure) as! UIButton
             pinView!.rightCalloutAccessoryView = calloutButton
         }
         else{
@@ -95,7 +91,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     
     //When the button in annotation is pressed, this method will be called to handle it.
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        var temp = view.annotation as holder
+        var temp = view.annotation as! holder
         self.mapView.gotoDetailPage(temp.ID)
     }
     
@@ -112,7 +108,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     }
     
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
-        let annotation = view.annotation as holder
+        let annotation = view.annotation as! holder
         
         self.mapView.setSelectedID(annotation.ID)
         self.mapView.setPeerToPeerRoute(currentLocation!.coordinate, destination: annotation.coordinate)
@@ -124,7 +120,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
     
     private func setUpDetailPopUpView(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void{
         if data != nil{
-            var HTTPReply:NSHTTPURLResponse = response as NSHTTPURLResponse
+            var HTTPReply:NSHTTPURLResponse = response as! NSHTTPURLResponse
             
             if HTTPReply.statusCode == 200 {
                 let attraction = Attraction()
@@ -251,10 +247,10 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
                         return
                     }
                     
-                    let routeList = response.routes as [MKRoute]
+                    let routeList = response.routes as! [MKRoute]
                     
                     for route in routeList{
-                        for step in route.steps as [MKRouteStep]{
+                        for step in route.steps as! [MKRouteStep]{
                             self.mapView.mainMapView.addOverlay(step.polyline)
                         }
                         attraction.WalkingDistance = route.distance
