@@ -89,12 +89,6 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
         return pinView
     }
     
-    //When the button in annotation is pressed, this method will be called to handle it.
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        var temp = view.annotation as! holder
-        self.mapView.gotoDetailPage(temp.ID)
-    }
-    
     //When we add overlay or polyline in the map, this method will be called to draw a polyline
     //in the map.
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
@@ -274,9 +268,8 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
             let oldAnnotationList = mapView.mainMapView.annotations
             mapView.mainMapView.removeAnnotations(oldAnnotationList)
             //Create PinPoint for specific location
-            var pin = MKPointAnnotation()
+            var pin = holder(attraction: selectedOne[0])
             pin.title = selectedOne[0].AttractionName
-            pin.subtitle = "Hello is good"
             
             pin.coordinate.latitude = selectedOne[0].Latitude
             pin.coordinate.longitude = selectedOne[0].Longitude
@@ -291,6 +284,11 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
             mapView.mainMapView.setRegion(camera, animated: true)
             
             cameraController.resetMinMax()
+            
+            self.mapView.setSelectedID(selectedOne[0].AttractionID)
+            self.mapView.setPeerToPeerRoute(currentLocation!.coordinate, destination: pin.coordinate)
+            
+            service.GetAttraction(selectedOne[0].AttractionID, MainThread: NSOperationQueue.mainQueue(), handler: setUpDetailPopUpView)
             
         }else{
             if objc_getClass("UIAlertController") != nil {
