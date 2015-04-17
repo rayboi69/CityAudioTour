@@ -260,6 +260,9 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
             case "MenuToMyRoute":
                 let selectAttractionScene = segue.destinationViewController as! SelectAttractionsTableViewController
                 selectAttractionScene.identify = "My Route"
+            case "MapToAudio":
+                let audioViewController:AudioTourViewController = segue.destinationViewController as! AudioTourViewController
+                audioViewController.receiveID = selectedAttractionId
             default: break
             }
         }
