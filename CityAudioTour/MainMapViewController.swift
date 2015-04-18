@@ -100,8 +100,27 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
         // set launchOptions
         let launchOptions:NSDictionary = NSDictionary(object: MKLaunchOptionsDirectionsModeWalking, forKey: MKLaunchOptionsDirectionsModeKey)
         
-        // open Maps
-        MKMapItem.openMapsWithItems([currentLocationMapItem, destinationMapItem], launchOptions: launchOptions as [NSObject : AnyObject])
+        // iOS8
+        if objc_getClass("UIAlertController") != nil {
+            var alert = UIAlertController(title: "Open in Apple Maps", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+                // open Maps
+                MKMapItem.openMapsWithItems([currentLocationMapItem, destinationMapItem], launchOptions: launchOptions as [NSObject : AnyObject])
+            }))
+            
+            // don't do anything for No
+            alert.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            // iOS7
+            var alert = UIAlertView(title: "Open in Apple Maps", message: "Are you sure?", delegate: self, cancelButtonTitle: "Yes", otherButtonTitles: "No")
+            alert.alertViewStyle = UIAlertViewStyle.Default
+            alert.show()
+        }
     }
     
     //Add the attraction to custom route
