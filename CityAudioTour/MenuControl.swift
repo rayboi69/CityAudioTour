@@ -69,7 +69,7 @@ class MenuController: NSObject{
         animator.addBehavior(slideBehavior)
         
         let StoppingPoint:UICollisionBehavior = UICollisionBehavior(items: [menuView])
-        StoppingPoint.addBoundaryWithIdentifier("FlyOutMenuBoundary", fromPoint: CGPointMake(boundaryX, 0), toPoint: CGPointMake(boundaryX, mainView.frame.size.height))
+        StoppingPoint.addBoundaryWithIdentifier("FlyOutMenuBoundary", fromPoint: CGPointMake(boundaryX, 0), toPoint: CGPointMake(boundaryX, mainView.frame.height))
         animator.addBehavior(StoppingPoint)
     }
     
