@@ -75,7 +75,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
         if pinView == nil{
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             
-            pinView!.canShowCallout = true
+            pinView!.canShowCallout = false
             pinView!.animatesDrop = true
             pinView!.pinColor = MKPinAnnotationColor.Green
             
