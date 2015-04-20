@@ -12,9 +12,14 @@ import CityAudioTour
 
 class CustomRouteTests: XCTestCase {
 
+    var viewController: SelectAttractionsTableViewController!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.dynamicType))
+        viewController = storyboard.instantiateViewControllerWithIdentifier("SelectAttractionsViewController") as! SelectAttractionsTableViewController
+        viewController.loadView()
     }
     
     override func tearDown() {
@@ -27,6 +32,10 @@ class CustomRouteTests: XCTestCase {
         XCTAssert(true, "Pass")
     }
 
+    func testViewControllerViewExists() {
+        XCTAssertNotNil(viewController.view, "ViewController should contain a view")
+    }
+    
     func testSelectAttractionsManager() {
         
         // Test initialized

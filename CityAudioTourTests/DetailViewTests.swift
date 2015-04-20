@@ -12,15 +12,18 @@ import SwiftyJSON
 
 class DetailViewTests: XCTestCase {
     
-//    var detailView:DetailViewController!
-//    var service:CATAzureService!
+    var detailView:DetailViewController!
+    var service:CATAzureService!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         //service = CATAzureService()
         //detailView = DetailViewController()
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.dynamicType))
+        detailView = storyboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        detailView.loadView()
+        service = CATAzureService()
     }
     
     override func tearDown() {
@@ -30,7 +33,7 @@ class DetailViewTests: XCTestCase {
     
     //Check all contents before showing on Detail View. The result must be match based on
     //attraction ID received from server.
-//    func testDetailBasedOnAttractionID(){
+    func testDetailBasedOnAttractionID(){
 //        
 //        //Get all attractions first
 //        var attractList:[Attraction] = service.GetAttractions()
@@ -99,7 +102,7 @@ class DetailViewTests: XCTestCase {
 //            XCTAssertEqual(attract.Detail,attraction.Detail ,"Same attraction detail")
 //            XCTAssertEqual(attract.AttractionAddress, attraction.AttractionAddress, "Same attraction address")
 //        }
-//    }
+    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

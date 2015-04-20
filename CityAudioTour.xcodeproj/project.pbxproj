@@ -39,6 +39,8 @@
 		31BEC7471ADF25FB0024691C /* SelectAttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */; };
 		34F1D3EF674967127641DCED /* Pods_CityAudioTourTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8DDDB6BC9677E4C7044109 /* Pods_CityAudioTourTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8B156C761AE4921100F8641A /* CustomRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B156C751AE4921100F8641A /* CustomRouteTests.swift */; };
+		8B156C771AE4A64A00F8641A /* SelectAttractionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */; };
+		8B156C781AE4A70600F8641A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08B8550E1A79F90F006F035F /* Main.storyboard */; };
 		8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
 		8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */; };
 		8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */; };
@@ -447,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B156C781AE4A70600F8641A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B156C771AE4A64A00F8641A /* SelectAttractionsTableViewController.swift in Sources */,
 				C19F133B1AB0B2D0008542E6 /* CATAzureService.swift in Sources */,
 				C1412ACA1AB7595D00E9844D /* ClassificationManager.swift in Sources */,
 				C1412AC31AB755B900E9844D /* ContentViewTests.swift in Sources */,
