@@ -31,6 +31,10 @@ class DetailViewTests: XCTestCase {
         super.tearDown()
     }
     
+    func testViewControllerViewExists() {
+        XCTAssertNotNil(detailView.view, "detailView should contain a view")
+    }
+    
     //Check all contents before showing on Detail View. The result must be match based on
     //attraction ID received from server.
     func testDetailBasedOnAttractionID(){
