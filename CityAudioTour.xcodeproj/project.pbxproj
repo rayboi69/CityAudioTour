@@ -38,6 +38,7 @@
 		31BEC7461ADF25F40024691C /* AutheticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */; };
 		31BEC7471ADF25FB0024691C /* SelectAttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */; };
 		34F1D3EF674967127641DCED /* Pods_CityAudioTourTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8DDDB6BC9677E4C7044109 /* Pods_CityAudioTourTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8B156C761AE4921100F8641A /* CustomRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B156C751AE4921100F8641A /* CustomRouteTests.swift */; };
 		8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
 		8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */; };
 		8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */; };
@@ -117,6 +118,7 @@
 		595927FF2E4794B91CCAB2CD /* Pods-CityAudioTourTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTourTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTourTests/Pods-CityAudioTourTests.release.xcconfig"; sourceTree = "<group>"; };
 		6EC86282E4352359A8D83951 /* Pods-CityAudioTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTour.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTour/Pods-CityAudioTour.release.xcconfig"; sourceTree = "<group>"; };
 		885ADE63438A5B83E72C48D0 /* Pods-CityAudioTourTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTourTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTourTests/Pods-CityAudioTourTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B156C751AE4921100F8641A /* CustomRouteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRouteTests.swift; sourceTree = "<group>"; };
 		8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTourViewController.swift; sourceTree = "<group>"; };
 		8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionListTableViewController.swift; sourceTree = "<group>"; };
 		8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				C1412AC21AB755B900E9844D /* ContentViewTests.swift */,
 				08B855201A79F90F006F035F /* CityAudioTourTests.swift */,
 				089A59901AAD6257008F82A6 /* CATAzureServiceTests.swift */,
+				8B156C751AE4921100F8641A /* CustomRouteTests.swift */,
 				08B8551E1A79F90F006F035F /* Supporting Files */,
 			);
 			path = CityAudioTourTests;
@@ -592,6 +595,7 @@
 				31BEC7471ADF25FB0024691C /* SelectAttractionsManager.swift in Sources */,
 				C1412AC61AB7571500E9844D /* AudioTourViewController.swift in Sources */,
 				C19F133C1AB0B2D4008542E6 /* Attraction.swift in Sources */,
+				8B156C761AE4921100F8641A /* CustomRouteTests.swift in Sources */,
 				C1412AC51AB755DE00E9844D /* DetailViewTests.swift in Sources */,
 				C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */,
 				C14F3E361AD5D8B30042435C /* ClassificationManagerTests.swift in Sources */,
