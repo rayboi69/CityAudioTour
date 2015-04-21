@@ -224,78 +224,30 @@ public class CATAzureService
     
     //Authentication Services
     func AuthenticateUser(email: String, password:String, completion: ((succeeded: Bool, msg: String, result: User) -> Void)!){
-        
-        
-        
+        let postString = String(format: "password=%@&username=%@&grant_type=password",password,email)
+        self.post(postString, urlResource: "Token"){(error: NSError?, result: NSData?) -> () in
+            if(error !=  nil)
+            {
+                println("After posting \(error!.description)")
+            }
+            else
+            {
+                var token = AuthToken(JSONDecoder(result!))
+            }
+        }
+    }
+    
+    //POST Client
+    func post(params : String, urlResource: String, postCompleted : ((error: NSError?, result: NSData?) -> Void)!) {
         let finalURL = apiURL + "/Token";
         var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
         var session = NSURLSession.sharedSession()
         
         request.HTTPMethod = "POST"
-        let postString = String(format: "password=%@&username=%@&grant_type=password",password,email)
-        let data = (postString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        
+        let data = (params as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         var err: NSError?
         
         request.HTTPBody = data
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        
-        //Test
-        var params = ["password":password]
-        self.post(postString, urlResource: "Token"){(error: NSError, result: NSObject) -> () in
-            println("After posting \(error.description)")
-        }
-        //endTest
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            var token = AuthToken(JSONDecoder(data))
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            if(err != nil) {
-                println(err!.localizedDescription)
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-            else {
-                if let parseJSON = json {
-                    var success = parseJSON["success"] as? Int
-                    println("Succes: \(success)")
-                    //Calling the handler
-                    var userTmp = User();
-                    completion(succeeded: true, msg: "Succes", result: userTmp)
-                }
-                else {
-                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    println("Error could not parse JSON: \(jsonStr)")
-                }
-            }
-        })
-        
-        task.resume()
-    }
-    
-    
-    //POST and GET methods
-    func post(params : String, urlResource: String, postCompleted : (error: NSError, result: NSObject) -> ()) {
-        let finalURL = String(format: "%@/%@",apiURL,urlResource);
-        var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        let data = (params as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-
-        
-        /*
-        
-        var request = NSMutableURLRequest(URL: NSURL(string: url))
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        
-        var err: NSError?
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -303,39 +255,10 @@ public class CATAzureService
             println("Response: \(response)")
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
             println("Body: \(strData)")
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            var msg = "No message"
-            
-            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-            if(err != nil) {
-                println(err!.localizedDescription)
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-                postCompleted(succeeded: false, msg: "Error")
-            }
-            else {
-                // The JSONObjectWithData constructor didn't return an error. But, we should still
-                // check and make sure that json has a value using optional binding.
-                if let parseJSON = json {
-                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
-                    if let success = parseJSON["success"] as? Bool {
-                        println("Succes: \(success)")
-                        postCompleted(succeeded: success, msg: "Logged in.")
-                    }
-                    return
-                }
-                else {
-                    // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
-                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    println("Error could not parse JSON: \(jsonStr)")
-                    postCompleted(succeeded: false, msg: "Error")
-                }
-            }
+            postCompleted(error: error, result: data);
         })
         
-        task.resume()*/
+        task.resume()
     }
     
 }
