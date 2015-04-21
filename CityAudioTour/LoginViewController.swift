@@ -38,6 +38,10 @@ class LoginViewController: UIViewController {
             alert.addButtonWithTitle("Understod")
             alert.show()
         }
+        else
+        {
+            authenticationManager.Login(userNameUITextField.text, pass: passwordUITextField.text)
+        }
         
     }
     

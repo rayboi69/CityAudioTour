@@ -223,16 +223,19 @@ public class CATAzureService
     
     //Authentication Services
     func AuthenticateUser(email: String, password:String, completion: ((succeeded: Bool, msg: String, result: User) -> Void)!){
+        
+        let postString = String(format: "password=%@&username=%@&grant_type=password",password,email)
+        let data = (postString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        
         let finalURL = apiURL + "/Token";
         var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
         var session = NSURLSession.sharedSession()
         
         request.HTTPMethod = "POST"
         
-        var params = ["username":email, "password":password, "grant_type":"password"] as Dictionary<String, String>
         var err: NSError?
         
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        request.HTTPBody = data
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
