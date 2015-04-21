@@ -10,7 +10,10 @@ public class CATAzureService
     private let apiURL = "http://cityaudiotourweb.azurewebsites.net/api"
     private var response:NSURLResponse?
     private var error:NSError?
-   // private let
+
+    
+    
+    
     
     public func GetAttractions() -> [Attraction]
     {
@@ -234,17 +237,30 @@ public class CATAzureService
             {
                 if success
                 {
-                    var token : AuthToken = AuthToken(JSONDecoder(result!))
+                    var token = AuthToken(JSONDecoder(result!))
                     println("**Token: \(token.access_token)")
-                    //let jsonStr = NSString(data: result!, encoding: NSUTF8StringEncoding)
-                    self.get("attraction"){(error: NSError?, result: NSData?, success: Bool) -> () in
+                    let jsonStr = NSString(data: result!, encoding: NSUTF8StringEncoding)
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    defaults.setObject(jsonStr, forKey: "authToken")
+                    self.get("Account/UserInfo"){(error: NSError?, result: NSData?, success: Bool) -> () in
                         if(error !=  nil)
                         {
-                            println("After posting \(error!.description)")
+                            println("After getting \(error!.description)")
                         }
                         else
                         {
-                            
+                            var message = ""
+                            var user : User = User(JSONDecoder(result!))
+
+                            if success
+                            {
+                                message = "User is autenticated"
+                            }
+                            else
+                            {
+                                message = "User is autenticated"
+                            }
+                            completion(succeeded: success, msg: message, result: user)
                         }
                     }
                 }
@@ -266,6 +282,7 @@ public class CATAzureService
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
             let httpResponse = response as! NSHTTPURLResponse
             var success = true
+            println("***HTTP Code POST: \(httpResponse.statusCode)")
             if httpResponse.statusCode != 200
             {
                 success = false
@@ -283,12 +300,22 @@ public class CATAzureService
         var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
         var session = NSURLSession.sharedSession()
         
+        //Gets token previously stored and sets it up on the header
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let tokenJsonString = defaults.stringForKey("authToken")
+        {
+            var data: NSData = tokenJsonString.dataUsingEncoding(NSUTF8StringEncoding)!
+            var token = AuthToken(JSONDecoder(data))
+            request.addValue(String(format: "Bearer %@",token.access_token!), forHTTPHeaderField: "Authorization")
+        }
+        
         request.HTTPMethod = "GET"
         
         var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
             let httpResponse = response as! NSHTTPURLResponse
             var success = true
+            println("***HTTP Code GET: \(httpResponse.statusCode)")
             if httpResponse.statusCode != 200
             {
                 success = false
