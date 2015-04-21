@@ -232,7 +232,22 @@ public class CATAzureService
             }
             else
             {
-                var token = AuthToken(JSONDecoder(result!))
+                if success
+                {
+                    var token : AuthToken = AuthToken(JSONDecoder(result!))
+                    println("**Token: \(token.access_token)")
+                    //let jsonStr = NSString(data: result!, encoding: NSUTF8StringEncoding)
+                    self.get("attraction"){(error: NSError?, result: NSData?, success: Bool) -> () in
+                        if(error !=  nil)
+                        {
+                            println("After posting \(error!.description)")
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+                }
             }
         }
     }
@@ -245,17 +260,10 @@ public class CATAzureService
         
         request.HTTPMethod = "POST"
         let data = (params as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        var err: NSError?
-        
         request.HTTPBody = data
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Body: \(strData)")
-            
             let httpResponse = response as! NSHTTPURLResponse
             var success = true
             if httpResponse.statusCode != 200
@@ -269,4 +277,27 @@ public class CATAzureService
         task.resume()
     }
     
+    //GET Client
+    func get(urlResource: String, getCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
+        let finalURL = String(format: "%@/%@", apiURL, urlResource)
+        var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
+        var session = NSURLSession.sharedSession()
+        
+        request.HTTPMethod = "GET"
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            let httpResponse = response as! NSHTTPURLResponse
+            var success = true
+            if httpResponse.statusCode != 200
+            {
+                success = false
+            }
+            
+            getCompleted(error: error, result: data, success: success);
+        })
+        
+        task.resume()
+    }
+
 }
