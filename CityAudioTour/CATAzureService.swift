@@ -225,7 +225,7 @@ public class CATAzureService
     //Authentication Services
     func AuthenticateUser(email: String, password:String, completion: ((succeeded: Bool, msg: String, result: User) -> Void)!){
         let postString = String(format: "password=%@&username=%@&grant_type=password",password,email)
-        self.post(postString, urlResource: "Token"){(error: NSError?, result: NSData?) -> () in
+        self.post(postString, urlResource: "Token"){(error: NSError?, result: NSData?, success: Bool) -> () in
             if(error !=  nil)
             {
                 println("After posting \(error!.description)")
@@ -238,8 +238,8 @@ public class CATAzureService
     }
     
     //POST Client
-    func post(params : String, urlResource: String, postCompleted : ((error: NSError?, result: NSData?) -> Void)!) {
-        let finalURL = apiURL + "/Token";
+    func post(params : String, urlResource: String, postCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
+        let finalURL = String(format: "%@/%@", apiURL, urlResource)
         var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
         var session = NSURLSession.sharedSession()
         
@@ -255,7 +255,15 @@ public class CATAzureService
             println("Response: \(response)")
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
             println("Body: \(strData)")
-            postCompleted(error: error, result: data);
+            
+            let httpResponse = response as! NSHTTPURLResponse
+            var success = true
+            if httpResponse.statusCode != 200
+            {
+                success = false
+            }
+            
+            postCompleted(error: error, result: data, success: success);
         })
         
         task.resume()
