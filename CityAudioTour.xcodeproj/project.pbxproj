@@ -37,6 +37,7 @@
 		31BEC7451ADF259F0024691C /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
 		31BEC7461ADF25F40024691C /* AutheticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */; };
 		31BEC7471ADF25FB0024691C /* SelectAttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */; };
+		31E8528C1AE6CE1A00E2D2B0 /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8528B1AE6CE1A00E2D2B0 /* AuthToken.swift */; };
 		34F1D3EF674967127641DCED /* Pods_CityAudioTourTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8DDDB6BC9677E4C7044109 /* Pods_CityAudioTourTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8B156C761AE4921100F8641A /* CustomRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B156C751AE4921100F8641A /* CustomRouteTests.swift */; };
 		8B156C771AE4A64A00F8641A /* SelectAttractionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */; };
@@ -116,6 +117,7 @@
 		3194A08B1AA0448200757252 /* Categroy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categroy.swift; sourceTree = "<group>"; };
 		3194A08D1AA0449100757252 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		31BEC7421ADF11FD0024691C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		31E8528B1AE6CE1A00E2D2B0 /* AuthToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthToken.swift; sourceTree = "<group>"; };
 		49AD066B918E4A266BCEF247 /* Pods-CityAudioTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTour/Pods-CityAudioTour.debug.xcconfig"; sourceTree = "<group>"; };
 		595927FF2E4794B91CCAB2CD /* Pods-CityAudioTourTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTourTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTourTests/Pods-CityAudioTourTests.release.xcconfig"; sourceTree = "<group>"; };
 		6EC86282E4352359A8D83951 /* Pods-CityAudioTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTour.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTour/Pods-CityAudioTour.release.xcconfig"; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				3194A08B1AA0448200757252 /* Categroy.swift */,
 				3194A08D1AA0449100757252 /* Tag.swift */,
 				31BEC7421ADF11FD0024691C /* User.swift */,
+				31E8528B1AE6CE1A00E2D2B0 /* AuthToken.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				3194A0881AA03CEA00757252 /* ClassificationManager.swift in Sources */,
 				C165E4FE1A9A843300241D05 /* MenuControl.swift in Sources */,
 				C1852C6D1AA561470078B29E /* MapDelegate.swift in Sources */,
+				31E8528C1AE6CE1A00E2D2B0 /* AuthToken.swift in Sources */,
 				3191CB581A92D93900939865 /* AttractionContent.swift in Sources */,
 				083AEF481A899123004D6874 /* CATAzureService.swift in Sources */,
 			);
