@@ -26,6 +26,7 @@
 		3119D76A1ADEEB0D0006A5F5 /* AutheticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */; };
 		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		3135BF501A9C3E8E00DD0D46 /* AttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */; };
+		315F9E601AE87B8D00A3935C /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8528B1AE6CE1A00E2D2B0 /* AuthToken.swift */; };
 		3178C96A1AB125B600F26461 /* RoutesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178C9691AB125B600F26461 /* RoutesManager.swift */; };
 		3191CB581A92D93900939865 /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
 		3194A0881AA03CEA00757252 /* ClassificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0871AA03CEA00757252 /* ClassificationManager.swift */; };
@@ -608,6 +609,7 @@
 				C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */,
 				C14F3E361AD5D8B30042435C /* ClassificationManagerTests.swift in Sources */,
 				089A59911AAD6257008F82A6 /* CATAzureServiceTests.swift in Sources */,
+				315F9E601AE87B8D00A3935C /* AuthToken.swift in Sources */,
 				C19F133F1AB0B2DD008542E6 /* Route.swift in Sources */,
 				C1412ACD1AB765D000E9844D /* RoutesManagerTests.swift in Sources */,
 				C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */,
