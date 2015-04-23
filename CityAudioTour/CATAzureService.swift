@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import JSONJoy
 
 public class CATAzureService
 {
@@ -9,7 +10,10 @@ public class CATAzureService
     private let apiURL = "http://cityaudiotourweb.azurewebsites.net/api"
     private var response:NSURLResponse?
     private var error:NSError?
-   // private let
+
+    
+    
+    
     
     public func GetAttractions() -> [Attraction]
     {
@@ -223,48 +227,104 @@ public class CATAzureService
     
     //Authentication Services
     func AuthenticateUser(email: String, password:String, completion: ((succeeded: Bool, msg: String, result: User) -> Void)!){
-        let finalURL = apiURL + "/Token";
+        let postString = String(format: "password=%@&username=%@&grant_type=password",password,email)
+        self.post(postString, urlResource: "Token"){(error: NSError?, result: NSData?, success: Bool) -> () in
+            if(error !=  nil)
+            {
+                println("After posting \(error!.description)")
+            }
+            else
+            {
+                if success
+                {
+                    var token = AuthToken(JSONDecoder(result!))
+                    println("**Token: \(token.access_token)")
+                    let jsonStr = NSString(data: result!, encoding: NSUTF8StringEncoding)
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    defaults.setObject(jsonStr, forKey: "authToken")
+                    self.get("Account/UserInfo"){(error: NSError?, result: NSData?, success: Bool) -> () in
+                        if(error !=  nil)
+                        {
+                            println("After getting \(error!.description)")
+                        }
+                        else
+                        {
+                            var message = ""
+                            var user : User = User(JSONDecoder(result!))
+
+                            if success
+                            {
+                                message = "User is autenticated"
+                            }
+                            else
+                            {
+                                message = "User is autenticated"
+                            }
+                            completion(succeeded: success, msg: message, result: user)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    //POST Client
+    func post(params : String, urlResource: String, postCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
+        let finalURL = String(format: "%@/%@", apiURL, urlResource)
         var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
         var session = NSURLSession.sharedSession()
         
         request.HTTPMethod = "POST"
-        
-        var params = ["username":email, "password":password, "grant_type":"password"] as Dictionary<String, String>
-        var err: NSError?
-        
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
+        let data = (params as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = data
         
         var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Body: \(strData)")
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
+            let httpResponse = response as! NSHTTPURLResponse
+            var success = true
+            println("***HTTP Code POST: \(httpResponse.statusCode)")
+            if httpResponse.statusCode != 200
+            {
+                success = false
+            }
             
-            if(err != nil) {
-                println(err!.localizedDescription)
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-            else {
-                if let parseJSON = json {
-                    var success = parseJSON["success"] as? Int
-                    println("Succes: \(success)")
-                    //Calling the handler
-                    var userTmp = User();
-                    completion(succeeded: true, msg: "Succes", result: userTmp)
-                }
-                else {
-                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    println("Error could not parse JSON: \(jsonStr)")
-                }
-            }
+            postCompleted(error: error, result: data, success: success);
         })
         
         task.resume()
     }
     
+    //GET Client
+    func get(urlResource: String, getCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
+        let finalURL = String(format: "%@/%@", apiURL, urlResource)
+        var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
+        var session = NSURLSession.sharedSession()
+        
+        //Gets token previously stored and sets it up on the header
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let tokenJsonString = defaults.stringForKey("authToken")
+        {
+            var data: NSData = tokenJsonString.dataUsingEncoding(NSUTF8StringEncoding)!
+            var token = AuthToken(JSONDecoder(data))
+            request.addValue(String(format: "Bearer %@",token.access_token!), forHTTPHeaderField: "Authorization")
+        }
+        
+        request.HTTPMethod = "GET"
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            let httpResponse = response as! NSHTTPURLResponse
+            var success = true
+            println("***HTTP Code GET: \(httpResponse.statusCode)")
+            if httpResponse.statusCode != 200
+            {
+                success = false
+            }
+            
+            getCompleted(error: error, result: data, success: success);
+        })
+        
+        task.resume()
+    }
+
 }

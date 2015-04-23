@@ -8,14 +8,17 @@
 
 import Foundation
 
-class User{
+import JSONJoy
+
+struct User : JSONJoy {
+    var Id: String?
+    var Email: String?
     
-    var Id = ""
-    var Name = ""
-    var LastName = ""
-    var Email = ""
-    var Token = ""
+    init() {
+    }
     
-    init(){}
-    
+    init(_ decoder: JSONDecoder) {
+        Id = decoder["Id"].string
+        Email = decoder["Email"].string
+    }
 }
