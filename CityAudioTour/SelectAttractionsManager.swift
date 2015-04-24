@@ -32,6 +32,9 @@ class SelectAttractionsManager {
         return (0, [])
     }
     
+    func isContain(ID: Int) -> Bool {
+        return contains(attractions, ID)
+    }
     
     func addAttraction(ID: Int) {
         if !contains(attractions, ID) {

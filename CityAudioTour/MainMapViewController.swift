@@ -37,6 +37,7 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
     //Models
     private var routesManager = RoutesManager.sharedInstance
     private var attractionsModel = AttractionsManager.sharedInstance
+    private var selectAttractionsManager = SelectAttractionsManager.sharedInstance
     //Source and Destination coodinates for route steps.
     private var source:CLLocationCoordinate2D!
     private var destination:CLLocationCoordinate2D!
@@ -101,42 +102,32 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
         let launchOptions:NSDictionary = NSDictionary(object: MKLaunchOptionsDirectionsModeWalking, forKey: MKLaunchOptionsDirectionsModeKey)
         
         // iOS8
-        if objc_getClass("UIAlertController") != nil {
-            var alert = UIAlertController(title: "Open in Apple Maps", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
-                // open Maps
-                MKMapItem.openMapsWithItems([currentLocationMapItem, destinationMapItem], launchOptions: launchOptions as [NSObject : AnyObject])
-            }))
-            
-            // don't do anything for No
-            alert.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
-            
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
-        else
-        {
-            // iOS7
-            var alert = UIAlertView(title: "Open in Apple Maps", message: "Are you sure?", delegate: self, cancelButtonTitle: "Yes", otherButtonTitles: "No")
-            alert.alertViewStyle = UIAlertViewStyle.Default
-            alert.show()
-        }
+        var alert = UIAlertController(title: "Open in Apple Maps", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+            // open Maps
+            MKMapItem.openMapsWithItems([currentLocationMapItem, destinationMapItem], launchOptions: launchOptions as [NSObject : AnyObject])
+        }))
+        
+        // don't do anything for No
+        alert.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     //Add the attraction to custom route
     @IBAction func AddCustomRouteBtn(sender: AnyObject) {
         let attractionName:String? = titleBtn.titleLabel?.text
-        if objc_getClass("UIAlertController") != nil {
-            var alert = UIAlertController(title: "Add " + attractionName!, message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert: UIAlertController
+        if selectAttractionsManager.isContain(selectedAttractionId!) {
+            alert = UIAlertController(title: attractionName! + " was already added to your route.", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Okey", style: UIAlertActionStyle.Default, handler: nil))
+        } else {
+            alert = UIAlertController(title: "Add " + attractionName!, message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: addCustomHandler))
             alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }else{
-            var alert = UIAlertView(title: "Add " + attractionName!, message: "Are you sure?", delegate: self, cancelButtonTitle: "Yes", otherButtonTitles: "No")
-            alert.alertViewStyle = UIAlertViewStyle.Default
-            alert.show()
         }
-
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     //Hide Navigator bar when main screen is appeared.

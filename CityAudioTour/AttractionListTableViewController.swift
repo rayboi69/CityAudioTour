@@ -58,17 +58,23 @@ class AttractionListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
         var addToMyRoute = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Add" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            var selectAttraction = self.attractions[indexPath.row]
+            var alert: UIAlertController
             
-            let alert = UIAlertController(title: nil, message: "\(self.attractions[indexPath.row].AttractionName) has been added to My Route", preferredStyle: .ActionSheet)
-            let okAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
-            
-            alert.addAction(okAction)
+            if self._selectAttractionsManager.isContain(selectAttraction.AttractionID) {
+                alert = UIAlertController(title: selectAttraction.AttractionName + " was already added to your route.", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Okey", style: UIAlertActionStyle.Default, handler: nil))
+            } else {
+                alert = UIAlertController(title: "Add " + selectAttraction.AttractionName, message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
+                    self._selectAttractionsManager.addAttraction(self.attractions[indexPath.row].AttractionID)
+                }))
+                alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
+            }
             
             self.editing = false
-            self._selectAttractionsManager.addAttraction(self.attractions[indexPath.row].AttractionID)
             self.presentViewController(alert, animated: true, completion: nil)
         })
-        
         addToMyRoute.backgroundColor = UIColor.blueColor()
         
         return [addToMyRoute]
