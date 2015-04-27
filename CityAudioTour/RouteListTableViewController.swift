@@ -22,6 +22,20 @@ class RouteListTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filtered = self.routes.filter({( route: Route) -> Bool in
             let stringMatch = route.Name.lowercaseString.rangeOfString(searchText.lowercaseString)

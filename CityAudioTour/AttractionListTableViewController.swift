@@ -23,6 +23,20 @@ class AttractionListTableViewController: UITableViewController, UISearchBarDeleg
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filtered = self.attractions.filter({( attraction: Attraction) -> Bool in
             let stringMatch = attraction.AttractionName.lowercaseString.rangeOfString(searchText.lowercaseString)
