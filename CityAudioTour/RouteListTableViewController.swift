@@ -8,17 +8,39 @@
 
 import UIKit
 
-class RouteListTableViewController: UITableViewController {
+class RouteListTableViewController: UITableViewController, UISearchBarDelegate {
 
     var sectionTitle = "Route List"
     private var _routesManager = RoutesManager.sharedInstance
     private var _attractionsModel = AttractionsManager.sharedInstance
     private var routes = [Route]()
     
+    private var filtered = [Route]()
+    private var searchActive : Bool = false
+    
+    // MARK: - Search bar
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text.isEmpty{
+            searchActive = false
+        } else {
+            searchActive = true
+            filtered = self.routes.filter({( route: Route) -> Bool in
+                let stringMatch = route.Name.lowercaseString.rangeOfString(searchText)
+                return stringMatch != nil
+            })
+        }
+        tableView.reloadData()
+    }
+    
     // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -37,12 +59,23 @@ class RouteListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routes.count
+        if (searchActive) {
+            return filtered.count
+        } else {
+            return routes.count
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
-        let route = routes[indexPath.row]
+        let route: Route
+        
+        if (searchActive) {
+            route = filtered[indexPath.row]
+        } else {
+            route = routes[indexPath.row]
+        }
+        
         cell.textLabel?.text = route.Name
         return cell
     }
