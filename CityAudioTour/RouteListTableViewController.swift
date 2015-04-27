@@ -15,23 +15,19 @@ class RouteListTableViewController: UITableViewController, UISearchBarDelegate {
     private var _attractionsModel = AttractionsManager.sharedInstance
     private var routes = [Route]()
     
+    // MARK: - Search bar
+    
     private var filtered = [Route]()
     private var searchActive : Bool = false
-    
-    // MARK: - Search bar
     
     @IBOutlet weak var searchBar: UISearchBar!
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text.isEmpty{
-            searchActive = false
-        } else {
-            searchActive = true
-            filtered = self.routes.filter({( route: Route) -> Bool in
-                let stringMatch = route.Name.lowercaseString.rangeOfString(searchText)
-                return stringMatch != nil
-            })
-        }
+        filtered = self.routes.filter({( route: Route) -> Bool in
+            let stringMatch = route.Name.lowercaseString.rangeOfString(searchText)
+            return stringMatch != nil
+        })
+        searchActive = (searchBar.text.isEmpty ? false : true)
         tableView.reloadData()
     }
     
@@ -59,23 +55,12 @@ class RouteListTableViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (searchActive) {
-            return filtered.count
-        } else {
-            return routes.count
-        }
+        return (searchActive ? filtered.count : routes.count)
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
-        let route: Route
-        
-        if (searchActive) {
-            route = filtered[indexPath.row]
-        } else {
-            route = routes[indexPath.row]
-        }
-        
+        let route = (searchActive ? filtered[indexPath.row] : routes[indexPath.row])
         cell.textLabel?.text = route.Name
         return cell
     }
@@ -87,7 +72,7 @@ class RouteListTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Navigation
   
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        _routesManager.selectedRoute = routes[indexPath.row]
+        _routesManager.selectedRoute = (searchActive ? filtered[indexPath.row] : routes[indexPath.row])
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -99,7 +84,7 @@ class RouteListTableViewController: UITableViewController, UISearchBarDelegate {
                 if let indexPath = tableView.indexPathForCell(cell) {
                     
                     let selectAttractionsScene = segue.destinationViewController as! SelectAttractionsTableViewController
-                    let selectRoute = routes[indexPath.row]
+                    let selectRoute = (searchActive ? filtered[indexPath.row] : routes[indexPath.row])
                     let attractions = _attractionsModel.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
                     
                     _routesManager.selectedRoute = selectRoute

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttractionListTableViewController: UITableViewController {
+class AttractionListTableViewController: UITableViewController, UISearchBarDelegate {
 
     var sectionTitle = "Attraction List"
     private var _routesManager = RoutesManager.sharedInstance
@@ -16,10 +16,28 @@ class AttractionListTableViewController: UITableViewController {
     private var _selectAttractionsManager = SelectAttractionsManager.sharedInstance
     private var attractions = [Attraction]()
     
+    // MARK: - Search bar
+    
+    private var filtered = [Attraction]()
+    private var searchActive : Bool = false
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = self.attractions.filter({( attraction: Attraction) -> Bool in
+            let stringMatch = attraction.AttractionName.lowercaseString.rangeOfString(searchText)
+            return stringMatch != nil
+        })
+        searchActive = (searchBar.text.isEmpty ? false : true)
+        tableView.reloadData()
+    }
+    
     // MARK: - View Controller Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -39,12 +57,12 @@ class AttractionListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-            return attractions.count
+        return (searchActive ? filtered.count : attractions.count)
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AttractionCell", forIndexPath: indexPath) as! UITableViewCell
-        let attraction = attractions[indexPath.row]
+        let attraction = (searchActive ? filtered[indexPath.row] : attractions[indexPath.row])
         cell.textLabel?.text = attraction.AttractionName
         return cell
     }
@@ -58,7 +76,7 @@ class AttractionListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
         var addToMyRoute = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Add" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            var selectAttraction = self.attractions[indexPath.row]
+            var selectAttraction = (self.searchActive ? self.filtered[indexPath.row] : self.attractions[indexPath.row])
             var alert: UIAlertController
             
             if self._selectAttractionsManager.isContain(selectAttraction.AttractionID) {
@@ -67,7 +85,7 @@ class AttractionListTableViewController: UITableViewController {
             } else {
                 alert = UIAlertController(title: "Add " + selectAttraction.AttractionName, message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
-                    self._selectAttractionsManager.addAttraction(self.attractions[indexPath.row].AttractionID)
+                    self._selectAttractionsManager.addAttraction(selectAttraction.AttractionID)
                 }))
                 alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
             }
@@ -83,7 +101,7 @@ class AttractionListTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var attraction = attractions[indexPath.row]
+        var attraction = (searchActive ? filtered[indexPath.row] : attractions[indexPath.row])
         var route = Route()
         route.AttractionIDs = [attraction.AttractionID]
         route.CategoriesIDs = [attraction.CategoryID]
@@ -97,7 +115,8 @@ class AttractionListTableViewController: UITableViewController {
             let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPathForCell(cell) {
                 let detailScene = segue.destinationViewController as! DetailViewController
-                detailScene.receiveID = attractions[indexPath.row].AttractionID
+                let attraction = (searchActive ? filtered[indexPath.row] : attractions[indexPath.row])
+                detailScene.receiveID = attraction.AttractionID
             }
         }
     }

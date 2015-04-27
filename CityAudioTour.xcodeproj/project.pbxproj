@@ -43,6 +43,7 @@
 		8B156C761AE4921100F8641A /* CustomRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B156C751AE4921100F8641A /* CustomRouteTests.swift */; };
 		8B156C771AE4A64A00F8641A /* SelectAttractionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */; };
 		8B156C781AE4A70600F8641A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08B8550E1A79F90F006F035F /* Main.storyboard */; };
+		8B2440401AEE9DC00048B8E4 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24403F1AEE9DC00048B8E4 /* SearchResultTableViewController.swift */; };
 		8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
 		8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */; };
 		8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */; };
@@ -124,6 +125,7 @@
 		6EC86282E4352359A8D83951 /* Pods-CityAudioTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTour.release.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTour/Pods-CityAudioTour.release.xcconfig"; sourceTree = "<group>"; };
 		885ADE63438A5B83E72C48D0 /* Pods-CityAudioTourTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CityAudioTourTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CityAudioTourTests/Pods-CityAudioTourTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B156C751AE4921100F8641A /* CustomRouteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRouteTests.swift; sourceTree = "<group>"; };
+		8B24403F1AEE9DC00048B8E4 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTourViewController.swift; sourceTree = "<group>"; };
 		8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionListTableViewController.swift; sourceTree = "<group>"; };
 		8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */,
 				C1DF54071AD6C98000FA9BA8 /* RouteStepPage.swift */,
 				3119D7671ADEE9C30006A5F5 /* ValuesViewController.swift */,
+				8B24403F1AEE9DC00048B8E4 /* SearchResultTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
 				8B523B241AA3B0FC002F6010 /* RouteListTableViewController.swift in Sources */,
 				8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */,
+				8B2440401AEE9DC00048B8E4 /* SearchResultTableViewController.swift in Sources */,
 				3194A08A1AA0447000757252 /* Route.swift in Sources */,
 				C1852C6B1AA561320078B29E /* SearchBarDelegate.swift in Sources */,
 				C1737FE71A8D7EB900FC104F /* Attraction.swift in Sources */,
