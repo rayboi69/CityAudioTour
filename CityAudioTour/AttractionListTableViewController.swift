@@ -25,7 +25,7 @@ class AttractionListTableViewController: UITableViewController, UISearchBarDeleg
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filtered = self.attractions.filter({( attraction: Attraction) -> Bool in
-            let stringMatch = attraction.AttractionName.lowercaseString.rangeOfString(searchText)
+            let stringMatch = attraction.AttractionName.lowercaseString.rangeOfString(searchText.lowercaseString)
             return stringMatch != nil
         })
         searchActive = (searchBar.text.isEmpty ? false : true)

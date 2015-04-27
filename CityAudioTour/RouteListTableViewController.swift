@@ -24,7 +24,7 @@ class RouteListTableViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filtered = self.routes.filter({( route: Route) -> Bool in
-            let stringMatch = route.Name.lowercaseString.rangeOfString(searchText)
+            let stringMatch = route.Name.lowercaseString.rangeOfString(searchText.lowercaseString)
             return stringMatch != nil
         })
         searchActive = (searchBar.text.isEmpty ? false : true)
