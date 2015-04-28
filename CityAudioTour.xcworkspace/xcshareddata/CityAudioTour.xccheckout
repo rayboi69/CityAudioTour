@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F7F5E163-9E07-4895-A3A4-3F6ED4B6AC21</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CityAudioTour</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
+		<string>github.com:rayboi69/CityAudioTour.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CityAudioTour.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:rayboi69/CityAudioTour.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4850901FE59F93C8D223BA69E58B762FDED4D0BD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4850901FE59F93C8D223BA69E58B762FDED4D0BD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CityAudioTour</string>
+		</dict>
+	</array>
+</dict>
+</plist>
