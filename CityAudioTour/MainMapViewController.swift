@@ -273,6 +273,14 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
             case "MapToAudio":
                 let audioViewController:AudioTourViewController = segue.destinationViewController as! AudioTourViewController
                 audioViewController.receiveID = selectedAttractionId
+            /*
+            case "RoutePage":
+                let resultScene:ResultTableViewController = segue.destinationViewController as! ResultTableViewController
+                resultScene.sectionTitle = "Route List"
+            */
+            case "AttractionPage":
+                let resultScene:ResultTableViewController = segue.destinationViewController as! ResultTableViewController
+                resultScene.sectionTitle = "Attraction List"
             default: break
             }
         }

@@ -12,7 +12,7 @@ class RouteListTableViewController: UITableViewController, UISearchBarDelegate {
 
     var sectionTitle = "Route List"
     private var _routesManager = RoutesManager.sharedInstance
-    private var _attractionsModel = AttractionsManager.sharedInstance
+    private var _attractionsManager = AttractionsManager.sharedInstance
     private var routes = [Route]()
     
     // MARK: - Search bar
@@ -99,7 +99,7 @@ class RouteListTableViewController: UITableViewController, UISearchBarDelegate {
                     
                     let selectAttractionsScene = segue.destinationViewController as! SelectAttractionsTableViewController
                     let selectRoute = (searchActive ? filtered[indexPath.row] : routes[indexPath.row])
-                    let attractions = _attractionsModel.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
+                    let attractions = _attractionsManager.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
                     
                     _routesManager.selectedRoute = selectRoute
                     selectAttractionsScene.identify = selectRoute.Name
