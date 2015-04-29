@@ -11,6 +11,7 @@ import UIKit
 class ResultTableViewController: UITableViewController, UISearchBarDelegate {
 
     var sectionTitle = "Route List"
+    
     private var routesManager = RoutesManager.sharedInstance
     private var attractionsManager = AttractionsManager.sharedInstance
     private var selectAttractionsManager = SelectAttractionsManager.sharedInstance
@@ -18,11 +19,11 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     
     private var routes = [Route]()
     private var attractions = [Attraction]()
-    
     private var filteredRoutes = [Route]()
     private var filteredAttractions = [Attraction]()
     
-    private var type: String = ""
+    enum Type { case Attraction, Route }
+    private var type: Type!
     
     // MARK: - Search bar
     
@@ -46,14 +47,14 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        switch type {
-        case "Attraction":
+        switch type! {
+        case .Attraction:
             filteredAttractions = self.attractions.filter({( attraction: Attraction) -> Bool in
                 let stringMatch = attraction.AttractionName.lowercaseString.rangeOfString(searchText.lowercaseString)
                 let categoryName = self.classificationManager.GetCategoryBy(attraction.CategoryID).lowercaseString.rangeOfString(searchText.lowercaseString)
                 return (categoryName != nil) || (stringMatch != nil)
             })
-        case "Route":
+        case .Route:
             filteredRoutes = self.routes.filter({( route: Route) -> Bool in
                 let stringMatch = route.Name.lowercaseString.rangeOfString(searchText.lowercaseString)
                 return stringMatch != nil
@@ -72,9 +73,9 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         
         switch sectionTitle {
         case "Attraction List":
-            type = "Attraction"
+            type = .Attraction
         case "Route List":
-            type = "Route"
+            type = .Route
         default: break
         }
         
@@ -100,45 +101,28 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        if (searchActive) {
-            switch type {
-            case "Attraction":
-                return filteredAttractions.count
-            case "Route":
-                return filteredRoutes.count
-            default: break
-            }
-        } else {
-            switch type {
-            case "Attraction":
-                return attractions.count
-            case "Route":
-                return routes.count
-            default: break
-            }
+        switch type! {
+        case .Attraction:
+            return (searchActive ? filteredAttractions.count : attractions.count)
+        case .Route:
+            return (searchActive ? filteredRoutes.count : routes.count)
         }
-        return 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ResultCell", forIndexPath: indexPath) as! UITableViewCell
         
-        switch type {
-        case "Attraction":
+        switch type! {
+        case .Attraction:
             let attraction = (searchActive ? filteredAttractions[indexPath.row] : attractions[indexPath.row])
             cell.textLabel?.text = attraction.AttractionName
-        case "Route":
+        case .Route:
             let route = (searchActive ? filteredRoutes[indexPath.row] : routes[indexPath.row])
             cell.textLabel?.text = route.Name
-        default: break
         }
         return cell
     }
@@ -149,7 +133,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return type == "Attraction" ? true : false
+        return type! == .Attraction ? true : false
     }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -182,8 +166,8 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Navigation
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch type {
-        case "Attraction":
+        switch type! {
+        case .Attraction:
             var attraction = (searchActive ? filteredAttractions[indexPath.row] : attractions[indexPath.row])
             var route = Route()
             route.AttractionIDs = [attraction.AttractionID]
@@ -191,10 +175,9 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             route.TagsIDs = attraction.TagIDs
             routesManager.selectedRoute = route
             navigationController?.popToRootViewControllerAnimated(true)
-        case "Route":
+        case .Route:
             routesManager.selectedRoute = (searchActive ? filteredRoutes[indexPath.row] : routes[indexPath.row])
             navigationController?.popToRootViewControllerAnimated(true)
-        default: break
         }
     }
 
