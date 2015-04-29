@@ -62,4 +62,10 @@ class ClassificationManager {
         return result.first!.Name
     }
     
+    func GetTagBy(id:Int) -> String {
+        let result = tagList!.filter({ m in
+            m.TagID == id
+        })
+        return result.first!.Name
+    }
 }
