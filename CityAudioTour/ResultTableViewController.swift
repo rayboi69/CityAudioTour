@@ -14,6 +14,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     private var routesManager = RoutesManager.sharedInstance
     private var attractionsManager = AttractionsManager.sharedInstance
     private var selectAttractionsManager = SelectAttractionsManager.sharedInstance
+    private var classificationManager = ClassificationManager.sharedInstance
     
     private var routes = [Route]()
     private var attractions = [Attraction]()
@@ -49,7 +50,8 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         case "Attraction":
             filteredAttractions = self.attractions.filter({( attraction: Attraction) -> Bool in
                 let stringMatch = attraction.AttractionName.lowercaseString.rangeOfString(searchText.lowercaseString)
-                return stringMatch != nil
+                let categoryName = self.classificationManager.GetCategoryBy(attraction.CategoryID).lowercaseString.rangeOfString(searchText.lowercaseString)
+                return (categoryName != nil) || (stringMatch != nil)
             })
         case "Route":
             filteredRoutes = self.routes.filter({( route: Route) -> Bool in

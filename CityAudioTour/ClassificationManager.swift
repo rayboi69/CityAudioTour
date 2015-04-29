@@ -55,4 +55,11 @@ class ClassificationManager {
       
     }
     
+    func GetCategoryBy(id:Int) -> String {
+        let result = categoryList!.filter({ m in
+            m.CategoryID == id
+        })
+        return result.first!.Name
+    }
+    
 }
