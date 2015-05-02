@@ -114,13 +114,15 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ResultCell", forIndexPath: indexPath) as! UITableViewCell
+        var cell :UITableViewCell
         
         switch type! {
         case .Attraction:
+            cell = tableView.dequeueReusableCellWithIdentifier("AttractionCell", forIndexPath: indexPath) as! UITableViewCell
             let attraction = (searchActive ? filteredAttractions[indexPath.row] : attractions[indexPath.row])
             cell.textLabel?.text = attraction.AttractionName
         case .Route:
+            cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
             let route = (searchActive ? filteredRoutes[indexPath.row] : routes[indexPath.row])
             cell.textLabel?.text = route.Name
         }

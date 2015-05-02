@@ -45,10 +45,8 @@
 		8B156C781AE4A70600F8641A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08B8550E1A79F90F006F035F /* Main.storyboard */; };
 		8B2440401AEE9DC00048B8E4 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24403F1AEE9DC00048B8E4 /* ResultTableViewController.swift */; };
 		8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
-		8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */; };
 		8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */; };
 		8B2CB3E11AB255E400E07AB9 /* SelectAttractionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */; };
-		8B523B241AA3B0FC002F6010 /* RouteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B523B231AA3B0FC002F6010 /* RouteListTableViewController.swift */; };
 		8B8E7A7D1ACF595100531218 /* SelectAttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */; };
 		C109F48F1AD61875005C0852 /* DetailPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C109F48E1AD61875005C0852 /* DetailPopUp.swift */; };
 		C1412AC31AB755B900E9844D /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1412AC21AB755B900E9844D /* ContentViewTests.swift */; };
@@ -127,10 +125,8 @@
 		8B156C751AE4921100F8641A /* CustomRouteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRouteTests.swift; sourceTree = "<group>"; };
 		8B24403F1AEE9DC00048B8E4 /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTourViewController.swift; sourceTree = "<group>"; };
-		8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionListTableViewController.swift; sourceTree = "<group>"; };
 		8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAttractionsTableViewController.swift; sourceTree = "<group>"; };
-		8B523B231AA3B0FC002F6010 /* RouteListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteListTableViewController.swift; sourceTree = "<group>"; };
 		8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAttractionsManager.swift; sourceTree = "<group>"; };
 		BA8DDDB6BC9677E4C7044109 /* Pods_CityAudioTourTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CityAudioTourTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C109F48E1AD61875005C0852 /* DetailPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPopUp.swift; sourceTree = "<group>"; };
@@ -193,9 +189,7 @@
 				08B8550C1A79F90F006F035F /* MainMapViewController.swift */,
 				C1737FE41A8D7E8200FC104F /* DetailViewController.swift */,
 				8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */,
-				8B26EACD1AA116570021726C /* AttractionListTableViewController.swift */,
 				8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */,
-				8B523B231AA3B0FC002F6010 /* RouteListTableViewController.swift */,
 				8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */,
 				C1DF54071AD6C98000FA9BA8 /* RouteStepPage.swift */,
 				3119D7671ADEE9C30006A5F5 /* ValuesViewController.swift */,
@@ -566,7 +560,6 @@
 				8B2CB3E11AB255E400E07AB9 /* SelectAttractionsTableViewController.swift in Sources */,
 				31BEC7431ADF11FD0024691C /* User.swift in Sources */,
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
-				8B523B241AA3B0FC002F6010 /* RouteListTableViewController.swift in Sources */,
 				8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */,
 				8B2440401AEE9DC00048B8E4 /* ResultTableViewController.swift in Sources */,
 				3194A08A1AA0447000757252 /* Route.swift in Sources */,
@@ -584,7 +577,6 @@
 				8B8E7A7D1ACF595100531218 /* SelectAttractionsManager.swift in Sources */,
 				3119D76A1ADEEB0D0006A5F5 /* AutheticationManager.swift in Sources */,
 				C1DF54081AD6C98100FA9BA8 /* RouteStepPage.swift in Sources */,
-				8B26EACE1AA116570021726C /* AttractionListTableViewController.swift in Sources */,
 				08B8550B1A79F90F006F035F /* CityAudioTour.xcdatamodeld in Sources */,
 				3119D7661ADEE30F0006A5F5 /* SignUpViewController.swift in Sources */,
 				3194A0881AA03CEA00757252 /* ClassificationManager.swift in Sources */,
