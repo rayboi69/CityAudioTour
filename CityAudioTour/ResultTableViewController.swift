@@ -25,6 +25,11 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     enum Type { case Attraction, Route }
     private var type: Type!
     
+    @IBAction func sort(sender: UIButton) {
+        attractions = attractionsManager.sortattractionsList()
+        tableView.reloadData()
+    }
+    
     // MARK: - Search bar
     
     private var searchActive : Bool = false

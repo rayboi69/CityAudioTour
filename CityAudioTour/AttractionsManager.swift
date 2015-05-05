@@ -113,6 +113,13 @@ class AttractionsManager {
         return attractions
     }
     
+    func sortByTitle(this: Attraction, that: Attraction) -> Bool {
+        return this.AttractionName < that.AttractionName
+    }
+    
+    func sortattractionsList() -> [Attraction] {
+        return sorted(attractionsList, sortByTitle)
+    }
     
     //
     //Lazy Getters

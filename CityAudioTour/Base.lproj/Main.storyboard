@@ -22,6 +22,9 @@
                                     <state key="normal" title="Sort">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="sort:" destination="2Ov-7H-m1O" eventType="touchUpInside" id="s4y-F0-QsA"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6zZ-Ez-nJB">
                                     <rect key="frame" x="276" y="0.0" width="44" height="44"/>
@@ -514,7 +517,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Route" id="BO2-4E-aTt">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BO2-4E-aTt" id="En3-tD-FbP">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
