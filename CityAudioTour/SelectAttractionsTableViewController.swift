@@ -9,7 +9,7 @@
 import UIKit
 
 class SelectAttractionsTableViewController: UITableViewController {
-
+    
     var identify = ""
     
     private var editable = false
@@ -18,7 +18,42 @@ class SelectAttractionsTableViewController: UITableViewController {
     private var _routesManager = RoutesManager.sharedInstance
     private var _selectAttractionsManager = SelectAttractionsManager.sharedInstance
     
+    // MARK: - Buttons
+    
     @IBOutlet weak var viewTitle: UILabel!
+    
+    @IBAction func saveMyRoute(sender: UIButton) {
+        var alert: UIAlertController
+        if attractions.count == 0 {
+            alert = UIAlertController(title: "Sorry", message: "Could not save empty list", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Okey", style: UIAlertActionStyle.Default, handler: nil))
+        } else {
+            alert = UIAlertController(title: "Save Route", message: "Store this route for future use", preferredStyle: .Alert)
+            alert.addTextFieldWithConfigurationHandler({ (textField) in
+                textField.placeholder = "Enter route title"
+                textField.textColor = UIColor.blueColor()
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: saveRouteHandler))
+        }
+        
+        alert.popoverPresentationController?.sourceView = sender as UIView
+        alert.popoverPresentationController?.sourceRect = CGRect(x: (sender.frame.width/2), y: sender.frame.height, width: 0, height: 0)
+        alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Up
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    private func saveRouteHandler(alert:UIAlertAction!) -> Void {
+        //Implement save route
+    }
+    
+    @IBAction func goToMap(sender: AnyObject) {
+        if identify == "My Route" {
+            _routesManager.selectedRoute = _selectAttractionsManager.myRoute
+        }
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
     
     // MARK: - View Controller Lifecycle
     
@@ -35,11 +70,11 @@ class SelectAttractionsTableViewController: UITableViewController {
         }
         viewTitle.text = identify
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -101,13 +136,6 @@ class SelectAttractionsTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
-    @IBAction func goToMap(sender: AnyObject) {
-        if identify == "My Route" {
-            _routesManager.selectedRoute = _selectAttractionsManager.myRoute
-        }
-        navigationController?.popToRootViewControllerAnimated(true)
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
@@ -121,5 +149,5 @@ class SelectAttractionsTableViewController: UITableViewController {
             }
         }
     }
-
+    
 }
