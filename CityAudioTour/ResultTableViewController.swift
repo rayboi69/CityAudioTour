@@ -12,6 +12,8 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
 
     var sectionTitle = "Route List"
     
+    enum Type { case Attraction, Route }
+
     private var routesManager = RoutesManager.sharedInstance
     private var attractionsManager = AttractionsManager.sharedInstance
     private var selectAttractionsManager = SelectAttractionsManager.sharedInstance
@@ -19,25 +21,60 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     
     private var routes = [Route]()
     private var attractions = [Attraction]()
-    
-    enum Type { case Attraction, Route }
     private var type: Type!
     
     enum Sort : String{
         case None = "None"
         case Title = "Title"
+        case Reverse = "Reverse"
     }
+    
+    // MARK: - Sorting List
+    
     private var _sort = Sort.None
     
     @IBAction func sortButton(sender: UIButton) {
-        _sort = Sort.Title
+        var alert = UIAlertController(title: "", message: "Choose Sort Option", preferredStyle: .ActionSheet)
+        alert.addAction(UIAlertAction(title: "Name", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self._sort = Sort.Title
+            self.sortList()
+        }))
+        alert.addAction(UIAlertAction(title: "Reverse Name", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self._sort = Sort.Reverse
+            self.sortList()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        switch type! {
+        case .Attraction:
+            alert.addAction(UIAlertAction(title: "Distance", style: .Default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                self._sort = Sort.Title
+                self.sortList()
+            }))
+        case .Route:
+            alert.addAction(UIAlertAction(title: "Number", style: .Default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                self._sort = Sort.Title
+                self.sortList()
+            }))
+        }
+        
+        alert.popoverPresentationController?.sourceView = sender as UIView
+        alert.popoverPresentationController?.sourceRect = CGRect(x: (sender.frame.width/2), y: sender.frame.height, width: 0, height: 0)
+        alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Up
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    private func sortList() {
         switch type! {
         case .Attraction:
             attractions = attractionsManager.sortAttractionList(attractions, sortBy: _sort.rawValue)
         case .Route:
             routes = routesManager.sortAttractionList(routes, sortBy: _sort.rawValue)
         }
-        
         tableView.reloadData()
     }
     
@@ -111,6 +148,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         default: break
         }
         searchBar.text = ""
+        self.sortList()
         tableView.reloadData()
     }
     

@@ -116,11 +116,17 @@ class AttractionsManager {
     func sortByTitle(this: Attraction, that: Attraction) -> Bool {
         return this.AttractionName < that.AttractionName
     }
+    
+    func sortByReverseTitle(this: Attraction, that: Attraction) -> Bool {
+        return this.AttractionName > that.AttractionName
+    }
 
     func sortAttractionList(list: [Attraction], sortBy: String) -> [Attraction] {
         switch sortBy {
         case "Title":
             return sorted(list, sortByTitle)
+        case "Reverse":
+            return sorted(list, sortByReverseTitle)
         default:
             return list
         }

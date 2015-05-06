@@ -91,10 +91,16 @@ class RoutesManager {
         return this.Name < that.Name
     }
     
+    func sortByReverseTitle(this: Route, that: Route) -> Bool {
+        return this.Name > that.Name
+    }
+    
     func sortAttractionList(list: [Route], sortBy: String) -> [Route] {
         switch sortBy {
         case "Title":
             return sorted(list, sortByTitle)
+        case "Reverse":
+            return sorted(list, sortByReverseTitle)
         default:
             return list
         }
