@@ -116,9 +116,14 @@ class AttractionsManager {
     func sortByTitle(this: Attraction, that: Attraction) -> Bool {
         return this.AttractionName < that.AttractionName
     }
-    
-    func sortattractionsList() -> [Attraction] {
-        return sorted(attractionsList, sortByTitle)
+
+    func sortAttractionList(list: [Attraction], sortBy: String) -> [Attraction] {
+        switch sortBy {
+        case "Title":
+            return sorted(list, sortByTitle)
+        default:
+            return list
+        }
     }
     
     //
@@ -137,11 +142,12 @@ class AttractionsManager {
                     var attraction = _attractionsList![selectedIndex!]
                     filteredAttractions.append(attraction)
                 }
+                //return sortAttractionList(filteredAttractions)
                 return filteredAttractions
-                
             }
             else
             {
+                //return sortAttractionList(_attractionsList!)
                 return _attractionsList!
             }
         }

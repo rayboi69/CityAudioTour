@@ -25,8 +25,24 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     enum Type { case Attraction, Route }
     private var type: Type!
     
-    @IBAction func sort(sender: UIButton) {
-        attractions = attractionsManager.sortattractionsList()
+    enum Sort : String{
+        case None = "None"
+        case Title = "Title"
+    }
+    private var _sort = Sort.None
+    
+    @IBAction func sortButton(sender: UIButton) {
+        _sort = Sort.Title
+        switch type! {
+        case .Attraction:
+            attractions = attractionsManager.sortAttractionList(attractions, sortBy: _sort.rawValue)
+            filteredAttractions = attractionsManager.sortAttractionList(filteredAttractions, sortBy: _sort.rawValue)
+        case .Route:
+            routes = routesManager.sortAttractionList(routes, sortBy: _sort.rawValue)
+            filteredRoutes = routesManager.sortAttractionList(filteredRoutes, sortBy: _sort.rawValue)
+        default: break
+        }
+        
         tableView.reloadData()
     }
     

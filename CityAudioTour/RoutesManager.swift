@@ -87,6 +87,18 @@ class RoutesManager {
         }
     }
     
+    func sortByTitle(this: Route, that: Route) -> Bool {
+        return this.Name < that.Name
+    }
+    
+    func sortAttractionList(list: [Route], sortBy: String) -> [Route] {
+        switch sortBy {
+        case "Title":
+            return sorted(list, sortByTitle)
+        default:
+            return list
+        }
+    }
     
     //
     //Lazy Getters
