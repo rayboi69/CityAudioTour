@@ -19,8 +19,6 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     
     private var routes = [Route]()
     private var attractions = [Attraction]()
-    private var filteredRoutes = [Route]()
-    private var filteredAttractions = [Attraction]()
     
     enum Type { case Attraction, Route }
     private var type: Type!
@@ -36,19 +34,14 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         switch type! {
         case .Attraction:
             attractions = attractionsManager.sortAttractionList(attractions, sortBy: _sort.rawValue)
-            filteredAttractions = attractionsManager.sortAttractionList(filteredAttractions, sortBy: _sort.rawValue)
         case .Route:
             routes = routesManager.sortAttractionList(routes, sortBy: _sort.rawValue)
-            filteredRoutes = routesManager.sortAttractionList(filteredRoutes, sortBy: _sort.rawValue)
-        default: break
         }
         
         tableView.reloadData()
     }
     
     // MARK: - Search bar
-    
-    private var searchActive : Bool = false
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -67,23 +60,29 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        switch type! {
-        case .Attraction:
-            filteredAttractions = self.attractions.filter({( attraction: Attraction) -> Bool in
-                let stringMatch = attraction.AttractionName.lowercaseString.rangeOfString(searchText.lowercaseString)
-                let categoryName = self.classificationManager.GetCategoryBy(attraction.CategoryID).lowercaseString.rangeOfString(searchText.lowercaseString)
-                return (categoryName != nil) || (stringMatch != nil)
-            })
-        case .Route:
-            filteredRoutes = self.routes.filter({( route: Route) -> Bool in
-                let stringMatch = route.Name.lowercaseString.rangeOfString(searchText.lowercaseString)
-                return stringMatch != nil
-            })
-        default: break
+        if searchBar.text.isEmpty {
+            switch sectionTitle {
+            case "Attraction List":
+                attractions = attractionsManager.attractionsList
+            case "Route List":
+                routes = routesManager.routesList!
+            default: break
+            }
+        } else {
+            switch type! {
+            case .Attraction:
+                attractions = self.attractions.filter({( attraction: Attraction) -> Bool in
+                    let stringMatch = attraction.AttractionName.lowercaseString.rangeOfString(searchText.lowercaseString)
+                    let categoryName = self.classificationManager.GetCategoryBy(attraction.CategoryID).lowercaseString.rangeOfString(searchText.lowercaseString)
+                    return (categoryName != nil) || (stringMatch != nil)
+                })
+            case .Route:
+                routes = self.routes.filter({( route: Route) -> Bool in
+                    let stringMatch = route.Name.lowercaseString.rangeOfString(searchText.lowercaseString)
+                    return stringMatch != nil
+                })
+            }
         }
-        
-        searchActive = (searchBar.text.isEmpty ? false : true)
         tableView.reloadData()
     }
     
@@ -111,6 +110,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             routes = routesManager.routesList!
         default: break
         }
+        searchBar.text = ""
         tableView.reloadData()
     }
     
@@ -128,9 +128,9 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch type! {
         case .Attraction:
-            return (searchActive ? filteredAttractions.count : attractions.count)
+            return (attractions.count)
         case .Route:
-            return (searchActive ? filteredRoutes.count : routes.count)
+            return (routes.count)
         }
     }
 
@@ -140,11 +140,11 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         switch type! {
         case .Attraction:
             cell = tableView.dequeueReusableCellWithIdentifier("AttractionCell", forIndexPath: indexPath) as! UITableViewCell
-            let attraction = (searchActive ? filteredAttractions[indexPath.row] : attractions[indexPath.row])
+            let attraction = (attractions[indexPath.row])
             cell.textLabel?.text = attraction.AttractionName
         case .Route:
             cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
-            let route = (searchActive ? filteredRoutes[indexPath.row] : routes[indexPath.row])
+            let route = (routes[indexPath.row])
             cell.textLabel?.text = route.Name
         }
         return cell
@@ -164,7 +164,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
         var addToMyRoute = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Add" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            var selectAttraction = (self.searchActive ? self.filteredAttractions[indexPath.row] : self.attractions[indexPath.row])
+            var selectAttraction = (self.attractions[indexPath.row])
             var alert: UIAlertController
             
             if self.selectAttractionsManager.isContain(selectAttraction.AttractionID) {
@@ -191,7 +191,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch type! {
         case .Attraction:
-            var attraction = (searchActive ? filteredAttractions[indexPath.row] : attractions[indexPath.row])
+            var attraction = (attractions[indexPath.row])
             var route = Route()
             route.AttractionIDs = [attraction.AttractionID]
             route.CategoriesIDs = [attraction.CategoryID]
@@ -199,7 +199,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             routesManager.selectedRoute = route
             navigationController?.popToRootViewControllerAnimated(true)
         case .Route:
-            routesManager.selectedRoute = (searchActive ? filteredRoutes[indexPath.row] : routes[indexPath.row])
+            routesManager.selectedRoute = (routes[indexPath.row])
             navigationController?.popToRootViewControllerAnimated(true)
         }
     }
@@ -212,7 +212,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
                 if let indexPath = tableView.indexPathForCell(cell) {
                     
                     let selectAttractionsScene = segue.destinationViewController as! SelectAttractionsTableViewController
-                    let selectRoute = (searchActive ? filteredRoutes[indexPath.row] : routes[indexPath.row])
+                    let selectRoute = (routes[indexPath.row])
                     let attractions = attractionsManager.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
                     
                     routesManager.selectedRoute = selectRoute
@@ -222,7 +222,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
                 let cell = sender as! UITableViewCell
                 if let indexPath = tableView.indexPathForCell(cell) {
                     let detailScene = segue.destinationViewController as! DetailViewController
-                    let attraction = (searchActive ? filteredAttractions[indexPath.row] : attractions[indexPath.row])
+                    let attraction = (attractions[indexPath.row])
                     detailScene.receiveID = attraction.AttractionID
                 }
             default: break
