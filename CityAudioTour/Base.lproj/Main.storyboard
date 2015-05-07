@@ -719,7 +719,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="bDS-za-2gP" kind="relationship" relationship="rootViewController" id="lLE-qm-m4P"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="VVl-ew-zmj"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5r4-jk-5JU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -887,9 +887,6 @@
                                 <state key="normal" title="temporary_button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" id="6vP-yh-oI4"/>
-                                </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" id="o2w-b7-iY8">
                                 <rect key="frame" x="0.0" y="65" width="320" height="217"/>
@@ -979,7 +976,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyV-us-tBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-247" y="323"/>
+            <point key="canvasLocation" x="-291" y="-35"/>
         </scene>
     </scenes>
     <resources>
@@ -999,9 +996,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aHZ-2F-bNZ"/>
+        <segue reference="lH5-RT-V9I"/>
         <segue reference="SEt-BD-yNo"/>
-        <segue reference="OOl-gN-ryR"/>
-        <segue reference="QJP-DS-ClL"/>
+        <segue reference="z1R-vY-Opk"/>
+        <segue reference="aHZ-2F-bNZ"/>
     </inferredMetricsTieBreakers>
 </document>
