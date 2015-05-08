@@ -259,9 +259,9 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
         
         if let identifier = segue.identifier {
             switch identifier {
-            case "detailview", "PopupDetail":
-                let detailScene = segue.destinationViewController as! DetailViewController
-                detailScene.receiveID = selectedAttractionId
+//            case "detailview", "PopupDetail":
+//                let detailScene = segue.destinationViewController as! DetailViewController
+//                detailScene.receiveID = selectedAttractionId
             case "RouteStepView":
                 let routeStepScene = segue.destinationViewController as! RouteStepPage
                 routeStepScene.source = source
@@ -273,11 +273,11 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
             case "MapToAudio":
                 let audioViewController:AudioTourViewController = segue.destinationViewController as! AudioTourViewController
                 audioViewController.receiveID = selectedAttractionId
-            /*
+            
             case "RoutePage":
                 let resultScene:ResultTableViewController = segue.destinationViewController as! ResultTableViewController
                 resultScene.sectionTitle = "Route List"
-            */
+
             case "AttractionPage":
                 let resultScene:ResultTableViewController = segue.destinationViewController as! ResultTableViewController
                 resultScene.sectionTitle = "Attraction List"

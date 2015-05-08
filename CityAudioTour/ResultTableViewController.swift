@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ResultTableViewController: UITableViewController, UISearchBarDelegate {
 
@@ -19,15 +20,21 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     private var selectAttractionsManager = SelectAttractionsManager.sharedInstance
     private var classificationManager = ClassificationManager.sharedInstance
     
-    private var routes = [Route]()
-    private var attractions = [Attraction]()
+    private let locationManager = CLLocationManager()
+    private var managerDelegate:LCManagerDelegate!
+    
     private var type: Type!
+    var routes = [Route]()
+    var attractions = [Attraction]()
+    var dataChanged = true
     
     enum Sort : String{
         case None = "None"
         case Title = "Title"
         case Reverse = "Reverse"
+        case Distance = "Distance"
     }
+    
     
     // MARK: - Sorting List
     
@@ -39,25 +46,29 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             (alert: UIAlertAction!) -> Void in
             self._sort = Sort.Title
             self.sortList()
+            self.dataChanged = true
         }))
         alert.addAction(UIAlertAction(title: "Reverse Name", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             self._sort = Sort.Reverse
             self.sortList()
+            self.dataChanged = true
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         switch type! {
         case .Attraction:
             alert.addAction(UIAlertAction(title: "Distance", style: .Default, handler: {
                 (alert: UIAlertAction!) -> Void in
-                self._sort = Sort.Title
+                self._sort = Sort.Distance
                 self.sortList()
+                self.dataChanged = true
             }))
         case .Route:
             alert.addAction(UIAlertAction(title: "Number", style: .Default, handler: {
                 (alert: UIAlertAction!) -> Void in
                 self._sort = Sort.Title
                 self.sortList()
+                self.dataChanged = true
             }))
         }
         
@@ -85,6 +96,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
+        dataChanged = true
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -94,6 +106,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
+        dataChanged = true
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -101,6 +114,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             switch sectionTitle {
             case "Attraction List":
                 attractions = attractionsManager.attractionsList
+                managerDelegate.attractList = attractions
             case "Route List":
                 routes = routesManager.routesList!
             default: break
@@ -121,8 +135,33 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             }
         }
         tableView.reloadData()
+        managerDelegate.attractList = attractions
+        dataChanged = true
     }
     
+    func popUpAlert() -> Void{
+        var alert:UIAlertController = UIAlertController(title: "Location service is not enabled!", message: "You can enable in Settings->Privacy->Location->Location Services.", preferredStyle: UIAlertControllerStyle.Alert)
+        var settingBtn:UIAlertAction = UIAlertAction(title: "Setting", style: UIAlertActionStyle.Default, handler: {(action)-> Void in
+            UIApplication.sharedApplication().openURL(NSURL (string: UIApplicationOpenSettingsURLString)!)
+        })
+        var cancelBtn:UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil)
+        alert.addAction(settingBtn)
+        alert.addAction(cancelBtn)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    private func hasAuthorized(){
+        locationManager.startUpdatingLocation()
+    }
+    
+    private func checkAuthority(){
+        if CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.AuthorizedWhenInUse {
+            hasAuthorized()
+        }else{
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.stopUpdatingLocation()
+        }
+    }
     // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
@@ -131,18 +170,39 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         switch sectionTitle {
         case "Attraction List":
             type = .Attraction
+            managerDelegate = LCManagerDelegate()
+            managerDelegate.popupWindow = popUpAlert
+            managerDelegate.passAuthorize = hasAuthorized
+            managerDelegate.attractList = attractions
+            
+            locationManager.delegate = managerDelegate
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            
+            checkAuthority()
+            break
         case "Route List":
             type = .Route
+            break
         default: break
         }
         
         searchBar.delegate = self
+        
     }
 
+    override func viewDidDisappear(animated: Bool) {
+        if (type == .Attraction){
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
+        
         switch sectionTitle {
         case "Attraction List":
             attractions = attractionsManager.attractionsList
+            managerDelegate.attractList = attractions
+            checkAuthority()
         case "Route List":
             routes = routesManager.routesList!
         default: break
@@ -226,21 +286,21 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Navigation
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch type! {
-        case .Attraction:
-            var attraction = (attractions[indexPath.row])
-            var route = Route()
-            route.AttractionIDs = [attraction.AttractionID]
-            route.CategoriesIDs = [attraction.CategoryID]
-            route.TagsIDs = attraction.TagIDs
-            routesManager.selectedRoute = route
-            navigationController?.popToRootViewControllerAnimated(true)
-        case .Route:
-            routesManager.selectedRoute = (routes[indexPath.row])
-            navigationController?.popToRootViewControllerAnimated(true)
-        }
-    }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        switch type! {
+//        case .Attraction:
+//            var attraction = (attractions[indexPath.row])
+//            var route = Route()
+//            route.AttractionIDs = [attraction.AttractionID]
+//            route.CategoriesIDs = [attraction.CategoryID]
+//            route.TagsIDs = attraction.TagIDs
+//            routesManager.selectedRoute = route
+//            navigationController?.popToRootViewControllerAnimated(true)
+//        case .Route:
+//            routesManager.selectedRoute = (routes[indexPath.row])
+//            navigationController?.popToRootViewControllerAnimated(true)
+//        }
+//    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
@@ -250,7 +310,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
                 if let indexPath = tableView.indexPathForCell(cell) {
                     
                     let selectAttractionsScene = segue.destinationViewController as! SelectAttractionsTableViewController
-                    let selectRoute = (routes[indexPath.row])
+                    let selectRoute = routes[indexPath.row]
                     let attractions = attractionsManager.GetAttractionsConcreteObjects(selectRoute.AttractionIDs)
                     
                     routesManager.selectedRoute = selectRoute
@@ -261,7 +321,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
                 if let indexPath = tableView.indexPathForCell(cell) {
                     let detailScene = segue.destinationViewController as! DetailViewController
                     let attraction = (attractions[indexPath.row])
-                    detailScene.receiveID = attraction.AttractionID
+                    detailScene.recvattract = attraction
                 }
             default: break
             }

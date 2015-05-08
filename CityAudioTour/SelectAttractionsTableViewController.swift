@@ -48,12 +48,12 @@ class SelectAttractionsTableViewController: UITableViewController {
         //Implement save route
     }
     
-    @IBAction func goToMap(sender: AnyObject) {
-        if identify == "My Route" {
-            _routesManager.selectedRoute = _selectAttractionsManager.myRoute
-        }
-        navigationController?.popToRootViewControllerAnimated(true)
-    }
+//    @IBAction func goToMap(sender: AnyObject) {
+//        if identify == "My Route" {
+//            _routesManager.selectedRoute = _selectAttractionsManager.myRoute
+//        }
+//        navigationController?.popToRootViewControllerAnimated(true)
+//    }
     
     // MARK: - View Controller Lifecycle
     
@@ -143,7 +143,8 @@ class SelectAttractionsTableViewController: UITableViewController {
                 let cell = sender as! UITableViewCell
                 if let indexPath = tableView.indexPathForCell(cell) {
                     let detailScene = segue.destinationViewController as! DetailViewController
-                    detailScene.receiveID = attractions[indexPath.row]
+                    detailScene.recvattract = _attractionsManager.GetAttractionBy(attractions[indexPath.row])
+                    
                 }
             default: break
             }

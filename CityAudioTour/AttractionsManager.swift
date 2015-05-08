@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class AttractionsManager {
     
     //
@@ -50,6 +51,7 @@ class AttractionsManager {
     private func LoadAttractionsList() -> [Attraction]
     {
         _attractionsList = _service?.GetAttractions()
+        
         return _attractionsList!
     }
     
@@ -120,6 +122,10 @@ class AttractionsManager {
     func sortByReverseTitle(this: Attraction, that: Attraction) -> Bool {
         return this.AttractionName > that.AttractionName
     }
+    
+    func sortByDistance(this:Attraction, that: Attraction) -> Bool {
+        return this.Distance < that.Distance
+    }
 
     func sortAttractionList(list: [Attraction], sortBy: String) -> [Attraction] {
         switch sortBy {
@@ -127,6 +133,8 @@ class AttractionsManager {
             return sorted(list, sortByTitle)
         case "Reverse":
             return sorted(list, sortByReverseTitle)
+        case "Distance":
+            return sorted(list, sortByDistance)
         default:
             return list
         }

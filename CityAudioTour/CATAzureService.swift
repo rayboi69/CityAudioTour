@@ -52,6 +52,36 @@ public class CATAzureService
                     
                     attractions.append(tempAttraction)
                 }
+                
+                for attraction in attractions {
+                    GetAttraction(attraction.AttractionID, MainThread: NSOperationQueue(), handler:
+                        {(response:NSURLResponse!,data:NSData!,error:NSError!)-> Void in
+                            if data != nil {
+                                let json = JSON(data:data!)
+                                
+                                var address = json["Address"].stringValue
+                                var city = json["City"].stringValue
+                                var state = json["StateAbbreviation"].stringValue
+                                var zip = json["ZipCode"].stringValue
+                                var attractionImages = json["AttractionImages"].arrayValue
+                                
+                                var images = [String]()
+                                
+                                for imageItem in attractionImages {
+                                    
+                                    var url = imageItem["URL"].stringValue
+                                    images.append(url)
+                                }
+                                
+                                attraction.setAddress(address, city: city, state: state, ZIP: zip)
+                                attraction.AttractionName = json["Name"].stringValue
+                                attraction.Detail = json["Details"].stringValue
+                                attraction.Content = json["TextContent"].stringValue
+                                attraction.ImagesURLs = images
+                            }
+                    })
+                }
+                
             }else {
                 //do something here. (Add more error code here)
             }
