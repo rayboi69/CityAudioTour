@@ -267,6 +267,14 @@
                                                 <segue destination="R1A-T1-LFm" kind="push" identifier="toDetail" id="fZh-BR-xvl"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="u8i-QK-Umj">
+                                            <rect key="frame" x="146" y="0.0" width="27" height="11"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" image="UpImage">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -1416,6 +1424,7 @@
         <image name="NavBtn" width="50" height="50"/>
         <image name="NextBtn" width="50" height="50"/>
         <image name="PrevBtn" width="50" height="50"/>
+        <image name="UpImage" width="50" height="50"/>
         <image name="addCustom" width="128" height="128"/>
         <image name="button-round-pause-icon" width="128" height="128"/>
         <image name="button-round-play-icon" width="128" height="128"/>
