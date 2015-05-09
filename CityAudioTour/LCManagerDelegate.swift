@@ -17,6 +17,7 @@ class LCManagerDelegate:NSObject, CLLocationManagerDelegate{
     var attractList:[Attraction]!
     var popupWindow = {() -> Void in }
     var passAuthorize = {() -> Void in }
+    var updateTable = {() -> Void in }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if (locations != nil){
@@ -60,7 +61,9 @@ class LCManagerDelegate:NSObject, CLLocationManagerDelegate{
                 println(meter.description)
             }
         }
-        
+        if (updateTable != nil){
+            updateTable()
+        }
     }
     
     var location: CLLocation?  {

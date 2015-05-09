@@ -19,7 +19,6 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     private var attractionsManager = AttractionsManager.sharedInstance
     private var selectAttractionsManager = SelectAttractionsManager.sharedInstance
     private var classificationManager = ClassificationManager.sharedInstance
-    
     private let locationManager = CLLocationManager()
     private var managerDelegate:LCManagerDelegate!
     
@@ -159,10 +158,13 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         if CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.AuthorizedWhenInUse {
             hasAuthorized()
         }else{
+            managerDelegate.popupWindow = popUpAlert
+            managerDelegate.passAuthorize = hasAuthorized
             locationManager.requestWhenInUseAuthorization()
             locationManager.stopUpdatingLocation()
         }
     }
+    
     // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
@@ -174,6 +176,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             managerDelegate = LCManagerDelegate()
             managerDelegate.popupWindow = popUpAlert
             managerDelegate.passAuthorize = hasAuthorized
+            managerDelegate.updateTable = tableView.reloadData
             managerDelegate.attractList = attractions
             
             locationManager.delegate = managerDelegate

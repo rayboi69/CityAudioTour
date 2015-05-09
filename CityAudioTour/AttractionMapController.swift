@@ -187,6 +187,8 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         if CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.AuthorizedWhenInUse {
             isAuthorized()
         }else{
+            managerDelegate.popupWindow = warning
+            managerDelegate.passAuthorize = isAuthorized
             locationManager.requestWhenInUseAuthorization()
             distanceLabel.hidden = true
             if (checkDistance != nil ){
