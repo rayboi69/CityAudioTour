@@ -37,7 +37,12 @@ class HomePageController: UIViewController {
                 let resultScene:UITabBarController = segue.destinationViewController as! UITabBarController
                 let tableView = resultScene.viewControllers!.first as! ResultTableViewController
                 tableView.sectionTitle = "Attraction List"
-
+            
+            case "HomeToMyRoute":
+                
+                let selectAttractionScene = segue.destinationViewController as! SelectAttractionsTableViewController
+                selectAttractionScene.identify = "My Route"
+                
             default: break
             }
         }
