@@ -204,7 +204,6 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             attractions = attractionsManager.attractionsList
             managerDelegate.attractList = attractions
             checkAuthority()
-            dataChanged = true
         case "Route List":
             routes = routesManager.routesList!
         default: break
@@ -247,6 +246,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
             let route = (routes[indexPath.row])
             cell.textLabel?.text = route.Name
+            cell.detailTextLabel?.text = "\(route.AttractionIDs.count) points"
         }
         return cell
     }
