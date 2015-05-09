@@ -144,7 +144,10 @@ class SelectAttractionsTableViewController: UITableViewController {
                 if let indexPath = tableView.indexPathForCell(cell) {
                     let detailScene = segue.destinationViewController as! DetailViewController
                     detailScene.recvattract = _attractionsManager.GetAttractionBy(attractions[indexPath.row])
-                    
+                }
+            case "ToRoutePage":
+                if identify == "My Route" {
+                    _routesManager.selectedRoute = _selectAttractionsManager.myRoute
                 }
             default: break
             }
