@@ -52,7 +52,7 @@ class MainMapViewController: UIViewController,UIAlertViewDelegate{
     @IBAction func MenuBtn(sender: AnyObject) {
         if !menuController.isMenuShowing() {
             menuController.MenuShown()
-            detailPopController.hideDetailPopUp()
+            //detailPopController.hideDetailPopUp()
         }else{
             menuController.MenuHidden()
         }

@@ -109,7 +109,7 @@ class MapDelegate:NSObject, MKMapViewDelegate, CLLocationManagerDelegate{
         
         service.GetAttraction(annotation.ID, MainThread: NSOperationQueue.mainQueue(), handler: setUpDetailPopUpView)
         
-        detailPopUpController.showDetailPopUp()
+        //detailPopUpController.showDetailPopUp()
     }
     
     private func setUpDetailPopUpView(response:NSURLResponse!,data:NSData!,error:NSError!) -> Void{

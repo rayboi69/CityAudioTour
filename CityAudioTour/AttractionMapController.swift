@@ -13,11 +13,15 @@ import CoreLocation
 class AttractionMapController: UIViewController,CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var NameLabel: UIButton!
     @IBOutlet weak var addrLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var prevBtn: UIButton!
+    @IBOutlet weak var DetailBox: UITextView!
+    @IBOutlet weak var OpenHoursBox: UITextView!
+    @IBOutlet weak var miniPopUpDetail: UIVisualEffectView!
+    @IBOutlet weak var innerView: UIView!
     
     private let locationManager = CLLocationManager()
     private let latitudeMeter:CLLocationDistance = 5000
@@ -27,6 +31,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
     private var checkDistance:NSTimer!
     private var mapDelegate:AttractionMapDelegate!
     private var pinList:[MKAnnotation] = [MKAnnotation]()
+    private var detailPopUpController:DetailPopUp!
     var index:Int = 0
     var list:[Attraction]!
     
@@ -46,9 +51,10 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         var camera:MKCoordinateRegion! = MKCoordinateRegionMakeWithDistance(pinList[index].coordinate, latitudeMeter, longitudeMeter)
         mapView.setRegion(camera, animated: true)
         
-        NameLabel.text = list[index].AttractionName
+        NameLabel.setTitle(list[index].AttractionName, forState: UIControlState.Normal)
         addrLabel.text = list[index].AttractionAddress
         distanceLabel.text = "\(list[index].Distance) miles"
+        DetailBox.text = list[index].Detail
         
         if index == pinList.count {
             nextBtn.enabled = false
@@ -65,9 +71,10 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         mapView.selectAnnotation(pinList[index], animated: true)
         var camera:MKCoordinateRegion! = MKCoordinateRegionMakeWithDistance(pinList[index].coordinate, latitudeMeter, longitudeMeter)
         mapView.setRegion(camera, animated: true)
-        NameLabel.text = list[index].AttractionName
+        NameLabel.setTitle(list[index].AttractionName, forState: UIControlState.Normal)
         addrLabel.text = list[index].AttractionAddress
         distanceLabel.text = "\(list[index].Distance) miles"
+        DetailBox.text = list[index].Detail
         
         if index == 0 {
             prevBtn.enabled = false
@@ -89,6 +96,8 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        detailPopUpController = DetailPopUp(popUpView: miniPopUpDetail, mainView: self.view)
         
         managerDelegate = LCManagerDelegate()
         managerDelegate.popupWindow = warning
@@ -142,9 +151,10 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         if(list.isEmpty){
             nextBtn.hidden = true;
             nextBtn.enabled = false;
-            NameLabel.text = ""
+            NameLabel.setTitle("", forState: UIControlState.Normal)
             addrLabel.text = ""
             distanceLabel.text = ""
+            DetailBox.text = ""
             return
         }
         

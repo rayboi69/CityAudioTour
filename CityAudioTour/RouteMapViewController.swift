@@ -13,7 +13,7 @@ import CoreLocation
 class RouteMapViewController: UIViewController {
     
     @IBOutlet weak var RNameLabel: UILabel!
-    @IBOutlet weak var attractNameLabel: UILabel!
+    @IBOutlet weak var attractNameLabel: UIButton!
     @IBOutlet weak var addrLabel: UILabel!
     @IBOutlet weak var routeMap: MKMapView!
     @IBOutlet weak var nextBtn: UIButton!
@@ -86,7 +86,7 @@ class RouteMapViewController: UIViewController {
         var camera:MKCoordinateRegion! = MKCoordinateRegionMakeWithDistance(pinList[attractIndex].coordinate, latitudeMeter, longitudeMeter)
         routeMap.setRegion(camera, animated: true)
         
-        attractNameLabel.text = attractList[attractIndex].AttractionName
+        attractNameLabel.setTitle(attractList[attractIndex].AttractionName, forState: UIControlState.Normal)
         addrLabel.text = attractList[attractIndex].AttractionAddress
         
         if attractIndex == pinList.count {
@@ -103,7 +103,7 @@ class RouteMapViewController: UIViewController {
         routeMap.selectAnnotation(pinList[attractIndex], animated: true)
         var camera:MKCoordinateRegion! = MKCoordinateRegionMakeWithDistance(pinList[attractIndex].coordinate, latitudeMeter, longitudeMeter)
         routeMap.setRegion(camera, animated: true)
-        attractNameLabel.text = attractList[attractIndex].AttractionName
+        attractNameLabel.setTitle(attractList[attractIndex].AttractionName, forState: UIControlState.Normal)
         addrLabel.text = attractList[attractIndex].AttractionAddress
         
         if attractIndex == 0 {
@@ -180,7 +180,7 @@ class RouteMapViewController: UIViewController {
         if(attractList.isEmpty){
             nextBtn.hidden = true;
             nextBtn.enabled = false;
-            attractNameLabel.text = ""
+            attractNameLabel.setTitle("", forState: UIControlState.Normal)
             addrLabel.text = ""
             return
         }

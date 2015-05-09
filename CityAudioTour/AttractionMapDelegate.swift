@@ -82,9 +82,10 @@ class AttractionMapDelegate: NSObject,MKMapViewDelegate{
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
         var selectedAnnotation = view.annotation as! pinHolder
         
-        mapController.NameLabel.text = selectedAnnotation.attraction.AttractionName
+        mapController.NameLabel.setTitle(selectedAnnotation.attraction.AttractionName, forState: UIControlState.Normal)
         mapController.addrLabel.text = selectedAnnotation.attraction.AttractionAddress
         mapController.distanceLabel.text = "\(selectedAnnotation.attraction.Distance) miles"
+        mapController.DetailBox.text = selectedAnnotation.attraction.Detail
         mapController.index = selectedAnnotation.index - 1
         
         

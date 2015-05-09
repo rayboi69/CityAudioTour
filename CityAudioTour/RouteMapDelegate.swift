@@ -32,7 +32,7 @@ class RouteMapDelegate: NSObject, MKMapViewDelegate{
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
         var selectedAnnotation = view.annotation as! pinHolder
         
-        routeView.attractNameLabel.text = selectedAnnotation.attraction.AttractionName
+        routeView.attractNameLabel.setTitle(selectedAnnotation.attraction.AttractionName, forState: UIControlState.Normal)
         routeView.addrLabel.text = selectedAnnotation.attraction.AttractionAddress
         routeView.attractIndex = selectedAnnotation.index - 1
         
