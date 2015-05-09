@@ -33,6 +33,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         case Title = "Title"
         case Reverse = "Reverse"
         case Distance = "Distance"
+        case Number = "Number"
     }
     
     
@@ -64,9 +65,9 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
                 self.dataChanged = true
             }))
         case .Route:
-            alert.addAction(UIAlertAction(title: "Number", style: .Default, handler: {
+            alert.addAction(UIAlertAction(title: "Number of Attractions", style: .Default, handler: {
                 (alert: UIAlertAction!) -> Void in
-                self._sort = Sort.Title
+                self._sort = Sort.Number
                 self.sortList()
                 self.dataChanged = true
             }))
@@ -240,10 +241,12 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             cell = tableView.dequeueReusableCellWithIdentifier("AttractionCell", forIndexPath: indexPath) as! UITableViewCell
             let attraction = (attractions[indexPath.row])
             cell.textLabel?.text = attraction.AttractionName
+            cell.detailTextLabel?.text = "\(attraction.Distance) mi"
         case .Route:
             cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
             let route = (routes[indexPath.row])
             cell.textLabel?.text = route.Name
+            cell.detailTextLabel?.text = "\(route.AttractionIDs.count) points"
         }
         return cell
     }
@@ -286,21 +289,11 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Navigation
     
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        switch type! {
-//        case .Attraction:
-//            var attraction = (attractions[indexPath.row])
-//            var route = Route()
-//            route.AttractionIDs = [attraction.AttractionID]
-//            route.CategoriesIDs = [attraction.CategoryID]
-//            route.TagsIDs = attraction.TagIDs
-//            routesManager.selectedRoute = route
-//            navigationController?.popToRootViewControllerAnimated(true)
-//        case .Route:
-//            routesManager.selectedRoute = (routes[indexPath.row])
-//            navigationController?.popToRootViewControllerAnimated(true)
-//        }
-//    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if type == .Route {
+            routesManager.selectedRoute = (routes[indexPath.row])
+        }
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
