@@ -75,6 +75,32 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            switch(identifier){
+                
+            case "RoutePage":
+                let resultScene:UITabBarController = segue.destinationViewController as! UITabBarController
+                let tableView = resultScene.viewControllers!.first as! ResultTableViewController
+                tableView.sectionTitle = "Route List"
+                
+            case "AttractionPage":
+                
+                let resultScene:UITabBarController = segue.destinationViewController as! UITabBarController
+                let tableView = resultScene.viewControllers!.first as! ResultTableViewController
+                tableView.sectionTitle = "Attraction List"
+                
+            case "HomeToMyRoute":
+                
+                let selectAttractionScene = segue.destinationViewController as! SelectAttractionsTableViewController
+                selectAttractionScene.identify = "My Route"
+                
+            default: break
+            }
+        }
+    }
+
+    
     override func updateViewConstraints()
     {
         
@@ -231,7 +257,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             if _rightTopBtn == nil
             {
                 _rightTopBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
-                _rightTopBtn.setTitle("Routes", forState: UIControlState.Normal)
+                _rightTopBtn.setTitle("Popular", forState: UIControlState.Normal)
             }
             return _rightTopBtn
             
@@ -246,7 +272,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             if _rightBottomBtn == nil
             {
                 _rightBottomBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
-                _rightBottomBtn.setTitle("Search", forState: UIControlState.Normal)
+                _rightBottomBtn.setTitle("My Route", forState: UIControlState.Normal)
             }
             return _rightBottomBtn
             
@@ -261,7 +287,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             if _leftBottomBtn == nil
             {
                 _leftBottomBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
-                _leftBottomBtn.setTitle("My Routes", forState: UIControlState.Normal)
+                _leftBottomBtn.setTitle("Routes List", forState: UIControlState.Normal)
             }
             return _leftBottomBtn
             
@@ -276,7 +302,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             if _leftTopBtn == nil
             {
                 _leftTopBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
-                _leftTopBtn.setTitle("Favorites", forState: UIControlState.Normal)
+                _leftTopBtn.setTitle("Search", forState: UIControlState.Normal)
             }
             return _leftTopBtn
             
