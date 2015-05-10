@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     var _rightBottomBtn: UIButton!
     var _rightTopBtn: UIButton!
     var _images = [UIImage(named: "chicagoHome"),UIImage(named: "newyorkHome")]
+    var _imageLabels = ["You are in Chicago","You are in New York"]
     var _pageControl: UIPageControl!
     
     
@@ -53,12 +54,28 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         for var i = 0; i < _images.count; i++
         {
             var imageView = UIImageView(image: _images[i])
-            var rect = imageView.frame;
             imageView.contentMode = UIViewContentMode.ScaleToFill
-            let imageWidth = CGRectGetWidth(self.imagesScrollView.frame)
-            imageView.frame = CGRectMake(imageWidth * CGFloat(i), self.imagesScrollView.frame.origin.y, self.imagesScrollView.frame.width, self.imagesScrollView.frame.height);
-            imageView.tag = i;
-            imagesScrollView.addSubview(imageView)
+            imageView.frame = CGRectMake(0, 0, self.imagesScrollView.frame.width, self.imagesScrollView.frame.height);
+
+            
+            let width = CGRectGetWidth(self.imagesScrollView.frame)
+            let height = CGRectGetHeight(self.imagesScrollView.frame)
+            var imageContainer = UIView(frame: CGRectMake(width * CGFloat(i), self.imagesScrollView.frame.origin.y, self.imagesScrollView.frame.width, self.imagesScrollView.frame.height))
+            
+            var cityLabel = UILabel(frame: CGRect(x: width / 2, y: height / 2, width: self.imagesScrollView.frame.width,height: 120))
+            cityLabel.text = _imageLabels[i]
+            cityLabel.textColor = UIColor.whiteColor()
+            cityLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 25.0)
+            cityLabel.textAlignment = NSTextAlignment.Center
+            
+            cityLabel.center = imagesScrollView.center
+            cityLabel.frame.offset(dx: 0, dy: 20)
+            
+            imageContainer.addSubview(imageView)
+            imageContainer.addSubview(cityLabel)
+            imageContainer.tag = i;
+            
+            imagesScrollView.addSubview(imageContainer)
         }
     }
     
