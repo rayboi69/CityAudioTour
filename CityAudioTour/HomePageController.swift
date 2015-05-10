@@ -276,9 +276,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             if _rightTopBtn == nil
             {
                 _rightTopBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
-                _rightTopBtn.setTitle("Popular", forState: UIControlState.Normal)
+                _rightTopBtn.setTitle("  Popular", forState: UIControlState.Normal)
                 _rightTopBtn.tag = 2
                 _rightTopBtn.addTarget(self, action: "homeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+                _rightTopBtn.setImage(UIImage (named: "28-star"), forState: UIControlState.Normal)
+
             }
             return _rightTopBtn
             
@@ -293,9 +295,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             if _rightBottomBtn == nil
             {
                 _rightBottomBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
-                _rightBottomBtn.setTitle("My Route", forState: UIControlState.Normal)
+                _rightBottomBtn.setTitle("  My Route", forState: UIControlState.Normal)
                 _rightBottomBtn.tag = 3
                 _rightBottomBtn.addTarget(self, action: "homeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+                _rightBottomBtn.setImage(UIImage (named: "60-signpost"), forState: UIControlState.Normal)
+
             }
             return _rightBottomBtn
             
@@ -310,9 +314,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             if _leftBottomBtn == nil
             {
                 _leftBottomBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
-                _leftBottomBtn.setTitle("Routes List", forState: UIControlState.Normal)
+                _leftBottomBtn.setTitle("  Routes List", forState: UIControlState.Normal)
                 _leftBottomBtn.tag = 1
                 _leftBottomBtn.addTarget(self, action: "homeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+                _leftBottomBtn.setImage(UIImage (named: "103-map"), forState: UIControlState.Normal)
+
             }
             return _leftBottomBtn
             
@@ -327,9 +333,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             if _leftTopBtn == nil
             {
                 _leftTopBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
-                _leftTopBtn.setTitle("Search", forState: UIControlState.Normal)
+                _leftTopBtn.setTitle("  Search", forState: UIControlState.Normal)
                 _leftTopBtn.tag = 0
                 _leftTopBtn.addTarget(self, action: "homeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+                _leftTopBtn.setImage(UIImage (named: "06-magnify"), forState: UIControlState.Normal)
                 
             }
             return _leftTopBtn
