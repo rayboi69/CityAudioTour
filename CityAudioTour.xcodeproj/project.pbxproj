@@ -249,6 +249,7 @@
 		08B855041A79F90F006F035F /* CityAudioTour */ = {
 			isa = PBXGroup;
 			children = (
+				319A391D1AFFB92100CCBE18 /* Common */,
 				3119D75B1ADEDC990006A5F5 /* Delegates */,
 				3119D75A1ADEDC8A0006A5F5 /* Assets */,
 				3119D7591ADEDC720006A5F5 /* UI */,
@@ -347,6 +348,13 @@
 				31E8528B1AE6CE1A00E2D2B0 /* AuthToken.swift */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		319A391D1AFFB92100CCBE18 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		4CE0684CFE4C9B70E3A41BE9 /* Pods */ = {
