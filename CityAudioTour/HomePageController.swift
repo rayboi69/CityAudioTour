@@ -99,7 +99,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             }
         }
     }
-
+    
     
     override func updateViewConstraints()
     {
@@ -139,29 +139,29 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         rightTopBtn.snp_makeConstraints{ (make) -> Void in
             make.centerX.equalTo(rightTopView.snp_centerX)
             make.centerY.equalTo(rightTopView.snp_centerY)
-            make.width.equalTo(130)
-            make.height.equalTo(130)
+            make.width.equalTo(rightTopView.snp_width)
+            make.height.equalTo(rightTopView.snp_height)
         }
         
         rightBottomBtn.snp_makeConstraints{ (make) -> Void in
             make.centerX.equalTo(rightBottomView.snp_centerX)
             make.centerY.equalTo(rightBottomView.snp_centerY)
-            make.width.equalTo(130)
-            make.height.equalTo(130)
+            make.width.equalTo(rightBottomView.snp_width)
+            make.height.equalTo(rightBottomView.snp_height)
         }
         
         leftBottomBtn.snp_makeConstraints{ (make) -> Void in
             make.centerX.equalTo(leftBottomView.snp_centerX)
             make.centerY.equalTo(leftBottomView.snp_centerY)
-            make.width.equalTo(130)
-            make.height.equalTo(130)
+            make.width.equalTo(leftBottomView.snp_width)
+            make.height.equalTo(leftBottomView.snp_width)
         }
         
         leftTopBtn.snp_makeConstraints{ (make) -> Void in
             make.centerX.equalTo(leftTopView.snp_centerX)
             make.centerY.equalTo(leftTopView.snp_centerY)
-            make.width.equalTo(130)
-            make.height.equalTo(130)
+            make.width.equalTo(leftTopView.snp_width)
+            make.height.equalTo(leftTopView.snp_height)
         }
         
         pageControl.snp_makeConstraints{ (make) -> Void in
@@ -170,6 +170,25 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         }
         
         super.updateViewConstraints()
+    }
+    
+    func homeButtonAction(sender:UIButton!)
+    {
+        var btnsendtag:UIButton = sender
+        switch btnsendtag.tag
+        {
+        case 0:
+            self.performSegueWithIdentifier("AttractionPage", sender: self)
+        case 1:
+            self.performSegueWithIdentifier("RoutePage", sender: self)
+        case 2:
+            println("Not implemented yet")
+        case 3:
+            self.performSegueWithIdentifier("HomeToMyRoute", sender: self)
+        default:
+            println("Something else")
+        }
+        
     }
     
     //Lazy Getters
@@ -258,6 +277,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             {
                 _rightTopBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
                 _rightTopBtn.setTitle("Popular", forState: UIControlState.Normal)
+                _rightTopBtn.tag = 2
+                _rightTopBtn.addTarget(self, action: "homeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
             }
             return _rightTopBtn
             
@@ -273,6 +294,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             {
                 _rightBottomBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
                 _rightBottomBtn.setTitle("My Route", forState: UIControlState.Normal)
+                _rightBottomBtn.tag = 3
+                _rightBottomBtn.addTarget(self, action: "homeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
             }
             return _rightBottomBtn
             
@@ -288,6 +311,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             {
                 _leftBottomBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
                 _leftBottomBtn.setTitle("Routes List", forState: UIControlState.Normal)
+                _leftBottomBtn.tag = 1
+                _leftBottomBtn.addTarget(self, action: "homeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
             }
             return _leftBottomBtn
             
@@ -303,6 +328,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             {
                 _leftTopBtn = UIButton(frame: CGRectMake(0, 0, 120, 120))
                 _leftTopBtn.setTitle("Search", forState: UIControlState.Normal)
+                _leftTopBtn.tag = 0
+                _leftTopBtn.addTarget(self, action: "homeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+                
             }
             return _leftTopBtn
             
