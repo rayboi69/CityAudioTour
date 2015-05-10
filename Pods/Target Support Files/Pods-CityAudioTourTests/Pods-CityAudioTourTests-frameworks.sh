@@ -51,11 +51,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'JSONJoy.framework'
   install_framework 'OCMock.framework'
   install_framework 'OHHTTPStubs.framework'
+  install_framework 'SnapKit.framework'
   install_framework 'SwiftyJSON.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'JSONJoy.framework'
   install_framework 'OCMock.framework'
   install_framework 'OHHTTPStubs.framework'
+  install_framework 'SnapKit.framework'
   install_framework 'SwiftyJSON.framework'
 fi
