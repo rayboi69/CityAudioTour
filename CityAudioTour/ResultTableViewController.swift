@@ -139,6 +139,8 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         dataChanged = true
     }
     
+    // MARK: - CoreLocation Helper
+    
     func popUpAlert() -> Void{
         var alert:UIAlertController = UIAlertController(title: "Location service is not enabled!", message: "You can enable in Settings->Privacy->Location->Location Services.", preferredStyle: UIAlertControllerStyle.Alert)
         var settingBtn:UIAlertAction = UIAlertAction(title: "Setting", style: UIAlertActionStyle.Default, handler: {(action)-> Void in
@@ -200,7 +202,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         
         switch sectionTitle {
         case "Attraction List":
@@ -265,6 +267,10 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
+
+    override func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+        locationManager.startUpdatingLocation()
+    }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
         var addToMyRoute = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Add" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
@@ -286,7 +292,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             self.presentViewController(alert, animated: true, completion: nil)
         })
         addToMyRoute.backgroundColor = UIColor.blueColor()
-        
+        locationManager.stopUpdatingLocation()
         return [addToMyRoute]
     }
 
