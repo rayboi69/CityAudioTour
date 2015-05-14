@@ -20,10 +20,12 @@ public class Attraction{
     
     var AttractionName = ""
     var AttractionAddress = ""
+    var addrSecForm = ""
     var Detail = ""
     var Content = ""
     var AttractionID = 0
     var CategoryID = 0
+    var Distance = 0.0
     var AttractionImage = UIImage()
     var Latitude = 0.0
     var Longitude = 0.0
@@ -37,7 +39,8 @@ public class Attraction{
     init(){}
         
     func setAddress(address:String, city:String, state:String, ZIP:String){
-        self.AttractionAddress = address + "\n" + city + "," + state + " " + ZIP
+        self.AttractionAddress = address + " " + city + "," + state + " " + ZIP
+        self.addrSecForm = address + "\n" + city + "," + state + " " + ZIP
     }
     
     
