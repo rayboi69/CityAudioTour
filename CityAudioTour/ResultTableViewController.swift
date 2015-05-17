@@ -255,7 +255,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
             let route = (routes[indexPath.row])
             cell.textLabel?.text = route.Name
-            cell.detailTextLabel?.text = "\(route.AttractionIDs.count) points"
+            cell.detailTextLabel?.text = "\(route.AttractionIDs.count) stop"
         }
         return cell
     }
