@@ -23,12 +23,23 @@ class SelectAttractionsTableViewController: UITableViewController {
     @IBOutlet weak var viewTitle: UILabel!
     
     @IBAction func saveMyRoute(sender: UIButton) {
-        var alert: UIAlertController
+        var alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        
+        //Implement save route
+        func saveRouteHandler(act:UIAlertAction!) {
+            let title = alert.textFields![0] as! UITextField
+            let saveRoute = _selectAttractionsManager.myRouteWithTitle(title.text)
+            //Waiting for implement save the route to server
+            
+        }
+        
         if attractions.count == 0 {
-            alert = UIAlertController(title: "Sorry", message: "Could not save empty list", preferredStyle: .Alert)
+            alert.title = "Sorry"
+            alert.message = "Could not save empty list"
             alert.addAction(UIAlertAction(title: "Okey", style: UIAlertActionStyle.Default, handler: nil))
         } else {
-            alert = UIAlertController(title: "Save Route", message: "Store this route for future use", preferredStyle: .Alert)
+            alert.title = "Save Route"
+            alert.message = "Store this route for future use"
             alert.addTextFieldWithConfigurationHandler({ (textField) in
                 textField.placeholder = "Enter route title"
                 textField.textColor = UIColor.blueColor()
@@ -42,10 +53,6 @@ class SelectAttractionsTableViewController: UITableViewController {
         alert.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Up
         
         self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    private func saveRouteHandler(alert:UIAlertAction!) -> Void {
-        //Implement save route
     }
     
     // MARK: - View Controller Lifecycle
