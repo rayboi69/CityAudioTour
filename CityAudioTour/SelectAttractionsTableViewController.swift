@@ -48,13 +48,6 @@ class SelectAttractionsTableViewController: UITableViewController {
         //Implement save route
     }
     
-    //    @IBAction func goToMap(sender: AnyObject) {
-    //        if identify == "My Route" {
-    //            _routesManager.selectedRoute = _selectAttractionsManager.myRoute
-    //        }
-    //        navigationController?.popToRootViewControllerAnimated(true)
-    //    }
-    
     // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {

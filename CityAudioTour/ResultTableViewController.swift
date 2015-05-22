@@ -38,7 +38,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: - Sorting List
     
-    private var _sort = Sort.None
+    private var _sort = Sort.Title
     
     @IBAction func sortButton(sender: UIButton) {
         var alert = UIAlertController(title: "", message: "Choose Sort Option", preferredStyle: .ActionSheet)
@@ -175,6 +175,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         switch sectionTitle {
         case "Attraction List":
             type = .Attraction
+            _sort = Sort.Distance
             managerDelegate = LCManagerDelegate()
             managerDelegate.popupWindow = popUpAlert
             managerDelegate.passAuthorize = hasAuthorized
@@ -215,7 +216,10 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         }
         searchBar.text = ""
         self.sortList()
-        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.sortList()
     }
     
     override func didReceiveMemoryWarning() {
@@ -251,7 +255,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
             let route = (routes[indexPath.row])
             cell.textLabel?.text = route.Name
-            cell.detailTextLabel?.text = "\(route.AttractionIDs.count) points"
+            cell.detailTextLabel?.text = "\(route.AttractionIDs.count) stop"
         }
         return cell
     }
