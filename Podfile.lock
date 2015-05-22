@@ -1,27 +1,16 @@
 PODS:
   - Google-Maps-iOS-SDK (1.9.2)
-  - JSONJoy-Swift (0.9.2)
   - OCMock (3.1.2)
-  - OHHTTPStubs (3.1.11):
-    - OHHTTPStubs/Core (= 3.1.11)
-  - OHHTTPStubs/Core (3.1.11)
-  - SnapKit (0.10.0)
-  - SwiftyJSON (2.1.3)
+  - OHHTTPStubs (4.0.2)
 
 DEPENDENCIES:
   - Google-Maps-iOS-SDK
-  - JSONJoy-Swift (~> 0.9.1)
   - OCMock
   - OHHTTPStubs
-  - SnapKit (~> 0.10.0)
-  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Google-Maps-iOS-SDK: 4c008abdb68e03ae125c7f674be841d369e2b3de
-  JSONJoy-Swift: d51bde1053047c623db602e778f068414dd788e4
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
-  OHHTTPStubs: 5624a5d20d97d46d47e15a68ca8808b59ccf0512
-  SnapKit: 53696873f2cf84a15e8d7d0d9729ed4381196b16
-  SwiftyJSON: a561c2a840121085bec8a2dfeac97a360fc66901
+  OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
 
 COCOAPODS: 0.36.3

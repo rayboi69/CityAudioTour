@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 import SwiftyJSON
-import JSONJoy
+//import JSONJoy
 
 public class CATAzureService
 {
@@ -255,7 +255,7 @@ public class CATAzureService
         NSURLConnection.sendAsynchronousRequest(request, queue: MainThreadQueue, completionHandler: handler)
     }
     
-    //Authentication Services
+   /* //Authentication Services
     func AuthenticateUser(email: String, password:String, completion: ((succeeded: Bool, msg: String, result: User) -> Void)!){
         let postString = String(format: "password=%@&username=%@&grant_type=password",password,email)
         self.post(postString, urlResource: "Token"){(error: NSError?, result: NSData?, success: Bool) -> () in
@@ -296,7 +296,7 @@ public class CATAzureService
                 }
             }
         }
-    }
+    }*/
     
     //POST Client
     func post(params : String, urlResource: String, postCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
@@ -324,7 +324,7 @@ public class CATAzureService
         task.resume()
     }
     
-    //GET Client
+   /* //GET Client
     func get(urlResource: String, getCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
         let finalURL = String(format: "%@/%@", apiURL, urlResource)
         var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
@@ -355,6 +355,6 @@ public class CATAzureService
         })
         
         task.resume()
-    }
+    }*/
 
 }
