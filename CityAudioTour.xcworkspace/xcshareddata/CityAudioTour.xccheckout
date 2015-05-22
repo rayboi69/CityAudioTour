@@ -22,11 +22,11 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</key>
-		<string>../SnapKit/</string>
+		<string>../SnapKit</string>
 		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
 		<string>..</string>
 		<key>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</key>
-		<string>../SwiftyJSON/</string>
+		<string>../SwiftyJSON</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:rayboi69/CityAudioTour.git</string>
