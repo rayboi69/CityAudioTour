@@ -4,101 +4,65 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-CityAudioTour-SnapKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 		<key>Pods-CityAudioTour-SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-CityAudioTour.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 		<key>Pods-CityAudioTourTests-OCMock.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Pods-CityAudioTourTests-OHHTTPStubs.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>Pods-CityAudioTourTests-SnapKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>Pods-CityAudioTourTests-SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>Pods-CityAudioTourTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0445306B335FF46BDDAD126B</key>
+		<key>1069C0A817351E24EEE7453D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1C501DF3353F94D6B99975F1</key>
+		<key>398C0AFE9BD6A875E763665B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2597383DAEF62267BDE06835</key>
+		<key>42AE6357812ADE1F418D1358</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F22F2543E148384D887D19B</key>
+		<key>7EFD859815EB402D7701D01F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>966D143137667D98F317FF62</key>
+		<key>AB496DE9114C4DAA38874EE8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD116FF8C6DC3885C91E7695</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EFE99873CD84FC2E18FE72A5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FA1DE12E8B0BDB732C230730</key>
+		<key>B726F504A6F86CA84B5C0A46</key>
 		<dict>
 			<key>primary</key>
 			<true/>

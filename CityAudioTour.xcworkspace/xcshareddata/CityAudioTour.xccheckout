@@ -10,6 +10,8 @@
 	<string>CityAudioTour</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</key>
+		<string>https://github.com/SnapKit/SnapKit.git</string>
 		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
 		<string>github.com:rayboi69/CityAudioTour.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>CityAudioTour.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</key>
+		<string>../SnapKit/</string>
 		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
 		<string>..</string>
 	</dict>
@@ -35,6 +39,14 @@
 			<string>4850901FE59F93C8D223BA69E58B762FDED4D0BD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CityAudioTour</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SnapKit</string>
 		</dict>
 	</array>
 </dict>

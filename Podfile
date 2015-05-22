@@ -8,7 +8,6 @@ target :CityAudioTour do
   xcodeproj 'CityAudioTour.xcodeproj'
   pod 'Google-Maps-iOS-SDK'
   pod 'SwiftyJSON'
-  pod 'SnapKit', '~> 0.10.0'
 end
 
 target :CityAudioTourTests do
@@ -16,5 +15,4 @@ target :CityAudioTourTests do
   pod 'OCMock'
   pod 'OHHTTPStubs'
   pod 'SwiftyJSON'
-  pod 'SnapKit', '~> 0.10.0'
 end

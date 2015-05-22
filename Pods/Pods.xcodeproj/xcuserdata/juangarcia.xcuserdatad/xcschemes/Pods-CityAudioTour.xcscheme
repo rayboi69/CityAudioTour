@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA1DE12E8B0BDB732C230730"
+               BlueprintIdentifier = "398C0AFE9BD6A875E763665B"
                BuildableName = "Pods_CityAudioTour.framework"
                BlueprintName = "Pods-CityAudioTour"
                ReferencedContainer = "container:Pods.xcodeproj">
