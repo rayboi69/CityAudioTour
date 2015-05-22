@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D15F1925-E462-42B5-863E-766BE6E46F5F</string>
+	<string>6089C35B-5F0F-4C70-924D-F482B0ABC84B</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CityAudioTour</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>4850901FE59F93C8D223BA69E58B762FDED4D0BD</key>
-		<string>https://github.com/rayboi69/CityAudioTour.git</string>
+		<string>github.com:rayboi69/CityAudioTour.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CityAudioTour.xcworkspace</string>
@@ -21,7 +21,7 @@
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/rayboi69/CityAudioTour.git</string>
+	<string>github.com:rayboi69/CityAudioTour.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
