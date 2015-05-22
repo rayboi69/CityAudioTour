@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-CityAudioTour-SwiftyJSON.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-CityAudioTour.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-CityAudioTourTests-SwiftyJSON.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-CityAudioTourTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1069C0A817351E24EEE7453D</key>
+		<key>1116F4CFDD32506D2DCD176C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>398C0AFE9BD6A875E763665B</key>
+		<key>BE0EFCCD2C2DECE695797479</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42AE6357812ADE1F418D1358</key>
+		<key>D07377AB443C6F1BCC6768F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7EFD859815EB402D7701D01F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AB496DE9114C4DAA38874EE8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B726F504A6F86CA84B5C0A46</key>
+		<key>DA5C526CB41E3E0482D93C63</key>
 		<dict>
 			<key>primary</key>
 			<true/>
