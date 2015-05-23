@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 import SwiftyJSON
-import JSONJoy
+//import JSONJoy
 
 public class CATAzureService
 {
@@ -52,6 +52,36 @@ public class CATAzureService
                     
                     attractions.append(tempAttraction)
                 }
+                
+                for attraction in attractions {
+                    GetAttraction(attraction.AttractionID, MainThread: NSOperationQueue(), handler:
+                        {(response:NSURLResponse!,data:NSData!,error:NSError!)-> Void in
+                            if data != nil {
+                                let json = JSON(data:data!)
+                                
+                                var address = json["Address"].stringValue
+                                var city = json["City"].stringValue
+                                var state = json["StateAbbreviation"].stringValue
+                                var zip = json["ZipCode"].stringValue
+                                var attractionImages = json["AttractionImages"].arrayValue
+                                
+                                var images = [String]()
+                                
+                                for imageItem in attractionImages {
+                                    
+                                    var url = imageItem["URL"].stringValue
+                                    images.append(url)
+                                }
+                                
+                                attraction.setAddress(address, city: city, state: state, ZIP: zip)
+                                attraction.AttractionName = json["Name"].stringValue
+                                attraction.Detail = json["Details"].stringValue
+                                attraction.Content = json["TextContent"].stringValue
+                                attraction.ImagesURLs = images
+                            }
+                    })
+                }
+                
             }else {
                 //do something here. (Add more error code here)
             }
@@ -225,7 +255,7 @@ public class CATAzureService
         NSURLConnection.sendAsynchronousRequest(request, queue: MainThreadQueue, completionHandler: handler)
     }
     
-    //Authentication Services
+   /* //Authentication Services
     func AuthenticateUser(email: String, password:String, completion: ((succeeded: Bool, msg: String, result: User) -> Void)!){
         let postString = String(format: "password=%@&username=%@&grant_type=password",password,email)
         self.post(postString, urlResource: "Token"){(error: NSError?, result: NSData?, success: Bool) -> () in
@@ -266,7 +296,7 @@ public class CATAzureService
                 }
             }
         }
-    }
+    }*/
     
     //POST Client
     func post(params : String, urlResource: String, postCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
@@ -294,7 +324,7 @@ public class CATAzureService
         task.resume()
     }
     
-    //GET Client
+   /* //GET Client
     func get(urlResource: String, getCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
         let finalURL = String(format: "%@/%@", apiURL, urlResource)
         var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
@@ -325,6 +355,6 @@ public class CATAzureService
         })
         
         task.resume()
-    }
+    }*/
 
 }

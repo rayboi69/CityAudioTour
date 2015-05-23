@@ -7,7 +7,9 @@
 //
 
 import Foundation
+//TODO - Remove comment when JSonJoy has been removed
 
+/*
 import JSONJoy
 
 struct User : JSONJoy {
@@ -21,4 +23,4 @@ struct User : JSONJoy {
         Id = decoder["Id"].string
         Email = decoder["Email"].string
     }
-}
+}*/

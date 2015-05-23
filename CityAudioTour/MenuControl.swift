@@ -52,7 +52,7 @@ class MenuController: NSObject{
             showMenu(isShowing)
         }else if recognizer.direction == UISwipeGestureRecognizerDirection.Right{
             isShowing = true
-            detailPopController.hideDetailPopUp()
+            //detailPopController.hideDetailPopUp()
             showMenu(isShowing)
         }
     }

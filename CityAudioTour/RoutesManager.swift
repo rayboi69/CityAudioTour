@@ -87,7 +87,6 @@ class RoutesManager {
         }
     }
     
-    
     //
     //Lazy Getters
     //
@@ -125,7 +124,32 @@ class RoutesManager {
         }
     }
 
-
+    //MARK: - Sorting
     
+    func sortByTitle(this: Route, that: Route) -> Bool {
+        return this.Name < that.Name
+    }
+    
+    func sortByReverseTitle(this: Route, that: Route) -> Bool {
+        return this.Name > that.Name
+    }
+    
+    func sortByNumber(this: Route, that: Route) -> Bool {
+        return this.AttractionIDs.count > that.AttractionIDs.count
+    }
+    
+    
+    func sortAttractionList(list: [Route], sortBy: String) -> [Route] {
+        switch sortBy {
+        case "Title":
+            return sorted(list, sortByTitle)
+        case "Reverse":
+            return sorted(list, sortByReverseTitle)
+        case "Number":
+            return sorted(list, sortByNumber)
+        default:
+            return list
+        }
+    }
     
 }

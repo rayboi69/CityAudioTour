@@ -37,6 +37,9 @@ class DetailPopUp: NSObject {
         let hideGestureReconizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "isShow:")
         hideGestureReconizer.direction = UISwipeGestureRecognizerDirection.Down
         popUpView.addGestureRecognizer(hideGestureReconizer)
+        let showGestureReconizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "isShow:")
+        showGestureReconizer.direction = UISwipeGestureRecognizerDirection.Up
+        popUpView.addGestureRecognizer(showGestureReconizer)
         
     }
 
@@ -44,6 +47,9 @@ class DetailPopUp: NSObject {
     func isShow(recognizer:UISwipeGestureRecognizer){
         if recognizer.direction == UISwipeGestureRecognizerDirection.Down{
             isShowing = false
+            showPopUp(isShowing)
+        }else if recognizer.direction == UISwipeGestureRecognizerDirection.Up{
+            isShowing = true
             showPopUp(isShowing)
         }
     }
@@ -64,18 +70,18 @@ class DetailPopUp: NSObject {
         animator.addBehavior(StoppingPoint)
     }
 
-    func showDetailPopUp(){
-        if !isShowing {
-            isShowing = true
-            showPopUp(isShowing)
-        }
-    }
-    
-    func hideDetailPopUp(){
-        if isShowing{
-            isShowing = false
-            showPopUp(isShowing)
-        }
-    }
+//    func showDetailPopUp(){
+//        if !isShowing {
+//            isShowing = true
+//            showPopUp(isShowing)
+//        }
+//    }
+//    
+//    func hideDetailPopUp(){
+//        if isShowing{
+//            isShowing = false
+//            showPopUp(isShowing)
+//        }
+//    }
     
 }
