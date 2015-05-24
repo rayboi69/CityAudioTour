@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "08B855011A79F90F006F035F"
-               BuildableName = "CityAudioTour.app"
-               BlueprintName = "CityAudioTour"
+               BlueprintIdentifier = "08B855191A79F90F006F035F"
+               BuildableName = "CityAudioTourTests.xctest"
+               BlueprintName = "CityAudioTourTests"
                ReferencedContainer = "container:CityAudioTour.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "08B855011A79F90F006F035F"
-            BuildableName = "CityAudioTour.app"
-            BlueprintName = "CityAudioTour"
+            BlueprintIdentifier = "08B855191A79F90F006F035F"
+            BuildableName = "CityAudioTourTests.xctest"
+            BlueprintName = "CityAudioTourTests"
             ReferencedContainer = "container:CityAudioTour.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -58,16 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "08B855011A79F90F006F035F"
-            BuildableName = "CityAudioTour.app"
-            BlueprintName = "CityAudioTour"
+            BlueprintIdentifier = "08B855191A79F90F006F035F"
+            BuildableName = "CityAudioTourTests.xctest"
+            BlueprintName = "CityAudioTourTests"
             ReferencedContainer = "container:CityAudioTour.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -77,16 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "08B855011A79F90F006F035F"
-            BuildableName = "CityAudioTour.app"
-            BlueprintName = "CityAudioTour"
+            BlueprintIdentifier = "08B855191A79F90F006F035F"
+            BuildableName = "CityAudioTourTests.xctest"
+            BlueprintName = "CityAudioTourTests"
             ReferencedContainer = "container:CityAudioTour.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
