@@ -65,6 +65,14 @@ class SelectAttractionsManager {
         return (categorys, tags)
     }
     
+    func myRouteWithTitle(name: String) -> Route?{
+        var route = Route()
+        route.Name = name
+        route.AttractionIDs = attractionIDs
+        (route.CategoriesIDs, route.TagsIDs) = getCategoriesAndTags()
+        return route
+    }
+    
     func setTitle(name: String) {
         title = name
     }

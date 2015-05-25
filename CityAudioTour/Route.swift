@@ -15,6 +15,7 @@ class Route{
     var AttractionIDs: [Int] = []
     var TagsIDs: [Int] = []
     var CategoriesIDs: [Int] = []
+    var TotalDistance = 0.0
     
     init(){}
     

@@ -32,7 +32,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         case Title = "Title"
         case Reverse = "Reverse"
         case Distance = "Distance"
-        case Number = "Number"
+        case TotalDistance = "TotalDistance"
     }
     
     
@@ -64,9 +64,9 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
                 self.dataChanged = true
             }))
         case .Route:
-            alert.addAction(UIAlertAction(title: "Number of Attractions", style: .Default, handler: {
+            alert.addAction(UIAlertAction(title: "Total Distance", style: .Default, handler: {
                 (alert: UIAlertAction!) -> Void in
-                self._sort = Sort.Number
+                self._sort = Sort.TotalDistance
                 self.sortList()
                 self.dataChanged = true
             }))
@@ -189,6 +189,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             break
         case "Route List":
             type = .Route
+            _sort = Sort.TotalDistance
             break
         default: break
         }
@@ -255,7 +256,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
             let route = (routes[indexPath.row])
             cell.textLabel?.text = route.Name
-            cell.detailTextLabel?.text = "\(route.AttractionIDs.count) stop"
+            cell.detailTextLabel?.text = "\(route.TotalDistance) mi"
         }
         return cell
     }
