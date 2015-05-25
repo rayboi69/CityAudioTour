@@ -28,6 +28,8 @@
 		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		3135BF501A9C3E8E00DD0D46 /* AttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */; };
 		315F9E601AE87B8D00A3935C /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8528B1AE6CE1A00E2D2B0 /* AuthToken.swift */; };
+		316903701B1391DA00C0F4A3 /* SnapKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 31B963A31B0FA57800EBD08E /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		316903721B1391E400C0F4A3 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 31B963BE1B0FA72800EBD08E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3178C96A1AB125B600F26461 /* RoutesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178C9691AB125B600F26461 /* RoutesManager.swift */; };
 		3191CB581A92D93900939865 /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
 		3194A0881AA03CEA00757252 /* ClassificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A0871AA03CEA00757252 /* ClassificationManager.swift */; };
@@ -35,8 +37,8 @@
 		3194A08C1AA0448200757252 /* Categroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08B1AA0448200757252 /* Categroy.swift */; };
 		3194A08E1AA0449100757252 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
 		319A391F1AFFB98A00CCBE18 /* CommonUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319A391E1AFFB98A00CCBE18 /* CommonUtilities.swift */; };
-		31B963B51B0FA6E100EBD08E /* SnapKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 31B963A31B0FA57800EBD08E /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		31B963CB1B0FA79700EBD08E /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 31B963BE1B0FA72800EBD08E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		31B963B51B0FA6E100EBD08E /* SnapKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 31B963A31B0FA57800EBD08E /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		31B963CB1B0FA79700EBD08E /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 31B963BE1B0FA72800EBD08E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31BEC7431ADF11FD0024691C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BEC7421ADF11FD0024691C /* User.swift */; };
 		31BEC7441ADF25930024691C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BEC7421ADF11FD0024691C /* User.swift */; };
 		31BEC7451ADF259F0024691C /* AttractionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191CB571A92D93900939865 /* AttractionContent.swift */; };
@@ -92,6 +94,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 08B855011A79F90F006F035F;
 			remoteInfo = CityAudioTour;
+		};
+		31AA130E1B13A80000E656FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31B963B61B0FA72800EBD08E /* SwiftyJSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E4FEFDA19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
+		31AA13101B13A80000E656FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31B9639B1B0FA57800EBD08E /* SnapKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EEBCC9D719CC627D0083B827;
+			remoteInfo = "SnapKit iOS";
 		};
 		31B963A21B0FA57800EBD08E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -166,15 +182,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		31B963B41B0FA6D300EBD08E /* CopyFiles */ = {
+		3169036F1B1391C500C0F4A3 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				316903721B1391E400C0F4A3 /* SwiftyJSON.framework in Copy Frameworks */,
+				316903701B1391DA00C0F4A3 /* SnapKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31B963B41B0FA6D300EBD08E /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				31B963CB1B0FA79700EBD08E /* SwiftyJSON.framework in CopyFiles */,
-				31B963B51B0FA6E100EBD08E /* SnapKit.framework in CopyFiles */,
+				31B963CB1B0FA79700EBD08E /* SwiftyJSON.framework in Copy Frameworks */,
+				31B963B51B0FA6E100EBD08E /* SnapKit.framework in Copy Frameworks */,
 			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -516,10 +545,13 @@
 				08B854FF1A79F90F006F035F /* Frameworks */,
 				08B855001A79F90F006F035F /* Resources */,
 				BD943CD8DB3427C3D1584C97 /* Copy Pods Resources */,
+				3169036F1B1391C500C0F4A3 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				31AA130F1B13A80000E656FF /* PBXTargetDependency */,
+				31AA13111B13A80000E656FF /* PBXTargetDependency */,
 			);
 			name = CityAudioTour;
 			productName = CityAudioTour;
@@ -535,7 +567,7 @@
 				08B855171A79F90F006F035F /* Frameworks */,
 				08B855181A79F90F006F035F /* Resources */,
 				EFB5DE098E55F74711680F0D /* Copy Pods Resources */,
-				31B963B41B0FA6D300EBD08E /* CopyFiles */,
+				31B963B41B0FA6D300EBD08E /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -827,6 +859,16 @@
 			isa = PBXTargetDependency;
 			target = 08B855011A79F90F006F035F /* CityAudioTour */;
 			targetProxy = 08B8551B1A79F90F006F035F /* PBXContainerItemProxy */;
+		};
+		31AA130F1B13A80000E656FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyJSON iOS";
+			targetProxy = 31AA130E1B13A80000E656FF /* PBXContainerItemProxy */;
+		};
+		31AA13111B13A80000E656FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SnapKit iOS";
+			targetProxy = 31AA13101B13A80000E656FF /* PBXContainerItemProxy */;
 		};
 		31B963B31B0FA6CD00EBD08E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
