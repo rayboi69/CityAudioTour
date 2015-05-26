@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 class AttractionMapController: UIViewController,CLLocationManagerDelegate {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var NameLabel: UIButton!
     @IBOutlet weak var addrLabel: UILabel!
@@ -70,7 +70,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
             nextBtn.enabled = false
             nextBtn.hidden = true
         }
-
+        
     }
     
     
@@ -95,7 +95,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
             prevBtn.enabled = false
             prevBtn.hidden = true
         }
-
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -128,7 +128,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         
         checkAuthority()
     }
-
+    
     func warning() -> Void{
         var alert:UIAlertController = UIAlertController(title: "Location service is not enabled!", message: "You can enable in Settings->Privacy->Location->Location Services.", preferredStyle: UIAlertControllerStyle.Alert)
         var settingBtn:UIAlertAction = UIAlertAction(title: "Setting", style: UIAlertActionStyle.Default, handler: {(action)-> Void in
@@ -197,7 +197,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         }
         
     }
-        
+    
     private func checkAuthority(){
         if CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.AuthorizedWhenInUse {
             isAuthorized()
@@ -211,7 +211,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
             }
             locationManager.stopUpdatingLocation()
         }
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -219,7 +219,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -237,5 +237,5 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
             audioViewController.recvattract = list[index]
         }
     }
-
+    
 }

@@ -18,15 +18,15 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var AttractionAddress: UILabel!
     @IBOutlet weak var LoadingView: UIActivityIndicatorView!
     
-//    @IBAction func addToMyRoute(sender: UIButton) {
-//        var myRoute = SelectAttractionsManager.sharedInstance
-//        myRoute.addAttraction(receiveID!)
-//    }
-   
+    //    @IBAction func addToMyRoute(sender: UIButton) {
+    //        var myRoute = SelectAttractionsManager.sharedInstance
+    //        myRoute.addAttraction(receiveID!)
+    //    }
+    
     var recvattract:Attraction!
-
+    
     private var service = CATAzureService()
-
+    
     
     //Set up UI on Detail page.
     private func setUpUI(){
@@ -47,7 +47,7 @@ class DetailViewController: UIViewController {
                 var firstImageURL = self.recvattract.ImagesURLs.first
                 let url = NSURL(string: firstImageURL!)
                 data = NSData(contentsOfURL: url!)
-        
+                
             }
             dispatch_async(dispatch_get_main_queue(),{
                 if (data != nil)
@@ -66,7 +66,7 @@ class DetailViewController: UIViewController {
         
         setUpUI()
         
-        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

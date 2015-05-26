@@ -86,7 +86,7 @@ class RouteMapViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
         
         self.presentViewController(alert, animated: true, completion: nil)
-
+        
     }
     
     @IBAction func currBtn(sender: AnyObject) {
@@ -122,7 +122,7 @@ class RouteMapViewController: UIViewController {
             nextBtn.enabled = false
             nextBtn.hidden = true
         }
-
+        
     }
     
     @IBAction func prevAttract(sender: AnyObject) {
@@ -254,52 +254,52 @@ class RouteMapViewController: UIViewController {
         println("Route is called.")
         var counter = 0
         var prevMapItem = MKMapItem?()
-            
+        
         for attraction in attractList  {
-                
+            
             // get walking distance
-                
+            
             let startingCoordinate = locationManager.location.coordinate
             let startingPlaceMark = MKPlacemark(coordinate: startingCoordinate, addressDictionary: nil)
             let startingMapItem = MKMapItem(placemark: startingPlaceMark)
-                
+            
             let endingCoordinate = CLLocationCoordinate2D(latitude: attraction.Latitude, longitude: attraction.Longitude)
             let endingPlaceMark = MKPlacemark(coordinate: endingCoordinate, addressDictionary: nil)
             let endingMapItem = MKMapItem(placemark: endingPlaceMark)
-                
+            
             if (counter != 0) {
                 requestLocation.setSource(prevMapItem)
             }else {
                 requestLocation.setSource(startingMapItem)
             }
-                
+            
             requestLocation.transportType = MKDirectionsTransportType.Automobile
             requestLocation.requestsAlternateRoutes = false
             requestLocation.setDestination(endingMapItem)
-                
+            
             prevMapItem = endingMapItem
-                
+            
             // Call Directions API
             let direction:MKDirections = MKDirections(request:requestLocation)
-                direction.calculateDirectionsWithCompletionHandler({
-                    (response:MKDirectionsResponse!, error:NSError!) -> Void in
-                    if response == nil {
-                        println(error)
-                        return
+            direction.calculateDirectionsWithCompletionHandler({
+                (response:MKDirectionsResponse!, error:NSError!) -> Void in
+                if response == nil {
+                    println(error)
+                    return
+                }
+                
+                let routeList = response.routes as! [MKRoute]
+                
+                for route in routeList{
+                    for step in route.steps as! [MKRouteStep]{
+                        self.routeMap.addOverlay(step.polyline)
                     }
-                    
-                    let routeList = response.routes as! [MKRoute]
-                    
-                    for route in routeList{
-                        for step in route.steps as! [MKRouteStep]{
-                            self.routeMap.addOverlay(step.polyline)
-                        }
-                        attraction.WalkingDistance = route.distance
-                    }
-                })
-                counter++
-            }
-
+                    attraction.WalkingDistance = route.distance
+                }
+            })
+            counter++
+        }
+        
     }
     
     private func checkAuthority(){
@@ -334,5 +334,5 @@ class RouteMapViewController: UIViewController {
         }
     }
     
-
+    
 }
