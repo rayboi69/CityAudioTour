@@ -36,6 +36,11 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
     var list:[Attraction]!
     
     @IBAction func currentBtn(sender: AnyObject) {
+        
+        if (CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.Denied || locationManager.location == nil) {
+            return;
+        }
+        
         if (managerDelegate.location != nil){
             var camera:MKCoordinateRegion! = MKCoordinateRegionMakeWithDistance(managerDelegate.location!.coordinate, latitudeMeter, longitudeMeter)
             mapView.setRegion(camera, animated: true)
@@ -43,6 +48,11 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
     }
     
     @IBAction func nextAttractBtn(sender: AnyObject) {
+        
+        if(pinList.isEmpty || list.isEmpty){
+            return;
+        }
+        
         index++;
         prevBtn.hidden = false;
         prevBtn.enabled = true;
@@ -65,6 +75,11 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
     
     
     @IBAction func prevAttractBtn(sender: AnyObject) {
+        
+        if(pinList.isEmpty || list.isEmpty){
+            return;
+        }
+        
         index--;
         nextBtn.hidden = false;
         nextBtn.enabled = true;
@@ -207,6 +222,16 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if list.isEmpty {
+            var alert:UIAlertController = UIAlertController(title: "Error Message!", message: "No attraction information retrieved. Please check Internet Connection.", preferredStyle: UIAlertControllerStyle.Alert)
+            var OKBtn:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            
+            alert.addAction(OKBtn)
+            self.presentViewController(alert, animated: true, completion: nil)
+            return;
+        }
+        
         if (segue.identifier == "toDetail") {
             var audioViewController:DetailViewController = segue.destinationViewController as! DetailViewController
             audioViewController.recvattract = list[index]

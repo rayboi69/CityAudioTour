@@ -11,10 +11,6 @@ public class CATAzureService
     private var response:NSURLResponse?
     private var error:NSError?
 
-    
-    
-    
-    
     public func GetAttractions() -> [Attraction]
     {
         var attractions = [Attraction]()
