@@ -11,7 +11,7 @@ import CoreLocation
 
 class ResultTableViewController: UITableViewController, UISearchBarDelegate {
 
-    var sectionTitle = "Route List"
+    var sectionTitle = ""
     
     enum Type { case Attraction, Route }
 
@@ -187,6 +187,20 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             
             checkAuthority()
             break
+        case "Popular List":
+            type = .Attraction
+            _sort = Sort.Distance
+            managerDelegate = LCManagerDelegate()
+            managerDelegate.popupWindow = popUpAlert
+            managerDelegate.passAuthorize = hasAuthorized
+            managerDelegate.updateTable = tableView.reloadData
+            managerDelegate.attractList = attractions
+            
+            locationManager.delegate = managerDelegate
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            
+            checkAuthority()
+            break
         case "Route List":
             type = .Route
             _sort = Sort.TotalDistance
@@ -209,6 +223,10 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         switch sectionTitle {
         case "Attraction List":
             attractions = attractionsManager.attractionsList
+            managerDelegate.attractList = attractions
+            checkAuthority()
+        case "Popular List":
+            attractions = attractionsManager.attractionsList //Need to change to popular
             managerDelegate.attractList = attractions
             checkAuthority()
         case "Route List":
