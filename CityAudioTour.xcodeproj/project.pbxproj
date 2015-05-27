@@ -85,6 +85,11 @@
 		C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A08D1AA0449100757252 /* Tag.swift */; };
 		C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
 		C1DF54081AD6C98100FA9BA8 /* RouteStepPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF54071AD6C98000FA9BA8 /* RouteStepPage.swift */; };
+		C1E1BC491B16554600E548A5 /* AttractionMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E1BC481B16554600E548A5 /* AttractionMapTests.swift */; };
+		C1E1BC501B16554F00E548A5 /* AttractionMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10194241AFBCC11007E455B /* AttractionMapController.swift */; };
+		C1E1BC511B16555800E548A5 /* LCManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101942C1AFC1F3F007E455B /* LCManagerDelegate.swift */; };
+		C1E1BC521B16555F00E548A5 /* AttractionMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10194261AFBCD73007E455B /* AttractionMapDelegate.swift */; };
+		C1E1BC531B16556700E548A5 /* DetailPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C109F48E1AD61875005C0852 /* DetailPopUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,6 +279,7 @@
 		C1852C6A1AA561320078B29E /* SearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
 		C1852C6C1AA561470078B29E /* MapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
 		C1DF54071AD6C98000FA9BA8 /* RouteStepPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStepPage.swift; sourceTree = "<group>"; };
+		C1E1BC481B16554600E548A5 /* AttractionMapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionMapTests.swift; sourceTree = "<group>"; };
 		CC1A6F24BF5A7388EA437A51 /* libPods-CityAudioTour.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityAudioTour.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA06180C55E77B0F25439E19 /* libPods-CityAudioTourTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityAudioTourTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -394,6 +400,7 @@
 		08B8551D1A79F90F006F035F /* CityAudioTourTests */ = {
 			isa = PBXGroup;
 			children = (
+				C1E1BC481B16554600E548A5 /* AttractionMapTests.swift */,
 				C14F3E351AD5D8B30042435C /* ClassificationManagerTests.swift */,
 				C1412ACC1AB765D000E9844D /* RoutesManagerTests.swift */,
 				C1412AC81AB7588C00E9844D /* AttractionsManagerTests.swift */,
@@ -831,22 +838,27 @@
 				C19F133D1AB0B2D8008542E6 /* AttractionsManager.swift in Sources */,
 				31BEC7471ADF25FB0024691C /* SelectAttractionsManager.swift in Sources */,
 				C1412AC61AB7571500E9844D /* AudioTourViewController.swift in Sources */,
+				C1E1BC511B16555800E548A5 /* LCManagerDelegate.swift in Sources */,
 				C19F133C1AB0B2D4008542E6 /* Attraction.swift in Sources */,
 				8B156C761AE4921100F8641A /* CustomRouteTests.swift in Sources */,
 				C1412AC51AB755DE00E9844D /* DetailViewTests.swift in Sources */,
 				C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */,
+				C1E1BC491B16554600E548A5 /* AttractionMapTests.swift in Sources */,
 				C14F3E361AD5D8B30042435C /* ClassificationManagerTests.swift in Sources */,
 				089A59911AAD6257008F82A6 /* CATAzureServiceTests.swift in Sources */,
 				315F9E601AE87B8D00A3935C /* AuthToken.swift in Sources */,
 				C19F133F1AB0B2DD008542E6 /* Route.swift in Sources */,
+				C1E1BC531B16556700E548A5 /* DetailPopUp.swift in Sources */,
 				C1412ACD1AB765D000E9844D /* RoutesManagerTests.swift in Sources */,
 				C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */,
 				C1412ACB1AB7595E00E9844D /* RoutesManager.swift in Sources */,
+				C1E1BC501B16554F00E548A5 /* AttractionMapController.swift in Sources */,
 				08B855211A79F90F006F035F /* CityAudioTourTests.swift in Sources */,
 				C19F133E1AB0B2DB008542E6 /* Categroy.swift in Sources */,
 				C1412AC71AB7571800E9844D /* DetailViewController.swift in Sources */,
 				31BEC7461ADF25F40024691C /* AutheticationManager.swift in Sources */,
 				C1412AC91AB7588C00E9844D /* AttractionsManagerTests.swift in Sources */,
+				C1E1BC521B16555F00E548A5 /* AttractionMapDelegate.swift in Sources */,
 				31BEC7451ADF259F0024691C /* AttractionContent.swift in Sources */,
 				31BEC7441ADF25930024691C /* User.swift in Sources */,
 			);

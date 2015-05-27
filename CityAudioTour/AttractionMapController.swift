@@ -21,7 +21,6 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var DetailBox: UITextView!
     @IBOutlet weak var OpenHoursBox: UITextView!
     @IBOutlet weak var miniPopUpDetail: UIVisualEffectView!
-    @IBOutlet weak var innerView: UIView!
     
     private let locationManager = CLLocationManager()
     private let latitudeMeter:CLLocationDistance = 5000

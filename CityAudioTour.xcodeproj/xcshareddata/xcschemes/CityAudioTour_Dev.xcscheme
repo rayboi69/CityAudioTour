@@ -51,6 +51,14 @@
                BlueprintName = "CityAudioTourTests"
                ReferencedContainer = "container:CityAudioTour.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "DetailViewTests/testDetailBasedOnAttractionID()">
+               </Test>
+               <Test
+                  Identifier = "DetailViewTests/testViewControllerViewExists()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
