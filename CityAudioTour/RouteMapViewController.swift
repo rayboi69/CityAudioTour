@@ -40,6 +40,25 @@ class RouteMapViewController: UIViewController {
     
     @IBAction func NaviBtn(sender: AnyObject) {
         
+        if(pinList.isEmpty || attractList.isEmpty){
+            var alert:UIAlertController = UIAlertController(title: "Error Message!", message: "No attraction information retrieved. Please check Internet Connection.", preferredStyle: UIAlertControllerStyle.Alert)
+            var OKBtn:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            
+            alert.addAction(OKBtn)
+            self.presentViewController(alert, animated: true, completion: nil)
+            return;
+        }
+        
+        if (CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.Denied || locationManager.location == nil) {
+            
+            var alert:UIAlertController = UIAlertController(title: "GPS system was disable!", message: "Please enable GPS system before using navigator.", preferredStyle: UIAlertControllerStyle.Alert)
+            var OKBtn:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            
+            alert.addAction(OKBtn)
+            self.presentViewController(alert, animated: true, completion: nil)
+            return;
+        }
+        
         let pin = pinList[attractIndex] as! pinHolder
         let attractionName:String? = pin.attraction.AttractionName
         let destination:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pin.attraction.Latitude, longitude: pin.attraction.Longitude)
@@ -67,10 +86,15 @@ class RouteMapViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "No", style: .Default, handler: nil))
         
         self.presentViewController(alert, animated: true, completion: nil)
-
+        
     }
     
     @IBAction func currBtn(sender: AnyObject) {
+        
+        if (CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.Denied || locationManager.location == nil) {
+            return;
+        }
+        
         if (managerDelegate.location != nil){
             var camera:MKCoordinateRegion! = MKCoordinateRegionMakeWithDistance(managerDelegate.location!.coordinate, latitudeMeter, longitudeMeter)
             routeMap.setRegion(camera, animated: true)
@@ -78,6 +102,11 @@ class RouteMapViewController: UIViewController {
     }
     
     @IBAction func nextAttract(sender: AnyObject) {
+        
+        if(pinList.isEmpty || attractList.isEmpty){
+            return;
+        }
+        
         attractIndex++;
         prevBtn.hidden = false;
         prevBtn.enabled = true;
@@ -93,10 +122,15 @@ class RouteMapViewController: UIViewController {
             nextBtn.enabled = false
             nextBtn.hidden = true
         }
-
+        
     }
     
     @IBAction func prevAttract(sender: AnyObject) {
+        
+        if(pinList.isEmpty || attractList.isEmpty){
+            return;
+        }
+        
         attractIndex--;
         nextBtn.hidden = false;
         nextBtn.enabled = true;
@@ -135,7 +169,7 @@ class RouteMapViewController: UIViewController {
         mapDelegate = RouteMapDelegate(routeView: self)
         routeMap.delegate = mapDelegate
         routeMap.showsUserLocation = true
-        
+        startPinning()
         checkAuthority()
         
         // Do any additional setup after loading the view.
@@ -147,8 +181,8 @@ class RouteMapViewController: UIViewController {
     }
     
     func getAuthorized() -> Void {
+        
         locationManager.startUpdatingLocation()
-        startPinning()
         checkNewLocation = NSTimer.scheduledTimerWithTimeInterval(checkTimer, target: self, selector: Selector("reRoute"), userInfo: nil, repeats: true)
     }
     
@@ -206,7 +240,7 @@ class RouteMapViewController: UIViewController {
             nextBtn.enabled = false;
         }
         
-        if locationManager.location != nil {
+        if (CLLocationManager.authorizationStatus() !=  CLAuthorizationStatus.Denied && locationManager.location != nil) {
             reRoute()
         }
     }
@@ -220,52 +254,52 @@ class RouteMapViewController: UIViewController {
         println("Route is called.")
         var counter = 0
         var prevMapItem = MKMapItem?()
-            
+        
         for attraction in attractList  {
-                
+            
             // get walking distance
-                
+            
             let startingCoordinate = locationManager.location.coordinate
             let startingPlaceMark = MKPlacemark(coordinate: startingCoordinate, addressDictionary: nil)
             let startingMapItem = MKMapItem(placemark: startingPlaceMark)
-                
+            
             let endingCoordinate = CLLocationCoordinate2D(latitude: attraction.Latitude, longitude: attraction.Longitude)
             let endingPlaceMark = MKPlacemark(coordinate: endingCoordinate, addressDictionary: nil)
             let endingMapItem = MKMapItem(placemark: endingPlaceMark)
-                
+            
             if (counter != 0) {
                 requestLocation.setSource(prevMapItem)
             }else {
                 requestLocation.setSource(startingMapItem)
             }
-                
+            
             requestLocation.transportType = MKDirectionsTransportType.Automobile
             requestLocation.requestsAlternateRoutes = false
             requestLocation.setDestination(endingMapItem)
-                
+            
             prevMapItem = endingMapItem
-                
+            
             // Call Directions API
             let direction:MKDirections = MKDirections(request:requestLocation)
-                direction.calculateDirectionsWithCompletionHandler({
-                    (response:MKDirectionsResponse!, error:NSError!) -> Void in
-                    if response == nil {
-                        println(error)
-                        return
+            direction.calculateDirectionsWithCompletionHandler({
+                (response:MKDirectionsResponse!, error:NSError!) -> Void in
+                if response == nil {
+                    println(error)
+                    return
+                }
+                
+                let routeList = response.routes as! [MKRoute]
+                
+                for route in routeList{
+                    for step in route.steps as! [MKRouteStep]{
+                        self.routeMap.addOverlay(step.polyline)
                     }
-                    
-                    let routeList = response.routes as! [MKRoute]
-                    
-                    for route in routeList{
-                        for step in route.steps as! [MKRouteStep]{
-                            self.routeMap.addOverlay(step.polyline)
-                        }
-                        attraction.WalkingDistance = route.distance
-                    }
-                })
-                counter++
-            }
-
+                    attraction.WalkingDistance = route.distance
+                }
+            })
+            counter++
+        }
+        
     }
     
     private func checkAuthority(){
@@ -274,11 +308,22 @@ class RouteMapViewController: UIViewController {
             if (checkNewLocation != nil){
                 checkNewLocation.invalidate()
             }
+            
             locationManager.stopUpdatingLocation()
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if attractList.isEmpty {
+            var alert:UIAlertController = UIAlertController(title: "Error Message!", message: "No attraction information retrieved. Please check Internet Connection.", preferredStyle: UIAlertControllerStyle.Alert)
+            var OKBtn:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            
+            alert.addAction(OKBtn)
+            self.presentViewController(alert, animated: true, completion: nil)
+            return;
+        }
+        
         if (segue.identifier == "toDetailPage") {
             var detailPage:DetailViewController = segue.destinationViewController as! DetailViewController
             detailPage.recvattract = attractList[attractIndex]
@@ -289,5 +334,5 @@ class RouteMapViewController: UIViewController {
         }
     }
     
-
+    
 }

@@ -97,6 +97,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             switch(identifier){
                 
             case "RoutePage":
+                
                 let resultScene:UITabBarController = segue.destinationViewController as! UITabBarController
                 let tableView = resultScene.viewControllers!.first as! ResultTableViewController
                 tableView.sectionTitle = "Route List"
@@ -106,6 +107,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                 let resultScene:UITabBarController = segue.destinationViewController as! UITabBarController
                 let tableView = resultScene.viewControllers!.first as! ResultTableViewController
                 tableView.sectionTitle = "Attraction List"
+                
+            case "PopularPage":
+                
+                let resultScene:UITabBarController = segue.destinationViewController as! UITabBarController
+                let tableView = resultScene.viewControllers!.first as! ResultTableViewController
+                tableView.sectionTitle = "Popular List"
                 
             case "HomeToMyRoute":
                 
@@ -199,7 +206,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         case 1:
             self.performSegueWithIdentifier("RoutePage", sender: self)
         case 2:
-            println("Not implemented yet")
+            self.performSegueWithIdentifier("PopularPage", sender: self)
         case 3:
             self.performSegueWithIdentifier("HomeToMyRoute", sender: self)
         default:

@@ -47,12 +47,6 @@ class CATAzureServiceTests: XCTestCase {
                 XCTAssertEqual(expectation[index].TagIDs[tagIndex], result[index].TagIDs[tagIndex], "Same Tag ID")
                 tagIndex++
             }
-            XCTAssertEqual(expectation[index].AttractionAddress, "", "No Attraction Address yet")
-            XCTAssertEqual(result[index].AttractionAddress, "", "No Attraction Address yet")
-            XCTAssertEqual(expectation[index].Detail, "", "No Attraction Detail yet")
-            XCTAssertEqual(result[index].Detail, "", "No Attraction Detail yet")
-            XCTAssertEqual(expectation[index].Content, "", "No Attraction Content yet")
-            XCTAssertEqual(result[index].Content, "", "No Attraction Content yet")
             index++
         }
     }

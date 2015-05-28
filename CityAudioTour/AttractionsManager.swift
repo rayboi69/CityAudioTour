@@ -30,6 +30,7 @@ class AttractionsManager {
     
     private var _service: CATAzureService?
     private var _attractionsList: [Attraction]?
+    private var _popularList: [Attraction]?
     private var _isAttractionsListChanged:Bool = false
     
     //
@@ -43,6 +44,7 @@ class AttractionsManager {
         _attractionsList = [Attraction]()
         _service = CATAzureService()
         LoadAttractionsList()
+        LoadPopularList()
     }
     
     //
@@ -53,6 +55,10 @@ class AttractionsManager {
         _attractionsList = _service?.GetAttractions()
         
         return _attractionsList!
+    }
+    
+    private func LoadPopularList() {
+        _popularList = _service?.GetPopularAttractions()
     }
     
     //
