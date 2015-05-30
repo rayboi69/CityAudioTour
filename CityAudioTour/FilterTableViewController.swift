@@ -29,6 +29,7 @@ class FilterTableViewController: UITableViewController {
     
     override func viewWillDisappear(animated: Bool) {
         AttractionsManager.sharedInstance.FilterAttractions(catSet, selectedTag: tagSet)
+        PopularManager.sharedInstance.FilterAttractions(catSet, selectedTag: tagSet)
         RoutesManager.sharedInstance.FilterRoutes(catSet, selectedTag: tagSet)
     }
     

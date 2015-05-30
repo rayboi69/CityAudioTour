@@ -17,6 +17,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
 
     private var routesManager = RoutesManager.sharedInstance
     private var attractionsManager = AttractionsManager.sharedInstance
+    private var popularManager = PopularManager.sharedInstance
     private var selectAttractionsManager = SelectAttractionsManager.sharedInstance
     private var classificationManager = ClassificationManager.sharedInstance
     private let locationManager = CLLocationManager()
@@ -226,7 +227,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             managerDelegate.attractList = attractions
             checkAuthority()
         case "Popular List":
-            attractions = attractionsManager.attractionsList //Need to change to popular
+            attractions = popularManager.attractionsList
             managerDelegate.attractList = attractions
             checkAuthority()
         case "Route List":

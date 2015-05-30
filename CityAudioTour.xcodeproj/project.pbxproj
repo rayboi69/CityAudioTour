@@ -52,6 +52,7 @@
 		8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */; };
 		8B26EAD01AA120AA0021726C /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */; };
 		8B2CB3E11AB255E400E07AB9 /* SelectAttractionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */; };
+		8B7018AA1B18F3210078E249 /* PopularManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7018A91B18F3210078E249 /* PopularManager.swift */; };
 		8B8E7A7D1ACF595100531218 /* SelectAttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */; };
 		B6EF19F0A22B7747B789E78A /* libPods-CityAudioTour.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC1A6F24BF5A7388EA437A51 /* libPods-CityAudioTour.a */; };
 		C10193F31AFBAC46007E455B /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10193F21AFBAC46007E455B /* HomePageController.swift */; };
@@ -258,6 +259,7 @@
 		8B26EAC91AA106DD0021726C /* AudioTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTourViewController.swift; sourceTree = "<group>"; };
 		8B26EACF1AA120AA0021726C /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		8B2CB3E01AB255E400E07AB9 /* SelectAttractionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAttractionsTableViewController.swift; sourceTree = "<group>"; };
+		8B7018A91B18F3210078E249 /* PopularManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularManager.swift; sourceTree = "<group>"; };
 		8B8E7A7C1ACF595100531218 /* SelectAttractionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAttractionsManager.swift; sourceTree = "<group>"; };
 		C10193F21AFBAC46007E455B /* HomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		C10194241AFBCC11007E455B /* AttractionMapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionMapController.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */,
+				8B7018A91B18F3210078E249 /* PopularManager.swift */,
 				3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */,
 				3194A0871AA03CEA00757252 /* ClassificationManager.swift */,
 				3178C9691AB125B600F26461 /* RoutesManager.swift */,
@@ -790,6 +793,7 @@
 				311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */,
 				8B2CB3E11AB255E400E07AB9 /* SelectAttractionsTableViewController.swift in Sources */,
 				31BEC7431ADF11FD0024691C /* User.swift in Sources */,
+				8B7018AA1B18F3210078E249 /* PopularManager.swift in Sources */,
 				C1737FE51A8D7E8200FC104F /* DetailViewController.swift in Sources */,
 				8B26EACA1AA106DD0021726C /* AudioTourViewController.swift in Sources */,
 				8B2440401AEE9DC00048B8E4 /* ResultTableViewController.swift in Sources */,

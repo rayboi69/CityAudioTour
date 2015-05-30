@@ -12,24 +12,25 @@ public class CATAzureService
     private var error:NSError?
 
     public func GetPopularAttractions() -> [Attraction] {
-        var popular = [Attraction]()
-    
-        let finalURL = apiURL + "..." //Need API
-        let url = NSURL(string:finalURL)
-        let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
-        
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
-    
-        // Need implement extract JSON logic
+        let finalURL = apiURL + "/attraction/popular/"
 
+        var popular = GetAttractionsHelper(finalURL)
+        
         return popular
     }
     
-    public func GetAttractions() -> [Attraction]
+    public func GetAttractions() -> [Attraction] {
+        let finalURL = apiURL + "/attraction/"
+        
+        var attractions = GetAttractionsHelper(finalURL)
+        
+        return attractions
+    }
+    
+    public func GetAttractionsHelper(finalURL: String) -> [Attraction]
     {
         var attractions = [Attraction]()
 
-        let finalURL = apiURL + "/attraction/"
         let url = NSURL(string:finalURL)
         let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         
