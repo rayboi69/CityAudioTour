@@ -335,6 +335,15 @@ public class CATAzureService
         task.resume()
     }
     
+    //POST Custom route
+    func postCustomRoute(title: String, attractionIDs: [Int]) {
+        let json: JSON  = ["Name":title, "AttractionIDs":attractionIDs]
+        let finalURL = apiURL + "/route/AddRoute"
+        
+        
+    }
+    
+    
    /* //GET Client
     func get(urlResource: String, getCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
         let finalURL = String(format: "%@/%@", apiURL, urlResource)
