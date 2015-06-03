@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 class AttractionMapController: UIViewController,CLLocationManagerDelegate {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var NameLabel: UIButton!
     @IBOutlet weak var addrLabel: UILabel!
@@ -21,7 +21,6 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var DetailBox: UITextView!
     @IBOutlet weak var OpenHoursBox: UITextView!
     @IBOutlet weak var miniPopUpDetail: UIVisualEffectView!
-    @IBOutlet weak var innerView: UIView!
     
     private let locationManager = CLLocationManager()
     private let latitudeMeter:CLLocationDistance = 5000
@@ -36,6 +35,11 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
     var list:[Attraction]!
     
     @IBAction func currentBtn(sender: AnyObject) {
+        
+        if (CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.Denied || locationManager.location == nil) {
+            return;
+        }
+        
         if (managerDelegate.location != nil){
             var camera:MKCoordinateRegion! = MKCoordinateRegionMakeWithDistance(managerDelegate.location!.coordinate, latitudeMeter, longitudeMeter)
             mapView.setRegion(camera, animated: true)
@@ -43,6 +47,11 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
     }
     
     @IBAction func nextAttractBtn(sender: AnyObject) {
+        
+        if(pinList.isEmpty || list.isEmpty){
+            return;
+        }
+        
         index++;
         prevBtn.hidden = false;
         prevBtn.enabled = true;
@@ -60,11 +69,16 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
             nextBtn.enabled = false
             nextBtn.hidden = true
         }
-
+        
     }
     
     
     @IBAction func prevAttractBtn(sender: AnyObject) {
+        
+        if(pinList.isEmpty || list.isEmpty){
+            return;
+        }
+        
         index--;
         nextBtn.hidden = false;
         nextBtn.enabled = true;
@@ -80,7 +94,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
             prevBtn.enabled = false
             prevBtn.hidden = true
         }
-
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -113,7 +127,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         
         checkAuthority()
     }
-
+    
     func warning() -> Void{
         var alert:UIAlertController = UIAlertController(title: "Location service is not enabled!", message: "You can enable in Settings->Privacy->Location->Location Services.", preferredStyle: UIAlertControllerStyle.Alert)
         var settingBtn:UIAlertAction = UIAlertAction(title: "Setting", style: UIAlertActionStyle.Default, handler: {(action)-> Void in
@@ -182,7 +196,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         }
         
     }
-        
+    
     private func checkAuthority(){
         if CLLocationManager.authorizationStatus() ==  CLAuthorizationStatus.AuthorizedWhenInUse {
             isAuthorized()
@@ -196,7 +210,7 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
             }
             locationManager.stopUpdatingLocation()
         }
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -204,13 +218,23 @@ class AttractionMapController: UIViewController,CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if list.isEmpty {
+            var alert:UIAlertController = UIAlertController(title: "Error Message!", message: "No attraction information retrieved. Please check Internet Connection.", preferredStyle: UIAlertControllerStyle.Alert)
+            var OKBtn:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            
+            alert.addAction(OKBtn)
+            self.presentViewController(alert, animated: true, completion: nil)
+            return;
+        }
+        
         if (segue.identifier == "toDetail") {
             var audioViewController:DetailViewController = segue.destinationViewController as! DetailViewController
             audioViewController.recvattract = list[index]
         }
     }
-
+    
 }

@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 import SwiftyJSON
-import JSONJoy
+//import JSONJoy
 
 public class CATAzureService
 {
@@ -11,15 +11,26 @@ public class CATAzureService
     private var response:NSURLResponse?
     private var error:NSError?
 
+    public func GetPopularAttractions() -> [Attraction] {
+        let finalURL = apiURL + "/attraction/popular/"
+
+        var popular = GetAttractionsHelper(finalURL)
+        
+        return popular
+    }
     
+    public func GetAttractions() -> [Attraction] {
+        let finalURL = apiURL + "/attraction/"
+        
+        var attractions = GetAttractionsHelper(finalURL)
+        
+        return attractions
+    }
     
-    
-    
-    public func GetAttractions() -> [Attraction]
+    public func GetAttractionsHelper(finalURL: String) -> [Attraction]
     {
         var attractions = [Attraction]()
 
-        let finalURL = apiURL + "/attraction/"
         let url = NSURL(string:finalURL)
         let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         
@@ -255,7 +266,7 @@ public class CATAzureService
         NSURLConnection.sendAsynchronousRequest(request, queue: MainThreadQueue, completionHandler: handler)
     }
     
-    //Authentication Services
+   /* //Authentication Services
     func AuthenticateUser(email: String, password:String, completion: ((succeeded: Bool, msg: String, result: User) -> Void)!){
         let postString = String(format: "password=%@&username=%@&grant_type=password",password,email)
         self.post(postString, urlResource: "Token"){(error: NSError?, result: NSData?, success: Bool) -> () in
@@ -296,7 +307,7 @@ public class CATAzureService
                 }
             }
         }
-    }
+    }*/
     
     //POST Client
     func post(params : String, urlResource: String, postCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
@@ -324,7 +335,7 @@ public class CATAzureService
         task.resume()
     }
     
-    //GET Client
+   /* //GET Client
     func get(urlResource: String, getCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
         let finalURL = String(format: "%@/%@", apiURL, urlResource)
         var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
@@ -355,6 +366,6 @@ public class CATAzureService
         })
         
         task.resume()
-    }
+    }*/
 
 }

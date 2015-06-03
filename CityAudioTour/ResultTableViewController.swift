@@ -11,12 +11,13 @@ import CoreLocation
 
 class ResultTableViewController: UITableViewController, UISearchBarDelegate {
 
-    var sectionTitle = "Route List"
+    var sectionTitle = ""
     
     enum Type { case Attraction, Route }
 
     private var routesManager = RoutesManager.sharedInstance
     private var attractionsManager = AttractionsManager.sharedInstance
+    private var popularManager = PopularManager.sharedInstance
     private var selectAttractionsManager = SelectAttractionsManager.sharedInstance
     private var classificationManager = ClassificationManager.sharedInstance
     private let locationManager = CLLocationManager()
@@ -32,13 +33,13 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         case Title = "Title"
         case Reverse = "Reverse"
         case Distance = "Distance"
-        case Number = "Number"
+        case TotalDistance = "TotalDistance"
     }
     
     
     // MARK: - Sorting List
     
-    private var _sort = Sort.None
+    private var _sort = Sort.Title
     
     @IBAction func sortButton(sender: UIButton) {
         var alert = UIAlertController(title: "", message: "Choose Sort Option", preferredStyle: .ActionSheet)
@@ -64,9 +65,9 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
                 self.dataChanged = true
             }))
         case .Route:
-            alert.addAction(UIAlertAction(title: "Number of Attractions", style: .Default, handler: {
+            alert.addAction(UIAlertAction(title: "Total Distance", style: .Default, handler: {
                 (alert: UIAlertAction!) -> Void in
-                self._sort = Sort.Number
+                self._sort = Sort.TotalDistance
                 self.sortList()
                 self.dataChanged = true
             }))
@@ -175,6 +176,21 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
         switch sectionTitle {
         case "Attraction List":
             type = .Attraction
+            _sort = Sort.Distance
+            managerDelegate = LCManagerDelegate()
+            managerDelegate.popupWindow = popUpAlert
+            managerDelegate.passAuthorize = hasAuthorized
+            managerDelegate.updateTable = tableView.reloadData
+            managerDelegate.attractList = attractions
+            
+            locationManager.delegate = managerDelegate
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            
+            checkAuthority()
+            break
+        case "Popular List":
+            type = .Attraction
+            _sort = Sort.Distance
             managerDelegate = LCManagerDelegate()
             managerDelegate.popupWindow = popUpAlert
             managerDelegate.passAuthorize = hasAuthorized
@@ -188,6 +204,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             break
         case "Route List":
             type = .Route
+            _sort = Sort.TotalDistance
             break
         default: break
         }
@@ -209,13 +226,20 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             attractions = attractionsManager.attractionsList
             managerDelegate.attractList = attractions
             checkAuthority()
+        case "Popular List":
+            attractions = popularManager.attractionsList
+            managerDelegate.attractList = attractions
+            checkAuthority()
         case "Route List":
             routes = routesManager.routesList!
         default: break
         }
         searchBar.text = ""
         self.sortList()
-        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.sortList()
     }
     
     override func didReceiveMemoryWarning() {
@@ -251,7 +275,7 @@ class ResultTableViewController: UITableViewController, UISearchBarDelegate {
             cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! UITableViewCell
             let route = (routes[indexPath.row])
             cell.textLabel?.text = route.Name
-            cell.detailTextLabel?.text = "\(route.AttractionIDs.count) points"
+            cell.detailTextLabel?.text = "\(route.TotalDistance) mi"
         }
         return cell
     }

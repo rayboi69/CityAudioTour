@@ -7,7 +7,9 @@
 //
 
 import Foundation
-import JSONJoy
+//TODO - Remove comment when JSonJoy has been removed
+
+/*import JSONJoy
 
 struct AuthToken : JSONJoy {
     var access_token: String?
@@ -20,4 +22,4 @@ struct AuthToken : JSONJoy {
         access_token = decoder["access_token"].string
         userName = decoder["userName"].string
     }
-}
+}*/

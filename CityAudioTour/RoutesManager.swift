@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+
 class RoutesManager {
     
     class var sharedInstance: RoutesManager {
@@ -26,13 +28,32 @@ class RoutesManager {
     private var _routesList: [Route]?
     private var _selectRoutesIndexes: [Int]?
     private var _selectedRoute : Route?
-
+    private var attractionsManager = AttractionsManager.sharedInstance
     
     init() {
         _service = CATAzureService()
         self.LoadRoutesList()
+        self.getRouteDistance()
     }
     
+    func getRouteDistance(){
+        for route in _routesList! {
+            var totalDistance = 0.0
+            var locationInRoute = [CLLocation]()
+            
+            for attractionID in route.AttractionIDs {
+                let attractionInRoute = attractionsManager.GetAttractionBy(attractionID)
+                let location = CLLocation(latitude: attractionInRoute!.Latitude, longitude: attractionInRoute!.Longitude)
+                locationInRoute.append(location)
+            }
+            
+            for index in 1..<locationInRoute.count {
+                totalDistance = totalDistance + locationInRoute[index].distanceFromLocation(locationInRoute[index-1])
+            }
+            
+            route.TotalDistance = Double(round(100*(totalDistance/1609.344))/100)
+        }
+    }
     
     private func LoadRoutesList()
     {
@@ -87,37 +108,11 @@ class RoutesManager {
         }
     }
     
-    func sortByTitle(this: Route, that: Route) -> Bool {
-        return this.Name < that.Name
-    }
-    
-    func sortByReverseTitle(this: Route, that: Route) -> Bool {
-        return this.Name > that.Name
-    }
-    
-    func sortByNumber(this: Route, that: Route) -> Bool {
-        return this.AttractionIDs.count > that.AttractionIDs.count
-    }
-
-    
-    func sortAttractionList(list: [Route], sortBy: String) -> [Route] {
-        switch sortBy {
-        case "Title":
-            return sorted(list, sortByTitle)
-        case "Reverse":
-            return sorted(list, sortByReverseTitle)
-        case "Number":
-            return sorted(list, sortByNumber)
-        default:
-            return list
-        }
-    }
-    
     //
     //Lazy Getters
     //
     var routesList : [Route]?
-    {
+        {
         get{
             var filteredRoutes = [Route]()
             if let r = _selectRoutesIndexes
@@ -140,7 +135,7 @@ class RoutesManager {
     }
     
     var selectedRoute : Route?
-    {
+        {
         get{
             return _selectedRoute
         }
@@ -149,8 +144,33 @@ class RoutesManager {
             _selectedRoute = newValue
         }
     }
-
-
     
+    //MARK: - Sorting
+    
+    func sortByTitle(this: Route, that: Route) -> Bool {
+        return this.Name < that.Name
+    }
+    
+    func sortByReverseTitle(this: Route, that: Route) -> Bool {
+        return this.Name > that.Name
+    }
+    
+    func sortByTotalDistance(this: Route, that: Route) -> Bool {
+        return this.TotalDistance < that.TotalDistance
+    }
+    
+    
+    func sortAttractionList(list: [Route], sortBy: String) -> [Route] {
+        switch sortBy {
+        case "Title":
+            return sorted(list, sortByTitle)
+        case "Reverse":
+            return sorted(list, sortByReverseTitle)
+        case "TotalDistance":
+            return sorted(list, sortByTotalDistance)
+        default:
+            return list
+        }
+    }
     
 }

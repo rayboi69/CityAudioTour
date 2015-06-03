@@ -1,28 +1,28 @@
 //
-//  AttractionsManager.swift
+//  PopularManager.swift
 //  CityAudioTour
 //
-//  Created by Juan Garcia on 2/23/15.
+//  Created by Red_iMac on 5/29/15.
 //  Copyright (c) 2015 SE491-591. All rights reserved.
 //
 
 import Foundation
 
-class AttractionsManager {
+class PopularManager {
     
     //
     //Singleton Pattern
     //
-    class var sharedInstance: AttractionsManager
+    class var sharedInstance: PopularManager
     {
         
         struct Static {
-            static var instance: AttractionsManager?
+            static var instance: PopularManager?
             static var token: dispatch_once_t = 0
         }
         
         dispatch_once(&Static.token) {
-            Static.instance = AttractionsManager()
+            Static.instance = PopularManager()
         }
         
         return Static.instance!
@@ -36,7 +36,7 @@ class AttractionsManager {
     //Petes idea implementation
     //
     private var _selectAttractionsIndexes: [Int]?
-
+    
     
     init()
     {
@@ -50,7 +50,7 @@ class AttractionsManager {
     //
     private func LoadAttractionsList() -> [Attraction]
     {
-        _attractionsList = _service?.GetAttractions()
+        _attractionsList = _service?.GetPopularAttractions()
         
         return _attractionsList!
     }
@@ -61,7 +61,7 @@ class AttractionsManager {
     func GetAttractionBy(id:Int) -> Attraction?
     {
         let attractionResult = _attractionsList?.filter({ m in
-                m.AttractionID == id
+            m.AttractionID == id
         })
         return attractionResult!.first as Attraction!
     }
@@ -119,7 +119,7 @@ class AttractionsManager {
     //Lazy Getters
     //
     var attractionsList : [Attraction]
-    {
+        {
         get{
             var filteredAttractions = [Attraction]()
             //Validates if the user did some filtering
@@ -140,7 +140,7 @@ class AttractionsManager {
                 return _attractionsList!
             }
         }
-
+        
     }
     
     var isAttractionsListChanged : Bool

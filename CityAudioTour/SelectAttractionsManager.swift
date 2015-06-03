@@ -23,50 +23,79 @@ class SelectAttractionsManager {
     }
     
     private var _attractionManager = AttractionsManager.sharedInstance
-    private var attractions = [Int]()
-    private var categorys = NSMutableSet()
-    private var tags = NSMutableSet()
-    
-    func getCategoryAndTagFromAttraction(ID: Int) -> (Int, [Int]) {
-        
-        return (0, [])
-    }
-    
-    func isContain(ID: Int) -> Bool {
-        return contains(attractions, ID)
-    }
-    
-    func addAttraction(ID: Int) {
-        if !contains(attractions, ID) {
-            attractions.append(ID)
-        }
-    }
-    
-    func removeAttractionAt(index: Int) {
-        if !attractions.isEmpty && index < attractions.count {
-            attractions.removeAtIndex(index)
-        }
-    }
-    
-    func moveItem(fromIndex: Int, toIndex: Int) {
-        var itemToMove = attractions[fromIndex]
-        attractions.removeAtIndex(fromIndex)
-        attractions.insert(itemToMove, atIndex: toIndex)
-    }
+    private var title = "My Route"
+    private var attractionIDs = [Int]()
     
     var allAttractions: [Int] {
         get {
-            return attractions
+            return attractionIDs
         }
     }
     
     var myRoute: Route? {
         get {
             var route = Route()
-            route.Name = "My Route"
-            route.AttractionIDs = attractions
-
+            route.Name = title
+            route.AttractionIDs = attractionIDs
+            (route.CategoriesIDs, route.TagsIDs) = getCategoriesAndTags()
             return route
         }
+    }
+    
+    private func getCategoriesAndTags() -> ([Int], [Int]){
+        var categorys = [Int]()
+        var tags = [Int]()
+        
+        for ID in attractionIDs {
+            let attraction = _attractionManager.GetAttractionBy(ID)
+            
+            //add categories
+            if !contains(categorys, attraction!.CategoryID) {
+                categorys.append(attraction!.CategoryID)
+            }
+            
+            // add tags
+            for tag in attraction!.TagIDs {
+                if !contains(tags, tag) {
+                    tags.append(tag)
+                }
+            }
+        }
+        
+        return (categorys, tags)
+    }
+    
+    func myRouteWithTitle(name: String) -> Route?{
+        var route = Route()
+        route.Name = name
+        route.AttractionIDs = attractionIDs
+        (route.CategoriesIDs, route.TagsIDs) = getCategoriesAndTags()
+        return route
+    }
+    
+    func setTitle(name: String) {
+        title = name
+    }
+    
+    func isContain(ID: Int) -> Bool {
+        return contains(attractionIDs, ID)
+    }
+    
+    func addAttraction(ID: Int) {
+        if !contains(attractionIDs, ID) {
+            attractionIDs.append(ID)
+        }
+    }
+    
+    func removeAttractionAt(index: Int) {
+        if !attractionIDs.isEmpty && index < attractionIDs.count {
+            attractionIDs.removeAtIndex(index)
+        }
+    }
+    
+    func moveItem(fromIndex: Int, toIndex: Int) {
+        var itemToMove = attractionIDs[fromIndex]
+        attractionIDs.removeAtIndex(fromIndex)
+        attractionIDs.insert(itemToMove, atIndex: toIndex)
     }
 }

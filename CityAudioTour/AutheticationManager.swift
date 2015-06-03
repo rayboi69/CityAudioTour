@@ -36,9 +36,10 @@ class AuthenticationManager
     
     func Login(email: String, pass: String)
     {
-        _service?.AuthenticateUser(email, password: pass){(succeeded: Bool, msg: String, result: User) -> () in
+        //TODO - Uncomment when JSONJoy code has been removed
+       /* _service?.AuthenticateUser(email, password: pass){(succeeded: Bool, msg: String, result: User) -> () in
             println("After logging \(msg)")
-        }
+        }*/
         
     }
     

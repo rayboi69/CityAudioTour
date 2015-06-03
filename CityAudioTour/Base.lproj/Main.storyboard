@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VEm-sz-1rw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VEm-sz-1rw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--TableView-->
@@ -55,7 +55,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5dV-K9-6nW">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vtk-hN-gWf">
@@ -81,7 +81,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bOn-Bk-hEm">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rbp-ld-z5b">
@@ -117,7 +117,7 @@
         <!--Search Page-->
         <scene sceneID="4MZ-4j-mcc">
             <objects>
-                <tabBarController hidesBottomBarWhenPushed="YES" id="2iQ-gx-zgh" customClass="TabBarController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="2iQ-gx-zgh" customClass="TabBarController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Search Page" id="cyc-OR-EJc"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="nwB-gn-Lo0">
@@ -137,7 +137,7 @@
         <!--AttractionMap-->
         <scene sceneID="7re-Ep-zys">
             <objects>
-                <viewController title="AttractionMap" id="XVP-85-kqd" customClass="AttractionMapController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AttractMap" title="AttractionMap" id="XVP-85-kqd" customClass="AttractionMapController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iAI-e9-WLp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -212,7 +212,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n6q-0Z-0wq">
-                                            <rect key="frame" x="8" y="116" width="78" height="21"/>
+                                            <rect key="frame" x="8" y="164" width="78" height="21"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Open Hours">
@@ -226,7 +226,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" id="lP6-gZ-Buf">
-                                            <rect key="frame" x="8" y="135" width="165" height="85"/>
+                                            <rect key="frame" x="8" y="193" width="156" height="85"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Mon - Fri: 8:00 am - 10:00 pm            Sat - Sun: 9:00 am - 9:00 pm">
@@ -240,7 +240,7 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nA1-cw-IBE">
-                                            <rect key="frame" x="181" y="116" width="61" height="21"/>
+                                            <rect key="frame" x="181" y="164" width="61" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Detail">
@@ -253,21 +253,6 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" id="n3w-Hv-Xw0">
-                                            <rect key="frame" x="181" y="130" width="120" height="90"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                            <attributedString key="attributedText">
-                                                <fragment>
-                                                    <string key="content">adflja;ja;kdfja;kdjf;laksdjf;lkasdjfkl;adsjfkl;ajfkl;ajsdklf;jadkl;fjakls;djfa;kldjfal;kdjfakl;sdjf;lkasdjfkladjflkasdjflk;asdjflk;adjsfkl;adsjfakl;djfkl;ajf;lkadjsflk;ajsdflkajsdlkfajsdlfkjasd;fjasd;klfjak;lsdfjak;ldsjfakls;djfakl;sdjfal;ksdjfakl;sdjfadkl;sjfakl;sdjfakl;djsfa;sjfdak;lsjfa;klj</string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="GillSans"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Z7R-zk-n10">
                                             <rect key="frame" x="8" y="8" width="304" height="30"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -289,6 +274,21 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" id="n3w-Hv-Xw0">
+                                            <rect key="frame" x="181" y="188" width="120" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment>
+                                                    <string key="content">adflja;ja;kdfja;kdjf;laksdjf;lkasdjfkl;adsjfkl;ajfkl;ajsdklf;jadkl;fjakls;djfa;kldjfal;kdjfakl;sdjf;lkasdjfkladjflkasdjflk;asdjflk;adjsfkl;adsjfakl;djfkl;ajf;lkadjsflk;ajsdflkajsdlkfajsdlfkjasd;fjasd;klfjak;lsdfjak;ldsjfakls;djfakl;sdjfal;ksdjfakl;sdjfadkl;sjfakl;sdjfakl;djsfa;sjfdak;lsjfa;klj</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="12" name="GillSans"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -303,7 +303,6 @@
                         <outlet property="OpenHoursBox" destination="lP6-gZ-Buf" id="Pvd-Gp-fBP"/>
                         <outlet property="addrLabel" destination="GDB-ZU-YLf" id="wuf-IC-QW5"/>
                         <outlet property="distanceLabel" destination="i1n-ji-NgG" id="1uw-SN-dP5"/>
-                        <outlet property="innerView" destination="7fT-ju-Xzz" id="l4O-aG-mGm"/>
                         <outlet property="mapView" destination="ERN-Sp-zxH" id="DFJ-gK-BdS"/>
                         <outlet property="miniPopUpDetail" destination="QSK-iH-XTL" id="ctP-B0-IG3"/>
                         <outlet property="nextBtn" destination="EVC-dN-Isy" id="gnt-6V-peu"/>
@@ -317,7 +316,7 @@
         <!--Select Attractions Table View Controller-->
         <scene sceneID="El1-ch-zGB">
             <objects>
-                <tableViewController id="7Fa-zD-wwW" customClass="SelectAttractionsTableViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SelectAttractionsViewController" id="7Fa-zD-wwW" customClass="SelectAttractionsTableViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="00E-U3-My3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -380,7 +379,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Lt-bI-WwW">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -414,7 +413,7 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="FilterCell" textLabel="20n-M5-rzx" style="IBUITableViewCellStyleDefault" id="Jp5-YF-24T">
-                                <rect key="frame" x="0.0" y="50" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jp5-YF-24T" id="Eag-8D-v4W">
                                     <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
@@ -502,21 +501,21 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HQ2-1E-93d">
-                                                <rect key="frame" x="0.0" y="126" width="190" height="45"/>
+                                                <rect key="frame" x="0.0" y="125" width="190" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Attraction List">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I5A-5j-Y3M">
-                                                <rect key="frame" x="0.0" y="162" width="190" height="45"/>
+                                                <rect key="frame" x="0.0" y="161" width="190" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Route">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uJe-17-Spe">
-                                                <rect key="frame" x="0.0" y="88" width="190" height="45"/>
+                                                <rect key="frame" x="0.0" y="87" width="190" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="My Route">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -557,11 +556,11 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" id="Ta5-Gt-wW1">
-                                <rect key="frame" x="0.0" y="562" width="320" height="346.00000045372798"/>
+                                <rect key="frame" x="0.0" y="562" width="320" height="345.99999666553441"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="B0R-Pd-g3S">
-                                        <rect key="frame" x="0.0" y="20" width="320" height="326.00000045372798"/>
+                                        <rect key="frame" x="0.0" y="20" width="320" height="325.99999666553441"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tnb-AX-cvJ">
@@ -579,7 +578,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2aC-8G-C0e">
-                                                <rect key="frame" x="210.00000098594637" y="42" width="82" height="24"/>
+                                                <rect key="frame" x="210" y="42" width="82" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -608,7 +607,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2lc-PP-NB5">
-                                                <rect key="frame" x="8" y="234" width="46" height="50.000004151569293"/>
+                                                <rect key="frame" x="8" y="234" width="46" height="49.999999412946195"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <state key="normal" image="addCustom">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -618,14 +617,14 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lI0-Er-Ow9">
-                                                <rect key="frame" x="93" y="233" width="46" height="50.000000453727949"/>
+                                                <rect key="frame" x="93" y="233" width="46" height="49.999996665534432"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <state key="normal" title="Button" image="database-icon">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="T9H-r0-kVi">
-                                                <rect key="frame" x="182" y="234" width="46" height="50.000000453727935"/>
+                                                <rect key="frame" x="182" y="234" width="46" height="49.999996665534418"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <state key="normal" title="Button" image="compass-icon">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -635,7 +634,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="s7N-sy-tkc">
-                                                <rect key="frame" x="267" y="233" width="46" height="50.000000080163943"/>
+                                                <rect key="frame" x="267" y="232.99999558044382" width="46" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <state key="normal" image="volume-on-icon">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -645,28 +644,28 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Audio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YIb-rs-MOr">
-                                                <rect key="frame" x="263" y="285" width="54" height="20.000000453727928"/>
+                                                <rect key="frame" x="263" y="285" width="54" height="19.999996665534439"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Attraction" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DMq-bs-61s">
-                                                <rect key="frame" x="8" y="286" width="46" height="32.000000453727971"/>
+                                                <rect key="frame" x="8" y="286" width="46" height="31.999996665534404"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Step" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yLs-4Y-G5l">
-                                                <rect key="frame" x="93" y="285" width="42" height="32.000000453727949"/>
+                                                <rect key="frame" x="93" y="285" width="42" height="31.999996665534397"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Navigator" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Oqi-vg-YPs">
-                                                <rect key="frame" x="182" y="286" width="46" height="32.000000453727964"/>
+                                                <rect key="frame" x="182" y="286" width="46" height="31.999996665534404"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -737,7 +736,7 @@
         <!--New Detail View-->
         <scene sceneID="naq-Do-CvR">
             <objects>
-                <viewController title="New Detail View" id="R1A-T1-LFm" customClass="DetailViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailPage" title="New Detail View" id="R1A-T1-LFm" customClass="DetailViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1th-L3-0CR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -800,7 +799,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="58a-Xg-Hd9">
-                                            <rect key="frame" x="190.99999990769851" y="294" width="98" height="21"/>
+                                            <rect key="frame" x="190.99999880189415" y="294" width="98" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Open Hours">
@@ -858,6 +857,57 @@
                                             </attributedString>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="yRg-HZ-IeS">
+                                            <rect key="frame" x="150" y="212" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jph-uk-8WO">
+                                            <rect key="frame" x="58" y="492" width="44" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <state key="normal" image="addCustom">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addCustom:" destination="R1A-T1-LFm" eventType="touchUpInside" id="ToG-X8-Rsc"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HYh-So-BZW">
+                                            <rect key="frame" x="217" y="492" width="44" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                            <state key="normal" image="volume-on-icon">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="uMr-um-2op" kind="push" identifier="audioPage" id="kKa-Ds-pSm"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fu2-gD-zCk">
+                                            <rect key="frame" x="58" y="542" width="43" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Add">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="12" name="GillSans"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AS5-9n-bZi">
+                                            <rect key="frame" x="217" y="543" width="43" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Audio">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="12" name="GillSans"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -870,8 +920,11 @@
                         <outlet property="AttractionAddress" destination="CEk-Kf-UZT" id="58e-Ft-d5r"/>
                         <outlet property="AttractionDetail" destination="xM8-xh-edT" id="Y5i-tw-20D"/>
                         <outlet property="AttractionName" destination="BKt-db-Cl4" id="EZ4-Xg-WIY"/>
+                        <outlet property="LoadingView" destination="yRg-HZ-IeS" id="Mep-fm-sC2"/>
                         <outlet property="UIImageAttractionImage" destination="2Nx-LR-aK5" id="m1I-eM-WIh"/>
                         <outlet property="WorkingHours" destination="iUI-hh-Iqd" id="8cy-V5-L8s"/>
+                        <outlet property="addCusBtn" destination="Jph-uk-8WO" id="o5X-jH-kX7"/>
+                        <outlet property="audioBtn" destination="HYh-So-BZW" id="0Gh-67-atw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJ8-bu-CUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1085,7 +1138,7 @@
         <!--RouteMap-->
         <scene sceneID="1aB-pk-7W7">
             <objects>
-                <viewController title="RouteMap" id="KJZ-pa-1rq" customClass="RouteMapViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RouteMap" title="RouteMap" id="KJZ-pa-1rq" customClass="RouteMapViewController" customModule="CityAudioTour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4gI-2p-hlP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1119,16 +1172,6 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eTY-fj-qOC">
-                                <rect key="frame" x="256" y="337" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <state key="normal" image="currentBtn-1">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="currBtn:" destination="KJZ-pa-1rq" eventType="touchUpInside" id="xsO-EF-luI"/>
-                                </connections>
-                            </button>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" id="mVZ-NN-ABb">
                                 <rect key="frame" x="0.0" y="442" width="320" height="126"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -1247,6 +1290,16 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eTY-fj-qOC">
+                                <rect key="frame" x="256" y="386" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <state key="normal" image="currentBtn-1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="currBtn:" destination="KJZ-pa-1rq" eventType="touchUpInside" id="xsO-EF-luI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1255,6 +1308,8 @@
                         <outlet property="RNameLabel" destination="c9z-pE-jov" id="qWN-zh-0vW"/>
                         <outlet property="addrLabel" destination="wKC-BU-WFU" id="w2Q-9L-f1I"/>
                         <outlet property="attractNameLabel" destination="Clc-dH-LtS" id="zLF-Yc-EPD"/>
+                        <outlet property="audioBtn" destination="IEm-An-PGS" id="5rs-k3-AdQ"/>
+                        <outlet property="naviBtn" destination="Zok-9E-u2I" id="pXF-Ra-R4b"/>
                         <outlet property="nextBtn" destination="X78-1U-J7V" id="ccb-25-qlx"/>
                         <outlet property="prevBtn" destination="6hE-OT-qaW" id="wfz-2D-Jv9"/>
                         <outlet property="routeMap" destination="kmR-El-SQw" id="ns4-Sp-ZEv"/>
@@ -1294,6 +1349,7 @@
                         <segue destination="7Fa-zD-wwW" kind="push" identifier="HomeToMyRoute" id="Qoj-R6-kxR"/>
                         <segue destination="2iQ-gx-zgh" kind="push" identifier="AttractionPage" id="pBq-X0-cJV"/>
                         <segue destination="2iQ-gx-zgh" kind="push" identifier="RoutePage" id="7eb-Wj-Yh5"/>
+                        <segue destination="2iQ-gx-zgh" kind="push" identifier="PopularPage" id="kvt-8m-dIQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyV-us-tBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1345,9 +1401,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="BkI-49-upD"/>
+        <segue reference="kvt-8m-dIQ"/>
         <segue reference="Qoj-R6-kxR"/>
-        <segue reference="7eb-Wj-Yh5"/>
-        <segue reference="L2h-Yn-XSA"/>
+        <segue reference="BkI-49-upD"/>
+        <segue reference="fmA-TX-S82"/>
+        <segue reference="rga-XS-JUu"/>
     </inferredMetricsTieBreakers>
 </document>
