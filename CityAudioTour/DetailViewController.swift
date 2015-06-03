@@ -18,6 +18,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var AttractionAddress: UILabel!
     @IBOutlet weak var LoadingView: UIActivityIndicatorView!
     
+    @IBOutlet weak var addCusBtn: UIButton!
+    @IBOutlet weak var audioBtn: UIButton!
+    
+    
     //    @IBAction func addToMyRoute(sender: UIButton) {
     //        var myRoute = SelectAttractionsManager.sharedInstance
     //        myRoute.addAttraction(receiveID!)
@@ -27,6 +31,25 @@ class DetailViewController: UIViewController {
     
     private var service = CATAzureService()
     
+    @IBAction func addCustom(sender: AnyObject) {
+        
+        var alert: UIAlertController
+        let selectAttractionsManager = SelectAttractionsManager.sharedInstance
+        
+        if selectAttractionsManager.isContain(recvattract.AttractionID) {
+            alert = UIAlertController(title: recvattract.AttractionName + " was already added to your route.", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Okey", style: UIAlertActionStyle.Default, handler: nil))
+        } else {
+            alert = UIAlertController(title: "Add " + recvattract.AttractionName, message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
+                selectAttractionsManager.addAttraction(self.recvattract.AttractionID)
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
+        }
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
     
     //Set up UI on Detail page.
     private func setUpUI(){

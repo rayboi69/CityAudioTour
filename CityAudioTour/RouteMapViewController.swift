@@ -18,6 +18,8 @@ class RouteMapViewController: UIViewController {
     @IBOutlet weak var routeMap: MKMapView!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var prevBtn: UIButton!
+    @IBOutlet weak var audioBtn: UIButton!
+    @IBOutlet weak var naviBtn: UIButton!
     
     
     private let requestLocation:MKDirectionsRequest = MKDirectionsRequest()

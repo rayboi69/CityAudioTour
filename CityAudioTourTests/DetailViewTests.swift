@@ -38,6 +38,8 @@ class DetailViewTests: XCTestCase {
         XCTAssertNotNil(detailView.UIImageAttractionImage, "Expected Attraction image is loaded. ")
         XCTAssertNotNil(detailView.WorkingHours, "Expected Attraction Open Hours Label is loaded. ")
         XCTAssertNotNil(detailView.LoadingView, "Expected Spinner is loaded. ")
+        XCTAssertNotNil(detailView.addCusBtn, "Expected Add Route Button is loaded. ")
+        XCTAssertNotNil(detailView.audioBtn, "Expected Audio Button  is loaded. ")
     }
     
     func testUIOutPut(){

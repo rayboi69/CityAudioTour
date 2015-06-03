@@ -91,6 +91,9 @@
 		C1E1BC511B16555800E548A5 /* LCManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101942C1AFC1F3F007E455B /* LCManagerDelegate.swift */; };
 		C1E1BC521B16555F00E548A5 /* AttractionMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10194261AFBCD73007E455B /* AttractionMapDelegate.swift */; };
 		C1E1BC531B16556700E548A5 /* DetailPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C109F48E1AD61875005C0852 /* DetailPopUp.swift */; };
+		C1EF5F5D1B1F76F8009CDC79 /* RouteMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EF5F5C1B1F76F8009CDC79 /* RouteMapViewTests.swift */; };
+		C1EF5F641B1F7798009CDC79 /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10194321AFC60F1007E455B /* RouteMapViewController.swift */; };
+		C1EF5F651B1F77E9009CDC79 /* RouteMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10194301AFC4913007E455B /* RouteMapDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +285,7 @@
 		C1852C6C1AA561470078B29E /* MapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
 		C1DF54071AD6C98000FA9BA8 /* RouteStepPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStepPage.swift; sourceTree = "<group>"; };
 		C1E1BC481B16554600E548A5 /* AttractionMapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionMapTests.swift; sourceTree = "<group>"; };
+		C1EF5F5C1B1F76F8009CDC79 /* RouteMapViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteMapViewTests.swift; path = ../RouteMapViewTests.swift; sourceTree = "<group>"; };
 		CC1A6F24BF5A7388EA437A51 /* libPods-CityAudioTour.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityAudioTour.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA06180C55E77B0F25439E19 /* libPods-CityAudioTourTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CityAudioTourTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -403,6 +407,7 @@
 		08B8551D1A79F90F006F035F /* CityAudioTourTests */ = {
 			isa = PBXGroup;
 			children = (
+				C1EF5F5C1B1F76F8009CDC79 /* RouteMapViewTests.swift */,
 				C1E1BC481B16554600E548A5 /* AttractionMapTests.swift */,
 				C14F3E351AD5D8B30042435C /* ClassificationManagerTests.swift */,
 				C1412ACC1AB765D000E9844D /* RoutesManagerTests.swift */,
@@ -838,6 +843,7 @@
 				8B156C771AE4A64A00F8641A /* SelectAttractionsTableViewController.swift in Sources */,
 				C19F133B1AB0B2D0008542E6 /* CATAzureService.swift in Sources */,
 				C1412ACA1AB7595D00E9844D /* ClassificationManager.swift in Sources */,
+				C1EF5F641B1F7798009CDC79 /* RouteMapViewController.swift in Sources */,
 				C1412AC31AB755B900E9844D /* ContentViewTests.swift in Sources */,
 				C19F133D1AB0B2D8008542E6 /* AttractionsManager.swift in Sources */,
 				31BEC7471ADF25FB0024691C /* SelectAttractionsManager.swift in Sources */,
@@ -848,10 +854,12 @@
 				C1412AC51AB755DE00E9844D /* DetailViewTests.swift in Sources */,
 				C19F13411AB0C108008542E6 /* AttractionImage.swift in Sources */,
 				C1E1BC491B16554600E548A5 /* AttractionMapTests.swift in Sources */,
+				C1EF5F651B1F77E9009CDC79 /* RouteMapDelegate.swift in Sources */,
 				C14F3E361AD5D8B30042435C /* ClassificationManagerTests.swift in Sources */,
 				089A59911AAD6257008F82A6 /* CATAzureServiceTests.swift in Sources */,
 				315F9E601AE87B8D00A3935C /* AuthToken.swift in Sources */,
 				C19F133F1AB0B2DD008542E6 /* Route.swift in Sources */,
+				C1EF5F5D1B1F76F8009CDC79 /* RouteMapViewTests.swift in Sources */,
 				C1E1BC531B16556700E548A5 /* DetailPopUp.swift in Sources */,
 				C1412ACD1AB765D000E9844D /* RoutesManagerTests.swift in Sources */,
 				C19F13401AB0B2E1008542E6 /* Tag.swift in Sources */,
