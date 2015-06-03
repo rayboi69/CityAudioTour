@@ -26,6 +26,8 @@
 		3119D7681ADEE9C30006A5F5 /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7671ADEE9C30006A5F5 /* ValuesViewController.swift */; };
 		3119D76A1ADEEB0D0006A5F5 /* AutheticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */; };
 		311B43521A924F8F0051E05E /* AttractionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B43511A924F8F0051E05E /* AttractionImage.swift */; };
+		312E927F1B1FA1BB008F99CA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312E927D1B1FA1BB008F99CA /* Fabric.framework */; };
+		312E92801B1FA1BB008F99CA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312E927E1B1FA1BB008F99CA /* Crashlytics.framework */; };
 		3135BF501A9C3E8E00DD0D46 /* AttractionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */; };
 		315F9E601AE87B8D00A3935C /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8528B1AE6CE1A00E2D2B0 /* AuthToken.swift */; };
 		316903701B1391DA00C0F4A3 /* SnapKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 31B963A31B0FA57800EBD08E /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -241,6 +243,8 @@
 		3119D7671ADEE9C30006A5F5 /* ValuesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesViewController.swift; sourceTree = "<group>"; };
 		3119D7691ADEEB0D0006A5F5 /* AutheticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutheticationManager.swift; sourceTree = "<group>"; };
 		311B43511A924F8F0051E05E /* AttractionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionImage.swift; sourceTree = "<group>"; };
+		312E927D1B1FA1BB008F99CA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		312E927E1B1FA1BB008F99CA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		3135BF4F1A9C3E8E00DD0D46 /* AttractionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsManager.swift; sourceTree = "<group>"; };
 		3178C9691AB125B600F26461 /* RoutesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesManager.swift; sourceTree = "<group>"; };
 		3191CB571A92D93900939865 /* AttractionContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionContent.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				088F03621A7F04B900292507 /* CoreData.framework in Frameworks */,
 				088F03601A7F04B300292507 /* AVFoundation.framework in Frameworks */,
 				B6EF19F0A22B7747B789E78A /* libPods-CityAudioTour.a in Frameworks */,
+				312E927F1B1FA1BB008F99CA /* Fabric.framework in Frameworks */,
+				312E92801B1FA1BB008F99CA /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +439,8 @@
 		22CA8B061C636D74C9E14B77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				312E927D1B1FA1BB008F99CA /* Fabric.framework */,
+				312E927E1B1FA1BB008F99CA /* Crashlytics.framework */,
 				089A59921AAD63B9008F82A6 /* CityAudioTour-Bridging-Header.h */,
 				08277B8A1A8478FC00D97F65 /* MapKit.framework */,
 				088F03631A7F04C200292507 /* CoreLocation.framework */,
@@ -561,6 +569,7 @@
 				08B855001A79F90F006F035F /* Resources */,
 				BD943CD8DB3427C3D1584C97 /* Copy Pods Resources */,
 				3169036F1B1391C500C0F4A3 /* Copy Frameworks */,
+				312E92761B1FA189008F99CA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -740,6 +749,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		312E92761B1FA189008F99CA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run d76a07bc084597efc07eb440161ee571f9f1dbdd a932ef71168a01bc15f9465afc215e0e4fc9cbc6dfb2f97d9c66580ce2635377";
 		};
 		BD943CD8DB3427C3D1584C97 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1014,7 +1036,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Juan Pablo Paramo Quinterio (7KJKZ92EG7)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CityAudioTour/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1033,7 +1058,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Juan Pablo Paramo Quinterio (7KJKZ92EG7)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CityAudioTour/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
