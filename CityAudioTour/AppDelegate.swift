@@ -17,11 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        //UITabBar.appearance().opaque = true;
-        return true
-    }
+        // initialize SDK with IBM Bluemix application ID and route
+        IMFClient.sharedInstance().initializeWithBackendRoute("https://cityaudiotour.mybluemix.net", backendGUID: "d4b30db5-588c-4d5e-b880-f0044e2ca1f3")
+        return true    }
     
 
     func applicationWillResignActive(application: UIApplication) {

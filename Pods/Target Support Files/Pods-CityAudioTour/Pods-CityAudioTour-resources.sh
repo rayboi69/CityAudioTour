@@ -52,9 +52,11 @@ install_resource()
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "Google-Maps-iOS-SDK/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"
+  install_resource "google-plus-ios-sdk/google-plus-ios-sdk-1.7.1/GooglePlus.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "Google-Maps-iOS-SDK/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"
+  install_resource "google-plus-ios-sdk/google-plus-ios-sdk-1.7.1/GooglePlus.bundle"
 fi
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
