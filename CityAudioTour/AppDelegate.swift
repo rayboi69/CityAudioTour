@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import Fabric
+import Crashlytics
 
 
 @UIApplicationMain

@@ -28,9 +28,10 @@ class SelectAttractionsTableViewController: UITableViewController {
         //Implement save route
         func saveRouteHandler(act:UIAlertAction!) {
             let title = alert.textFields![0] as! UITextField
-            let saveRoute = _selectAttractionsManager.myRouteWithTitle(title.text)
+            //let saveRoute = _selectAttractionsManager.myRouteWithTitle(title.text)
             //Waiting for implement save the route to server
-            
+            var service = CATAzureService()
+            service.postCustomRoute(title.text, attractionIDs: attractions)
         }
         
         if attractions.count == 0 {

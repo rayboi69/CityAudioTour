@@ -46,7 +46,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="RouteCell" editingAccessoryType="detailButton" textLabel="5dV-K9-6nW" detailTextLabel="Vtk-hN-gWf" style="IBUITableViewCellStyleValue1" id="Mrm-IM-6VO">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mrm-IM-6VO" id="o3j-uU-YOx">
                                     <rect key="frame" x="0.0" y="0.0" width="273" height="43"/>
@@ -72,7 +72,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AttractionCell" textLabel="bOn-Bk-hEm" detailTextLabel="rbp-ld-z5b" style="IBUITableViewCellStyleValue1" id="FsQ-es-Qoa">
-                                <rect key="frame" x="0.0" y="174" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="110" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FsQ-es-Qoa" id="DI6-KA-QYA">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -987,7 +987,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Audio Tour" id="Zty-S3-wUC">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="23l-m7-ZGx">
+                        <barButtonItem key="rightBarButtonItem" title="Home" id="23l-m7-ZGx">
                             <connections>
                                 <action selector="BackToMapView:" destination="uMr-um-2op" id="KQ8-sm-Sgc"/>
                             </connections>
