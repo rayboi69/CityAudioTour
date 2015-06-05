@@ -6,24 +6,6 @@
 // project.
 
 
-// Bolts
-#define COCOAPODS_POD_AVAILABLE_Bolts
-#define COCOAPODS_VERSION_MAJOR_Bolts 1
-#define COCOAPODS_VERSION_MINOR_Bolts 1
-#define COCOAPODS_VERSION_PATCH_Bolts 5
-
-// Bolts/AppLinks
-#define COCOAPODS_POD_AVAILABLE_Bolts_AppLinks
-#define COCOAPODS_VERSION_MAJOR_Bolts_AppLinks 1
-#define COCOAPODS_VERSION_MINOR_Bolts_AppLinks 1
-#define COCOAPODS_VERSION_PATCH_Bolts_AppLinks 5
-
-// Bolts/Tasks
-#define COCOAPODS_POD_AVAILABLE_Bolts_Tasks
-#define COCOAPODS_VERSION_MAJOR_Bolts_Tasks 1
-#define COCOAPODS_VERSION_MINOR_Bolts_Tasks 1
-#define COCOAPODS_VERSION_PATCH_Bolts_Tasks 5
-
 // CDTDatastore
 #define COCOAPODS_POD_AVAILABLE_CDTDatastore
 #define COCOAPODS_VERSION_MAJOR_CDTDatastore 0
@@ -90,12 +72,6 @@
 #define COCOAPODS_VERSION_MINOR_FMDB_standard 3
 #define COCOAPODS_VERSION_PATCH_FMDB_standard 0
 
-// Facebook-iOS-SDK
-#define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
-#define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 3
-#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 23
-#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 2
-
 // Google-Maps-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Google_Maps_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Google_Maps_iOS_SDK 1
@@ -113,12 +89,6 @@
 #define COCOAPODS_VERSION_MAJOR_IMFData 1
 #define COCOAPODS_VERSION_MINOR_IMFData 0
 #define COCOAPODS_VERSION_PATCH_IMFData 0
-
-// IMFFacebookAuthentication
-#define COCOAPODS_POD_AVAILABLE_IMFFacebookAuthentication
-#define COCOAPODS_VERSION_MAJOR_IMFFacebookAuthentication 1
-#define COCOAPODS_VERSION_MINOR_IMFFacebookAuthentication 0
-#define COCOAPODS_VERSION_PATCH_IMFFacebookAuthentication 0
 
 // IMFGoogleAuthentication
 #define COCOAPODS_POD_AVAILABLE_IMFGoogleAuthentication

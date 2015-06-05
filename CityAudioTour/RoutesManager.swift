@@ -55,7 +55,7 @@ class RoutesManager {
         }
     }
     
-    private func LoadRoutesList()
+    func LoadRoutesList()
     {
         _routesList = _service?.GetRoutes()
     }
