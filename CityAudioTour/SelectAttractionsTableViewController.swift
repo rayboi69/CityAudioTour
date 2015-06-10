@@ -37,6 +37,7 @@ class SelectAttractionsTableViewController: UITableViewController {
                 self.presentViewController(alert, animated: true, completion: nil)
                 
                 self._routesManager.LoadRoutesList()
+                self._routesManager.getRouteDistance()
             }
 
         }
