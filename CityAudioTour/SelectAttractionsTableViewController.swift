@@ -28,9 +28,18 @@ class SelectAttractionsTableViewController: UITableViewController {
         //Implement save route
         func saveRouteHandler(act:UIAlertAction!) {
             let title = alert.textFields![0] as! UITextField
-            let saveRoute = _selectAttractionsManager.myRouteWithTitle(title.text)
-            //Waiting for implement save the route to server
+            var service = CATAzureService()
             
+            service.postCustomRoute(title.text, attractionIDs: attractions){(succeeded: Bool, msg: String) -> () in
+                var alertTitle = succeeded ? "Succeeded" : "Failed"
+                var alert = UIAlertController(title: alertTitle, message: "\(title.text): " + msg, preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Okey", style: .Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+                self._routesManager.LoadRoutesList()
+                self._routesManager.getRouteDistance()
+            }
+
         }
         
         if attractions.count == 0 {

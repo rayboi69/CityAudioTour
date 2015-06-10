@@ -335,6 +335,38 @@ public class CATAzureService
         task.resume()
     }
     
+    //POST Custom route
+    func postCustomRoute(title: String, attractionIDs: [Int], postResult: ((succeeded: Bool, msg: String) -> Void)!){
+        
+        let json: JSON  = ["Name":title, "AttractionIDs":attractionIDs]
+        let data = json.rawData()
+        let finalURL = apiURL + "/createroute/"
+        var request = NSMutableURLRequest(URL: NSURL(string: finalURL)!)
+        var session = NSURLSession.sharedSession()
+        var success = true
+        var message = "save success"
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = data
+        request.setValue("application/JSON", forHTTPHeaderField: "Content-Type")
+        request.setValue("1EE38B92-9880-4D8B-9524-8323DBB2F827", forHTTPHeaderField: "Authorization")
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            let httpResponse = response as! NSHTTPURLResponse
+            println("***HTTP Code POST: \(httpResponse.statusCode)")
+            if httpResponse.statusCode != 201
+            {
+                success = false
+                message = "save fail with code: \(httpResponse.statusCode)"
+            }
+            
+             postResult(succeeded: success, msg: message)
+        })
+        
+        task.resume()
+    }
+    
    /* //GET Client
     func get(urlResource: String, getCompleted : ((error: NSError?, result: NSData?, success: Bool) -> Void)!) {
         let finalURL = String(format: "%@/%@", apiURL, urlResource)

@@ -22,7 +22,7 @@ class RouteMapViewTests: XCTestCase {
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.dynamicType))
         routeMapView = storyboard.instantiateViewControllerWithIdentifier("RouteMap") as! RouteMapViewController
         
-        manager.selectedRoute = manager.GetRouteBy(1)
+        manager.selectedRoute = manager.GetRouteBy(2)
         
         var dummy = routeMapView.view
     }
